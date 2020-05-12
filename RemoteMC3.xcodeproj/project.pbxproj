@@ -16,6 +16,14 @@
 		1E67FDA6245B634400182C41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E67FDA4245B634400182C41 /* LaunchScreen.storyboard */; };
 		1E67FDB1245B634500182C41 /* RemoteMC3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FDB0245B634500182C41 /* RemoteMC3Tests.swift */; };
 		1E67FDBC245B634500182C41 /* RemoteMC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FDBB245B634500182C41 /* RemoteMC3UITests.swift */; };
+		4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B402C2469E3D700189CA6 /* FeedViewModel.swift */; };
+		4F8B402F2469E41700189CA6 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B402E2469E41700189CA6 /* Project.swift */; };
+		4F8B40312469E4AC00189CA6 /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40302469E4AC00189CA6 /* College.swift */; };
+		4F8B40352469E50700189CA6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40342469E50700189CA6 /* User.swift */; };
+		4F8B40372469E52F00189CA6 /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40362469E52F00189CA6 /* Phase.swift */; };
+		4F8B40392469E59F00189CA6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40382469E59F00189CA6 /* FeedViewController.swift */; };
+		4F8B403C2469EDE300189CA6 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403B2469EDE300189CA6 /* ProjectTableViewCell.swift */; };
+		4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403E2469F51400189CA6 /* CloudKitService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +60,14 @@
 		1E67FDBB245B634500182C41 /* RemoteMC3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMC3UITests.swift; sourceTree = "<group>"; };
 		1E67FDBD245B634500182C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemoteMC3.entitlements; sourceTree = "<group>"; };
+		4F8B402C2469E3D700189CA6 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		4F8B402E2469E41700189CA6 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		4F8B40302469E4AC00189CA6 /* College.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
+		4F8B40342469E50700189CA6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4F8B40362469E52F00189CA6 /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
+		4F8B40382469E59F00189CA6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		4F8B403B2469EDE300189CA6 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		4F8B403E2469F51400189CA6 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +118,11 @@
 		1E67FD95245B634200182C41 /* RemoteMC3 */ = {
 			isa = PBXGroup;
 			children = (
+				4F8B4040246B295200189CA6 /* View */,
+				4F8B402A2469E3AE00189CA6 /* ViewControllers */,
+				4F8B40292469E39900189CA6 /* ViewModels */,
+				4F8B402B2469E3BE00189CA6 /* Models */,
+				4F8B403D2469F4F600189CA6 /* Services */,
 				1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */,
 				1E67FD96245B634200182C41 /* AppDelegate.swift */,
 				1E67FD98245B634200182C41 /* SceneDelegate.swift */,
@@ -131,6 +152,57 @@
 				1E67FDBD245B634500182C41 /* Info.plist */,
 			);
 			path = RemoteMC3UITests;
+			sourceTree = "<group>";
+		};
+		4F8B40292469E39900189CA6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B402C2469E3D700189CA6 /* FeedViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4F8B402A2469E3AE00189CA6 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B40382469E59F00189CA6 /* FeedViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4F8B402B2469E3BE00189CA6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B402E2469E41700189CA6 /* Project.swift */,
+				4F8B40302469E4AC00189CA6 /* College.swift */,
+				4F8B40342469E50700189CA6 /* User.swift */,
+				4F8B40362469E52F00189CA6 /* Phase.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4F8B403A2469EDCC00189CA6 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B403B2469EDE300189CA6 /* ProjectTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		4F8B403D2469F4F600189CA6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B403E2469F51400189CA6 /* CloudKitService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4F8B4040246B295200189CA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B403A2469EDCC00189CA6 /* TableViewCells */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,10 +357,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
+				4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */,
 				1E67FD9B245B634200182C41 /* ViewController.swift in Sources */,
+				4F8B40392469E59F00189CA6 /* FeedViewController.swift in Sources */,
 				1E67FDA1245B634200182C41 /* RemoteMC3.xcdatamodeld in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
+				4F8B40352469E50700189CA6 /* User.swift in Sources */,
+				4F8B40312469E4AC00189CA6 /* College.swift in Sources */,
 				1E67FD99245B634200182C41 /* SceneDelegate.swift in Sources */,
+				4F8B403C2469EDE300189CA6 /* ProjectTableViewCell.swift in Sources */,
+				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
+				4F8B40372469E52F00189CA6 /* Phase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X54K5PJVGU;
+				DEVELOPMENT_TEAM = 93JG72P729;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -483,7 +563,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X54K5PJVGU;
+				DEVELOPMENT_TEAM = 93JG72P729;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
