@@ -22,7 +22,7 @@
 		4F8B40352469E50700189CA6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40342469E50700189CA6 /* User.swift */; };
 		4F8B40372469E52F00189CA6 /* Phase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40362469E52F00189CA6 /* Phase.swift */; };
 		4F8B40392469E59F00189CA6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40382469E59F00189CA6 /* FeedViewController.swift */; };
-		4F8B403C2469EDE300189CA6 /* ProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403B2469EDE300189CA6 /* ProjectTableViewCell.swift */; };
+		4F8B403C2469EDE300189CA6 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403B2469EDE300189CA6 /* FeedTableViewCell.swift */; };
 		4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403E2469F51400189CA6 /* CloudKitService.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +66,7 @@
 		4F8B40342469E50700189CA6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4F8B40362469E52F00189CA6 /* Phase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phase.swift; sourceTree = "<group>"; };
 		4F8B40382469E59F00189CA6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		4F8B403B2469EDE300189CA6 /* ProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTableViewCell.swift; sourceTree = "<group>"; };
+		4F8B403B2469EDE300189CA6 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		4F8B403E2469F51400189CA6 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,10 +118,10 @@
 		1E67FD95245B634200182C41 /* RemoteMC3 */ = {
 			isa = PBXGroup;
 			children = (
-				4F8B4040246B295200189CA6 /* View */,
-				4F8B402A2469E3AE00189CA6 /* ViewControllers */,
-				4F8B40292469E39900189CA6 /* ViewModels */,
-				4F8B402B2469E3BE00189CA6 /* Models */,
+				CB9175AE246B62A200D10580 /* LoginScreen */,
+				CB9175A5246B5EC800D10580 /* FeedScreen */,
+				CB9175A6246B5FAE00D10580 /* CreateProjectScreen */,
+				CB9175AA246B5FDE00D10580 /* SpecificProjectScreen */,
 				4F8B403D2469F4F600189CA6 /* Services */,
 				1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */,
 				1E67FD96245B634200182C41 /* AppDelegate.swift */,
@@ -162,31 +162,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		4F8B402A2469E3AE00189CA6 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				4F8B40382469E59F00189CA6 /* FeedViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		4F8B402B2469E3BE00189CA6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4F8B402E2469E41700189CA6 /* Project.swift */,
 				4F8B40302469E4AC00189CA6 /* College.swift */,
-				4F8B40342469E50700189CA6 /* User.swift */,
 				4F8B40362469E52F00189CA6 /* Phase.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		4F8B403A2469EDCC00189CA6 /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				4F8B403B2469EDE300189CA6 /* ProjectTableViewCell.swift */,
-			);
-			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		4F8B403D2469F4F600189CA6 /* Services */ = {
@@ -197,12 +180,117 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		4F8B4040246B295200189CA6 /* View */ = {
+		4F8B4040246B295200189CA6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4F8B403A2469EDCC00189CA6 /* TableViewCells */,
+				4F8B40382469E59F00189CA6 /* FeedViewController.swift */,
+				4F8B403B2469EDE300189CA6 /* FeedTableViewCell.swift */,
 			);
-			path = View;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB9175A5246B5EC800D10580 /* FeedScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B402B2469E3BE00189CA6 /* Models */,
+				4F8B4040246B295200189CA6 /* Views */,
+				4F8B40292469E39900189CA6 /* ViewModels */,
+			);
+			path = FeedScreen;
+			sourceTree = "<group>";
+		};
+		CB9175A6246B5FAE00D10580 /* CreateProjectScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CB9175A9246B5FD300D10580 /* Models */,
+				CB9175A8246B5FCA00D10580 /* Views */,
+				CB9175A7246B5FC000D10580 /* ViewModels */,
+			);
+			path = CreateProjectScreen;
+			sourceTree = "<group>";
+		};
+		CB9175A7246B5FC000D10580 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CB9175A8246B5FCA00D10580 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB9175A9246B5FD300D10580 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CB9175AA246B5FDE00D10580 /* SpecificProjectScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CB9175AD246B600D00D10580 /* Models */,
+				CB9175AC246B600800D10580 /* Views */,
+				CB9175AB246B600000D10580 /* ViewModels */,
+			);
+			path = SpecificProjectScreen;
+			sourceTree = "<group>";
+		};
+		CB9175AB246B600000D10580 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CB9175AC246B600800D10580 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB9175AD246B600D00D10580 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CB9175AE246B62A200D10580 /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CB9175B1246B62B900D10580 /* Models */,
+				CB9175B0246B62B300D10580 /* Views */,
+				CB9175AF246B62AD00D10580 /* ViewModels */,
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		CB9175AF246B62AD00D10580 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		CB9175B0246B62B300D10580 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB9175B1246B62B900D10580 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F8B40342469E50700189CA6 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,7 +454,7 @@
 				4F8B40352469E50700189CA6 /* User.swift in Sources */,
 				4F8B40312469E4AC00189CA6 /* College.swift in Sources */,
 				1E67FD99245B634200182C41 /* SceneDelegate.swift in Sources */,
-				4F8B403C2469EDE300189CA6 /* ProjectTableViewCell.swift in Sources */,
+				4F8B403C2469EDE300189CA6 /* FeedTableViewCell.swift in Sources */,
 				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
 				4F8B40372469E52F00189CA6 /* Phase.swift in Sources */,
 			);
