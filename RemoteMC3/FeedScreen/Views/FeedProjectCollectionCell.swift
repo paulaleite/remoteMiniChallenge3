@@ -14,4 +14,6 @@ class FeedProjectCollectionCell: UICollectionViewCell {
 	@IBOutlet var projectName: UILabel!
 	@IBOutlet var projectResponsible: UITextView!
 	@IBOutlet var projectPhase: UITextView!
+	
+
 }

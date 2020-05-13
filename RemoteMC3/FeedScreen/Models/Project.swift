@@ -17,5 +17,6 @@ struct Project {
     var duration: (Date, Date)
     var currentPhase: Phase
     var phases: [Phase]
+	var category: String
 
 }

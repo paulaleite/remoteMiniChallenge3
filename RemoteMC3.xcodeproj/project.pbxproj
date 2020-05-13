@@ -24,7 +24,9 @@
 		4F8B40392469E59F00189CA6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40382469E59F00189CA6 /* FeedViewController.swift */; };
 		4F8B403C2469EDE300189CA6 /* FeedProjectCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403B2469EDE300189CA6 /* FeedProjectCollectionCell.swift */; };
 		4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403E2469F51400189CA6 /* CloudKitService.swift */; };
-		CB6BFFA6246B70A500C3BA1E /* FeedCateroryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCateroryCollectionCell.swift */; };
+		CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */; };
+		CBBDE668246C634A005B52D0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDE667246C634A005B52D0 /* Category.swift */; };
+		CBBDE66A246C75C5005B52D0 /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDE669246C75C5005B52D0 /* Social.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +71,9 @@
 		4F8B40382469E59F00189CA6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		4F8B403B2469EDE300189CA6 /* FeedProjectCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProjectCollectionCell.swift; sourceTree = "<group>"; };
 		4F8B403E2469F51400189CA6 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
-		CB6BFFA5246B70A500C3BA1E /* FeedCateroryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCateroryCollectionCell.swift; sourceTree = "<group>"; };
+		CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoryCollectionCell.swift; sourceTree = "<group>"; };
+		CBBDE667246C634A005B52D0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		CBBDE669246C75C5005B52D0 /* Social.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,8 @@
 				4F8B402E2469E41700189CA6 /* Project.swift */,
 				4F8B40302469E4AC00189CA6 /* College.swift */,
 				4F8B40362469E52F00189CA6 /* Phase.swift */,
+				CBBDE667246C634A005B52D0 /* Category.swift */,
+				CBBDE669246C75C5005B52D0 /* Social.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,7 +193,7 @@
 			children = (
 				4F8B40382469E59F00189CA6 /* FeedViewController.swift */,
 				4F8B403B2469EDE300189CA6 /* FeedProjectCollectionCell.swift */,
-				CB6BFFA5246B70A500C3BA1E /* FeedCateroryCollectionCell.swift */,
+				CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -453,7 +459,8 @@
 				1E67FD9B245B634200182C41 /* ViewController.swift in Sources */,
 				4F8B40392469E59F00189CA6 /* FeedViewController.swift in Sources */,
 				1E67FDA1245B634200182C41 /* RemoteMC3.xcdatamodeld in Sources */,
-				CB6BFFA6246B70A500C3BA1E /* FeedCateroryCollectionCell.swift in Sources */,
+				CBBDE66A246C75C5005B52D0 /* Social.swift in Sources */,
+				CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
 				4F8B40352469E50700189CA6 /* User.swift in Sources */,
 				4F8B40312469E4AC00189CA6 /* College.swift in Sources */,
@@ -461,6 +468,7 @@
 				4F8B403C2469EDE300189CA6 /* FeedProjectCollectionCell.swift in Sources */,
 				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
 				4F8B40372469E52F00189CA6 /* Phase.swift in Sources */,
+				CBBDE668246C634A005B52D0 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

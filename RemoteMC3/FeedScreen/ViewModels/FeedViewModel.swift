@@ -14,9 +14,15 @@ protocol FeedViewModelDelegate: class {
 
 class FeedViewModel {
     var projects: [Project] = []
+	
+	var categorys: [Category] = []
     
-    func getRowsNumber() -> Int {
+    func getProjectRowsNumber() -> Int {
         return projects.count
+    }
+	
+	func getCategoryRowsNumber() -> Int {
+        return categorys.count
     }
     
     func getProjectTitle(forProjectAt index: Int) -> String {
@@ -34,4 +40,19 @@ class FeedViewModel {
     func getProjectCurrentPhase(forProjectAt index: Int) -> Phase {
         return projects[index].currentPhase
     }
+	
+	func addProjects() {
+//		aqui tem que pegar do servidor
+		projects.append(Project(title: "Título do projeto", description:
+			"Aqui vai haver a descrição do projeto", college: College.FCI,
+													   responsible: User(firstName: "Edgar", lastName: "Sgroi"), members: [User(firstName: "Edgar", lastName: "Sgroi")],
+													   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)), currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+	}
+	
+	func addCategory() {
+//		mudar a forma de contar a categoria
+		categorys.append(Social(count: 0))
+	}
+	
+	
 }
