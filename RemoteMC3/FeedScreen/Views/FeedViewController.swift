@@ -9,11 +9,34 @@
 import Foundation
 import UIKit
 
-class FeedViewController: UIViewController, UITableViewDelegate {
+class FeedViewController: UIViewController{
     
     var viewModel: FeedViewModel = FeedViewModel()
     
-    override func viewDidLoad() {
+	@IBOutlet var categoryCollectionView: UICollectionView!
+
+	@IBOutlet var projectCollectionView: UICollectionView!
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
     }
+}
+
+//	MARK: - Table View Data Source
+extension FeedViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 1
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		return UITableViewCell
+	}
+	
+	
+}
+
+//	MARK: - Table View Delegate
+extension FeedViewController: UITableViewDelegate {
+	
+	
 }

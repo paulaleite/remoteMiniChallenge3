@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ProjectTableViewCell: UITableViewCell {
+class FeedProjectCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblResponsible: UILabel!
