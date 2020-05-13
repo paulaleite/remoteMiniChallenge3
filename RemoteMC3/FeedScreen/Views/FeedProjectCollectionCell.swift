@@ -1,5 +1,5 @@
 //
-//  ProjectTableViewCell.swift
+//  FeedProjectCollectionCell.swift
 //  RemoteMC3
 //
 //  Created by Edgar Sgroi on 11/05/20.
@@ -11,8 +11,7 @@ import UIKit
 
 class FeedProjectCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var lblResponsible: UILabel!
-    @IBOutlet weak var lblPhase: UILabel!
-    
+	@IBOutlet var projectName: UILabel!
+	@IBOutlet var projectResponsible: UITextView!
+	@IBOutlet var projectPhase: UITextView!
 }

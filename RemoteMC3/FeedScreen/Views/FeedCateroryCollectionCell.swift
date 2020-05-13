@@ -10,4 +10,7 @@ import UIKit
 
 class FeedCateroryCollectionCell: UICollectionViewCell {
     
+	@IBOutlet var categoryImage: UIImageView!
+	@IBOutlet var categoryName: UILabel!
+	@IBOutlet var categoryCount: UILabel!
 }
