@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class FeedViewController: UIViewController{
+class FeedViewController: UIViewController {
     
     var viewModel: FeedViewModel = FeedViewModel()
     
@@ -29,14 +29,13 @@ extension FeedViewController: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		return UITableViewCell
+		
+		return UITableViewCell()
 	}
-	
 	
 }
 
 //	MARK: - Table View Delegate
 extension FeedViewController: UITableViewDelegate {
-	
-	
+
 }
