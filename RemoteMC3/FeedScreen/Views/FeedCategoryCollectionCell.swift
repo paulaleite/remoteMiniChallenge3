@@ -6,6 +6,7 @@
 //  Copyright © 2020 Paula Leite. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class FeedCategoryCollectionCell: UICollectionViewCell {
@@ -13,5 +14,5 @@ class FeedCategoryCollectionCell: UICollectionViewCell {
 	@IBOutlet var categoryImage: UIImageView!
 	@IBOutlet var categoryName: UILabel!
 	@IBOutlet var categoryCount: UILabel!
-	
+
 }

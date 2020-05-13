@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FD96245B634200182C41 /* AppDelegate.swift */; };
 		1E67FD99245B634200182C41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FD98245B634200182C41 /* SceneDelegate.swift */; };
-		1E67FD9B245B634200182C41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FD9A245B634200182C41 /* ViewController.swift */; };
 		1E67FD9E245B634200182C41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E67FD9C245B634200182C41 /* Main.storyboard */; };
 		1E67FDA1245B634200182C41 /* RemoteMC3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FD9F245B634200182C41 /* RemoteMC3.xcdatamodeld */; };
 		1E67FDA3245B634400182C41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E67FDA2245B634400182C41 /* Assets.xcassets */; };
@@ -26,7 +25,6 @@
 		4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403E2469F51400189CA6 /* CloudKitService.swift */; };
 		CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */; };
 		CBBDE668246C634A005B52D0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDE667246C634A005B52D0 /* Category.swift */; };
-		CBBDE66A246C75C5005B52D0 /* Social.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDE669246C75C5005B52D0 /* Social.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +48,6 @@
 		1E67FD93245B634200182C41 /* RemoteMC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteMC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E67FD96245B634200182C41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E67FD98245B634200182C41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1E67FD9A245B634200182C41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1E67FD9D245B634200182C41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E67FDA0245B634200182C41 /* RemoteMC3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RemoteMC3.xcdatamodel; sourceTree = "<group>"; };
 		1E67FDA2245B634400182C41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,7 +70,6 @@
 		4F8B403E2469F51400189CA6 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		CBBDE667246C634A005B52D0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		CBBDE669246C75C5005B52D0 /* Social.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Social.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +128,6 @@
 				1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */,
 				1E67FD96245B634200182C41 /* AppDelegate.swift */,
 				1E67FD98245B634200182C41 /* SceneDelegate.swift */,
-				1E67FD9A245B634200182C41 /* ViewController.swift */,
 				1E67FD9C245B634200182C41 /* Main.storyboard */,
 				1E67FDA2245B634400182C41 /* Assets.xcassets */,
 				1E67FDA4245B634400182C41 /* LaunchScreen.storyboard */,
@@ -175,7 +170,6 @@
 				4F8B40302469E4AC00189CA6 /* College.swift */,
 				4F8B40362469E52F00189CA6 /* Phase.swift */,
 				CBBDE667246C634A005B52D0 /* Category.swift */,
-				CBBDE669246C75C5005B52D0 /* Social.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -456,10 +450,8 @@
 			files = (
 				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
 				4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */,
-				1E67FD9B245B634200182C41 /* ViewController.swift in Sources */,
 				4F8B40392469E59F00189CA6 /* FeedViewController.swift in Sources */,
 				1E67FDA1245B634200182C41 /* RemoteMC3.xcdatamodeld in Sources */,
-				CBBDE66A246C75C5005B52D0 /* Social.swift in Sources */,
 				CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
 				4F8B40352469E50700189CA6 /* User.swift in Sources */,

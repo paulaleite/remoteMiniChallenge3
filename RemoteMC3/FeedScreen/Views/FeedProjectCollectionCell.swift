@@ -15,5 +15,4 @@ class FeedProjectCollectionCell: UICollectionViewCell {
 	@IBOutlet var projectResponsible: UITextView!
 	@IBOutlet var projectPhase: UITextView!
 	
-
 }

@@ -12,9 +12,10 @@ class Category {
 	
 	var imagem: String = ""
 	var name: String = ""
-
-	init(imagem: String, name: String) {
+	var count: Int = 0
+	init(imagem: String, name: String, count: Int) {
 		self.imagem = imagem
 		self.name = name
+		self.count = count
 	}
 }

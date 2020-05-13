@@ -136,23 +136,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jks-Ml-UlU">
-                                <rect key="frame" x="0.0" y="88" width="414" height="120"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="140"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="kN4-6n-oMH"/>
+                                    <constraint firstAttribute="height" constant="140" id="kN4-6n-oMH"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jlq-m3-kZW">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="20" minimumInteritemSpacing="20" sectionInsetReference="safeArea" id="Jlq-m3-kZW">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCategoryCollectionCell" id="97L-En-IGa" customClass="FeedCategoryCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="119.33333333333333"/>
+                                        <rect key="frame" x="20" y="6" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wOD-Em-bH1">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="119.33333333333333"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 19" translatesAutoresizingMaskIntoConstraints="NO" id="PwS-Mx-wXw">
@@ -163,7 +163,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wmy-Vz-8Gy">
-                                                    <rect key="frame" x="47" y="92.333333333333329" width="34" height="15"/>
+                                                    <rect key="frame" x="47" y="101" width="34" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="34" id="CrY-So-wJp"/>
                                                         <constraint firstAttribute="height" constant="15" id="WWc-5c-7EH"/>
@@ -179,7 +179,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftp-wJ-85o">
-                                                    <rect key="frame" x="46.333333333333343" y="65" width="35.666666666666657" height="15.333333333333329"/>
+                                                    <rect key="frame" x="46.333333333333343" y="65" width="35.666666666666657" height="24"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Social">
                                                             <attributes>
@@ -200,6 +200,7 @@
                                                 <constraint firstItem="Wmy-Vz-8Gy" firstAttribute="top" secondItem="ftp-wJ-85o" secondAttribute="bottom" constant="12" id="sjK-SZ-dLS"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="128" height="128"/>
                                         <connections>
                                             <outlet property="categoryCount" destination="Wmy-Vz-8Gy" id="1mN-HU-ziw"/>
                                             <outlet property="categoryImage" destination="PwS-Mx-wXw" id="lIt-d7-7mQ"/>
@@ -209,17 +210,17 @@
                                 </cells>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Er-ps-ett">
-                                <rect key="frame" x="0.0" y="233" width="414" height="580"/>
+                                <rect key="frame" x="0.0" y="258" width="414" height="555"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2od-2V-Oyj">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="22" minimumInteritemSpacing="0.0" id="2od-2V-Oyj">
                                     <size key="itemSize" width="298" height="260"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedProjectCollectionCell" id="lUR-eC-mOv" customClass="FeedProjectCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
-                                        <rect key="frame" x="58" y="0.0" width="298" height="260"/>
+                                        <rect key="frame" x="58" y="10" width="298" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cyP-pN-F4j">
                                             <rect key="frame" x="0.0" y="0.0" width="298" height="260"/>
@@ -261,20 +262,37 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4OQ-mp-irF">
-                                                    <rect key="frame" x="20" y="71" width="77.666666666666671" height="177"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4OQ-mp-irF">
+                                                    <rect key="frame" x="15" y="61" width="77.666666666666671" height="187"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <viewLayoutGuide key="safeArea" id="bLf-yk-rOi"/>
+                                                    <viewLayoutGuide key="contentLayoutGuide" id="n6B-pr-P9x"/>
+                                                    <viewLayoutGuide key="frameLayoutGuide" id="ucG-yP-Koo"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <font key="NSFont" size="13" name="MuktaMahee-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" smartDashesType="yes" textContentType="name"/>
                                                 </textView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gyX-ab-hsr">
-                                                    <rect key="frame" x="118.66666666666667" y="71" width="159.33333333333331" height="177"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gyX-ab-hsr">
+                                                    <rect key="frame" x="122.66666666666667" y="61" width="155.33333333333331" height="187"/>
+                                                    <color key="backgroundColor" red="0.97933279418583319" green="0.97807776492647269" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="13" name="MuktaMahee-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
@@ -283,11 +301,11 @@
                                                 <constraint firstAttribute="trailing" secondItem="gyX-ab-hsr" secondAttribute="trailing" constant="20" id="4pM-nQ-tse"/>
                                                 <constraint firstAttribute="bottom" secondItem="gyX-ab-hsr" secondAttribute="bottom" constant="12" id="7v1-8i-zmo"/>
                                                 <constraint firstItem="Oh4-qC-yq8" firstAttribute="top" secondItem="4cH-0b-hPY" secondAttribute="bottom" constant="10" id="DRD-Zm-dVS"/>
-                                                <constraint firstItem="gyX-ab-hsr" firstAttribute="top" secondItem="Oh4-qC-yq8" secondAttribute="bottom" constant="5" id="Dg2-O6-bWX"/>
-                                                <constraint firstItem="4OQ-mp-irF" firstAttribute="top" secondItem="mpm-ME-bG0" secondAttribute="bottom" constant="5" id="DvS-EI-NmI"/>
+                                                <constraint firstItem="gyX-ab-hsr" firstAttribute="top" secondItem="Oh4-qC-yq8" secondAttribute="bottom" constant="-5" id="Dg2-O6-bWX"/>
+                                                <constraint firstItem="4OQ-mp-irF" firstAttribute="top" secondItem="mpm-ME-bG0" secondAttribute="bottom" constant="-5" id="DvS-EI-NmI"/>
                                                 <constraint firstItem="mpm-ME-bG0" firstAttribute="leading" secondItem="cyP-pN-F4j" secondAttribute="leading" constant="20" id="Hou-zv-Ns0"/>
-                                                <constraint firstItem="gyX-ab-hsr" firstAttribute="leading" secondItem="4OQ-mp-irF" secondAttribute="trailing" constant="21" id="gDO-UQ-Egj"/>
-                                                <constraint firstItem="4OQ-mp-irF" firstAttribute="leading" secondItem="cyP-pN-F4j" secondAttribute="leading" multiplier="0.3" constant="20" id="gH0-kj-k9y"/>
+                                                <constraint firstItem="gyX-ab-hsr" firstAttribute="leading" secondItem="4OQ-mp-irF" secondAttribute="trailing" constant="30" id="gDO-UQ-Egj"/>
+                                                <constraint firstItem="4OQ-mp-irF" firstAttribute="leading" secondItem="cyP-pN-F4j" secondAttribute="leading" multiplier="0.3" constant="15" id="gH0-kj-k9y"/>
                                                 <constraint firstItem="4cH-0b-hPY" firstAttribute="leading" secondItem="cyP-pN-F4j" secondAttribute="leading" constant="20" id="hU1-ce-Uhy"/>
                                                 <constraint firstItem="Oh4-qC-yq8" firstAttribute="leading" secondItem="mpm-ME-bG0" secondAttribute="trailing" constant="20" id="hWK-jT-f8w"/>
                                                 <constraint firstAttribute="bottom" secondItem="4OQ-mp-irF" secondAttribute="bottom" constant="12" id="jNo-5V-fQ6"/>
@@ -311,18 +329,17 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Er-ps-ett" secondAttribute="bottom" id="Ah6-6J-cc9"/>
-                            <constraint firstItem="2Er-ps-ett" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BvN-bd-Sao"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jks-Ml-UlU" secondAttribute="trailing" id="OjK-eV-9us"/>
-                            <constraint firstItem="2Er-ps-ett" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="X8H-Q8-oxg"/>
                             <constraint firstItem="jks-Ml-UlU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bSS-zm-Iah"/>
-                            <constraint firstItem="2Er-ps-ett" firstAttribute="top" secondItem="jks-Ml-UlU" secondAttribute="bottom" constant="25" id="eDX-mV-5Ez"/>
-                            <constraint firstItem="jks-Ml-UlU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rv7-WZ-ijr"/>
+                            <constraint firstItem="2Er-ps-ett" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dKV-3Q-J1v"/>
+                            <constraint firstItem="2Er-ps-ett" firstAttribute="top" secondItem="jks-Ml-UlU" secondAttribute="bottom" constant="10" id="eDX-mV-5Ez"/>
+                            <constraint firstItem="2Er-ps-ett" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fsp-3c-hOC"/>
+                            <constraint firstItem="jks-Ml-UlU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="rv7-WZ-ijr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" largeTitleDisplayMode="always" id="tbt-nj-w5a">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Ssr-eg-wCz">
-                            <color key="tintColor" red="0.54901960780000003" green="0.16078431369999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="7lq-LY-g3Y" kind="show" id="GQc-Pd-xXZ"/>
                             </connections>

@@ -16,7 +16,13 @@ class FeedViewModel {
     var projects: [Project] = []
 	
 	var categorys: [Category] = []
-    
+	
+    var socialCount = 0
+	var researchCount = 0
+	var personalCount = 0
+	var culturalCount = 0
+	var entrepreneurialCount = 0
+	
     func getProjectRowsNumber() -> Int {
         return projects.count
     }
@@ -43,16 +49,66 @@ class FeedViewModel {
 	
 	func addProjects() {
 //		aqui tem que pegar do servidor
-		projects.append(Project(title: "Título do projeto", description:
+		projects.append(Project(title: "Projeto", description:
 			"Aqui vai haver a descrição do projeto", college: College.FCI,
-													   responsible: User(firstName: "Edgar", lastName: "Sgroi"), members: [User(firstName: "Edgar", lastName: "Sgroi")],
-													   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)), currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+													   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
+													   members: [User(firstName: "Edgar", lastName: "Sgroi")],
+													   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
+													   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+		projects.append(Project(title: "Projeto", description:
+		"Aqui vai haver a descrição do projeto", college: College.FCI,
+												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
+												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
+												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
+												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+		projects.append(Project(title: "Projeto", description:
+		"Aqui vai haver a descrição do projeto", college: College.FCI,
+												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
+												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
+												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
+												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+		projects.append(Project(title: "Projeto", description:
+		"Aqui vai haver a descrição do projeto", college: College.FCI,
+												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
+												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
+												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
+												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+		projects.append(Project(title: "Projeto", description:
+		"Aqui vai haver a descrição do projeto", college: College.FCI,
+												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
+												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
+												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
+												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+		projects.append(Project(title: "Projeto", description:
+		"Aqui vai haver a descrição do projeto", college: College.FCI,
+												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
+												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
+												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
+												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+		
+		
+		for project in projects {
+			if (project.category == "Social") {
+				socialCount+=1
+			}else if (project.category == "Cultural") {
+				culturalCount+=1
+			}else if (project.category == "Pessoal") {
+				personalCount+=1
+			}else if (project.category == "Empresarial") {
+				entrepreneurialCount+=1
+			}else if (project.category == "Pesquisa") {
+				researchCount+=1
+			}
+		}
 	}
 	
 	func addCategory() {
-//		mudar a forma de contar a categoria
-		categorys.append(Social(count: 0))
+		categorys.append(Category(imagem: "Group 19", name: "Social", count: socialCount))
+		categorys.append(Category(imagem: "Group 19", name: "Cultural", count: culturalCount))
+		categorys.append(Category(imagem: "Group 19", name: "Pessoal", count: personalCount))
+		categorys.append(Category(imagem: "Group 19", name: "Empresarial", count: entrepreneurialCount))
+		categorys.append(Category(imagem: "Group 19", name: "Pesquisa", count: researchCount))
+
 	}
-	
-	
+
 }
