@@ -17,6 +17,8 @@ class FeedViewController: UIViewController {
 
 	@IBOutlet var projectCollectionView: UICollectionView!
 	
+	var firstCellState: Int = 0
+	
 	override func viewDidLoad() {
         super.viewDidLoad()
 		navigationController?.navigationBar.prefersLargeTitles = true
@@ -27,18 +29,19 @@ class FeedViewController: UIViewController {
 		projectCollectionView.dataSource = self
 		projectCollectionView.delegate = self
 				
-    }
-	
+		viewModel.delegate = self
+		
+		    }
+
 	override func viewDidAppear(_ animated: Bool) {
 		let indexPath: IndexPath = IndexPath(row: 0, section: 0)
-		categoryCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
-		categoryCollectionView.cellForItem(at: indexPath)?.backgroundColor = .black
-	}
-	
-	func deselect (cellType: FeedCategoryCollectionCell, indexes: [IndexPath]) {
-		for celula in indexes {
-			categoryCollectionView.deselectItem(at: celula, animated: false)
-		}
+		categoryCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+		guard let selectedCell = categoryCollectionView.cellForItem(at: indexPath) as? FeedCategoryCollectionCell else {
+					return }
+		
+		selectedCell.touched = true
+		viewModel.select(cell: selectedCell, indexPath: indexPath)
+		
 	}
 }
 
@@ -60,21 +63,97 @@ extension FeedViewController: UICollectionViewDataSource {
 		switch collectionView {
 		case categoryCollectionView:
 			if let feedCategoryCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCategoryCollectionCell", for: indexPath) as? FeedCategoryCollectionCell {
-				feedCategoryCollectionCell.backgroundColor = .white
-				feedCategoryCollectionCell.layer.masksToBounds = false
-				feedCategoryCollectionCell.layer.cornerRadius = 37
-				feedCategoryCollectionCell.layer.shadowColor = UIColor.black.cgColor
-				feedCategoryCollectionCell.layer.shadowOffset = .zero
-				feedCategoryCollectionCell.layer.shadowRadius = 4
-				feedCategoryCollectionCell.layer.shadowOpacity = 0.3
-
-				feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[indexPath.row].imagem)
+				
+				if indexPath.row == 0 {
+					if firstCellState == 0 {
+						feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[0].imagem)
+						feedCategoryCollectionCell.categoryName.text = viewModel.categorys[indexPath.row].name
+						feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
+						
+						if feedCategoryCollectionCell.touched == true {
+							feedCategoryCollectionCell.backgroundColor = .white
+							feedCategoryCollectionCell.layer.masksToBounds = false
+							feedCategoryCollectionCell.layer.cornerRadius = 37
+							feedCategoryCollectionCell.layer.shadowColor = UIColor.black.cgColor
+							feedCategoryCollectionCell.layer.shadowOffset = .zero
+							feedCategoryCollectionCell.layer.shadowRadius = 4
+							feedCategoryCollectionCell.layer.shadowOpacity = 0.3
+							feedCategoryCollectionCell.categoryName.textColor = .black
+							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
+							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
+							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+						} else {
+							feedCategoryCollectionCell.backgroundColor = .white
+							feedCategoryCollectionCell.layer.masksToBounds = false
+							feedCategoryCollectionCell.layer.cornerRadius = 37
+							feedCategoryCollectionCell.layer.borderWidth = 1
+							feedCategoryCollectionCell.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
+							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
+							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+						}
+							return feedCategoryCollectionCell
+					} else {
+						feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.unselectedImages[indexPath.row])
+						feedCategoryCollectionCell.categoryName.text = viewModel.categorys[indexPath.row].name
+						feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
+						
+						if feedCategoryCollectionCell.touched == true {
+							feedCategoryCollectionCell.backgroundColor = .white
+							feedCategoryCollectionCell.layer.masksToBounds = false
+							feedCategoryCollectionCell.layer.cornerRadius = 37
+							feedCategoryCollectionCell.layer.shadowColor = UIColor.black.cgColor
+							feedCategoryCollectionCell.layer.shadowOffset = .zero
+							feedCategoryCollectionCell.layer.shadowRadius = 4
+							feedCategoryCollectionCell.layer.shadowOpacity = 0.3
+							feedCategoryCollectionCell.categoryName.textColor = .black
+							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
+							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
+							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+						} else {
+							feedCategoryCollectionCell.backgroundColor = .white
+							feedCategoryCollectionCell.layer.masksToBounds = false
+							feedCategoryCollectionCell.layer.cornerRadius = 37
+							feedCategoryCollectionCell.layer.borderWidth = 1
+							feedCategoryCollectionCell.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
+							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
+							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+						}
+							return feedCategoryCollectionCell
+							
+					}
+				} else {
+				
+				feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.unselectedImages[indexPath.row])
 				feedCategoryCollectionCell.categoryName.text = viewModel.categorys[indexPath.row].name
 				feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
-				feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
-				feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
-				feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
-				return feedCategoryCollectionCell
+				
+				if feedCategoryCollectionCell.touched == true {
+					feedCategoryCollectionCell.backgroundColor = .white
+					feedCategoryCollectionCell.layer.masksToBounds = false
+					feedCategoryCollectionCell.layer.cornerRadius = 37
+					feedCategoryCollectionCell.layer.shadowColor = UIColor.black.cgColor
+					feedCategoryCollectionCell.layer.shadowOffset = .zero
+					feedCategoryCollectionCell.layer.shadowRadius = 4
+					feedCategoryCollectionCell.layer.shadowOpacity = 0.3
+					feedCategoryCollectionCell.categoryName.textColor = .black
+					feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
+					feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
+					feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+				} else {
+					feedCategoryCollectionCell.backgroundColor = .white
+					feedCategoryCollectionCell.layer.masksToBounds = false
+					feedCategoryCollectionCell.layer.cornerRadius = 37
+					feedCategoryCollectionCell.layer.borderWidth = 1
+					feedCategoryCollectionCell.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+					feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
+					feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
+					feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+				}
+					return feedCategoryCollectionCell
+					
+				}
 			}
 			
 		default:
@@ -115,18 +194,77 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 		}
     }
 	
-//	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//		switch collectionView {
-//		case categoryCollectionView:
-//			switch indexPath.row {
-//				case 0:
-//
-//
-//				default:
-//				<#code#>
-//			}
-//		default:
-//
-//		}
-//	}
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		switch collectionView {
+		case categoryCollectionView:
+
+			firstCellState = 1
+			guard let selectedCell = collectionView.cellForItem(at: indexPath) as? FeedCategoryCollectionCell else {
+			 	return }
+			
+			viewModel.setUpCellsState(collectionView: collectionView)
+			selectedCell.touched = true
+
+			switch indexPath.row {
+				
+			case 1:
+				viewModel.select(cell: selectedCell, indexPath: indexPath)
+				viewModel.deselect(cells: [
+					viewModel.createCell0(collectionView: collectionView),
+					viewModel.createCell2(collectionView: collectionView),
+					viewModel.createCell3(collectionView: collectionView),
+					viewModel.createCell4(collectionView: collectionView)], indexes: [0, 2, 3, 4])
+	
+			case 2:
+
+				viewModel.select(cell: selectedCell, indexPath: indexPath)
+				viewModel.deselect(cells: [
+					viewModel.createCell0(collectionView: collectionView),
+					viewModel.createCell1(collectionView: collectionView),
+					viewModel.createCell3(collectionView: collectionView),
+					viewModel.createCell4(collectionView: collectionView)], indexes: [0, 1, 3, 4])
+
+			case 3:
+
+				viewModel.select(cell: selectedCell, indexPath: indexPath)
+				viewModel.deselect(cells: [
+				viewModel.createCell0(collectionView: collectionView),
+				viewModel.createCell1(collectionView: collectionView),
+				viewModel.createCell2(collectionView: collectionView),
+				viewModel.createCell4(collectionView: collectionView)], indexes: [0, 1, 2, 4])
+
+			case 4:
+
+				viewModel.select(cell: selectedCell, indexPath: indexPath)
+				viewModel.deselect(cells: [
+				viewModel.createCell0(collectionView: collectionView),
+				viewModel.createCell1(collectionView: collectionView),
+				viewModel.createCell2(collectionView: collectionView),
+				viewModel.createCell3(collectionView: collectionView)], indexes: [0, 1, 2, 3])
+
+			default:
+				viewModel.select(cell: selectedCell, indexPath: indexPath)
+				viewModel.deselect(cells: [
+				viewModel.createCell1(collectionView: collectionView),
+				viewModel.createCell2(collectionView: collectionView),
+				viewModel.createCell3(collectionView: collectionView),
+				viewModel.createCell4(collectionView: collectionView)], indexes: [1, 2, 3, 4])
+				print(selectedCell.touched)
+				
+			}
+		case projectCollectionView:
+			print("Contruir Specific Screen")
+			
+		default:
+			print("Tratar o erro")
+		}
+	}
+}
+
+extension FeedViewController: FeedViewModelDelegate {
+	
+	func fetchData(_ completion: @escaping (Result<Any, Error>) -> Void) {
+
+	}
+	
 }
