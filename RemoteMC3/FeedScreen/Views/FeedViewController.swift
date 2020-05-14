@@ -28,6 +28,18 @@ class FeedViewController: UIViewController {
 		projectCollectionView.delegate = self
 				
     }
+	
+	override func viewDidAppear(_ animated: Bool) {
+		let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+		categoryCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+		categoryCollectionView.cellForItem(at: indexPath)?.backgroundColor = .black
+	}
+	
+	func deselect (cellType: FeedCategoryCollectionCell, indexes: [IndexPath]) {
+		for celula in indexes {
+			categoryCollectionView.deselectItem(at: celula, animated: false)
+		}
+	}
 }
 
 extension FeedViewController: UICollectionViewDataSource {
@@ -103,12 +115,18 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 		}
     }
 	
-	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //		switch collectionView {
 //		case categoryCollectionView:
-//			
+//			switch indexPath.row {
+//				case 0:
+//
+//
+//				default:
+//				<#code#>
+//			}
 //		default:
-//			
+//
 //		}
-	}
+//	}
 }
