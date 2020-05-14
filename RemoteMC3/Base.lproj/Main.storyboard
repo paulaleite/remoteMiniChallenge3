@@ -707,7 +707,7 @@
         <!--Notificação-->
         <scene sceneID="2G7-wO-Pqw">
             <objects>
-                <viewController id="2bJ-Wt-rUU" sceneMemberID="viewController">
+                <viewController id="2bJ-Wt-rUU" customClass="NotificationViewController" customModule="RemoteMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="plM-uJ-zPn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -730,7 +730,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QUc-3V-N07">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="notificationCell" id="QUc-3V-N07" customClass="NotificationCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="339" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Are-VC-aKd">
@@ -759,6 +759,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="339" height="100"/>
                                         <connections>
+                                            <outlet property="notificationMensage" destination="VEn-2P-glS" id="OHh-cG-Ff4"/>
+                                            <outlet property="personImage" destination="UIe-96-BUC" id="JXb-WJ-U62"/>
                                             <segue destination="9eN-sr-OlO" kind="show" id="lHb-1B-GbV"/>
                                         </connections>
                                     </collectionViewCell>
@@ -769,6 +771,9 @@
                         <viewLayoutGuide key="safeArea" id="1Ng-bD-zMC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Notificação" id="NVM-vF-PCW"/>
+                    <connections>
+                        <outlet property="notificationCollection" destination="JnT-Yt-nkQ" id="3iV-uo-9u9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ce5-TX-OfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

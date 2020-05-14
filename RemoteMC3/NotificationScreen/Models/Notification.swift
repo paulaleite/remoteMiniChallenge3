@@ -10,6 +10,6 @@ import Foundation
 import UIKit
 
 struct Notification {
-    var person: UIImage
+    var personImage: UIImage
     var mensage: String
 }
