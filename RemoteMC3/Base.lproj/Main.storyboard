@@ -704,7 +704,7 @@
             </objects>
             <point key="canvasLocation" x="4242.0289855072469" y="894.64285714285711"/>
         </scene>
-        <!--Configuração-->
+        <!--Notificação-->
         <scene sceneID="2G7-wO-Pqw">
             <objects>
                 <viewController id="2bJ-Wt-rUU" sceneMemberID="viewController">
@@ -712,39 +712,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notificações" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="az1-iu-a6T">
+                                <rect key="frame" x="20" y="123" width="184" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="JnT-Yt-nkQ">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <rect key="frame" x="38" y="196" width="339" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mSf-f4-J3g">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="339" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QUc-3V-N07">
-                                        <rect key="frame" x="56" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Are-VC-aKd">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="339" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIe-96-BUC">
-                                                    <rect key="frame" x="8" y="8" width="41" height="37"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VEn-2P-glS">
-                                                    <rect key="frame" x="45" y="53" width="75" height="62"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Carlos Edurado gostaria de se juntar ao projeto &quot;Título do projeto&quot;" textAlignment="justified" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VEn-2P-glS">
+                                                    <rect key="frame" x="124" y="10" width="192" height="80"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UIe-96-BUC">
+                                                    <rect key="frame" x="21" y="23" width="55" height="55"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="VEn-2P-glS" secondAttribute="trailing" constant="23" id="KDg-LV-gWs"/>
+                                                <constraint firstItem="VEn-2P-glS" firstAttribute="leading" secondItem="Are-VC-aKd" secondAttribute="leading" constant="124" id="Tmm-UJ-w8i"/>
+                                                <constraint firstItem="VEn-2P-glS" firstAttribute="centerY" secondItem="Are-VC-aKd" secondAttribute="centerY" id="lnt-qT-LaV"/>
+                                                <constraint firstAttribute="bottom" secondItem="VEn-2P-glS" secondAttribute="bottom" constant="10" id="oIZ-FJ-y4y"/>
+                                                <constraint firstItem="VEn-2P-glS" firstAttribute="top" secondItem="Are-VC-aKd" secondAttribute="top" constant="10" id="xVN-mM-QkQ"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="339" height="100"/>
                                         <connections>
                                             <segue destination="9eN-sr-OlO" kind="show" id="lHb-1B-GbV"/>
                                         </connections>
@@ -755,11 +768,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="1Ng-bD-zMC"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Configuração" id="NVM-vF-PCW"/>
+                    <navigationItem key="navigationItem" title="Notificação" id="NVM-vF-PCW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ce5-TX-OfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4242" y="1811"/>
+            <point key="canvasLocation" x="4240.579710144928" y="1810.7142857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6ga-xI-3wa">
@@ -770,7 +783,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NM8-2S-4uf">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <rect key="frame" x="20" y="112" width="374" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dN5-fe-fxw">
@@ -781,42 +794,69 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aHm-Wk-dAh">
-                                        <rect key="frame" x="56" y="0.0" width="128" height="128"/>
+                                        <rect key="frame" x="17.666666666666668" y="0.0" width="339" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dft-7b-kAV">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="339" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="okL-xB-a5J">
-                                                    <rect key="frame" x="0.0" y="8" width="69" height="69"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="okL-xB-a5J">
+                                                    <rect key="frame" x="28" y="23" width="55" height="54"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEE-aq-noe">
-                                                    <rect key="frame" x="8" y="85" width="46" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuc-5d-Pgu">
+                                                    <rect key="frame" x="7.9999999999999964" y="107" width="48.666666666666657" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="E-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuc-5d-Pgu">
-                                                    <rect key="frame" x="8" y="107" width="49" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gK-Bc-fRh">
-                                                    <rect key="frame" x="82" y="27" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Sim"/>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVq-iO-tcI">
-                                                    <rect key="frame" x="82" y="65" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Não"/>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uSc-Uz-RiX">
+                                                    <rect key="frame" x="249" y="35" width="80" height="30"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gK-Bc-fRh">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                            <state key="normal" backgroundImage="check"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVq-iO-tcI">
+                                                            <rect key="frame" x="50" y="0.0" width="30" height="30"/>
+                                                            <state key="normal" backgroundImage="deny"/>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="0vL-Ev-q6Z">
+                                                    <rect key="frame" x="110" y="20.666666666666668" width="44" height="58.666666666666657"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kEE-aq-noe">
+                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="28.333333333333332"/>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="17"/>
+                                                            <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="e-mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLX-kM-uim">
+                                                            <rect key="frame" x="0.0" y="30.333333333333336" width="44" height="28.333333333333336"/>
+                                                            <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="17"/>
+                                                            <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0vL-Ev-q6Z" firstAttribute="leading" secondItem="okL-xB-a5J" secondAttribute="trailing" constant="27" id="75B-vX-QdH"/>
+                                                <constraint firstItem="okL-xB-a5J" firstAttribute="top" secondItem="Dft-7b-kAV" secondAttribute="top" constant="23" id="7wq-dL-qaS"/>
+                                                <constraint firstItem="Fuc-5d-Pgu" firstAttribute="leading" secondItem="Dft-7b-kAV" secondAttribute="leadingMargin" id="8O6-sN-JiO"/>
+                                                <constraint firstItem="0vL-Ev-q6Z" firstAttribute="centerY" secondItem="Dft-7b-kAV" secondAttribute="centerY" id="9AK-X6-Xaq"/>
+                                                <constraint firstAttribute="trailing" secondItem="uSc-Uz-RiX" secondAttribute="trailing" constant="10" id="Axd-iu-QbJ"/>
+                                                <constraint firstItem="okL-xB-a5J" firstAttribute="leading" secondItem="Dft-7b-kAV" secondAttribute="leading" constant="28" id="BaY-8x-BaH"/>
+                                                <constraint firstItem="Fuc-5d-Pgu" firstAttribute="top" secondItem="okL-xB-a5J" secondAttribute="bottom" constant="30" id="LqE-NC-7HS"/>
+                                                <constraint firstAttribute="trailing" secondItem="okL-xB-a5J" secondAttribute="trailing" constant="256" id="Uz7-9s-oyP"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Fuc-5d-Pgu" secondAttribute="trailing" constant="20" symbolic="YES" id="VUb-bg-Aca"/>
+                                                <constraint firstItem="okL-xB-a5J" firstAttribute="centerY" secondItem="Dft-7b-kAV" secondAttribute="centerY" id="aPo-hn-H5P"/>
+                                                <constraint firstAttribute="bottom" secondItem="uSc-Uz-RiX" secondAttribute="bottom" constant="35" id="cUL-ao-Rv6"/>
+                                                <constraint firstItem="uSc-Uz-RiX" firstAttribute="top" secondItem="Dft-7b-kAV" secondAttribute="top" constant="35" id="hbz-gV-Ujc"/>
+                                                <constraint firstAttribute="bottom" secondItem="okL-xB-a5J" secondAttribute="bottom" constant="23" id="lpf-gi-qxr"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="339" height="100"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -828,7 +868,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWJ-uM-2it" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5157" y="1811"/>
+            <point key="canvasLocation" x="5156.521739130435" y="1810.7142857142856"/>
         </scene>
         <!--Notificação-->
         <scene sceneID="eAe-1m-mwl">
@@ -852,5 +892,7 @@
     </scenes>
     <resources>
         <image name="Group 19" width="297" height="411"/>
+        <image name="check" width="30" height="30"/>
+        <image name="deny" width="30" height="30"/>
     </resources>
 </document>

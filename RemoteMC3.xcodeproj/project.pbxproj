@@ -15,6 +15,8 @@
 		1E67FDA6245B634400182C41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E67FDA4245B634400182C41 /* LaunchScreen.storyboard */; };
 		1E67FDB1245B634500182C41 /* RemoteMC3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FDB0245B634500182C41 /* RemoteMC3Tests.swift */; };
 		1E67FDBC245B634500182C41 /* RemoteMC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FDBB245B634500182C41 /* RemoteMC3UITests.swift */; };
+		25FA6C4E246DC5E300F4837F /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA6C4D246DC5E300F4837F /* Notification.swift */; };
+		25FA6C50246DC6A100F4837F /* RequestNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA6C4F246DC6A100F4837F /* RequestNotification.swift */; };
 		4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B402C2469E3D700189CA6 /* FeedViewModel.swift */; };
 		4F8B402F2469E41700189CA6 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B402E2469E41700189CA6 /* Project.swift */; };
 		4F8B40312469E4AC00189CA6 /* College.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B40302469E4AC00189CA6 /* College.swift */; };
@@ -62,6 +64,8 @@
 		1E67FDBB245B634500182C41 /* RemoteMC3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMC3UITests.swift; sourceTree = "<group>"; };
 		1E67FDBD245B634500182C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemoteMC3.entitlements; sourceTree = "<group>"; };
+		25FA6C4D246DC5E300F4837F /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		25FA6C4F246DC6A100F4837F /* RequestNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestNotification.swift; sourceTree = "<group>"; };
 		4F8B402C2469E3D700189CA6 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		4F8B402E2469E41700189CA6 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		4F8B40302469E4AC00189CA6 /* College.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = College.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				CB9175A5246B5EC800D10580 /* FeedScreen */,
 				CB9175A6246B5FAE00D10580 /* CreateProjectScreen */,
 				CB9175AA246B5FDE00D10580 /* SpecificProjectScreen */,
+				25FA6C49246DB94800F4837F /* NotificationScreen */,
 				4F8B403D2469F4F600189CA6 /* Services */,
 				1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */,
 				1E67FD96245B634200182C41 /* AppDelegate.swift */,
@@ -157,6 +162,39 @@
 				1E67FDBD245B634500182C41 /* Info.plist */,
 			);
 			path = RemoteMC3UITests;
+			sourceTree = "<group>";
+		};
+		25FA6C49246DB94800F4837F /* NotificationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				25FA6C4A246DB96E00F4837F /* Models */,
+				25FA6C4B246DB97F00F4837F /* Views */,
+				25FA6C4C246DB98B00F4837F /* ViewModels */,
+			);
+			path = NotificationScreen;
+			sourceTree = "<group>";
+		};
+		25FA6C4A246DB96E00F4837F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				25FA6C4D246DC5E300F4837F /* Notification.swift */,
+				25FA6C4F246DC6A100F4837F /* RequestNotification.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		25FA6C4B246DB97F00F4837F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		25FA6C4C246DB98B00F4837F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		4F8B40292469E39900189CA6 /* ViewModels */ = {
@@ -458,6 +496,8 @@
 				4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */,
 				CB02B483246D9FA70071B7F2 /* CreateProjectViewController.swift in Sources */,
 				4F8B40392469E59F00189CA6 /* FeedViewController.swift in Sources */,
+				25FA6C4E246DC5E300F4837F /* Notification.swift in Sources */,
+				25FA6C50246DC6A100F4837F /* RequestNotification.swift in Sources */,
 				1E67FDA1245B634200182C41 /* RemoteMC3.xcdatamodeld in Sources */,
 				CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
