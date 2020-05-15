@@ -262,7 +262,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension FeedViewController: FeedViewModelDelegate {
-	
 	func fetchData(_ completion: @escaping (Result<Any, Error>) -> Void) {
 
 	}

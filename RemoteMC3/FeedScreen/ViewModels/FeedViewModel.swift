@@ -11,6 +11,7 @@ import UIKit
 
 protocol FeedViewModelDelegate: class {
     func fetchData(_ completion: @escaping (Result<Any, Error>) -> Void)
+	
 }
 
 class FeedViewModel {

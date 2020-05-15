@@ -17,8 +17,9 @@ class SpecificProjectViewController: UIViewController {
 	@IBOutlet var projectResponsible: UILabel!
 	@IBOutlet var projectStart: UILabel!
 	@IBOutlet var projectEnd: UILabel!
-
 	@IBOutlet var projectInstitution: UILabel!
+	
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
