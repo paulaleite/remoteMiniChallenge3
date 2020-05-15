@@ -589,7 +589,7 @@
         <!--Confuguração-->
         <scene sceneID="5mo-GS-833">
             <objects>
-                <viewController id="b5h-d5-Ntt" sceneMemberID="viewController">
+                <viewController id="b5h-d5-Ntt" customClass="ConfigurationViewController" customModule="RemoteMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AcC-Oi-zyS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -605,7 +605,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="configurationCell" id="Ke6-Co-qam">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="configurationCell" id="Ke6-Co-qam" customClass="ConfigurationCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
                                         <rect key="frame" x="39.666666666666664" y="0.0" width="335" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LL2-Ca-kEm">
@@ -681,6 +681,11 @@
                                             </subviews>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="335" height="110"/>
+                                        <connections>
+                                            <outlet property="nameProject" destination="uFK-eP-16L" id="GXU-iV-ULr"/>
+                                            <outlet property="phaseProject" destination="N5b-wH-8Po" id="Cpo-fx-cSa"/>
+                                            <outlet property="responsableProject" destination="BMQ-G1-4Pd" id="Tph-fX-Ll9"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -689,6 +694,9 @@
                         <viewLayoutGuide key="safeArea" id="pow-48-veh"/>
                     </view>
                     <navigationItem key="navigationItem" title="Confuguração" largeTitleDisplayMode="never" id="lWG-ws-f8K"/>
+                    <connections>
+                        <outlet property="projectsCollectionView" destination="Oqr-DB-yZS" id="XWl-yA-Jmd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tl1-mm-OY0" sceneMemberID="firstResponder"/>
             </objects>
