@@ -55,37 +55,38 @@ class FeedViewModel {
 	func addProjects() {
 //		aqui tem que pegar do servidor
 		projects.append(Project(title: "Projeto", description:
-			"Aqui vai haver a descrição do projeto", college: College.FCI,
+			"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
 													   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
 													   members: [User(firstName: "Edgar", lastName: "Sgroi")],
 													   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
 													   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
 		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College.FCI,
+		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
 												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
 												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
 												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
 												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
 		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College.FCI,
+		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
 												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
 												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
 												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
 												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
 		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College.FCI,
+		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
 												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
 												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
 												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
 												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
 		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College.FCI,
+		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
 												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
 												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
 												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
 												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
 		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College.FCI,
+		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie")
+			,
 												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
 												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
 												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
