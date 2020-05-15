@@ -102,10 +102,10 @@ class FeedViewModel {
 	}
 	
 	func addCategory() {
-		categorys.append(Category(imagem: "Group 19", name: "Social", count: socialCount))
-		categorys.append(Category(imagem: "Group 19", name: "Cultural", count: culturalCount))
-		categorys.append(Category(imagem: "Group 19", name: "Pessoal", count: personalCount))
-		categorys.append(Category(imagem: "Group 19", name: "Empresarial", count: entrepreneurialCount))
+		categorys.append(Category(imagem: "socialColored", name: "Social", count: socialCount))
+		categorys.append(Category(imagem: "cultureGrey", name: "Cultural", count: culturalCount))
+		categorys.append(Category(imagem: "personalGrey", name: "Pessoal", count: personalCount))
+		categorys.append(Category(imagem: "businessGrey", name: "Empresarial", count: entrepreneurialCount))
 		categorys.append(Category(imagem: "Group 19", name: "Pesquisa", count: researchCount))
 
 	}

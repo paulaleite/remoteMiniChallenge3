@@ -17,6 +17,9 @@ class ConfigurationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        projectsCollectionView.delegate = self
+        projectsCollectionView.dataSource = self
     }
 }
 
@@ -44,5 +47,8 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 
         return configurationCollectionCell
     }
+}
 
+extension ConfigurationViewController: UICollectionViewDelegate {
+    
 }
