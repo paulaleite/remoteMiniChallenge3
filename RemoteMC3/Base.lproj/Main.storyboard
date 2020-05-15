@@ -772,7 +772,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Notificação" id="NVM-vF-PCW"/>
                     <connections>
-                        <outlet property="notificationCollection" destination="JnT-Yt-nkQ" id="3iV-uo-9u9"/>
+                        <outlet property="notificationCollectionView" destination="JnT-Yt-nkQ" id="eib-uS-Zx3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ce5-TX-OfP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -32,7 +32,9 @@ extension NotificationViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        let notificationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "notificationCell", for: indexPath) as! NotificationCollectionCell
+		guard let notificationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "notificationCell", for: indexPath) as? NotificationCollectionCell else {
+			return NotificationCollectionCell()
+		}
 
             notificationCollectionCell.backgroundColor = .white
             notificationCollectionCell.layer.cornerRadius = 20
