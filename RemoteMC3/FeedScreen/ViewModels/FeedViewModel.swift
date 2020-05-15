@@ -85,8 +85,7 @@ class FeedViewModel {
 												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
 												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
 												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
-		
-		
+
 		for project in projects {
 			if (project.category == "Social") {
 				socialCount+=1

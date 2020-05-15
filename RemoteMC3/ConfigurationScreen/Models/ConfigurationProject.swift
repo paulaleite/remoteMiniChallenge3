@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+struct ConfigurationProject {
+    var nomeDoProjeto: String
+    var responsavelDoProjeto: String
+    var etapaDoProjeto:String
+
+}
