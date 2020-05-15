@@ -9,6 +9,3 @@
 import Foundation
 import UIKit
 
-class SpecificProjectViewController: UIViewController {
-	
-}
