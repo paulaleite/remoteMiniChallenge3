@@ -1,5 +1,5 @@
 //
-//  ConfigurationProject.swift
+//  ConfigurationViewController.swift
 //  RemoteMC3
 //
 //  Created by Luiza Fattori on 15/05/20.
@@ -9,9 +9,6 @@
 import Foundation
 import UIKit
 
-struct ConfigurationProject {
-    var title: String
-    var responsable: String
-    var phase:String
-
+class ConfigurationViewController: UIViewController {
+    
 }
