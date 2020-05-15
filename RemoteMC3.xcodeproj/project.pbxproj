@@ -24,6 +24,7 @@
 		4F8B403C2469EDE300189CA6 /* FeedProjectCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403B2469EDE300189CA6 /* FeedProjectCollectionCell.swift */; };
 		4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403E2469F51400189CA6 /* CloudKitService.swift */; };
 		CB02B483246D9FA70071B7F2 /* CreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */; };
+		CB26DDF4246F54B80027DAB5 /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26DDF3246F54B80027DAB5 /* VerticallyCenteredTextView.swift */; };
 		CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */; };
 		CBBDE668246C634A005B52D0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDE667246C634A005B52D0 /* Category.swift */; };
 		CBC7751D246EE0D900D1B70F /* CreateProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7751C246EE0D900D1B70F /* CreateProjectViewModel.swift */; };
@@ -74,6 +75,7 @@
 		4F8B403B2469EDE300189CA6 /* FeedProjectCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProjectCollectionCell.swift; sourceTree = "<group>"; };
 		4F8B403E2469F51400189CA6 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectViewController.swift; sourceTree = "<group>"; };
+		CB26DDF3246F54B80027DAB5 /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		CBBDE667246C634A005B52D0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CBC7751C246EE0D900D1B70F /* CreateProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectViewModel.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */,
+				CB26DDF3246F54B80027DAB5 /* VerticallyCenteredTextView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */,
 				CB02B483246D9FA70071B7F2 /* CreateProjectViewController.swift in Sources */,
 				4F8B40392469E59F00189CA6 /* FeedViewController.swift in Sources */,
+				CB26DDF4246F54B80027DAB5 /* VerticallyCenteredTextView.swift in Sources */,
 				1E67FDA1245B634200182C41 /* RemoteMC3.xcdatamodeld in Sources */,
 				CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,

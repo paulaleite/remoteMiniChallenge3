@@ -12,7 +12,8 @@ import UIKit
 class SpecificProjectViewController: UIViewController {
 	
 	var viewModel = SpecificProjectViewModel()
-
+	let formatter = DateFormatter()
+	
 	@IBOutlet var projectDescryption: UITextView!
 	@IBOutlet var projectResponsible: UILabel!
 	@IBOutlet var projectStart: UILabel!
@@ -33,9 +34,9 @@ class SpecificProjectViewController: UIViewController {
 	func setInformation() {
 		projectDescryption.text = viewModel.getProject().description
 		projectResponsible.text = viewModel.getProject().responsible.firstName + viewModel.getProject().responsible.lastName
-		projectStart.text = viewModel.getProject().duration.0.convertToString(dateformat: .date)
-		projectStart.text = viewModel.getProject().duration.1.convertToString(dateformat: .date)
 		projectInstitution.text = viewModel.getProject().college.name
+		projectStart.text = formatter.string(from: viewModel.getProject().duration.0)
+		projectEnd.text = formatter.string(from: viewModel.getProject().duration.1)
 		
 	}
 

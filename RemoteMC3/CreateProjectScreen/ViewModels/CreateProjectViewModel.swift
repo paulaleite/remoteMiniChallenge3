@@ -39,6 +39,7 @@ class CreateProjectViewModel {
 //			self.currentPhase = currentPhase
 			self.college = college
 			self.category = category
+			print(duration)
 			
 			print(title)
 		}
