@@ -25,7 +25,7 @@ class CreateProjectViewModel {
 	var currentPhase: Phase = Phase(title: "")
 	var phases: [Phase] = [Phase(title: "")]
 	
-	
+	var pickerViewDataSource = ["Social", "Cultual", "Pessoal", "Empresarial", "Pesquisa"]
 	
 	func createProject(title: String, description: String, college: College, responsible: User, members: [User], duration: (Date, Date), category: String) {
 		
@@ -39,10 +39,10 @@ class CreateProjectViewModel {
 //			self.currentPhase = currentPhase
 			self.college = college
 			self.category = category
+			print(duration)
 			
 			print(title)
 		}
 	}
 	
 }
-
