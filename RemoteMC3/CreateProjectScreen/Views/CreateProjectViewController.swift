@@ -26,6 +26,9 @@ class CreateProjectViewController: UIViewController {
         projectDescription.becomeFirstResponder()
         projectDescription.resignFirstResponder()
         projectDescription.inputView?.layoutIfNeeded()
+		projectDescription.layer.cornerRadius = 7.5
+		projectDescription.layer.borderColor =  #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+		projectDescription.layer.borderWidth = 0.5
         return projectDescription
     }()
 	
@@ -42,8 +45,8 @@ class CreateProjectViewController: UIViewController {
 		
 		projectStart.addTarget(self, action: #selector(self.showProjectStartPicker(sender:)), for: .touchDown)
 		projectEnd.addTarget(self, action: #selector(self.showProjectEndPicker(sender:)), for: .touchDown)
-		projectCategory.addTarget(self, action: #selector(self.categoryPickerValueChanged(_:)), for: .touchDown)
-		
+		projectCategory.addTarget(self, action: #selector(self.showProjectCategoryPicker(sender:)), for: .touchDown)
+				
 		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
 		self.view.addGestureRecognizer(tapGesture)
 		
@@ -53,8 +56,8 @@ class CreateProjectViewController: UIViewController {
 		self.view.addSubview(projectDescription)
 		projectDescription.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
 		projectDescription.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-		projectDescription.topAnchor.constraint(equalTo: self.descrição.bottomAnchor).isActive = true
-		projectDescription.bottomAnchor.constraint(equalTo: self.duração.topAnchor).isActive = true
+		projectDescription.topAnchor.constraint(equalTo: self.descrição.bottomAnchor, constant: 5).isActive = true
+		projectDescription.bottomAnchor.constraint(equalTo: self.duração.topAnchor, constant: -5).isActive = true
 		
 	}
 	
@@ -68,7 +71,8 @@ class CreateProjectViewController: UIViewController {
 		let datePickerView: UIDatePicker = UIDatePicker()
 		datePickerView.resignFirstResponder()
 		datePickerView.datePickerMode = .date
-				sender.inputView = datePickerView
+		sender.inputView = datePickerView
+		projectStart.text = startDate.convertToString(dateformat: .date)
 		 datePickerView.addTarget(self, action: #selector(dateStartPickerValueChanged), for: .valueChanged)
 			   projectStart = sender
 	}
@@ -82,12 +86,13 @@ class CreateProjectViewController: UIViewController {
 		let datePickerView: UIDatePicker = UIDatePicker()
 		datePickerView.datePickerMode = .date
 				sender.inputView = datePickerView
+		projectEnd.text = endDate.convertToString(dateformat: .date)
 		 datePickerView.addTarget(self, action: #selector(dateEndPickerValueChanged), for: .valueChanged)
-			   projectStart = sender
+			   projectEnd = sender
 	}
 	
 	@objc func dateEndPickerValueChanged(_ sender: UIDatePicker) {
-		projectStart.text = sender.date.convertToString(dateformat: .date)
+		projectEnd.text = sender.date.convertToString(dateformat: .date)
 		endDate = sender.date
 		}
 		
@@ -97,21 +102,26 @@ class CreateProjectViewController: UIViewController {
 		projectStart.resignFirstResponder()
 		projectEnd.resignFirstResponder()
 		projectDescription.resignFirstResponder()
+		projectCategory.resignFirstResponder()
 		
     }
-	
-	@objc func showProjectCategoryPicker(sender: UITextField) {
-		let pickerView: UIPickerView = UIPickerView()
-		sender.inputView = pickerView
-		 pickerView.addTarget(self, action: #selector(dateEndPickerValueChanged), for: .valueChanged)
-			   projectStart = sender
-	}
-	
+		
 	@objc func categoryPickerValueChanged(_ sender: UIDatePicker) {
 		projectStart.text = sender.date.convertToString(dateformat: .date)
 		endDate = sender.date
 		}
 	
+	@objc func showProjectCategoryPicker(sender: UITextField) {
+		let pickerView: UIPickerView = UIPickerView()
+		pickerView.delegate = self
+		pickerView.dataSource = self
+		sender.inputView = pickerView
+		projectCategory = sender
+		projectCategory.text = "Social"
+		
+		
+	}
+		
 	@objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
@@ -167,4 +177,41 @@ extension CreateProjectViewController: UITextViewDelegate {
         self.projectDescription.text = ""
         return true
     }
+}
+
+extension CreateProjectViewController: UIPickerViewDelegate {
+	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+		
+		switch row {
+		case 1:
+			projectCategory.text = "Cultural"
+			
+		case 2:
+			projectCategory.text = "Pessoal"
+	
+		case 3:
+			projectCategory.text = "Empresarial"
+			
+		case 4:
+			projectCategory.text = "Pesquisa"
+		default:
+			projectCategory.text = "Social"
+		}
+	}
+}
+
+extension CreateProjectViewController: UIPickerViewDataSource {
+	func numberOfComponents(in pickerView: UIPickerView) -> Int {
+		return 1
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+		return viewModel.pickerViewDataSource.count
+	}
+	
+	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String {
+		
+		return viewModel.pickerViewDataSource[row]
+    }
+	
 }
