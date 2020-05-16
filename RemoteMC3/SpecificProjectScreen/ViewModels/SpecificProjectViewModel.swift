@@ -15,7 +15,7 @@ class SpecificProjectViewModel {
 	"Aqui vai haver a descrição do projetoLorem ipsum dolor sit amet, consectetur adipiscing elit,sed Aqui vai haver a descrição do projetoLorem elit,sed", college: College(name: "Mackenzie"),
 											   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
 											   members: [User(firstName: "Edgar", lastName: "Sgroi")],
-											   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
+											   duration: (Date(), Date()),
 											   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social")
 	
 	func getProject() -> Project {

@@ -19,7 +19,7 @@ class FeedViewModel {
 	
 	var categorys: [Category] = []
 
-	var unselectedImages: [String] = ["a", "b", "c", "d", "e"]
+	var unselectedImages: [String] = ["socialGrey", "cultureGrey", "personalGrey", "businessGrey", "researchGrey"]
 	
 	weak var delegate: FeedViewModelDelegate?
 	
@@ -91,7 +91,7 @@ class FeedViewModel {
 												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
 												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
 												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
-												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social"))
+												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Cultural"))
 
 		for project in projects {
 			if (project.category == "Social") {
@@ -110,10 +110,10 @@ class FeedViewModel {
 	
 	func addCategory() {
 		categorys.append(Category(imagem: "socialColored", name: "Social", count: socialCount))
-		categorys.append(Category(imagem: "cultureGrey", name: "Cultural", count: culturalCount))
-		categorys.append(Category(imagem: "personalGrey", name: "Pessoal", count: personalCount))
-		categorys.append(Category(imagem: "businessGrey", name: "Empresarial", count: entrepreneurialCount))
-		categorys.append(Category(imagem: "Group 19", name: "Pesquisa", count: researchCount))
+		categorys.append(Category(imagem: "cultureColored", name: "Cultural", count: culturalCount))
+		categorys.append(Category(imagem: "personalColored", name: "Pessoal", count: personalCount))
+		categorys.append(Category(imagem: "businessColored", name: "Empresarial", count: entrepreneurialCount))
+		categorys.append(Category(imagem: "researchColored", name: "Pesquisa", count: researchCount))
 
 	}
 	

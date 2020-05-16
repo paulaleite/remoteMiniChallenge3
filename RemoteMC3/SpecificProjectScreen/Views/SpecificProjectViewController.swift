@@ -12,31 +12,28 @@ import UIKit
 class SpecificProjectViewController: UIViewController {
 	
 	var viewModel = SpecificProjectViewModel()
-	let formatter = DateFormatter()
 	
 	@IBOutlet var projectDescryption: UITextView!
 	@IBOutlet var projectResponsible: UILabel!
 	@IBOutlet var projectStart: UILabel!
 	@IBOutlet var projectEnd: UILabel!
 	@IBOutlet var projectInstitution: UILabel!
-	
-	
+		
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		setInformation()
-		
 		navigationController?.navigationBar.prefersLargeTitles = true
 		self.title = viewModel.getProject().title
+		setInformation()
 
 	}
 	
 	func setInformation() {
 		projectDescryption.text = viewModel.getProject().description
-		projectResponsible.text = viewModel.getProject().responsible.firstName + viewModel.getProject().responsible.lastName
+		projectResponsible.text = viewModel.getProject().responsible.firstName + " " + viewModel.getProject().responsible.lastName
 		projectInstitution.text = viewModel.getProject().college.name
-		projectStart.text = formatter.string(from: viewModel.getProject().duration.0)
-		projectEnd.text = formatter.string(from: viewModel.getProject().duration.1)
+		projectStart.text = viewModel.getProject().duration.0.convertToString(dateformat: .date)
+		projectEnd.text = viewModel.getProject().duration.1.convertToString(dateformat: .date)
 		
 	}
 
