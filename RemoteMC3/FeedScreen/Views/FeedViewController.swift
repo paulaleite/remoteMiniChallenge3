@@ -174,7 +174,6 @@ extension FeedViewController: UICollectionViewDataSource {
 			}
 		}
 		
-//		MARK: - TODO tratar o erro
 		return UICollectionViewCell()
 	}
 	
