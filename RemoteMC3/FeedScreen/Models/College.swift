@@ -8,7 +8,6 @@
 
 import Foundation
 
-enum College {
-    case FCI
-    case CCBS
+struct College {
+	var name: String
 }
