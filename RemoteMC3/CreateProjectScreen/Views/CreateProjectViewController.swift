@@ -16,8 +16,8 @@ class CreateProjectViewController: UIViewController {
 	var startDate = Date()
 	var endDate = Date()
 	
-	private let projectDescription: VerticalCenteredTextView = {
-        let projectDescription = VerticalCenteredTextView(frame: .zero)
+	private let projectDescription: VerticallyCenteredTextView = {
+        let projectDescription = VerticallyCenteredTextView(frame: .zero)
         projectDescription.translatesAutoresizingMaskIntoConstraints = false
 		projectDescription.text = "Descrição"
         projectDescription.font = UIFont.systemFont(ofSize: 17)

@@ -2,16 +2,14 @@
 //  VerticallyCenteredTextView.swift
 //  RemoteMC3
 //
-//  Created by Cassia Aparecida Barbosa on 15/05/20.
+//  Created by Cassia Aparecida Barbosa on 16/05/20.
 //  Copyright © 2020 Paula Leite. All rights reserved.
 //
-//  This Class was extracted from a article made by Tai Le. Comments about the implementation are available at:
-//https://geek-is-stupid.github.io/2017-05-15-how-to-center-text-vertically-in-a-uitextview/
 
 import Foundation
 import UIKit
 
-class VerticalCenteredTextView: UITextView {
+class VerticallyCenteredTextView: UITextView {
     
     override var contentSize: CGSize {
         didSet {
