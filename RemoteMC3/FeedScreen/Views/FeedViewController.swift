@@ -82,6 +82,7 @@ extension FeedViewController: UICollectionViewDataSource {
 							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
 							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
 							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+							feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[0].imagem)
 						} else {
 							feedCategoryCollectionCell.backgroundColor = .white
 							feedCategoryCollectionCell.layer.masksToBounds = false
@@ -110,6 +111,7 @@ extension FeedViewController: UICollectionViewDataSource {
 							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
 							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
 							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+							feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[indexPath.row].imagem)
 						} else {
 							feedCategoryCollectionCell.backgroundColor = .white
 							feedCategoryCollectionCell.layer.masksToBounds = false
@@ -141,6 +143,8 @@ extension FeedViewController: UICollectionViewDataSource {
 					feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
 					feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
 					feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+					feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[indexPath.row].imagem)
+					
 				} else {
 					feedCategoryCollectionCell.backgroundColor = .white
 					feedCategoryCollectionCell.layer.masksToBounds = false
