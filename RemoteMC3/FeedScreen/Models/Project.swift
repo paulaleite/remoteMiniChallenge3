@@ -18,5 +18,5 @@ struct Project {
     var currentPhase: Phase
     var phases: [Phase]
 	var category: String
-
+	var image: String 
 }
