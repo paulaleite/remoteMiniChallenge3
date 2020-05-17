@@ -15,7 +15,7 @@ protocol CreateProjectViewModelDelegate: class {
 
 class CreateProjectViewModel {
 	
-	var title: String = ""
+	var title: String = " "
 	var description: String = ""
 	var firstName: String = ""
 	var lastName: String = ""
