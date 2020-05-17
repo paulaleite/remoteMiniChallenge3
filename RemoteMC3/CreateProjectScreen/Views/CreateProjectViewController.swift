@@ -16,6 +16,8 @@ class CreateProjectViewController: UIViewController {
 	var startDate = Date()
 	var endDate = Date()
 	
+	var activeTextField: UITextField?
+	
 	private let projectDescription: VerticallyCenteredTextView = {
         let projectDescription = VerticallyCenteredTextView(frame: .zero)
         projectDescription.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +45,20 @@ class CreateProjectViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+		
+		projectTitle.delegate = self
+		projectInstitution.delegate = self
+		projectCategory.delegate = self
+		projectStart.delegate = self
+		projectEnd.delegate = self
+
 		projectStart.addTarget(self, action: #selector(self.showProjectStartPicker(sender:)), for: .touchDown)
+
 		projectEnd.addTarget(self, action: #selector(self.showProjectEndPicker(sender:)), for: .touchDown)
 		projectCategory.addTarget(self, action: #selector(self.showProjectCategoryPicker(sender:)), for: .touchDown)
 				
@@ -118,23 +133,37 @@ class CreateProjectViewController: UIViewController {
 		sender.inputView = pickerView
 		projectCategory = sender
 		projectCategory.text = "Social"
-		
-		
+
 	}
 		
 	@objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+        
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            
+           return
+        }
+        
+        var shouldMoveViewUp = false
+        
+        if let activeTextField = activeTextField {
+            
+            let bottomOfTextField = activeTextField.convert(activeTextField.bounds, to: self.view).maxY
+            let topOfKeyboard = self.view.frame.height - keyboardSize.height
+            
+            if bottomOfTextField > topOfKeyboard {
+                shouldMoveViewUp = true
             }
+        }
+        
+        if shouldMoveViewUp {
+            self.view.frame.origin.y = 0 - keyboardSize.height
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+        self.view.frame.origin.y = 0
     }
+
 }
 
 //  This extension was extracted from a implementation made by Lyndsey Scott. Comments about the implementation are available at:
@@ -180,22 +209,23 @@ extension CreateProjectViewController: UITextViewDelegate {
 }
 
 extension CreateProjectViewController: UIPickerViewDelegate {
+	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		
 		switch row {
 		case 1:
-			projectCategory.text = "Cultural"
+			self.projectCategory.text = "Cultural"
 			
 		case 2:
-			projectCategory.text = "Pessoal"
+			self.projectCategory.text = "Pessoal"
 	
 		case 3:
-			projectCategory.text = "Empresarial"
+			self.projectCategory.text = "Empresarial"
 			
 		case 4:
-			projectCategory.text = "Pesquisa"
+			self.projectCategory.text = "Pesquisa"
 		default:
-			projectCategory.text = "Social"
+			self.projectCategory.text = "Social"
 		}
 	}
 }
@@ -213,5 +243,19 @@ extension CreateProjectViewController: UIPickerViewDataSource {
 		
 		return viewModel.pickerViewDataSource[row]
     }
+	
+}
+
+extension CreateProjectViewController: UITextFieldDelegate {
+	
+	func textFieldDidBeginEditing(_ textField: UITextField) {
+	  // set the activeTextField to the selected textfield
+	  self.activeTextField = textField
+	}
+	  
+	// when user click 'done' or dismiss the keyboard
+	func textFieldDidEndEditing(_ textField: UITextField) {
+	  self.activeTextField = nil
+	}
 	
 }
