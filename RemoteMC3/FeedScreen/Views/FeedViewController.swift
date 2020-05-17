@@ -252,7 +252,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell3(collectionView: collectionView),
 				viewModel.createCell4(collectionView: collectionView)], indexes: [1, 2, 3, 4])
-				print(selectedCell.touched)
 				
 			}
 		case projectCollectionView:
