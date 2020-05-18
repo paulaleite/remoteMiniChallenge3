@@ -11,6 +11,7 @@ import NotificationCenter
 import UserNotifications
 
 class NotificationViewController: UIViewController {
+	
     var viewModel: NotificationViewModel = NotificationViewModel()
 
     @IBOutlet weak var notificationCollectionView: UICollectionView!
@@ -18,16 +19,12 @@ class NotificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        } else {
-            // Fallback on earlier versions
-        }
-		
         navigationController?.navigationBar.prefersLargeTitles = true
 
         notificationCollectionView.delegate = self
         notificationCollectionView.dataSource = self
+		
+		viewModel.setNotifications()
     }
     
 }
@@ -37,27 +34,33 @@ extension NotificationViewController: UICollectionViewDataSource {
         return viewModel.getNotificationsRowsNumber()
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		
 		guard let notificationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "notificationCell", for: indexPath) as? NotificationCollectionCell else {
 			return NotificationCollectionCell()
 		}
-
-            notificationCollectionCell.backgroundColor = .white
-            notificationCollectionCell.layer.cornerRadius = 20
-            notificationCollectionCell.notificationMensage.text = viewModel.notifications[indexPath.row].mensage
-            notificationCollectionCell.personImage.image = viewModel.notifications[indexPath.row].personImage
-            notificationCollectionCell.personImage.layer.cornerRadius = 50
-            notificationCollectionCell.layer.shadowColor = UIColor.black.cgColor
-            notificationCollectionCell.layer.shadowOffset = .zero
-            notificationCollectionCell.layer.shadowRadius = 4
-            notificationCollectionCell.layer.shadowOpacity = 0.3
-
-            return notificationCollectionCell
-    }
+		
+		notificationCollectionCell.backgroundColor = .red
+		
+		notificationCollectionCell.notificationMessage.text = viewModel.notifications[indexPath.row].requisitor
+			+ " desejar participar do projeto " + viewModel.notifications[indexPath.row].projectRequired
+		notificationCollectionCell.personImage.image = UIImage(named: viewModel.notifications[indexPath.row].personImage)
+		notificationCollectionCell.personImage.layer.cornerRadius =  25
+		notificationCollectionCell.backgroundColor = .white
+		notificationCollectionCell.layer.masksToBounds = false
+		notificationCollectionCell.layer.cornerRadius = 20
+		notificationCollectionCell.layer.shadowColor = UIColor.black.cgColor
+		notificationCollectionCell.layer.shadowOffset = .zero
+		notificationCollectionCell.layer.shadowRadius = 4
+		notificationCollectionCell.layer.shadowOpacity = 0.3
+		
+		return notificationCollectionCell
+	}
 
 }
 
-extension NotificationViewController: UICollectionViewDelegate {
-
+extension NotificationViewController: UICollectionViewDelegateFlowLayout {
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return CGSize(width: self.view.frame.size.width * 0.9, height: 125)
+	}
 }

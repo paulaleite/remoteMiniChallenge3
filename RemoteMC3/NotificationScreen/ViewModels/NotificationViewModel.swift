@@ -16,11 +16,21 @@ class NotificationViewModel {
         return notifications.count
     }
 
-    func getNotificationMensage (forNotificationAt index: Int) -> String {
-        return notifications[index].mensage
+    func getNotificationRequisitor (forNotificationAt index: Int) -> String {
+		return notifications[index].requisitor
+    }
+	
+	func getNotificationProjectRequired (forNotificationAt index: Int) -> String {
+		return notifications[index].projectRequired
     }
 
-    func getNotificationPerson (forNotificationAt index: Int) -> UIImage {
+    func getNotificationPerson (forNotificationAt index: Int) -> String {
         return notifications[index].personImage
     }
+	
+	func setNotifications () {
+		notifications.append(Notification(personImage: "cas",
+										  projectRequired: "Projetounc getNotificationPerson (forNotificationAt index: Int) -> String unc getNotificationPerson (forNotificationAt index: Int) -> String ",
+										  requisitor: "Edgar"))
+	}
 }

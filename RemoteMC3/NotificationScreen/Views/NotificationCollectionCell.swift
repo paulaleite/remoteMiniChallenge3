@@ -12,6 +12,7 @@ import UIKit
 class NotificationCollectionCell: UICollectionViewCell {
     
     @IBOutlet weak var personImage: UIImageView!
-    @IBOutlet weak var notificationMensage: UITextView!
 
+	@IBOutlet var notificationMessage: UILabel!
+	
 }

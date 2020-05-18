@@ -24,12 +24,6 @@ class SpecificProjectViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        } else {
-            // Fallback on earlier versions
-        }
-		
 		usersCollectionView.delegate = self
 		usersCollectionView.dataSource = self
 		
