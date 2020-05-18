@@ -9,24 +9,20 @@
 import Foundation
 import UIKit
 
-class ConfigurationViewController: UIViewController {
+class ConfigurationViewController: UIViewController, UICollectionViewDelegate {
     var viewModel: ConfigurationViewModel = ConfigurationViewModel()
 
     @IBOutlet weak var projectsCollectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        } else {
-            // Fallback on earlier versions
-        }
-		
+
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        projectsCollectionView.delegate = self
         projectsCollectionView.dataSource = self
+		projectsCollectionView.delegate = self
+		
+		viewModel.setProjects()
     }
 }
 
@@ -37,7 +33,7 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        guard let configurationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "configurationCell", for: indexPath) as? ConfigurationCollectionCell else {
+        guard let configurationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "configurationCollectionCell", for: indexPath) as? ConfigurationCollectionCell else {
             return ConfigurationCollectionCell()
         }
 
@@ -45,6 +41,7 @@ extension ConfigurationViewController: UICollectionViewDataSource {
         configurationCollectionCell.responsableProject.text = viewModel.projects[indexPath.row].responsable
         configurationCollectionCell.phaseProject.text = viewModel.projects[indexPath.row].phase
 
+		configurationCollectionCell.layer.masksToBounds = false
         configurationCollectionCell.backgroundColor = .white
         configurationCollectionCell.layer.cornerRadius = 20
         configurationCollectionCell.layer.shadowColor = UIColor.black.cgColor
@@ -56,6 +53,9 @@ extension ConfigurationViewController: UICollectionViewDataSource {
     }
 }
 
-extension ConfigurationViewController: UICollectionViewDelegate {
-    
+extension ConfigurationViewController: UICollectionViewDelegateFlowLayout {
+	
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		return CGSize(width: self.view.frame.size.width * 0.9, height: 125)
+	}
 }

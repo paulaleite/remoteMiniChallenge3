@@ -27,4 +27,9 @@ class ConfigurationViewModel {
     func getProjectPhase(forConfigurationProjectAt index: Int) -> String {
         return projects[index].phase
     }
+	
+	func setProjects() {
+		projects.append(ConfigurationProject(title: "Projeto", responsable: "Edgar Sgroi Rocha Lindo da Silva", phase: "ähhahahhahahhhahahahha jaaajajjah usus"))
+	}
 }
+
