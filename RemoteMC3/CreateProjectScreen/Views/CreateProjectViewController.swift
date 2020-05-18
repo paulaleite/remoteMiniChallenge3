@@ -32,6 +32,7 @@ class CreateProjectViewController: UIViewController {
 		projectDescription.layer.cornerRadius = 7.5
 		projectDescription.layer.borderColor =  #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
 		projectDescription.layer.borderWidth = 0.5
+		projectDescription.autocapitalizationType = .sentences
         return projectDescription
     }()
 	
@@ -48,7 +49,7 @@ class CreateProjectViewController: UIViewController {
 		super.viewDidLoad()
 		
 		phaseTableView.dataSource = self
-		
+		projectDescription.delegate = self
 		projectTitle.delegate = self
 		projectInstitution.delegate = self
 		projectCategory.delegate = self
@@ -265,12 +266,12 @@ extension CreateProjectViewController: UITextViewDelegate {
         if updatedText.isEmpty {
             textView.inputView?.layoutIfNeeded()
             textView.text = "Descrição"
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor.lightGray
             
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         } else if textView.textColor == UIColor.lightGray && !text.isEmpty {
             textView.inputView?.layoutIfNeeded()
-            textView.textColor = UIColor.white
+            textView.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
             textView.text = text
         } else {
             textView.inputView?.layoutIfNeeded()
@@ -290,7 +291,6 @@ extension CreateProjectViewController: UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         textView.inputView?.layoutIfNeeded()
-        self.projectDescription.text = ""
         return true
     }
 }
