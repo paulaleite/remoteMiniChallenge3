@@ -32,7 +32,6 @@ class SpecificProjectViewController: UIViewController {
 		navigationController?.navigationBar.prefersLargeTitles = true
 		self.title = viewModel.getProject().title
 		setInformation()
-
 	}
 	
 	func setInformation() {
@@ -47,13 +46,11 @@ class SpecificProjectViewController: UIViewController {
 		frame.size.height = .leastNormalMagnitude
 		phasesTableView.tableHeaderView = UIView(frame: frame)		
 	}
-
 }
 
 extension SpecificProjectViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: 50, height: 70)
-		
 	}
 }
 
@@ -63,9 +60,10 @@ extension SpecificProjectViewController: UICollectionViewDataSource {
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
+		if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell",
+																				  for: indexPath) as? SpecificProjectCollectionCell {
 			specificProjectCollectionCell.userName.text  = viewModel.getProject().members[indexPath.row].firstName + " "
-			+ viewModel.getProject().members[indexPath.row].lastName
+				+ viewModel.getProject().members[indexPath.row].lastName
 			
 			specificProjectCollectionCell.userPhoto.image = UIImage(named: viewModel.getProject().image)
 			specificProjectCollectionCell.userPhoto.layer.cornerRadius = 25
@@ -96,6 +94,4 @@ extension SpecificProjectViewController: UITableViewDataSource {
 		}
 		return UITableViewCell()
 	}
-	
 }
-

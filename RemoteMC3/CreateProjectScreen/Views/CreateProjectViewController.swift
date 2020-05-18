@@ -15,6 +15,7 @@ class CreateProjectViewController: UIViewController {
 	var formatter = DateFormatter()
 	var startDate = Date()
 	var endDate = Date()
+	var phaseCount: Int = 0
 	
 	var activeTextField: UITextField?
 	
@@ -41,15 +42,20 @@ class CreateProjectViewController: UIViewController {
 	@IBOutlet var projectCategory: UITextField!
 	@IBOutlet var descrição: UILabel!
 	@IBOutlet var duração: UILabel!
+	@IBOutlet var phaseTableView: UITableView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		phaseTableView.dataSource = self
 		
 		projectTitle.delegate = self
 		projectInstitution.delegate = self
 		projectCategory.delegate = self
 		projectStart.delegate = self
 		projectEnd.delegate = self
+		
+		
 
 		projectStart.addTarget(self, action: #selector(self.showProjectStartPicker(sender:)), for: .touchDown)
 
@@ -157,49 +163,43 @@ class CreateProjectViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
-
+	
+	@IBAction func addPhaseAction(_ sender: Any) {
+		phaseCount+=1
+		let alert = UIAlertController(title: "Nova Etapa", message: "Adicione o título da Etapa \(phaseCount)", preferredStyle: .alert)
+		alert.addTextField(configurationHandler: { (phaseTitle) in
+			phaseTitle.placeholder = "Título da Etapa"
+		})
+		alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
+		alert.addAction(UIAlertAction(title: "Criar", style: .default, handler: { (_) in
+			if (alert.textFields?[0].text != nil) {
+				//						self.createGoal(goalName: alert.textFields![0].text!, goalPrevisionDate: alert.textFields![1].text!)
+				//						self.createTableCells()
+				print("deu bom")
+			} else {
+				let errorAlert = UIAlertController(title:
+					"Erro", message: "Não foi possivel criar a phase. Por favor, crie novamente e verifique se o campo título está preenchido.", preferredStyle: .alert)
+				errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
+				self.present(errorAlert, animated: true, completion: nil)
+			}
+		}))
+		self.present(alert, animated: true, completion: nil)
+	}
 }
 
-//  This extension was extracted from a implementation made by Lyndsey Scott. Comments about the implementation are available at:
-//https://stackoverflow.com/questions/27652227/how-can-i-add-placeholder-text-inside-of-a-uitextview-in-swift
-
-extension CreateProjectViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        textView.inputView?.layoutIfNeeded()
-        let currentText: String = textView.text
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
-        
-        if updatedText.isEmpty {
-            textView.inputView?.layoutIfNeeded()
-            textView.text = "Descrição"
-            textView.textColor = UIColor.black
-            
-            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        } else if textView.textColor == UIColor.lightGray && !text.isEmpty {
-            textView.inputView?.layoutIfNeeded()
-            textView.textColor = UIColor.white
-            textView.text = text
-        } else {
-            textView.inputView?.layoutIfNeeded()
-            return true
-        }
-        return false
-    }
-    
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        textView.inputView?.layoutIfNeeded()
-        if self.view.window != nil {
-            if textView.textColor == UIColor.lightGray {
-                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-            }
-        }
-    }
-    
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        textView.inputView?.layoutIfNeeded()
-        self.projectDescription.text = ""
-        return true
-    }
+extension CreateProjectViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return 1
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		if let specificPhaseTableCell = tableView.dequeueReusableCell(withIdentifier: "specificPhaseTableCell", for: indexPath) as? SpecificPhaseTableCell {
+			specificPhaseTableCell.phaseName.text = "nome da fase"
+			
+			return specificPhaseTableCell
+		}
+		return SpecificPhaseTableCell()
+	}
 }
 
 extension CreateProjectViewController: UIPickerViewDelegate {
@@ -251,5 +251,46 @@ extension CreateProjectViewController: UITextFieldDelegate {
 	func textFieldDidEndEditing(_ textField: UITextField) {
 	  self.activeTextField = nil
 	}
-	
+}
+
+//  This extension was extracted from a implementation made by Lyndsey Scott. Comments about the implementation are available at:
+//https://stackoverflow.com/questions/27652227/how-can-i-add-placeholder-text-inside-of-a-uitextview-in-swift
+
+extension CreateProjectViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        textView.inputView?.layoutIfNeeded()
+        let currentText: String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        
+        if updatedText.isEmpty {
+            textView.inputView?.layoutIfNeeded()
+            textView.text = "Descrição"
+            textView.textColor = UIColor.black
+            
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        } else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+            textView.inputView?.layoutIfNeeded()
+            textView.textColor = UIColor.white
+            textView.text = text
+        } else {
+            textView.inputView?.layoutIfNeeded()
+            return true
+        }
+        return false
+    }
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        textView.inputView?.layoutIfNeeded()
+        if self.view.window != nil {
+            if textView.textColor == UIColor.lightGray {
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            }
+        }
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        textView.inputView?.layoutIfNeeded()
+        self.projectDescription.text = ""
+        return true
+    }
 }

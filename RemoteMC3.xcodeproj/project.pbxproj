@@ -33,6 +33,7 @@
 		4F8B403C2469EDE300189CA6 /* FeedProjectCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403B2469EDE300189CA6 /* FeedProjectCollectionCell.swift */; };
 		4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B403E2469F51400189CA6 /* CloudKitService.swift */; };
 		CB02B483246D9FA70071B7F2 /* CreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */; };
+		CB04A5D2247309FE00CF5DB4 /* SpecificPhaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */; };
 		CB0778EC24709F4F00D4AA0E /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */; };
 		CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */; };
 		CB7C366B2471D2FC00B7D9FD /* SpecificProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7C366A2471D2FC00B7D9FD /* SpecificProjectViewModel.swift */; };
@@ -95,6 +96,7 @@
 		4F8B403B2469EDE300189CA6 /* FeedProjectCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProjectCollectionCell.swift; sourceTree = "<group>"; };
 		4F8B403E2469F51400189CA6 /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
 		CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectViewController.swift; sourceTree = "<group>"; };
+		CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificPhaseTableCell.swift; sourceTree = "<group>"; };
 		CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		CB7C366A2471D2FC00B7D9FD /* SpecificProjectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificProjectViewModel.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 			children = (
 				CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */,
 				CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */,
+				CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 				CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
 				4F8B40352469E50700189CA6 /* User.swift in Sources */,
+				CB04A5D2247309FE00CF5DB4 /* SpecificPhaseTableCell.swift in Sources */,
 				CBF273DA246EEB66004027A4 /* Extension.swift in Sources */,
 				CB7C366B2471D2FC00B7D9FD /* SpecificProjectViewModel.swift in Sources */,
 				4F8B40312469E4AC00189CA6 /* College.swift in Sources */,
