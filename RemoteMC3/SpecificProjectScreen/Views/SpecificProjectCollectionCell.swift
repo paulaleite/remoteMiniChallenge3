@@ -12,5 +12,5 @@ import UIKit
 class SpecificProjectCollectionCell: UICollectionViewCell {
 	@IBOutlet var userPhoto: UIImageView!
 	
-	@IBOutlet var userName: UILabel!
+	@IBOutlet var userName: UITextView!
 }

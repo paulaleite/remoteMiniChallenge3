@@ -46,6 +46,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="YqE-va-2sF"/>
                                 </constraints>
+                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -93,6 +94,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-ac-O4J">
                                 <rect key="frame" x="20" y="414.66666666666669" width="335" height="34"/>
+                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -128,6 +130,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="KP7-2A-GF5"/>
                                 </constraints>
+                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -523,25 +526,34 @@
                                                         <constraint firstAttribute="height" constant="50" id="yjX-zo-k8G"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J56-eY-NKd">
-                                                    <rect key="frame" x="0.0" y="55.666666666666664" width="144" height="14.333333333333336"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vag-XC-kG6">
+                                                    <rect key="frame" x="0.0" y="50" width="144" height="20"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment>
+                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <font key="NSFont" size="14" name="MuktaMahee-Medium"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="J56-eY-NKd" secondAttribute="trailing" id="61x-Vx-xRC"/>
-                                                <constraint firstAttribute="bottom" secondItem="J56-eY-NKd" secondAttribute="bottom" id="TwN-St-Y4N"/>
-                                                <constraint firstItem="J56-eY-NKd" firstAttribute="leading" secondItem="DS7-hX-eGJ" secondAttribute="leading" id="WKf-jK-pop"/>
+                                                <constraint firstItem="Vag-XC-kG6" firstAttribute="top" secondItem="WDG-7d-a2t" secondAttribute="bottom" id="RDn-Cg-mnt"/>
+                                                <constraint firstItem="Vag-XC-kG6" firstAttribute="leading" secondItem="DS7-hX-eGJ" secondAttribute="leading" id="VLS-kf-I0J"/>
+                                                <constraint firstAttribute="bottom" secondItem="Vag-XC-kG6" secondAttribute="bottom" id="ZB7-Tb-n4d"/>
+                                                <constraint firstAttribute="trailing" secondItem="Vag-XC-kG6" secondAttribute="trailing" id="hZy-9z-KxC"/>
                                                 <constraint firstItem="WDG-7d-a2t" firstAttribute="centerX" secondItem="DS7-hX-eGJ" secondAttribute="centerX" id="nXv-x8-fGU"/>
-                                                <constraint firstItem="J56-eY-NKd" firstAttribute="centerX" secondItem="DS7-hX-eGJ" secondAttribute="centerX" id="ntl-S7-glh"/>
                                                 <constraint firstItem="WDG-7d-a2t" firstAttribute="top" secondItem="DS7-hX-eGJ" secondAttribute="top" id="vs4-Nm-6UU"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="144" height="70"/>
                                         <connections>
-                                            <outlet property="userName" destination="J56-eY-NKd" id="Hcy-56-enl"/>
+                                            <outlet property="userName" destination="Vag-XC-kG6" id="JWm-KT-y8o"/>
                                             <outlet property="userPhoto" destination="WDG-7d-a2t" id="QyU-ty-x57"/>
                                         </connections>
                                     </collectionViewCell>
@@ -785,14 +797,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UIe-96-BUC">
-                                                    <rect key="frame" x="10" y="30" width="50" height="50"/>
+                                                    <rect key="frame" x="10" y="20" width="70" height="70"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="50" id="PRd-y7-xZs"/>
-                                                        <constraint firstAttribute="height" constant="50" id="nEP-4A-ka3"/>
+                                                        <constraint firstAttribute="width" constant="70" id="PRd-y7-xZs"/>
+                                                        <constraint firstAttribute="height" constant="70" id="nEP-4A-ka3"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="225" translatesAutoresizingMaskIntoConstraints="NO" id="OCx-6M-CrY">
-                                                    <rect key="frame" x="100" y="41" width="38" height="28.333333333333329"/>
+                                                    <rect key="frame" x="90" y="41" width="38" height="28.333333333333329"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Label">
                                                             <attributes>
@@ -807,7 +819,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="UIe-96-BUC" firstAttribute="leading" secondItem="hHm-ss-Gpa" secondAttribute="leading" constant="10" id="O8c-Hf-ovx"/>
-                                                <constraint firstItem="OCx-6M-CrY" firstAttribute="leading" secondItem="UIe-96-BUC" secondAttribute="trailing" constant="40" id="TYa-pF-xZX"/>
+                                                <constraint firstItem="OCx-6M-CrY" firstAttribute="leading" secondItem="UIe-96-BUC" secondAttribute="trailing" constant="10" id="TYa-pF-xZX"/>
                                                 <constraint firstItem="OCx-6M-CrY" firstAttribute="centerY" secondItem="hHm-ss-Gpa" secondAttribute="centerY" id="VFC-hG-Slm"/>
                                                 <constraint firstItem="UIe-96-BUC" firstAttribute="centerY" secondItem="hHm-ss-Gpa" secondAttribute="centerY" id="gMG-er-3z9"/>
                                             </constraints>

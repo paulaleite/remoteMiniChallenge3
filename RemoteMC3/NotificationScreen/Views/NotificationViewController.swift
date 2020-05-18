@@ -45,7 +45,7 @@ extension NotificationViewController: UICollectionViewDataSource {
 		notificationCollectionCell.notificationMessage.text = viewModel.notifications[indexPath.row].requisitor
 			+ " desejar participar do projeto " + viewModel.notifications[indexPath.row].projectRequired
 		notificationCollectionCell.personImage.image = UIImage(named: viewModel.notifications[indexPath.row].personImage)
-		notificationCollectionCell.personImage.layer.cornerRadius =  25
+		notificationCollectionCell.personImage.layer.cornerRadius =  35
 		notificationCollectionCell.backgroundColor = .white
 		notificationCollectionCell.layer.masksToBounds = false
 		notificationCollectionCell.layer.cornerRadius = 20
