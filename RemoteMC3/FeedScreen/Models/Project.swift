@@ -8,15 +8,13 @@
 
 import Foundation
 
-struct Project {
+struct Project: Codable {
+    var phases: [String]
+    var users: [String]
     var title: String
     var description: String
-    var college: College
-    var responsible: User
-    var members: [User]
-    var duration: (Date, Date)
-    var currentPhase: Phase
-    var phases: [Phase]
-	var category: String
-	var image: String 
+    var start: String
+    var end: String
+    var category: String
+    var responsible: Responsible
 }

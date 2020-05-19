@@ -30,17 +30,18 @@ class SpecificProjectViewController: UIViewController {
 		phasesTableView.dataSource = self
 		
 		navigationController?.navigationBar.prefersLargeTitles = true
-		self.title = viewModel.getProject().title
+        self.title = viewModel.getProject().title
 		setInformation()
 
 	}
 	
 	func setInformation() {
 		projectDescryption.text = viewModel.getProject().description
-		projectResponsible.text = viewModel.getProject().responsible.firstName + " " + viewModel.getProject().responsible.lastName
-		projectInstitution.text = viewModel.getProject().college.name
-		projectStart.text = viewModel.getProject().duration.0.convertToString(dateformat: .date)
-		projectEnd.text = viewModel.getProject().duration.1.convertToString(dateformat: .date)
+//		projectResponsible.text = viewModel.getProject().responsible.name
+        projectResponsible.text = viewModel.getProject().responsible.responsibleName
+        projectInstitution.text = "Não existe"
+		projectStart.text = viewModel.getProject().start
+		projectEnd.text = viewModel.getProject().end
 		
 //		remove top space of grouped table view
 		var frame = CGRect.zero
@@ -59,15 +60,15 @@ extension SpecificProjectViewController: UICollectionViewDelegateFlowLayout {
 
 extension SpecificProjectViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewModel.getProject().members.count
+        return viewModel.getProject().users.count
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
-			specificProjectCollectionCell.userName.text  = viewModel.getProject().members[indexPath.row].firstName + " "
-			+ viewModel.getProject().members[indexPath.row].lastName
+//            specificProjectCollectionCell.userName.text  = viewModel.getProject().users[indexPath.row].name
+            specificProjectCollectionCell.userName.text  = viewModel.getProject().users[indexPath.row]
 			
-			specificProjectCollectionCell.userPhoto.image = UIImage(named: viewModel.getProject().image)
+			specificProjectCollectionCell.userPhoto.image = #imageLiteral(resourceName: "coloredDot")
 			specificProjectCollectionCell.userPhoto.layer.cornerRadius = 25
 			
 			return  specificProjectCollectionCell
@@ -87,7 +88,7 @@ extension SpecificProjectViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if let specificProjectTableCell = tableView.dequeueReusableCell(withIdentifier: "SpecificProjectTableCell", for: indexPath) as? SpecificProjectTableCell {
-			specificProjectTableCell.phaseDescription.text = "  " + viewModel.getProject().phases[indexPath.section].title
+			specificProjectTableCell.phaseDescription.text = "  " + viewModel.getProject().phases[indexPath.section]
 			specificProjectTableCell.phaseDescription.layer.cornerRadius = 5
 			specificProjectTableCell.phaseDescription.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
 			specificProjectTableCell.phaseDescription.layer.borderWidth = 0.5

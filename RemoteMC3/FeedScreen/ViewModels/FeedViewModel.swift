@@ -9,12 +9,16 @@
 import Foundation
 import UIKit
 
+struct Response: Codable {
+    let result: [Project]
+}
+
 protocol FeedViewModelDelegate: class {
-    func fetchData(_ completion: @escaping (Result<Any, Error>) -> Void)
-	
+    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void)
 }
 
 class FeedViewModel {
+    let service = ServerService()
     var projects: [Project] = []
 	
 	var categorys: [Category] = []
@@ -41,68 +45,39 @@ class FeedViewModel {
         return projects[index].title
     }
     
-    func getProjectResponsible(forProjectAt index: Int) -> User {
-        return projects[index].responsible
-    }
+//    func getProjectResponsible(forProjectAt index: Int) -> User {
+//        return projects[index].responsible.responsibleName
+//    }
     
-    func getProjectPhases(forProjectAt index: Int) -> [Phase] {
+    func getProjectPhases(forProjectAt index: Int) -> [String] {
         return projects[index].phases
     }
     
-    func getProjectCurrentPhase(forProjectAt index: Int) -> Phase {
-        return projects[index].currentPhase
-    }
+//    func getProjectCurrentPhase(forProjectAt index: Int) -> Phase {
+//        return projects[index].currentPhase
+//    }
 	
-	func addProjects() {
+	func loadProjects() {
 //		aqui tem que pegar do servidor
-		projects.append(Project(title: "Projeto", description:
-			"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
-													   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
-													   members: [User(firstName: "Edgar", lastName: "Sgroi")],
-													   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
-													   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social", image: "check"))
-		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
-												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
-												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
-												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
-												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social", image: "check"))
-		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
-												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
-												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
-												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
-												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social", image: "check"))
-		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
-												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
-												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
-												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
-												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social", image: "check"))
-		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie"),
-												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
-												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
-												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
-												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Social", image: "check"))
-		projects.append(Project(title: "Projeto", description:
-		"Aqui vai haver a descrição do projeto", college: College(name: "Mackenzie")
-			,
-												   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
-												   members: [User(firstName: "Edgar", lastName: "Sgroi")],
-												   duration: (Date(timeIntervalSince1970: 2), Date(timeIntervalSince1970: 10)),
-												   currentPhase: Phase(title: "Primeira"), phases: [Phase(title: "primeira")], category: "Cultural", image: "check"))
-
+        service.getProjects({(response) in
+            switch response {
+            case .success(let res):
+                self.projects = res.result
+                NotificationCenter.default.post(name: .updateProjects, object: nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
 		for project in projects {
-			if (project.category == "Social") {
-				socialCount+=1
-			}else if (project.category == "Cultural") {
+			if project.category == "Social" {
+				socialCount += 1
+			} else if project.category == "Cultural" {
 				culturalCount+=1
-			}else if (project.category == "Pessoal") {
+			} else if project.category == "Pessoal" {
 				personalCount+=1
-			}else if (project.category == "Empresarial") {
+			} else if project.category == "Empresarial" {
 				entrepreneurialCount+=1
-			}else if (project.category == "Pesquisa") {
+			} else if project.category == "Pesquisa" {
 				researchCount+=1
 			}
 		}
@@ -208,4 +183,8 @@ class FeedViewModel {
 		return cell4
 	}
 
+}
+
+extension NSNotification.Name {
+    static let updateProjects = NSNotification.Name("update_objectives_collection")
 }
