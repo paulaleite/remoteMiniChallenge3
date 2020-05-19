@@ -8,12 +8,14 @@
 
 import Foundation
 
-struct User {
-    var firstName: String
-    var lastName: String
+struct User: Codable {
+    let name: String
+    let email: String
+    let projects: [Project]?
     
-    init(firstName: String, lastName: String) {
-        self.firstName = firstName
-        self.lastName = lastName
+    init(name: String, email: String, projects: [Project]?) {
+        self.name = name
+        self.email = email
+        self.projects = projects
     }
 }

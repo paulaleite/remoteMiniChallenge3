@@ -77,10 +77,9 @@ class CreateProjectViewController: UIViewController {
 	}
 	
 	@IBAction func createProjectAction(_ sender: Any) {
-		viewModel.createProject(title: projectTitle.text ?? "", description: projectDescription.text ?? "", college: College(name: projectInstitution.text ?? ""),
-								responsible: User(firstName: "Cassia", lastName: "Barbosa"), members: [User(firstName: "Cassia", lastName: "Barbosa")],
-								duration: (startDate, endDate), category: projectCategory.text ?? "")
-//		adicionar as fases, mas o lint não deia ter mais de 7 parâmetros
+        viewModel.createProject(title: "ProjetoTeste", description: "", start: "10-02-2010", end: "20-10-2020", phases: ["Etapa 1"], responsible:
+            User(name: "Edgar", email: "edgar_email@email.com", projects: nil), users:
+            [User(name: "Cassia", email: "cassia_email@email.com", projects: nil)])
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {

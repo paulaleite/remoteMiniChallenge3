@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class FeedViewController: UIViewController {
     
@@ -30,6 +31,8 @@ class FeedViewController: UIViewController {
 		projectCollectionView.delegate = self
 				
 		viewModel.delegate = self
+        viewModel.loadProjects()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
 		
 		    }
 
@@ -46,6 +49,11 @@ class FeedViewController: UIViewController {
 								   viewModel.createCell4(collectionView: categoryCollectionView)], indexes: [1, 2, 3, 4])
 		
 	}
+    
+    @objc func reloadUI() {
+        projectCollectionView.reloadData()
+        categoryCollectionView.reloadData()
+    }
 }
 
 extension FeedViewController: UICollectionViewDataSource {
@@ -56,7 +64,7 @@ extension FeedViewController: UICollectionViewDataSource {
 			viewModel.addCategory()
 			return viewModel.getCategoryRowsNumber()
 		default:
-			viewModel.addProjects()
+//			viewModel.addProjects()
 			return viewModel.getProjectRowsNumber()
 		}
 	}
@@ -174,9 +182,10 @@ extension FeedViewController: UICollectionViewDataSource {
 				feedProjectCollectionCell.layer.shadowRadius = 4
 				feedProjectCollectionCell.layer.shadowOpacity = 0.3
 
-				feedProjectCollectionCell.projectName.text = viewModel.projects[indexPath.row].title
-				feedProjectCollectionCell.projectResponsible.text = viewModel.projects[indexPath.row].responsible.firstName + " " + viewModel.projects[indexPath.row].responsible.lastName
-				feedProjectCollectionCell.projectPhase.text = viewModel.projects[indexPath.row].currentPhase.title
+                feedProjectCollectionCell.projectName.text = viewModel.projects[indexPath.row].title
+//				feedProjectCollectionCell.projectResponsible.text = viewModel.projects[indexPath.row].responsible.name
+                feedProjectCollectionCell.projectResponsible.text = viewModel.projects[indexPath.row].responsible.responsibleName
+                feedProjectCollectionCell.projectPhase.text = viewModel.projects[indexPath.row].phases.last
 				
 				return feedProjectCollectionCell
 			}
@@ -268,8 +277,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension FeedViewController: FeedViewModelDelegate {
-	func fetchData(_ completion: @escaping (Result<Any, Error>) -> Void) {
-
-	}
-	
+    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
+        
+    }
 }

@@ -17,30 +17,25 @@ class CreateProjectViewModel {
 	
 	var title: String = " "
 	var description: String = ""
-	var firstName: String = ""
-	var lastName: String = ""
-	var category: String = ""
-	var college: College = College(name: "")
-	var duration: (Date, Date) =  (Date(), Date())
-	var currentPhase: Phase = Phase(title: "")
-	var phases: [Phase] = [Phase(title: "")]
+	var start: String = ""
+	var end: String = ""
+	var phases: [String] = []
+	var responsible: User = User(name: "Teste", email: "Test", projects: nil)
+	var users: [User] =  []
 	
 	var pickerViewDataSource = ["Social", "Cultural", "Pessoal", "Empresarial", "Pesquisa"]
 	var phasesName: [String] = [" "]
 	
-	func createProject(title: String, description: String, college: College, responsible: User, members: [User], duration: (Date, Date), category: String) {
+    func createProject(title: String, description: String, start: String, end: String, phases: [String], responsible: User, users: [User]) {
 		
 		if (title != "") && (description != "") {
 			self.title = title
 			self.description = description
-			self.firstName = responsible.firstName
-			self.lastName = responsible.lastName
-			self.category = category
-//			self.phases = phases
-//			self.currentPhase = currentPhase
-			self.college = college
-			self.category = category
-			print(duration)
+			self.start = start
+			self.end = end
+			self.phases = phases
+            self.responsible = responsible
+			self.users = users
 			
 			print(title)
 		}
