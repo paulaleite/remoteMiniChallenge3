@@ -161,15 +161,16 @@ class CreateProjectViewController: UIViewController {
 	}
 	
 	@IBAction func addPhaseAction(_ sender: Any) {
-		phaseCount+=1
 		let alert = UIAlertController(title: "Nova Etapa", message: "Adicione o título da Etapa", preferredStyle: .alert)
 		alert.addTextField(configurationHandler: { (phaseTitle) in
 			phaseTitle.placeholder = "Título da Etapa"
 			phaseTitle.autocapitalizationType = .sentences
+			phaseTitle.textAlignment = .center
 		})
 		alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
 		alert.addAction(UIAlertAction(title: "Criar", style: .default, handler: { (_) in
-			if (alert.textFields?[0].text != nil) {
+			if (alert.textFields?[0].text != "") {
+				self.phaseCount+=1
 				if (self.phaseCount == 1) {
 					self.viewModel.phasesName.removeAll()
 				}
@@ -178,7 +179,7 @@ class CreateProjectViewController: UIViewController {
 				
 			} else {
 				let errorAlert = UIAlertController(title:
-					"Erro", message: "Não foi possivel criar a phase. Por favor, crie novamente e verifique se o campo título está preenchido.", preferredStyle: .alert)
+					"Erro", message: "Não foi possivel criar a Etapa. Por favor, clique novamente para criar uma Nova Etapa e preencha o campo Título.", preferredStyle: .alert)
 				errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
 				self.present(errorAlert, animated: true, completion: nil)
 			}
