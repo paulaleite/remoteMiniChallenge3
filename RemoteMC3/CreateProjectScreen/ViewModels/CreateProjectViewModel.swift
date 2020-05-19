@@ -26,6 +26,7 @@ class CreateProjectViewModel {
 	var phases: [Phase] = [Phase(title: "")]
 	
 	var pickerViewDataSource = ["Social", "Cultural", "Pessoal", "Empresarial", "Pesquisa"]
+	var phasesName: [String] = [" "]
 	
 	func createProject(title: String, description: String, college: College, responsible: User, members: [User], duration: (Date, Date), category: String) {
 		

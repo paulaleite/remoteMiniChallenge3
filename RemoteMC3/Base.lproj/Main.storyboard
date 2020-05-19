@@ -31,7 +31,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4k-s1-Z28">
                                 <rect key="frame" x="20" y="181" width="355" height="20"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Instituição">
+                                    <fragment content="Organização">
                                         <attributes>
                                             <color key="NSColor" red="0.54901960780000003" green="0.16078431369999999" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="17" name="SFProRounded-Medium"/>
@@ -73,7 +73,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Instituição" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuH-9u-h7g">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Organização" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuH-9u-h7g">
                                 <rect key="frame" x="20" y="206" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -114,14 +114,14 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="specificPhaseTableCell" id="5QA-NL-wRH" customClass="SpecificPhaseTableCell" customModule="RemoteMC3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="28" width="335" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5QA-NL-wRH" id="I0x-jE-ygK">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2c-7x-HbX">
-                                                    <rect key="frame" x="15" y="11.000000000000002" width="305" height="21.666666666666671"/>
+                                                    <rect key="frame" x="15" y="10.999999999999998" width="305" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -205,7 +205,7 @@
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NWI-aE-Jgq">
                         <barButtonItem key="rightBarButtonItem" title="Criar" id="ADX-CV-R9w">
                             <connections>
-                                <action selector="createProjectAction:" destination="wYM-ca-H3c" id="N1s-Hu-9vM"/>
+                                <action selector="createProjectAction:" destination="wYM-ca-H3c" id="hup-Fr-BJT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
