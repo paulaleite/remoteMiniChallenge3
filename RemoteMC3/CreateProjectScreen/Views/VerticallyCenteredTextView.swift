@@ -19,6 +19,4 @@ class VerticallyCenteredTextView: UITextView {
             self.inputView?.layoutIfNeeded()
         }
     }
-    
-    
 }

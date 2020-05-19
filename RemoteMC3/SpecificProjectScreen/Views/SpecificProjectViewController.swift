@@ -32,7 +32,6 @@ class SpecificProjectViewController: UIViewController {
 		navigationController?.navigationBar.prefersLargeTitles = true
         self.title = viewModel.getProject().title
 		setInformation()
-
 	}
 	
 	func setInformation() {
@@ -48,13 +47,11 @@ class SpecificProjectViewController: UIViewController {
 		frame.size.height = .leastNormalMagnitude
 		phasesTableView.tableHeaderView = UIView(frame: frame)		
 	}
-
 }
 
 extension SpecificProjectViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 		return CGSize(width: 50, height: 70)
-		
 	}
 }
 
@@ -97,6 +94,4 @@ extension SpecificProjectViewController: UITableViewDataSource {
 		}
 		return UITableViewCell()
 	}
-	
 }
-
