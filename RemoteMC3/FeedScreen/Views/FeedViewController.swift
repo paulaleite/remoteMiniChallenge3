@@ -52,7 +52,6 @@ class FeedViewController: UIViewController {
     
     @objc func reloadUI() {
         projectCollectionView.reloadData()
-        categoryCollectionView.reloadData()
     }
 }
 
