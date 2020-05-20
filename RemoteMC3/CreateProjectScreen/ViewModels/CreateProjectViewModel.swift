@@ -36,8 +36,6 @@ class CreateProjectViewModel {
 			self.phases = phases
             self.responsible = responsible
 			self.users = users
-			
-			print(title)
 		}
 	}
 	

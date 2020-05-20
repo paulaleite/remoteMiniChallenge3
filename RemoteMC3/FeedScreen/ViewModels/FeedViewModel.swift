@@ -63,24 +63,24 @@ class FeedViewModel {
             switch response {
             case .success(let res):
                 self.projects = res.result
+				for project in self.projects {
+					if project.category == "Social" {
+						self.socialCount += 1
+					} else if project.category == "Cultural" {
+						self.culturalCount+=1
+					} else if project.category == "Pessoal" {
+						self.personalCount+=1
+					} else if project.category == "Empresarial" {
+						self.entrepreneurialCount+=1
+					} else if project.category == "Pesquisa" {
+						self.researchCount+=1
+					}
+				}
                 NotificationCenter.default.post(name: .updateProjects, object: nil)
             case .failure(let error):
                 print(error.localizedDescription)
             }
         })
-		for project in projects {
-			if project.category == "Social" {
-				socialCount += 1
-			} else if project.category == "Cultural" {
-				culturalCount+=1
-			} else if project.category == "Pessoal" {
-				personalCount+=1
-			} else if project.category == "Empresarial" {
-				entrepreneurialCount+=1
-			} else if project.category == "Pesquisa" {
-				researchCount+=1
-			}
-		}
 	}
 	
 	func addCategory() {
