@@ -23,6 +23,18 @@ class FeedViewModel {
 	
 	var categorys: [Category] = []
 
+	var socialProjects: [Project] = []
+	
+	var cultureProjects: [Project] = []
+	
+	var personalProjects: [Project] = []
+	
+	var businessProjects: [Project] = []
+	
+	var researchProjects: [Project] = []
+	
+	var feedProjects: [[Project]] = [[]]
+	
 	var unselectedImages: [String] = ["socialGrey", "cultureGrey", "personalGrey", "businessGrey", "researchGrey"]
 	
 	weak var delegate: FeedViewModelDelegate?
@@ -66,14 +78,19 @@ class FeedViewModel {
 				for project in self.projects {
 					if project.category == "Social" {
 						self.socialCount += 1
+						self.socialProjects.append(project)
 					} else if project.category == "Cultural" {
 						self.culturalCount+=1
+						self.cultureProjects.append(project)
 					} else if project.category == "Pessoal" {
 						self.personalCount+=1
+						self.personalProjects.append(project)
 					} else if project.category == "Empresarial" {
 						self.entrepreneurialCount+=1
+						self.businessProjects.append(project)
 					} else if project.category == "Pesquisa" {
 						self.researchCount+=1
+						self.researchProjects.append(project)
 					}
 				}
                 NotificationCenter.default.post(name: .updateProjects, object: nil)
@@ -89,11 +106,17 @@ class FeedViewModel {
 		categorys.append(Category(imagem: "personalColored", name: "Pessoal", count: personalCount))
 		categorys.append(Category(imagem: "businessColored", name: "Empresarial", count: entrepreneurialCount))
 		categorys.append(Category(imagem: "researchColored", name: "Pesquisa", count: researchCount))
-
+	}
+	
+	func addFeedProjects() {
+		feedProjects.append(socialProjects)
+		feedProjects.append(cultureProjects)
+		feedProjects.append(personalProjects)
+		feedProjects.append(personalProjects)
+		feedProjects.append(researchProjects)
 	}
 	
 	func deselect (cells: [FeedCategoryCollectionCell], indexes: [Int]) {
-		
 		var count: Int = 0
 		for cell in cells {
 			cell.touched = false
@@ -109,7 +132,20 @@ class FeedViewModel {
 			cell.categoryImage.image = UIImage(named: unselectedImages[indexes[count]])
 			count+=1
 		}
-		
+	}
+	
+	func categoryDeselectConfiguration(cell: FeedCategoryCollectionCell, indexPath: IndexPath) {
+		cell.touched = false
+		cell.backgroundColor = .white
+		cell.layer.masksToBounds = false
+		cell.layer.cornerRadius = 37
+		cell.layer.shadowRadius = 0
+		cell.layer.borderWidth = 1
+		cell.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+		cell.categoryCount.layer.cornerRadius = 7
+		cell.categoryCount.layer.borderWidth = 1
+		cell.categoryCount.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+		cell.categoryImage.image = UIImage(named: unselectedImages[indexPath.row])
 	}
 
 	func select (cell: FeedCategoryCollectionCell, indexPath: IndexPath) {
@@ -125,7 +161,21 @@ class FeedViewModel {
 		cell.categoryCount.layer.cornerRadius = 7
 		cell.categoryCount.layer.borderWidth = 1
 		cell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
-
+	}
+	
+	func categorySelectConfiguration(cell: FeedCategoryCollectionCell, indexPath: IndexPath) {
+		cell.backgroundColor = .white
+		cell.layer.masksToBounds = false
+		cell.layer.cornerRadius = 37
+		cell.layer.shadowColor = UIColor.black.cgColor
+		cell.layer.shadowOffset = .zero
+		cell.layer.shadowRadius = 4
+		cell.layer.shadowOpacity = 0.3
+		cell.categoryImage.image = UIImage(named: categorys[indexPath.row].imagem)
+		cell.categoryName.textColor = .black
+		cell.categoryCount.layer.cornerRadius = 7
+		cell.categoryCount.layer.borderWidth = 1
+		cell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
 	}
 	
 	func setUpCellsState(collectionView: UICollectionView) {
@@ -134,7 +184,6 @@ class FeedViewModel {
 			return }
 			cell.touched = false
 		}
-		
 	}
 	
 //	MARK: - TODO: Handling error
