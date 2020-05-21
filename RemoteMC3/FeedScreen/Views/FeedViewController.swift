@@ -20,7 +20,10 @@ class FeedViewController: UIViewController {
 	
 	var firstCellState: Int = 0
 	
+	@IBOutlet var viewLabel: UILabel!
+	
 	var categorySelected = 0
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -47,10 +50,17 @@ class FeedViewController: UIViewController {
         projectCollectionView.reloadData()
 		self.firstCellState = 0
         categoryCollectionView.reloadData()
+		
+		if viewModel.socialCount == 0 {
+			viewLabel.text = "Não há projetos cadastrados para essa categoria."
+			} else {
+			self.viewLabel.isHidden = true
+		}
     }
 	
 	@objc func reloadProjectCollectionView0() {
 		if viewModel.socialCount != 0 {
+			self.viewLabel.isHidden = true
 			for row in 0...viewModel.socialProjects.count {
 				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
 					return }
@@ -58,11 +68,15 @@ class FeedViewController: UIViewController {
 				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 0, forProjectAt: row)
 				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 0, forProjectAt: row)
 			}
+			
 		}
+		viewLabel.text = "Não há projetos cadastrados para essa categoria."
+		self.viewLabel.isHidden = false
 	}
 	
 	@objc func reloadProjectCollectionView1() {
 		if viewModel.culturalCount != 0 {
+			self.viewLabel.isHidden = true
 			for row in 0...viewModel.cultureProjects.count {
 				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
 					return }
@@ -71,10 +85,13 @@ class FeedViewController: UIViewController {
 				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 1, forProjectAt: row)
 			}
 		}
+		viewLabel.text = "Não há projetos cadastrados para essa categoria."
+		self.viewLabel.isHidden = false
 	}
 	
 	@objc func reloadProjectCollectionView2() {
 		if viewModel.personalCount != 0 {
+			self.viewLabel.isHidden = true
 			for row in 0...viewModel.personalProjects.count {
 				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
 					return }
@@ -83,10 +100,13 @@ class FeedViewController: UIViewController {
 				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 2, forProjectAt: row)
 			}
 		}
+		viewLabel.text = "Não há projetos cadastrados para essa categoria."
+		viewLabel.isHidden = false
 	}
 	
 	@objc func reloadProjectCollectionView3() {
 		if viewModel.entrepreneurialCount !=  0 {
+			self.viewLabel.isHidden = true
 			for row in 0...viewModel.businessProjects.count {
 				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
 					return }
@@ -95,10 +115,13 @@ class FeedViewController: UIViewController {
 				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 3, forProjectAt: row)
 			}
 		}
+		viewLabel.text = "Não há projetos cadastrados para essa categoria."
+		viewLabel.isHidden = false
 	}
 	
 	@objc func reloadProjectCollectionView4() {
 		if viewModel.researchCount != 0 {
+			self.viewLabel.isHidden = true
 			for row in 0...viewModel.researchProjects.count {
 				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
 					return }
@@ -107,6 +130,8 @@ class FeedViewController: UIViewController {
 				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 4, forProjectAt: row)
 			}
 		}
+		viewLabel.text = "Não há projetos cadastrados para essa categoria."
+		viewLabel.isHidden = false
 	}
 }
 
@@ -130,6 +155,10 @@ extension FeedViewController: UICollectionViewDataSource {
 			}
 		}
 		return 0
+	}
+	
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		return 1
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

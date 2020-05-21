@@ -23,15 +23,15 @@ class FeedViewModel {
 	
 	var categorys: [Category] = []
 
-	var socialProjects: [Project] = []
+	var socialProjects = [Project]()
 	
-	var cultureProjects: [Project] = []
+	var cultureProjects = [Project]()
 	
-	var personalProjects: [Project] = []
+	var personalProjects = [Project]()
 	
-	var businessProjects: [Project] = []
+	var businessProjects = [Project]()
 	
-	var researchProjects: [Project] = []
+	var researchProjects = [Project]()
 	
 	var feedProjects = [[Project]]()
 	
