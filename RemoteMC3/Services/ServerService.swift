@@ -10,6 +10,10 @@ import Foundation
 
 class ServerService {
     
+    func createNewProject(_ completion: @escaping (Result<Any, Error>) -> Void) {
+        
+    }
+    
     func getUsers(_ completion: @escaping (Result<User, Error>) -> Void) {
         URLSession.shared.dataTask(with: .getUsers) { data, _, error in
             if let data = data {
@@ -23,10 +27,6 @@ class ServerService {
                 }
             }
         }.resume()
-    }
-    
-    func createNewProject(_ completion: @escaping (Result<Any, Error>) -> Void) {
-        
     }
     
 }
@@ -49,6 +49,44 @@ extension ServerService: FeedViewModelDelegate {
     }
 }
 
+extension ServerService: SpecificProjectDelegate {
+    func getUsersBy(users ids: [String], _ completion: @escaping (Result<User, Error>) -> Void) {
+        let session = URLSession.shared
+        var request = URLRequest(url: .getUsersByIDs)
+        request.httpMethod = "POST"
+        
+        do {
+            let req = ["users": ids]
+            request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
+            guard error == nil else {
+                return
+            }
+
+            guard let data = data else {
+                return
+            }
+
+            do {
+                //create json object from data
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                    // handle json...
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }).resume()
+    }
+}
+
 extension URL {
     static var getUsers: URL {
         makeForEndpoint("users")
@@ -57,10 +95,14 @@ extension URL {
     static var getProjects: URL {
         makeForEndpoint("projects")
     }
+    
+    static var getUsersByIDs: URL {
+        makeForEndpoint("users/ids")
+    }
 }
 
 private extension URL {
-    static func makeForEndpoint(_ endpoint: String) -> URL {
+    static private func makeForEndpoint(_ endpoint: String) -> URL {
         return URL(string: "https://projeta-server.herokuapp.com/\(endpoint)")!
     }
 }

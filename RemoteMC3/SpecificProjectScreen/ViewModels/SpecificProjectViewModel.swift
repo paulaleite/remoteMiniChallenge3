@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol SpecificProjectDelegate: class {
+    func getUsersBy(users ids: [String], _ completion: @escaping (Result<User, Error>) -> Void)
+}
+
 class SpecificProjectViewModel {
 	
 //    var projsect = Project(title: "Projeto Teste", description: "Teste", category: "Social", start: "10-20-2020", end: "20-20-2020", phases: ["Aaaa"], responsible:
