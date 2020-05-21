@@ -16,7 +16,7 @@ enum DateFormatType: String {
     case dateWithTime = "dd MMM yyyy   H:mm"
 
     /// Date
-    case date = "dd MMM yyyy"
+    case date = "dd/MM/yyyy"
 }
 
 extension Date {

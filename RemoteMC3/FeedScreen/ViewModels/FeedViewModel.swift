@@ -19,6 +19,7 @@ protocol FeedViewModelDelegate: class {
 
 class FeedViewModel {
     let service = ServerService()
+	
     var projects: [Project] = []
 	
 	var categorys: [Category] = []
@@ -54,15 +55,15 @@ class FeedViewModel {
     }
     
 	func getProjectTitle(forCategoryAt category: Int, forProjectAt index: Int) -> String {
-		return (feedProjects[category])[index].title
+		return feedProjects[category][index].title
     }
     
     func getProjectResponsible(forCategoryAt category: Int, forProjectAt index: Int) -> String {
-		return (feedProjects[category])[index].responsible.responsibleName
+		return feedProjects[category][index].responsible.responsibleName
     }
     
     func getProjectPhases(forCategoryAt category: Int, forProjectAt index: Int) -> [String] {
-        return (feedProjects[category])[index].phases
+        return feedProjects[category][index].phases
     }
     
     func getProjectCurrentPhase(forCategoryAt category: Int, forProjectAt index: Int) -> String {
@@ -92,8 +93,8 @@ class FeedViewModel {
 						self.researchProjects.append(project)
 					}
 				}
-                NotificationCenter.default.post(name: .updateProjects, object: nil)
 				self.addFeedProjects()
+                NotificationCenter.default.post(name: .updateProjects, object: nil)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -109,10 +110,15 @@ class FeedViewModel {
 	}
 	
 	func addFeedProjects() {
+		socialProjects.reverse()
+		cultureProjects.reverse()
+		personalProjects.reverse()
+		businessProjects.reverse()
+		researchProjects.reverse()
 		feedProjects.append(socialProjects)
 		feedProjects.append(cultureProjects)
 		feedProjects.append(personalProjects)
-		feedProjects.append(personalProjects)
+		feedProjects.append(businessProjects)
 		feedProjects.append(researchProjects)
 	}
 	

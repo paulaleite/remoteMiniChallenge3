@@ -37,7 +37,6 @@ extension ServerService: FeedViewModelDelegate {
             if let data = data {
                 do {
                     let res = try JSONDecoder().decode(Response.self, from: data)
-                    print(res.result)
                     DispatchQueue.main.async {
                         completion(.success(res))
                     }

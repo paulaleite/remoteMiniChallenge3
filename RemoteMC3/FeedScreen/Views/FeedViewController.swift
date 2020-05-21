@@ -35,14 +35,10 @@ class FeedViewController: UIViewController {
 		projectCollectionView.delegate = self
 		
 		viewModel.delegate = self
+		
 		viewModel.loadProjects()
+		
 		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView0), name: .category0, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView1), name: .category1, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView2), name: .category2, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView3), name: .category3, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView4), name: .category4, object: nil)
-
 	}
 
     @objc func reloadUI() {
@@ -50,98 +46,17 @@ class FeedViewController: UIViewController {
         projectCollectionView.reloadData()
 		self.firstCellState = 0
         categoryCollectionView.reloadData()
-		
-		if viewModel.socialCount == 0 {
-			viewLabel.text = "Não há projetos cadastrados para essa categoria."
-			} else {
-			self.viewLabel.isHidden = true
-		}
     }
-	
-	@objc func reloadProjectCollectionView0() {
-		if viewModel.socialCount != 0 {
-			self.viewLabel.isHidden = true
-			for row in 0...viewModel.socialProjects.count {
-				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
-					return }
-				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 0, forProjectAt: row)
-				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 0, forProjectAt: row)
-				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 0, forProjectAt: row)
-			}
-			
-		}
-		viewLabel.text = "Não há projetos cadastrados para essa categoria."
-		self.viewLabel.isHidden = false
-	}
-	
-	@objc func reloadProjectCollectionView1() {
-		if viewModel.culturalCount != 0 {
-			self.viewLabel.isHidden = true
-			for row in 0...viewModel.cultureProjects.count {
-				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
-					return }
-				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 1, forProjectAt: row)
-				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 1, forProjectAt: row)
-				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 1, forProjectAt: row)
-			}
-		}
-		viewLabel.text = "Não há projetos cadastrados para essa categoria."
-		self.viewLabel.isHidden = false
-	}
-	
-	@objc func reloadProjectCollectionView2() {
-		if viewModel.personalCount != 0 {
-			self.viewLabel.isHidden = true
-			for row in 0...viewModel.personalProjects.count {
-				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
-					return }
-				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 2, forProjectAt: row)
-				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 2, forProjectAt: row)
-				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 2, forProjectAt: row)
-			}
-		}
-		viewLabel.text = "Não há projetos cadastrados para essa categoria."
-		viewLabel.isHidden = false
-	}
-	
-	@objc func reloadProjectCollectionView3() {
-		if viewModel.entrepreneurialCount !=  0 {
-			self.viewLabel.isHidden = true
-			for row in 0...viewModel.businessProjects.count {
-				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
-					return }
-				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 3, forProjectAt: row)
-				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 3, forProjectAt: row)
-				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 3, forProjectAt: row)
-			}
-		}
-		viewLabel.text = "Não há projetos cadastrados para essa categoria."
-		viewLabel.isHidden = false
-	}
-	
-	@objc func reloadProjectCollectionView4() {
-		if viewModel.researchCount != 0 {
-			self.viewLabel.isHidden = true
-			for row in 0...viewModel.researchProjects.count {
-				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
-					return }
-				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 4, forProjectAt: row)
-				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 4, forProjectAt: row)
-				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 4, forProjectAt: row)
-			}
-		}
-		viewLabel.text = "Não há projetos cadastrados para essa categoria."
-		viewLabel.isHidden = false
-	}
 }
 
 extension FeedViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
+		
 		switch collectionView {
 		case categoryCollectionView:
 			return viewModel.getCategoryRowsNumber()
 		default:
+			self.viewLabel.isHidden = true
 			if self.categorySelected == 0 && viewModel.socialCount != 0 {
 				return viewModel.socialCount
 			} else if categorySelected == 1 && viewModel.culturalCount != 0 {
@@ -154,11 +69,12 @@ extension FeedViewController: UICollectionViewDataSource {
 				return viewModel.researchCount
 			}
 		}
+		self.viewLabel.isHidden = false
+		self.viewLabel.text = "Não há projetos cadastrados para essa categoria."
+		if firstCellState == 0 {
+			viewLabel.text = "Carregando..."
+		}
 		return 0
-	}
-	
-	func numberOfSections(in collectionView: UICollectionView) -> Int {
-		return 1
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -171,7 +87,6 @@ extension FeedViewController: UICollectionViewDataSource {
 				feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
 				if indexPath.row == 0 {
 					if firstCellState == 0 {
-						NotificationCenter.default.post(name: .category0, object: nil)
 						viewModel.categorySelectConfiguration(cell: feedCategoryCollectionCell, indexPath: indexPath)
 						return feedCategoryCollectionCell
 					} else {
@@ -201,6 +116,10 @@ extension FeedViewController: UICollectionViewDataSource {
 				feedProjectCollectionCell.layer.shadowOffset = .zero
 				feedProjectCollectionCell.layer.shadowRadius = 4
 				feedProjectCollectionCell.layer.shadowOpacity = 0.3
+				feedProjectCollectionCell.projectName.text = viewModel.getProjectTitle(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+				feedProjectCollectionCell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+				feedProjectCollectionCell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+				
 				return feedProjectCollectionCell
 			}
 		}
@@ -235,7 +154,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 			selectedCell.touched = true
 
 			switch indexPath.row {
-				
 			case 1:
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
 				viewModel.deselect(cells: [
@@ -243,10 +161,9 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 					viewModel.createCell2(collectionView: collectionView),
 					viewModel.createCell3(collectionView: collectionView),
 					viewModel.createCell4(collectionView: collectionView)], indexes: [0, 2, 3, 4])
-				self.categorySelected = 1 
-				NotificationCenter.default.post(name: .category1, object: nil)
+				self.categorySelected = 1
 				projectCollectionView.reloadData()
-	
+				
 			case 2:
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
 				viewModel.deselect(cells: [
@@ -255,7 +172,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 					viewModel.createCell3(collectionView: collectionView),
 					viewModel.createCell4(collectionView: collectionView)], indexes: [0, 1, 3, 4])
 				self.categorySelected = 2
-				NotificationCenter.default.post(name: .category2, object: nil)
 				projectCollectionView.reloadData()
 
 			case 3:
@@ -266,7 +182,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell4(collectionView: collectionView)], indexes: [0, 1, 2, 4])
 				self.categorySelected = 3
-				NotificationCenter.default.post(name: .category3, object: nil)
 				projectCollectionView.reloadData()
 
 			case 4:
@@ -277,7 +192,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell3(collectionView: collectionView)], indexes: [0, 1, 2, 3])
 				self.categorySelected = 4
-				NotificationCenter.default.post(name: .category4, object: nil)
 				projectCollectionView.reloadData()
 
 			default:
@@ -288,12 +202,13 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				viewModel.createCell3(collectionView: collectionView),
 				viewModel.createCell4(collectionView: collectionView)], indexes: [1, 2, 3, 4])
 				self.categorySelected = 0
-				NotificationCenter.default.post(name: .category0, object: nil)
 				projectCollectionView.reloadData()
 				
 			}
 		case projectCollectionView:
-			print("Contruir Specific Screen")
+				guard let cell = projectCollectionView.cellForItem(at: indexPath) as? FeedProjectCollectionCell else {
+				return }
+				print(cell.projectName.text)
 			
 		default:
 			print("Tratar o erro")
