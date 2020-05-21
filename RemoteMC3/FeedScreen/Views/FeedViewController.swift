@@ -20,8 +20,9 @@ class FeedViewController: UIViewController {
 	
 	var firstCellState: Int = 0
 	
+	var categorySelected = 0
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 		
 		navigationController?.navigationBar.prefersLargeTitles = true
 		categoryCollectionView.delegate = self
@@ -29,11 +30,17 @@ class FeedViewController: UIViewController {
 		
 		projectCollectionView.dataSource = self
 		projectCollectionView.delegate = self
-				
+		
 		viewModel.delegate = self
-        viewModel.loadProjects()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
-		    }
+		viewModel.loadProjects()
+		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView0), name: .category0, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView1), name: .category1, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView2), name: .category2, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView3), name: .category3, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(reloadProjectCollectionView4), name: .category4, object: nil)
+
+	}
 
     @objc func reloadUI() {
 		viewModel.addCategory()
@@ -41,6 +48,66 @@ class FeedViewController: UIViewController {
 		self.firstCellState = 0
         categoryCollectionView.reloadData()
     }
+	
+	@objc func reloadProjectCollectionView0() {
+		if viewModel.socialCount != 0 {
+			for row in 0...viewModel.socialProjects.count {
+				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
+					return }
+				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 0, forProjectAt: row)
+				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 0, forProjectAt: row)
+				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 0, forProjectAt: row)
+			}
+		}
+	}
+	
+	@objc func reloadProjectCollectionView1() {
+		if viewModel.culturalCount != 0 {
+			for row in 0...viewModel.cultureProjects.count {
+				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
+					return }
+				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 1, forProjectAt: row)
+				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 1, forProjectAt: row)
+				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 1, forProjectAt: row)
+			}
+		}
+	}
+	
+	@objc func reloadProjectCollectionView2() {
+		if viewModel.personalCount != 0 {
+			for row in 0...viewModel.personalProjects.count {
+				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
+					return }
+				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 2, forProjectAt: row)
+				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 2, forProjectAt: row)
+				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 2, forProjectAt: row)
+			}
+		}
+	}
+	
+	@objc func reloadProjectCollectionView3() {
+		if viewModel.entrepreneurialCount !=  0 {
+			for row in 0...viewModel.businessProjects.count {
+				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
+					return }
+				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 3, forProjectAt: row)
+				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 3, forProjectAt: row)
+				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 3, forProjectAt: row)
+			}
+		}
+	}
+	
+	@objc func reloadProjectCollectionView4() {
+		if viewModel.researchCount != 0 {
+			for row in 0...viewModel.researchProjects.count {
+				guard let cell = projectCollectionView.cellForItem(at: IndexPath(row: row, section: 0)) as? FeedProjectCollectionCell else {
+					return }
+				cell.projectName.text = viewModel.getProjectTitle(forCategoryAt: 4, forProjectAt: row)
+				cell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: 4, forProjectAt: row)
+				cell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: 4, forProjectAt: row)
+			}
+		}
+	}
 }
 
 extension FeedViewController: UICollectionViewDataSource {
@@ -50,8 +117,19 @@ extension FeedViewController: UICollectionViewDataSource {
 		case categoryCollectionView:
 			return viewModel.getCategoryRowsNumber()
 		default:
-			return viewModel.getProjectRowsNumber()
+			if self.categorySelected == 0 && viewModel.socialCount != 0 {
+				return viewModel.socialCount
+			} else if categorySelected == 1 && viewModel.culturalCount != 0 {
+				return viewModel.culturalCount
+			} else if categorySelected == 2 && viewModel.personalCount != 0 {
+				return viewModel.personalCount
+			} else if categorySelected == 3 && viewModel.entrepreneurialCount != 0 {
+				return viewModel.entrepreneurialCount
+			} else if categorySelected == 4 && viewModel.researchCount != 0 {
+				return viewModel.researchCount
+			}
 		}
+		return 0
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -64,6 +142,7 @@ extension FeedViewController: UICollectionViewDataSource {
 				feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
 				if indexPath.row == 0 {
 					if firstCellState == 0 {
+						NotificationCenter.default.post(name: .category0, object: nil)
 						viewModel.categorySelectConfiguration(cell: feedCategoryCollectionCell, indexPath: indexPath)
 						return feedCategoryCollectionCell
 					} else {
@@ -93,10 +172,6 @@ extension FeedViewController: UICollectionViewDataSource {
 				feedProjectCollectionCell.layer.shadowOffset = .zero
 				feedProjectCollectionCell.layer.shadowRadius = 4
 				feedProjectCollectionCell.layer.shadowOpacity = 0.3
-                feedProjectCollectionCell.projectName.text = viewModel.projects[indexPath.row].title
-                feedProjectCollectionCell.projectResponsible.text = viewModel.projects[indexPath.row].responsible.responsibleName
-                feedProjectCollectionCell.projectPhase.text = viewModel.projects[indexPath.row].phases.last
-				
 				return feedProjectCollectionCell
 			}
 		}
@@ -139,7 +214,9 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 					viewModel.createCell2(collectionView: collectionView),
 					viewModel.createCell3(collectionView: collectionView),
 					viewModel.createCell4(collectionView: collectionView)], indexes: [0, 2, 3, 4])
-//				fazer o reload da UI
+				self.categorySelected = 1 
+				NotificationCenter.default.post(name: .category1, object: nil)
+				projectCollectionView.reloadData()
 	
 			case 2:
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
@@ -148,7 +225,9 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 					viewModel.createCell1(collectionView: collectionView),
 					viewModel.createCell3(collectionView: collectionView),
 					viewModel.createCell4(collectionView: collectionView)], indexes: [0, 1, 3, 4])
-				//				fazer o reload da UI
+				self.categorySelected = 2
+				NotificationCenter.default.post(name: .category2, object: nil)
+				projectCollectionView.reloadData()
 
 			case 3:
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
@@ -157,7 +236,9 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				viewModel.createCell1(collectionView: collectionView),
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell4(collectionView: collectionView)], indexes: [0, 1, 2, 4])
-				//				fazer o reload da UI
+				self.categorySelected = 3
+				NotificationCenter.default.post(name: .category3, object: nil)
+				projectCollectionView.reloadData()
 
 			case 4:
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
@@ -166,7 +247,9 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				viewModel.createCell1(collectionView: collectionView),
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell3(collectionView: collectionView)], indexes: [0, 1, 2, 3])
-				//				fazer o reload da UI
+				self.categorySelected = 4
+				NotificationCenter.default.post(name: .category4, object: nil)
+				projectCollectionView.reloadData()
 
 			default:
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
@@ -175,7 +258,9 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell3(collectionView: collectionView),
 				viewModel.createCell4(collectionView: collectionView)], indexes: [1, 2, 3, 4])
-				//				fazer o reload da UI
+				self.categorySelected = 0
+				NotificationCenter.default.post(name: .category0, object: nil)
+				projectCollectionView.reloadData()
 				
 			}
 		case projectCollectionView:
@@ -189,6 +274,5 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 
 extension FeedViewController: FeedViewModelDelegate {
     func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
-        
     }
 }

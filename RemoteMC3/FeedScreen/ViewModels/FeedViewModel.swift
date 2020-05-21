@@ -33,7 +33,7 @@ class FeedViewModel {
 	
 	var researchProjects: [Project] = []
 	
-	var feedProjects: [[Project]] = [[]]
+	var feedProjects = [[Project]]()
 	
 	var unselectedImages: [String] = ["socialGrey", "cultureGrey", "personalGrey", "businessGrey", "researchGrey"]
 	
@@ -53,24 +53,23 @@ class FeedViewModel {
         return categorys.count
     }
     
-    func getProjectTitle(forProjectAt index: Int) -> String {
-        return projects[index].title
+	func getProjectTitle(forCategoryAt category: Int, forProjectAt index: Int) -> String {
+		return (feedProjects[category])[index].title
     }
     
-//    func getProjectResponsible(forProjectAt index: Int) -> User {
-//        return projects[index].responsible.responsibleName
-//    }
-    
-    func getProjectPhases(forProjectAt index: Int) -> [String] {
-        return projects[index].phases
+    func getProjectResponsible(forCategoryAt category: Int, forProjectAt index: Int) -> String {
+		return (feedProjects[category])[index].responsible.responsibleName
     }
     
-//    func getProjectCurrentPhase(forProjectAt index: Int) -> Phase {
-//        return projects[index].currentPhase
-//    }
+    func getProjectPhases(forCategoryAt category: Int, forProjectAt index: Int) -> [String] {
+        return (feedProjects[category])[index].phases
+    }
+    
+    func getProjectCurrentPhase(forCategoryAt category: Int, forProjectAt index: Int) -> String {
+		return (feedProjects[category])[index].phases.first ?? "nil"
+    }
 	
 	func loadProjects() {
-//		aqui tem que pegar do servidor
         service.getProjects({(response) in
             switch response {
             case .success(let res):
@@ -94,6 +93,7 @@ class FeedViewModel {
 					}
 				}
                 NotificationCenter.default.post(name: .updateProjects, object: nil)
+				self.addFeedProjects()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -185,8 +185,7 @@ class FeedViewModel {
 			cell.touched = false
 		}
 	}
-	
-//	MARK: - TODO: Handling error
+
 	func createCell0(collectionView: UICollectionView) -> FeedCategoryCollectionCell {
 		let index0: IndexPath = IndexPath(row: 0, section: 0)
 		
@@ -236,4 +235,9 @@ class FeedViewModel {
 
 extension NSNotification.Name {
     static let updateProjects = NSNotification.Name("update_objectives_collection")
+	static let category0 = NSNotification.Name("category_0_selected")
+	static let category1 = NSNotification.Name("category_1_selected")
+	static let category2 = NSNotification.Name("category_2_selected")
+	static let category3 = NSNotification.Name("category_3_selected")
+	static let category4 = NSNotification.Name("category_4_selected")
 }
