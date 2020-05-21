@@ -77,9 +77,16 @@ class CreateProjectViewController: UIViewController {
 	}
 	
 	@IBAction func createProjectAction(_ sender: Any) {
-        viewModel.createProject(title: "ProjetoTeste", description: "", start: "10-02-2010", end: "20-10-2020", phases: ["Etapa 1"], responsible:
-            User(name: "Edgar", email: "edgar_email@email.com", projects: nil), users:
-            [User(name: "Cassia", email: "cassia_email@email.com", projects: nil)])
+        //TODO: Fezer verificação se os campos estão vazios
+        viewModel.title = projectTitle.text!
+        viewModel.description = projectDescription.text!
+        viewModel.organization = projectInstitution.text!
+        viewModel.start = projectStart.text!
+        viewModel.end = projectEnd.text!
+        viewModel.category = projectCategory.text!
+        viewModel.createProject()
+//        viewModel.phases = project
+//        responsible: User = User(name: "Teste", email: "Test", projects: nil)
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {

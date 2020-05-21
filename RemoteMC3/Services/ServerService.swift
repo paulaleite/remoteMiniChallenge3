@@ -8,10 +8,22 @@
 
 import Foundation
 
-class ServerService {
+class ServerService: CommunicationProtocol {
     
-    func createNewProject(_ completion: @escaping (Result<Any, Error>) -> Void) {
-        
+    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
+        URLSession.shared.dataTask(with: .getProjects) { data, _, error in
+            if let data = data {
+                do {
+                    let res = try JSONDecoder().decode(Response.self, from: data)
+                    print(res.result)
+                    DispatchQueue.main.async {
+                        completion(.success(res))
+                    }
+                } catch let error {
+                    print(error)
+                }
+            }
+        }.resume()
     }
     
     func getUsers(_ completion: @escaping (Result<User, Error>) -> Void) {
@@ -29,27 +41,46 @@ class ServerService {
         }.resume()
     }
     
-}
+    func createProject(project: Project, _ completion: @escaping (Result<Any, Error>) -> Void) {
+        let session = URLSession.shared
+        var request = URLRequest(url: .createProject)
+        request.httpMethod = "POST"
 
-extension ServerService: FeedViewModelDelegate {
-    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
-        URLSession.shared.dataTask(with: .getProjects) { data, _, error in
-            if let data = data {
-                do {
-                    let res = try JSONDecoder().decode(Response.self, from: data)
-                    print(res.result)
-                    DispatchQueue.main.async {
-                        completion(.success(res))
-                    }
-                } catch let error {
-                    print(error)
-                }
+        do {
+            let req = Requisition(userId: project.responsible.responsibleId, project: project)
+            let jsonData = try JSONEncoder().encode(req)
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+               print(JSONString)
             }
-        }.resume()
-    }
-}
+            request.httpBody = jsonData
+        } catch let error {
+            print(error.localizedDescription)
+        }
 
-extension ServerService: SpecificProjectDelegate {
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+
+        session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+            guard error == nil else {
+                return
+            }
+
+            guard let data = data else {
+                return
+            }
+
+            do {
+                //create json object from data
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                    // handle json...
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }).resume()
+    }
+    
     func getUsersBy(users ids: [String], _ completion: @escaping (Result<User, Error>) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: .getUsersByIDs)
@@ -98,6 +129,10 @@ extension URL {
     
     static var getUsersByIDs: URL {
         makeForEndpoint("users/ids")
+    }
+    
+    static var createProject: URL {
+        makeForEndpoint("createProject")
     }
 }
 
