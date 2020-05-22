@@ -231,6 +231,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mh5-WL-syt">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Carregando...">
+                                        <attributes>
+                                            <color key="NSColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="17" name="SFProRounded-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jks-Ml-UlU">
                                 <rect key="frame" x="0.0" y="108" width="375" height="140"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -307,16 +320,16 @@
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2Er-ps-ett">
                                 <rect key="frame" x="0.0" y="258" width="375" height="471"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="22" minimumInteritemSpacing="0.0" id="2od-2V-Oyj">
-                                    <size key="itemSize" width="298" height="260"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="hfa-aZ-ufN">
+                                    <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedProjectCollectionCell" id="lUR-eC-mOv" customClass="FeedProjectCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
-                                        <rect key="frame" x="38.666666666666664" y="10" width="298" height="260"/>
+                                        <rect key="frame" x="38.666666666666664" y="20" width="298" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cyP-pN-F4j">
                                             <rect key="frame" x="0.0" y="0.0" width="298" height="260"/>
@@ -377,7 +390,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" smartDashesType="yes" textContentType="name"/>
                                                 </textView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyX-ab-hsr">
-                                                    <rect key="frame" x="122.66666666666667" y="61" width="155.33333333333331" height="187"/>
+                                                    <rect key="frame" x="122.66666666666669" y="61" width="100.33333333333331" height="187"/>
                                                     <color key="backgroundColor" red="0.97933279418583319" green="0.97807776492647269" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
@@ -394,7 +407,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="4cH-0b-hPY" secondAttribute="trailing" constant="16" id="0Z0-UL-73V"/>
-                                                <constraint firstAttribute="trailing" secondItem="gyX-ab-hsr" secondAttribute="trailing" constant="20" id="4pM-nQ-tse"/>
+                                                <constraint firstAttribute="trailing" secondItem="gyX-ab-hsr" secondAttribute="trailing" constant="75" id="4pM-nQ-tse"/>
                                                 <constraint firstAttribute="bottom" secondItem="gyX-ab-hsr" secondAttribute="bottom" constant="12" id="7v1-8i-zmo"/>
                                                 <constraint firstItem="Oh4-qC-yq8" firstAttribute="top" secondItem="4cH-0b-hPY" secondAttribute="bottom" constant="10" id="DRD-Zm-dVS"/>
                                                 <constraint firstItem="gyX-ab-hsr" firstAttribute="top" secondItem="Oh4-qC-yq8" secondAttribute="bottom" constant="-5" id="Dg2-O6-bWX"/>
@@ -416,7 +429,6 @@
                                             <outlet property="projectName" destination="4cH-0b-hPY" id="7W1-QK-3fH"/>
                                             <outlet property="projectPhase" destination="gyX-ab-hsr" id="RUo-tK-S6h"/>
                                             <outlet property="projectResponsible" destination="4OQ-mp-irF" id="WvB-hS-ehD"/>
-                                            <segue destination="IAs-Y9-o1Q" kind="show" id="DrY-aq-aB3"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -425,8 +437,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Er-ps-ett" secondAttribute="bottom" id="Ah6-6J-cc9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mh5-WL-syt" secondAttribute="trailing" id="DmJ-UK-eOr"/>
+                            <constraint firstItem="Mh5-WL-syt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JAq-QY-S3J"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jks-Ml-UlU" secondAttribute="trailing" id="OjK-eV-9us"/>
+                            <constraint firstItem="Mh5-WL-syt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ygy-iN-x9G"/>
                             <constraint firstItem="jks-Ml-UlU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bSS-zm-Iah"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mh5-WL-syt" secondAttribute="bottom" id="bmi-rF-D5Z"/>
                             <constraint firstItem="2Er-ps-ett" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dKV-3Q-J1v"/>
                             <constraint firstItem="2Er-ps-ett" firstAttribute="top" secondItem="jks-Ml-UlU" secondAttribute="bottom" constant="10" id="eDX-mV-5Ez"/>
                             <constraint firstItem="2Er-ps-ett" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fsp-3c-hOC"/>
@@ -444,6 +460,7 @@
                     <connections>
                         <outlet property="categoryCollectionView" destination="jks-Ml-UlU" id="ADS-zY-Dz6"/>
                         <outlet property="projectCollectionView" destination="2Er-ps-ett" id="TBn-5x-fvy"/>
+                        <outlet property="viewLabel" destination="Mh5-WL-syt" id="5LU-vo-Tiv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -453,13 +470,13 @@
         <!--Specific Project View Controller-->
         <scene sceneID="IOO-5O-b5W">
             <objects>
-                <viewController id="IAs-Y9-o1Q" customClass="SpecificProjectViewController" customModule="RemoteMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SpecificProjectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IAs-Y9-o1Q" customClass="SpecificProjectViewController" customModule="RemoteMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OhX-qe-U2Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgg-hf-zPz">
-                                <rect key="frame" x="20" y="108" width="355" height="20"/>
+                                <rect key="frame" x="20" y="64" width="355" height="20"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Organização">
                                         <attributes>
@@ -472,7 +489,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1hH-sh-fuw">
-                                <rect key="frame" x="20" y="295.66666666666669" width="355" height="24"/>
+                                <rect key="frame" x="20" y="251.66666666666663" width="355" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Duração">
                                         <attributes>
@@ -484,7 +501,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gR-MS-M0N">
-                                <rect key="frame" x="20" y="228" width="335" height="24"/>
+                                <rect key="frame" x="20" y="184" width="335" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Responsável">
                                         <attributes>
@@ -496,7 +513,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOp-aR-Rqo">
-                                <rect key="frame" x="20" y="362.33333333333331" width="355" height="24"/>
+                                <rect key="frame" x="20" y="318.33333333333331" width="355" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Participantes">
                                         <attributes>
@@ -508,21 +525,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coloredDot" translatesAutoresizingMaskIntoConstraints="NO" id="qYN-st-d3v">
-                                <rect key="frame" x="20" y="324.66666666666669" width="15" height="15"/>
+                                <rect key="frame" x="20" y="280.66666666666669" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="gF2-qq-Wpd"/>
                                     <constraint firstAttribute="width" constant="15" id="wuh-YR-o7t"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coloredDot" translatesAutoresizingMaskIntoConstraints="NO" id="dyI-Mb-YS1">
-                                <rect key="frame" x="215" y="324.66666666666669" width="15" height="15"/>
+                                <rect key="frame" x="215" y="280.66666666666669" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="G2c-DB-fIX"/>
                                     <constraint firstAttribute="width" constant="15" id="cv3-FN-VdY"/>
                                 </constraints>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="u4x-QC-i1K">
-                                <rect key="frame" x="20" y="391.33333333333331" width="335" height="70"/>
+                                <rect key="frame" x="20" y="347.33333333333331" width="335" height="70"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="vld-Di-kBE"/>
@@ -582,7 +599,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx4-7M-HGK">
-                                <rect key="frame" x="20" y="476.33333333333331" width="355" height="24"/>
+                                <rect key="frame" x="20" y="432.33333333333331" width="355" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Etapas">
                                         <attributes>
@@ -594,7 +611,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h8a-H2-u0F">
-                                <rect key="frame" x="18" y="133" width="337" height="80"/>
+                                <rect key="frame" x="18" y="89" width="337" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="6Mg-ih-cel"/>
@@ -612,7 +629,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVG-S1-gf0">
-                                <rect key="frame" x="20" y="251.99999999999997" width="335" height="28.666666666666657"/>
+                                <rect key="frame" x="20" y="208" width="335" height="28.666666666666657"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Cacique">
                                         <attributes>
@@ -625,7 +642,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnP-Xr-rBC">
-                                <rect key="frame" x="45" y="317.33333333333331" width="120" height="30"/>
+                                <rect key="frame" x="45" y="273.33333333333331" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="HAP-IL-8ax"/>
                                     <constraint firstAttribute="height" constant="30" id="VWB-C7-8vw"/>
@@ -635,7 +652,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPv-k4-eeJ">
-                                <rect key="frame" x="235" y="317.33333333333331" width="120" height="30"/>
+                                <rect key="frame" x="235" y="273.33333333333331" width="120" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="hg4-Du-2TC"/>
                                     <constraint firstAttribute="height" constant="30" id="rCv-vk-7wU"/>
@@ -645,7 +662,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="eR2-ug-zYf">
-                                <rect key="frame" x="20" y="505.33333333333331" width="335" height="223.66666666666669"/>
+                                <rect key="frame" x="20" y="461.33333333333326" width="335" height="316.66666666666674"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpecificProjectTableCell" id="ScX-HF-vs8" customClass="SpecificProjectTableCell" customModule="RemoteMC3" customModuleProvider="target">
@@ -938,7 +955,7 @@
                                                     </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <attributes>
                                                                 <color key="NSColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <font key="NSFont" size="14" name="MuktaMahee-Medium"/>
@@ -956,7 +973,7 @@
                                                     </constraints>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <attributes>
                                                                 <color key="NSColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <font key="NSFont" size="14" name="MuktaMahee-Medium"/>

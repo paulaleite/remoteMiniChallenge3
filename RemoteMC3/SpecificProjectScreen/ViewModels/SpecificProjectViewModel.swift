@@ -10,28 +10,55 @@ import Foundation
 import UIKit
 
 class SpecificProjectViewModel {
-	
-//    var projsect = Project(title: "Projeto Teste", description: "Teste", category: "Social", start: "10-20-2020", end: "20-20-2020", phases: ["Aaaa"], responsible:
-//        User(name: "Edgar", email: "edgar_email@email.com", projects: nil), users:
-//        [User(name: "Edgar", email: "edgar_email@email.com", projects: nil)])
     
-    var project = Project(phases: ["Aaaa"], users: ["Edgar"], title: "Projeto Teste",
-                          description: "Teste", start: "10-20-2020", end: "20-20-2020",
-                          category: "Social", responsible: Responsible(responsibleId: "adfadfads", responsibleName: "Edgar"))
+	var project: Project?
     
-//	var project = Project(title: "Projeto", description:
-//	"Aqui vai haver a descrição do projetoLorem ipsum dolor sit amet, consectetur adipiscing elit,sed Aqui vai haver a descrição do projetoLorem elit,sed", college: College(name: "Mackenzie"),
-//											   responsible: User(firstName: "Carroselina", lastName: "Sgroi"),
-//											   members: [User(firstName: "Edgar", lastName: "Sgroikkkkkkkkkk"), User(firstName: "Edgar", lastName: "Sgroi"),
-//														 User(firstName: "Edgar", lastName: "Sgroi"), User(firstName: "Edgar", lastName: "Sgroi"), User(firstName: "Edgar", lastName: "Sgroi"), User(firstName: "Edgar", lastName: "Sgroi")],
-//											   duration: (Date(), Date()),
-//											   currentPhase: Phase(title: "Primeira"),
-//											   phases: [Phase(title: "Pesquisa sobre como fazer o design Pesquisa sobre como fazer o design Pesquisa sobre como fazer o design Pesquisa sobre como fazer o design "),
-//														Phase(title: "bbbbb"),
-//														Phase(title: "aaaaaaaa")],
-//											   category: "Social", image: "cas")
+	init(project: Project) {
+		self.project = project
+	}
 	
 	func getProject() -> Project {
-		return project
+		return project!
 	}
+	
+	func getProjectTitle() -> String {
+		return project?.title ?? "nil"
+	}
+	
+	func getProjectDescription() -> String {
+		return project?.description ?? "nil"
+	}
+	
+//	func getProjectOrganization() -> String {
+//		return project? ?? "nil"
+//	}
+	
+	func getPhase(index: Int) -> String {
+		return project?.phases[index] ?? "nil"
+	}
+	
+	func getResponsible() -> String{
+		return project?.responsible.responsibleName ?? "nil"
+	}
+	func getUser(index: Int) -> String {
+		return project?.users[index] ?? "nil"
+	}
+	
+	func getStart() -> String {
+		return project?.start ?? "nil"
+	}
+	
+	func getEnd() -> String {
+		return project?.end ?? "nil"
+	}
+	
+	func getNumberOfUsers() -> Int {
+		return project?.users.count ?? 0
+	}
+	
+	func getNumberOfPhases() -> Int {
+		return project?.phases.count ?? 0
+	}
+	
 }
+
