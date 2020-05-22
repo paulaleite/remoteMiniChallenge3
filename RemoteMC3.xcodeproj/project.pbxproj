@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E569D2A2478698E0035CADA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D292478698E0035CADA /* LoginViewController.swift */; };
+		1E569D30247869C70035CADA /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D2E247869C70035CADA /* AuthState.swift */; };
+		1E569D31247869C70035CADA /* SignInWithAppleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */; };
 		1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FD96245B634200182C41 /* AppDelegate.swift */; };
 		1E67FD99245B634200182C41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FD98245B634200182C41 /* SceneDelegate.swift */; };
 		1E67FD9E245B634200182C41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E67FD9C245B634200182C41 /* Main.storyboard */; };
@@ -68,6 +71,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E569D292478698E0035CADA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1E569D2E247869C70035CADA /* AuthState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
+		1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleManager.swift; sourceTree = "<group>"; };
 		1E67FD93245B634200182C41 /* RemoteMC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteMC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E67FD96245B634200182C41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E67FD98245B634200182C41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +149,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E569D2D247869BB0035CADA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1E569D2E247869C70035CADA /* AuthState.swift */,
+				1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		1E67FD8A245B634200182C41 = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +447,7 @@
 		CB9175AE246B62A200D10580 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				1E569D2D247869BB0035CADA /* Helpers */,
 				CB9175B1246B62B900D10580 /* Models */,
 				CB9175B0246B62B300D10580 /* Views */,
 				CB9175AF246B62AD00D10580 /* ViewModels */,
@@ -449,6 +465,7 @@
 		CB9175B0246B62B300D10580 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1E569D292478698E0035CADA /* LoginViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -616,6 +633,7 @@
 				CB4FFD9F2474606200DB480B /* MembersViewController.swift in Sources */,
 				CB4FFDA12474609300DB480B /* MembersCollectionCell.swift in Sources */,
 				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
+				1E569D30247869C70035CADA /* AuthState.swift in Sources */,
 				4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */,
 				4F339D5B24747D56009F5102 /* MembersViewModel.swift in Sources */,
 				CB7C366D2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift in Sources */,
@@ -637,9 +655,11 @@
 				CBF273DA246EEB66004027A4 /* Extension.swift in Sources */,
 				CB4FFDA5247465B000DB480B /* Member.swift in Sources */,
 				CB7C366B2471D2FC00B7D9FD /* SpecificProjectViewModel.swift in Sources */,
+				1E569D2A2478698E0035CADA /* LoginViewController.swift in Sources */,
 				CB0778EC24709F4F00D4AA0E /* VerticallyCenteredTextView.swift in Sources */,
 				25E79839246F0CE8009E35C0 /* ConfigurationViewController.swift in Sources */,
 				1E67FD99245B634200182C41 /* SceneDelegate.swift in Sources */,
+				1E569D31247869C70035CADA /* SignInWithAppleManager.swift in Sources */,
 				4F8B403C2469EDE300189CA6 /* FeedProjectCollectionCell.swift in Sources */,
 				25FA6C52246DC82600F4837F /* NotificationViewController.swift in Sources */,
 				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
@@ -823,7 +843,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 93JG72P729;
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -843,7 +863,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 93JG72P729;
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

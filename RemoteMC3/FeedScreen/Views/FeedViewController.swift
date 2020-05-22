@@ -50,6 +50,27 @@ class FeedViewController: UIViewController {
 		
 	}
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        SignInWithAppleManager.checkUserAuth { (authState) in
+            switch authState {
+            case .undefined:
+                let controller = LoginViewController()
+                controller.modalPresentationStyle = .fullScreen
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            case .signedOut:
+                let controller = LoginViewController()
+                controller.modalPresentationStyle = .fullScreen
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            case .signedIn:
+                print("SignedIn")
+            }
+        }
+    }
+    
     @objc func reloadUI() {
         projectCollectionView.reloadData()
     }
@@ -278,5 +299,15 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 extension FeedViewController: FeedViewModelDelegate {
     func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
         
+    }
+}
+
+extension FeedViewController: LoginViewControllerDelegate {
+    func didFinishAuth() {
+        guard let userIdentifierKey = UserDefaults.standard.string(forKey: SignInWithAppleManager.userIdentifierKey) else {
+            return
+        }
+        
+        print("User identifier: \(userIdentifierKey)")
     }
 }
