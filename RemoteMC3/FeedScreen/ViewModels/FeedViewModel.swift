@@ -9,14 +9,6 @@
 import Foundation
 import UIKit
 
-struct Response: Codable {
-    let result: [Project]
-}
-
-protocol FeedViewModelDelegate: class {
-    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void)
-}
-
 class FeedViewModel {
     let service = ServerService()
 	
@@ -37,8 +29,6 @@ class FeedViewModel {
 	var feedProjects = [[Project]]()
 	
 	var unselectedImages: [String] = ["socialGrey", "cultureGrey", "personalGrey", "businessGrey", "researchGrey"]
-	
-	weak var delegate: FeedViewModelDelegate?
 	
     var socialCount = 0
 	var researchCount = 0

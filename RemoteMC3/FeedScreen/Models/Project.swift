@@ -12,6 +12,7 @@ struct Project: Codable {
     var phases: [String]
     var users: [String]
     var title: String
+    var organization: String?
     var description: String
     var start: String
     var end: String

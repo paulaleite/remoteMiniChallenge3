@@ -33,7 +33,9 @@ class FeedViewController: UIViewController {
 		
 		projectCollectionView.dataSource = self
 		projectCollectionView.delegate = self
-		
+//		viewModel.delegate = self
+        viewModel.loadProjects()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
 		viewModel.delegate = self
 		
 		viewModel.loadProjects()
@@ -217,9 +219,4 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 			print("Tratar o erro")
 		}
 	}
-}
-
-extension FeedViewController: FeedViewModelDelegate {
-    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
-    }
 }
