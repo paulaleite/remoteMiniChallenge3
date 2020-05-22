@@ -390,7 +390,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" smartDashesType="yes" textContentType="name"/>
                                                 </textView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyX-ab-hsr">
-                                                    <rect key="frame" x="122.66666666666667" y="61" width="155.33333333333331" height="187"/>
+                                                    <rect key="frame" x="122.66666666666669" y="61" width="100.33333333333331" height="187"/>
                                                     <color key="backgroundColor" red="0.97933279418583319" green="0.97807776492647269" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
@@ -407,7 +407,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="4cH-0b-hPY" secondAttribute="trailing" constant="16" id="0Z0-UL-73V"/>
-                                                <constraint firstAttribute="trailing" secondItem="gyX-ab-hsr" secondAttribute="trailing" constant="20" id="4pM-nQ-tse"/>
+                                                <constraint firstAttribute="trailing" secondItem="gyX-ab-hsr" secondAttribute="trailing" constant="75" id="4pM-nQ-tse"/>
                                                 <constraint firstAttribute="bottom" secondItem="gyX-ab-hsr" secondAttribute="bottom" constant="12" id="7v1-8i-zmo"/>
                                                 <constraint firstItem="Oh4-qC-yq8" firstAttribute="top" secondItem="4cH-0b-hPY" secondAttribute="bottom" constant="10" id="DRD-Zm-dVS"/>
                                                 <constraint firstItem="gyX-ab-hsr" firstAttribute="top" secondItem="Oh4-qC-yq8" secondAttribute="bottom" constant="-5" id="Dg2-O6-bWX"/>
