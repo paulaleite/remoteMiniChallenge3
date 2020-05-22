@@ -34,9 +34,15 @@ class SpecificProjectViewController: UIViewController {
 		
 		navigationController?.navigationBar.prefersLargeTitles = true
         self.title = viewModel?.getProject().title
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadUsersCollection), name: NSNotification.Name("update_users"), object: nil)
 		
 		setInformation()
 	}
+    
+    @objc func reloadUsersCollection() {
+        usersCollectionView.reloadData()
+    }
 	
 	func setInformation() {
 		projectDescryption.text = viewModel?.getProjectDescription()
@@ -65,7 +71,7 @@ extension SpecificProjectViewController: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
-			specificProjectCollectionCell.userName.text  = viewModel?.getUser(index: indexPath.row)
+            specificProjectCollectionCell.userName.text  = viewModel?.getUser(index: indexPath.row)?.name
 			specificProjectCollectionCell.userPhoto.image = #imageLiteral(resourceName: "personalColored")
 			specificProjectCollectionCell.userPhoto.layer.cornerRadius = 25
 			

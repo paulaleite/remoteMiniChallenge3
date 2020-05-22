@@ -8,6 +8,11 @@
 
 import Foundation
 
-struct Response: Codable {
+struct ResponseProjects: Codable {
     let result: [Project]
 }
+
+struct ResponseUsers: Codable {
+    let result: [User]
+}
+
