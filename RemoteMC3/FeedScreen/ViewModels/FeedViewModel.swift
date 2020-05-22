@@ -46,6 +46,10 @@ class FeedViewModel {
 	var culturalCount = 0
 	var entrepreneurialCount = 0
 	
+	func getProject(forCategoryAt category: Int, forProjectAt index: Int) -> Project {
+		return feedProjects[category][index]
+	}
+	
     func getProjectRowsNumber() -> Int {
         return projects.count
     }

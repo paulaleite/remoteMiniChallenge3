@@ -206,10 +206,13 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				
 			}
 		case projectCollectionView:
-				guard let cell = projectCollectionView.cellForItem(at: indexPath) as? FeedProjectCollectionCell else {
-				return }
-				print(cell.projectName.text)
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			
+			let specificVC = storyboard.instantiateViewController(withIdentifier: "SpecificProjectViewController") as? SpecificProjectViewController
+			
+			specificVC?.project = viewModel.getProject(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+			
+			self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
 		default:
 			print("Tratar o erro")
 		}

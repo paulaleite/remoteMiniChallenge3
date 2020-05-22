@@ -3,7 +3,6 @@ opt_in_rules:
   - closure_end_indentation
   - closure_spacing
   - conditional_returns_on_newline
-  - force_unwrapping
   - implicit_return
   
 disabled_rules:

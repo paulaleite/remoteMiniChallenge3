@@ -47,6 +47,9 @@
 		CBBDE668246C634A005B52D0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDE667246C634A005B52D0 /* Category.swift */; };
 		CBC7751D246EE0D900D1B70F /* CreateProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7751C246EE0D900D1B70F /* CreateProjectViewModel.swift */; };
 		CBC7751F246EE6DC00D1B70F /* SpecificProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7751E246EE6DC00D1B70F /* SpecificProjectViewController.swift */; };
+		CBE3DD8424773B7B00859714 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE3DD8124773B7B00859714 /* Storyboarded.swift */; };
+		CBE3DD8524773B7B00859714 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE3DD8224773B7B00859714 /* MainCoordinator.swift */; };
+		CBE3DD8624773B7B00859714 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE3DD8324773B7B00859714 /* Coordinator.swift */; };
 		CBF273DA246EEB66004027A4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF273D9246EEB66004027A4 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +118,9 @@
 		CBBDE667246C634A005B52D0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CBC7751C246EE0D900D1B70F /* CreateProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectViewModel.swift; sourceTree = "<group>"; };
 		CBC7751E246EE6DC00D1B70F /* SpecificProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProjectViewController.swift; sourceTree = "<group>"; };
+		CBE3DD8124773B7B00859714 /* Storyboarded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		CBE3DD8224773B7B00859714 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		CBE3DD8324773B7B00859714 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CBF273D9246EEB66004027A4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +172,7 @@
 		1E67FD95245B634200182C41 /* RemoteMC3 */ = {
 			isa = PBXGroup;
 			children = (
+				CBE3DD8024773B7B00859714 /* Coordinator */,
 				CB9175AE246B62A200D10580 /* LoginScreen */,
 				CB9175A5246B5EC800D10580 /* FeedScreen */,
 				CB9175A6246B5FAE00D10580 /* CreateProjectScreen */,
@@ -461,6 +468,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		CBE3DD8024773B7B00859714 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				CBE3DD8124773B7B00859714 /* Storyboarded.swift */,
+				CBE3DD8224773B7B00859714 /* MainCoordinator.swift */,
+				CBE3DD8324773B7B00859714 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -615,6 +632,7 @@
 			files = (
 				CB4FFD9F2474606200DB480B /* MembersViewController.swift in Sources */,
 				CB4FFDA12474609300DB480B /* MembersCollectionCell.swift in Sources */,
+				CBE3DD8624773B7B00859714 /* Coordinator.swift in Sources */,
 				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
 				4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */,
 				4F339D5B24747D56009F5102 /* MembersViewModel.swift in Sources */,
@@ -630,6 +648,7 @@
 				25FA6C50246DC6A100F4837F /* RequestNotification.swift in Sources */,
 				25E7983D246F115A009E35C0 /* ConfigurationCollectionCell.swift in Sources */,
 				1E67FDA1245B634200182C41 /* RemoteMC3.xcdatamodeld in Sources */,
+				CBE3DD8424773B7B00859714 /* Storyboarded.swift in Sources */,
 				CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
 				4F8B40352469E50700189CA6 /* User.swift in Sources */,
@@ -645,6 +664,7 @@
 				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
 				4F8B40372469E52F00189CA6 /* Phase.swift in Sources */,
 				CBC7751D246EE0D900D1B70F /* CreateProjectViewModel.swift in Sources */,
+				CBE3DD8524773B7B00859714 /* MainCoordinator.swift in Sources */,
 				CBBDE668246C634A005B52D0 /* Category.swift in Sources */,
 				25E79837246F0A8C009E35C0 /* ConfigurationProject.swift in Sources */,
 				25FA6C54246DCA4100F4837F /* NotificationViewModel.swift in Sources */,
