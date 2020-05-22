@@ -47,7 +47,6 @@ class CreateProjectViewModel {
                     print(error.localizedDescription)
                 }
             })
-			
 		}
 	}
 	
