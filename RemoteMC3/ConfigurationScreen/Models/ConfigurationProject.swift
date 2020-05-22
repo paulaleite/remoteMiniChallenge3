@@ -12,6 +12,6 @@ import UIKit
 struct ConfigurationProject {
     var title: String
     var responsable: String
-    var phase:String
+    var phase: String
 
 }

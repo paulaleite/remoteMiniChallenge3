@@ -77,9 +77,16 @@ class CreateProjectViewController: UIViewController {
 	}
 	
 	@IBAction func createProjectAction(_ sender: Any) {
-        viewModel.createProject(title: "ProjetoTeste", description: "", start: "10-02-2010", end: "20-10-2020", phases: ["Etapa 1"], responsible:
-            User(name: "Edgar", email: "edgar_email@email.com", projects: nil), users:
-            [User(name: "Cassia", email: "cassia_email@email.com", projects: nil)])
+        //TODO: Fezer verificação se os campos estão vazios
+        viewModel.title = projectTitle.text!
+        viewModel.description = projectDescription.text!
+        viewModel.organization = projectInstitution.text!
+        viewModel.start = projectStart.text!
+        viewModel.end = projectEnd.text!
+        viewModel.category = projectCategory.text!
+        viewModel.createProject()
+//        viewModel.phases = project
+//        responsible: User = User(name: "Teste", email: "Test", projects: nil)
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {
@@ -203,11 +210,11 @@ extension CreateProjectViewController: UITableViewDataSource {
 
 extension CreateProjectViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (action, view, success) in
+		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (_ ,_,_) in
 			self.viewModel.phasesName.remove(at: indexPath.row)
 			self.phaseCount-=1
             self.phaseTableView.reloadData()
-            success(true)
+//            success(true)
         })
 		return UISwipeActionsConfiguration(actions: [deleteAction])
 	}

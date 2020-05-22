@@ -20,8 +20,12 @@ class FeedViewController: UIViewController {
 	
 	var firstCellState: Int = 0
 	
+	@IBOutlet var viewLabel: UILabel!
+	
+	var categorySelected = 0
+	
 	override func viewDidLoad() {
-        super.viewDidLoad()
+		super.viewDidLoad()
 		
 		navigationController?.navigationBar.prefersLargeTitles = true
 		categoryCollectionView.delegate = self
@@ -29,25 +33,14 @@ class FeedViewController: UIViewController {
 		
 		projectCollectionView.dataSource = self
 		projectCollectionView.delegate = self
-				
-		viewModel.delegate = self
+//		viewModel.delegate = self
         viewModel.loadProjects()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
+		viewModel.delegate = self
 		
-		    }
-
-	override func viewDidAppear(_ animated: Bool) {
-		let indexPath: IndexPath = IndexPath(row: 0, section: 0)
-		categoryCollectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-		guard let selectedCell = categoryCollectionView.cellForItem(at: indexPath) as? FeedCategoryCollectionCell else {
-					return }
+		viewModel.loadProjects()
 		
-		selectedCell.touched = true
-		viewModel.select(cell: selectedCell, indexPath: indexPath)
-		viewModel.deselect(cells: [viewModel.createCell1(collectionView: categoryCollectionView),
-								   viewModel.createCell2(collectionView: categoryCollectionView), viewModel.createCell3(collectionView: categoryCollectionView),
-								   viewModel.createCell4(collectionView: categoryCollectionView)], indexes: [1, 2, 3, 4])
-		
+		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
 	}
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,23 +63,41 @@ class FeedViewController: UIViewController {
             }
         }
     }
-    
+
     @objc func reloadUI() {
+		viewModel.addCategory()
         projectCollectionView.reloadData()
+		self.firstCellState = 0
+        categoryCollectionView.reloadData()
     }
 }
 
 extension FeedViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
+		
 		switch collectionView {
 		case categoryCollectionView:
-			viewModel.addCategory()
 			return viewModel.getCategoryRowsNumber()
 		default:
-//			viewModel.addProjects()
-			return viewModel.getProjectRowsNumber()
+			self.viewLabel.isHidden = true
+			if self.categorySelected == 0 && viewModel.socialCount != 0 {
+				return viewModel.socialCount
+			} else if categorySelected == 1 && viewModel.culturalCount != 0 {
+				return viewModel.culturalCount
+			} else if categorySelected == 2 && viewModel.personalCount != 0 {
+				return viewModel.personalCount
+			} else if categorySelected == 3 && viewModel.entrepreneurialCount != 0 {
+				return viewModel.entrepreneurialCount
+			} else if categorySelected == 4 && viewModel.researchCount != 0 {
+				return viewModel.researchCount
+			}
 		}
+		self.viewLabel.isHidden = false
+		self.viewLabel.text = "Não há projetos cadastrados para essa categoria."
+		if firstCellState == 0 {
+			viewLabel.text = "Carregando..."
+		}
+		return 0
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -94,101 +105,28 @@ extension FeedViewController: UICollectionViewDataSource {
 		switch collectionView {
 		case categoryCollectionView:
 			if let feedCategoryCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCategoryCollectionCell", for: indexPath) as? FeedCategoryCollectionCell {
-				
+				feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.unselectedImages[indexPath.row])
+				feedCategoryCollectionCell.categoryName.text = viewModel.categorys[indexPath.row].name
+				feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
 				if indexPath.row == 0 {
 					if firstCellState == 0 {
-						feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[0].imagem)
-						feedCategoryCollectionCell.categoryName.text = viewModel.categorys[indexPath.row].name
-						feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
-						
-						if feedCategoryCollectionCell.touched == true {
-							feedCategoryCollectionCell.backgroundColor = .white
-							feedCategoryCollectionCell.layer.masksToBounds = false
-							feedCategoryCollectionCell.layer.cornerRadius = 37
-							feedCategoryCollectionCell.layer.shadowColor = UIColor.black.cgColor
-							feedCategoryCollectionCell.layer.shadowOffset = .zero
-							feedCategoryCollectionCell.layer.shadowRadius = 4
-							feedCategoryCollectionCell.layer.shadowOpacity = 0.3
-							feedCategoryCollectionCell.categoryName.textColor = .black
-							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
-							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
-							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
-							feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[0].imagem)
-						} else {
-							feedCategoryCollectionCell.backgroundColor = .white
-							feedCategoryCollectionCell.layer.masksToBounds = false
-							feedCategoryCollectionCell.layer.cornerRadius = 37
-							feedCategoryCollectionCell.layer.borderWidth = 1
-							feedCategoryCollectionCell.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
-							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
-							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-						}
-							return feedCategoryCollectionCell
+						viewModel.categorySelectConfiguration(cell: feedCategoryCollectionCell, indexPath: indexPath)
+						return feedCategoryCollectionCell
 					} else {
-						feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.unselectedImages[indexPath.row])
-						feedCategoryCollectionCell.categoryName.text = viewModel.categorys[indexPath.row].name
-						feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
-						
 						if feedCategoryCollectionCell.touched == true {
-							feedCategoryCollectionCell.backgroundColor = .white
-							feedCategoryCollectionCell.layer.masksToBounds = false
-							feedCategoryCollectionCell.layer.cornerRadius = 37
-							feedCategoryCollectionCell.layer.shadowColor = UIColor.black.cgColor
-							feedCategoryCollectionCell.layer.shadowOffset = .zero
-							feedCategoryCollectionCell.layer.shadowRadius = 4
-							feedCategoryCollectionCell.layer.shadowOpacity = 0.3
-							feedCategoryCollectionCell.categoryName.textColor = .black
-							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
-							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
-							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
-							feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[indexPath.row].imagem)
+							viewModel.categorySelectConfiguration(cell: feedCategoryCollectionCell, indexPath: indexPath)
 						} else {
-							feedCategoryCollectionCell.backgroundColor = .white
-							feedCategoryCollectionCell.layer.masksToBounds = false
-							feedCategoryCollectionCell.layer.cornerRadius = 37
-							feedCategoryCollectionCell.layer.borderWidth = 1
-							feedCategoryCollectionCell.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-							feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
-							feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
-							feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+							viewModel.categoryDeselectConfiguration(cell: feedCategoryCollectionCell, indexPath: indexPath)
 						}
 							return feedCategoryCollectionCell
-							
 					}
 				} else {
-					
-					feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.unselectedImages[indexPath.row])
-					feedCategoryCollectionCell.categoryName.text = viewModel.categorys[indexPath.row].name
-					feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
-					
 					if feedCategoryCollectionCell.touched == true {
-						viewModel.deselect(cells: [feedCategoryCollectionCell], indexes: [indexPath.row])
-						feedCategoryCollectionCell.backgroundColor = .white
-						feedCategoryCollectionCell.layer.masksToBounds = false
-						feedCategoryCollectionCell.layer.cornerRadius = 37
-						feedCategoryCollectionCell.layer.shadowColor = UIColor.black.cgColor
-						feedCategoryCollectionCell.layer.shadowOffset = .zero
-						feedCategoryCollectionCell.layer.shadowRadius = 4
-						feedCategoryCollectionCell.layer.shadowOpacity = 0.3
-						feedCategoryCollectionCell.categoryName.textColor = .black
-						feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
-						feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
-						feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
-						feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[indexPath.row].imagem)
-						
+						viewModel.categorySelectConfiguration(cell: feedCategoryCollectionCell, indexPath: indexPath)
 					} else {
-						feedCategoryCollectionCell.backgroundColor = .white
-						feedCategoryCollectionCell.layer.masksToBounds = false
-						feedCategoryCollectionCell.layer.cornerRadius = 37
-						feedCategoryCollectionCell.layer.borderWidth = 1
-						feedCategoryCollectionCell.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-						feedCategoryCollectionCell.categoryCount.layer.cornerRadius = 7
-						feedCategoryCollectionCell.categoryCount.layer.borderWidth = 1
-						feedCategoryCollectionCell.categoryCount.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+						viewModel.categoryDeselectConfiguration(cell: feedCategoryCollectionCell, indexPath: indexPath)
 					}
 					return feedCategoryCollectionCell
-					
 				}
 			}
 			
@@ -201,19 +139,16 @@ extension FeedViewController: UICollectionViewDataSource {
 				feedProjectCollectionCell.layer.shadowOffset = .zero
 				feedProjectCollectionCell.layer.shadowRadius = 4
 				feedProjectCollectionCell.layer.shadowOpacity = 0.3
-
-                feedProjectCollectionCell.projectName.text = viewModel.projects[indexPath.row].title
-//				feedProjectCollectionCell.projectResponsible.text = viewModel.projects[indexPath.row].responsible.name
-                feedProjectCollectionCell.projectResponsible.text = viewModel.projects[indexPath.row].responsible.responsibleName
-                feedProjectCollectionCell.projectPhase.text = viewModel.projects[indexPath.row].phases.last
+				feedProjectCollectionCell.projectName.text = viewModel.getProjectTitle(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+				feedProjectCollectionCell.projectResponsible.text = viewModel.getProjectResponsible(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+				feedProjectCollectionCell.projectPhase.text = viewModel.getProjectCurrentPhase(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
 				
 				return feedProjectCollectionCell
 			}
 		}
 		
 		return UICollectionViewCell()
-	}
-	
+	}	
 }
 
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
@@ -242,7 +177,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 			selectedCell.touched = true
 
 			switch indexPath.row {
-				
 			case 1:
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
 				viewModel.deselect(cells: [
@@ -250,33 +184,38 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 					viewModel.createCell2(collectionView: collectionView),
 					viewModel.createCell3(collectionView: collectionView),
 					viewModel.createCell4(collectionView: collectionView)], indexes: [0, 2, 3, 4])
-	
+				self.categorySelected = 1
+				projectCollectionView.reloadData()
+				
 			case 2:
-
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
 				viewModel.deselect(cells: [
 					viewModel.createCell0(collectionView: collectionView),
 					viewModel.createCell1(collectionView: collectionView),
 					viewModel.createCell3(collectionView: collectionView),
 					viewModel.createCell4(collectionView: collectionView)], indexes: [0, 1, 3, 4])
+				self.categorySelected = 2
+				projectCollectionView.reloadData()
 
 			case 3:
-
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
 				viewModel.deselect(cells: [
 				viewModel.createCell0(collectionView: collectionView),
 				viewModel.createCell1(collectionView: collectionView),
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell4(collectionView: collectionView)], indexes: [0, 1, 2, 4])
+				self.categorySelected = 3
+				projectCollectionView.reloadData()
 
 			case 4:
-
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
 				viewModel.deselect(cells: [
 				viewModel.createCell0(collectionView: collectionView),
 				viewModel.createCell1(collectionView: collectionView),
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell3(collectionView: collectionView)], indexes: [0, 1, 2, 3])
+				self.categorySelected = 4
+				projectCollectionView.reloadData()
 
 			default:
 				viewModel.select(cell: selectedCell, indexPath: indexPath)
@@ -285,11 +224,18 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 				viewModel.createCell2(collectionView: collectionView),
 				viewModel.createCell3(collectionView: collectionView),
 				viewModel.createCell4(collectionView: collectionView)], indexes: [1, 2, 3, 4])
+				self.categorySelected = 0
+				projectCollectionView.reloadData()
 				
 			}
 		case projectCollectionView:
-			print("Contruir Specific Screen")
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			
+			let specificVC = storyboard.instantiateViewController(withIdentifier: "SpecificProjectViewController") as? SpecificProjectViewController
+			
+			specificVC?.project = viewModel.getProject(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+			
+			self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
 		default:
 			print("Tratar o erro")
 		}

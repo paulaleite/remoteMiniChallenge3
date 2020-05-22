@@ -32,4 +32,3 @@ class ConfigurationViewModel {
 		projects.append(ConfigurationProject(title: "Projeto", responsable: "Edgar Sgroi Rocha Lindo da Silva", phase: "ähhahahhahahhhahahahha jaaajajjah usus"))
 	}
 }
-
