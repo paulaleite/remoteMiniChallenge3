@@ -10,11 +10,11 @@ import Foundation
 
 class ServerService: CommunicationProtocol {
     
-    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
+    func getProjects(_ completion: @escaping (Result<ResponseProjects, Error>) -> Void) {
         URLSession.shared.dataTask(with: .getProjects) { data, _, error in
             if let data = data {
                 do {
-                    let res = try JSONDecoder().decode(Response.self, from: data)
+                    let res = try JSONDecoder().decode(ResponseProjects.self, from: data)
                     print(res.result)
                     DispatchQueue.main.async {
                         completion(.success(res))
@@ -35,7 +35,7 @@ class ServerService: CommunicationProtocol {
                         completion(.success(res))
                     }
                 } catch let error {
-                    print(error)
+                    completion(.failure(error))
                 }
             }
         }.resume()
@@ -81,7 +81,7 @@ class ServerService: CommunicationProtocol {
         }).resume()
     }
     
-    func getUsersBy(users ids: [String], _ completion: @escaping (Result<User, Error>) -> Void) {
+    func getUsersBy(users ids: [String], _ completion: @escaping (Result<ResponseUsers, Error>) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: .getUsersByIDs)
         request.httpMethod = "POST"
@@ -97,22 +97,18 @@ class ServerService: CommunicationProtocol {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
-            guard error == nil else {
-                return
-            }
-
-            guard let data = data else {
-                return
-            }
-
-            do {
+            if let data = data {
+                do {
                 //create json object from data
-                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                    print(json)
-                    // handle json...
+//                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+//                    print(json)
+                    let res = try JSONDecoder().decode(ResponseUsers.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(res))
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
                 }
-            } catch let error {
-                print(error.localizedDescription)
             }
         }).resume()
     }

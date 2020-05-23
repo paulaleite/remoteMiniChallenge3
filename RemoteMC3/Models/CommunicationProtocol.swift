@@ -9,9 +9,9 @@
 import Foundation
 
 protocol CommunicationProtocol: class {
-    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void)
+    func getProjects(_ completion: @escaping (Result<ResponseProjects, Error>) -> Void)
     
-    func getUsersBy(users ids: [String], _ completion: @escaping (Result<User, Error>) -> Void)
+    func getUsersBy(users ids: [String], _ completion: @escaping (Result<ResponseUsers, Error>) -> Void)
     
     func createProject(project: Project, _ completion: @escaping (Result<Any, Error>) -> Void)
 }

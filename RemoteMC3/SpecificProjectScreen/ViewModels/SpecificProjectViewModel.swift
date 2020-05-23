@@ -12,9 +12,21 @@ import UIKit
 class SpecificProjectViewModel {
     
 	var project: Project?
+    var users: [User]?
+    var serverService: ServerService
     
 	init(project: Project) {
 		self.project = project
+        serverService = ServerService()
+        serverService.getUsersBy(users: project.users, {(res) in
+            switch res {
+            case .success(let response):
+                self.users = response.result
+                NotificationCenter.default.post(name: NSNotification.Name("update_users"), object: nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
 	}
 	
 	func getProject() -> Project {
@@ -37,13 +49,13 @@ class SpecificProjectViewModel {
 		return project?.phases[index] ?? "nil"
 	}
 	
-	func getResponsible() -> String{
+	func getResponsible() -> String {
 		return project?.responsible.responsibleName ?? "nil"
 	}
-	func getUser(index: Int) -> String {
-		return project?.users[index] ?? "nil"
+	func getUser(index: Int) -> User? {
+        return users?[index] ?? nil
 	}
-	
+
 	func getStart() -> String {
 		return project?.start ?? "nil"
 	}
