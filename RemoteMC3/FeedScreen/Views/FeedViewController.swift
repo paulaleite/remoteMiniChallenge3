@@ -37,8 +37,29 @@ class FeedViewController: UIViewController {
 //        viewModel.delegate = self
         
         viewModel.loadProjects()
+		
+		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
+	}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
+        SignInWithAppleManager.checkUserAuth { (authState) in
+            switch authState {
+            case .undefined:
+                let controller = LoginViewController()
+                controller.modalPresentationStyle = .fullScreen
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            case .signedOut:
+                let controller = LoginViewController()
+                controller.modalPresentationStyle = .fullScreen
+                controller.delegate = self
+                self.present(controller, animated: true, completion: nil)
+            case .signedIn:
+                print("SignedIn")
+            }
+        }
     }
 
     @objc func reloadUI() {
@@ -216,5 +237,21 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         default:
             print("Tratar o erro")
         }
+    }
+}
+
+extension FeedViewController: FeedViewModelDelegate {
+    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
+        
+    }
+}
+
+extension FeedViewController: LoginViewControllerDelegate {
+    func didFinishAuth() {
+        guard let userIdentifierKey = UserDefaults.standard.string(forKey: SignInWithAppleManager.userIdentifierKey) else {
+            return
+        }
+        
+        print("User identifier: \(userIdentifierKey)")
     }
 }
