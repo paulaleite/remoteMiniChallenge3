@@ -12,7 +12,7 @@ import UIKit
 class FeedProjectCollectionCell: UICollectionViewCell {
     
 	@IBOutlet var projectName: UILabel!
-	@IBOutlet var projectResponsible: UITextView!
-	@IBOutlet var projectPhase: UITextView!
+	@IBOutlet var projectResponsible: UILabel!
+	@IBOutlet var projectPhase: UILabel!
 	
 }
