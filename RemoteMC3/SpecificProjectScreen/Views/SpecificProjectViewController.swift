@@ -71,7 +71,8 @@ extension SpecificProjectViewController: UICollectionViewDataSource {
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
-            specificProjectCollectionCell.userName.text  = viewModel?.getUser(index: indexPath.row)?.name
+			let name = (viewModel?.getUser(index: indexPath.row)?.name)?.split(separator: " ")[0]
+			specificProjectCollectionCell.userName.text  = String(name ?? "nil")
 			specificProjectCollectionCell.userPhoto.image = #imageLiteral(resourceName: "personalColored")
 			specificProjectCollectionCell.userPhoto.layer.cornerRadius = 25
 			
