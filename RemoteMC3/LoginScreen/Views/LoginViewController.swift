@@ -28,12 +28,17 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     // Implementacao no Servidor -> POST
     private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
         print("Registering new account with user: \(credential.user)")
-        guard let fullName = credential.fullName else {
+        guard let firstName = credential.fullName?.givenName else {
+            return
+        }
+        guard let lastName = credential.fullName?.familyName else {
             return
         }
         guard let email = credential.email else {
             return
         }
+        
+        let fullName = firstName + " " + lastName
         
         let userInfo = ["name": "\(fullName)", "email": "\(email)"]
         
