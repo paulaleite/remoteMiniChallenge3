@@ -27,30 +27,55 @@ class ConfigurationViewController: UIViewController, UICollectionViewDelegate {
 }
 
 extension ConfigurationViewController: UICollectionViewDataSource {
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		return 2
+	}
+	
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getProjectsRowsNumber()
+		switch section {
+		case 0:
+			return viewModel.getMyProjectsItensNumber()
+		default:
+			 return viewModel.getProjectsWithMeItensNumber()
+		}
     }
+	
+	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		if let customCollectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CustomCollectionHeader", for: indexPath) as? CustomCollectionHeader {
+			customCollectionHeader.sectionName.text = viewModel.sectionNames[indexPath.section]
+			
+			return customCollectionHeader
+		}
+		return UICollectionReusableView()
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        guard let configurationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "configurationCollectionCell", for: indexPath) as? ConfigurationCollectionCell else {
-            return ConfigurationCollectionCell()
-        }
-
-        configurationCollectionCell.nameProject.text = viewModel.projects[indexPath.row].title
-        configurationCollectionCell.responsableProject.text = viewModel.projects[indexPath.row].responsable
-        configurationCollectionCell.phaseProject.text = viewModel.projects[indexPath.row].phase
-
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		
+		guard let configurationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "configurationCollectionCell", for: indexPath) as? ConfigurationCollectionCell else {
+			return ConfigurationCollectionCell()
+		}
 		configurationCollectionCell.layer.masksToBounds = false
-        configurationCollectionCell.backgroundColor = .white
-        configurationCollectionCell.layer.cornerRadius = 20
-        configurationCollectionCell.layer.shadowColor = UIColor.black.cgColor
-        configurationCollectionCell.layer.shadowOffset = .zero
-        configurationCollectionCell.layer.shadowRadius = 4
-        configurationCollectionCell.layer.shadowOpacity = 0.3
-
-        return configurationCollectionCell
-    }
+		configurationCollectionCell.backgroundColor = .white
+		configurationCollectionCell.layer.cornerRadius = 20
+		configurationCollectionCell.layer.shadowColor = UIColor.black.cgColor
+		configurationCollectionCell.layer.shadowOffset = .zero
+		configurationCollectionCell.layer.shadowRadius = 4
+		configurationCollectionCell.layer.shadowOpacity = 0.3
+		
+		if indexPath.section == 0 {
+			configurationCollectionCell.nameProject.text = viewModel.getNameOfMyProject(index: indexPath.row)
+			configurationCollectionCell.responsableProject.text = viewModel.getMyProjectResponsable(index: indexPath.row)
+			configurationCollectionCell.phaseProject.text = viewModel.getMyProjectPhase(index: indexPath.row)
+			return configurationCollectionCell
+		} else {
+			configurationCollectionCell.nameProject.text = viewModel.getNameOfProject(index: indexPath.row)
+			configurationCollectionCell.responsableProject.text = viewModel.getProjectResponsable(index: indexPath.row)
+			configurationCollectionCell.phaseProject.text = viewModel.getProjectPhase(index: indexPath.row)
+			return configurationCollectionCell
+		}
+		
+	}
 }
 
 extension ConfigurationViewController: UICollectionViewDelegateFlowLayout {

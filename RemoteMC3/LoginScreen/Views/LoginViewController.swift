@@ -37,7 +37,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         
         let userInfo = ["name": "\(fullName)", "email": "\(email)"]
         
-        if let url = URL(string: "https://projeta-server.herokuapp.com/users/ids") {
+        if let url = URL(string: "https://projeta-server.herokuapp.com/createUser") {
             let session = URLSession.shared
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -127,7 +127,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     func setUpSignInWithAppleButton() {
         let authorizationButton = ASAuthorizationAppleIDButton()
         authorizationButton.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(authorizationButton)
         NSLayoutConstraint.activate([
             authorizationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),

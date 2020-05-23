@@ -15,7 +15,7 @@ class ServerService: CommunicationProtocol {
             if let data = data {
                 do {
                     let res = try JSONDecoder().decode(ResponseProjects.self, from: data)
-                    print(res.result)
+//                    print(res.result)
                     DispatchQueue.main.async {
                         completion(.success(res))
                     }
