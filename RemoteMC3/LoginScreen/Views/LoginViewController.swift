@@ -37,7 +37,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         
         let userInfo = ["name": "\(fullName)", "email": "\(email)"]
         
-        if let url = URL(string: "https://projeta-server.herokuapp.com/users/ids") {
+        if let url = URL(string: "https://projeta-server.herokuapp.com/createUser") {
             let session = URLSession.shared
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -125,15 +125,60 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     }
     
     func setUpSignInWithAppleButton() {
-        let authorizationButton = ASAuthorizationAppleIDButton()
+        let authorizationButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+        authorizationButton.cornerRadius = 20
         authorizationButton.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(authorizationButton)
+        let label = UILabel()
+        label.text = "Bem-vindx ao\nProjeta!"
+        label.textColor = UIColor(red: 2/255, green: 14/255, blue: 93/255, alpha: 1)
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 25)
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .white
+        backgroundView.layer.shadowColor = UIColor.black.cgColor
+        backgroundView.layer.shadowOffset = .zero
+        backgroundView.layer.shadowRadius = 4
+        backgroundView.layer.shadowOpacity = 0.3
+        backgroundView.layer.cornerRadius = 55
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let iconImage = UIImageView()
+        iconImage.image = UIImage(named: "iconImage")
+        iconImage.contentMode = .scaleAspectFit
+        iconImage.layer.cornerRadius = 120
+        iconImage.clipsToBounds = true
+        iconImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(iconImage)
+        view.addSubview(backgroundView)
+        backgroundView.addSubview(label)
+        backgroundView.addSubview(authorizationButton)
+        
         NSLayoutConstraint.activate([
-            authorizationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150),
+            iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            iconImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.278),
+            iconImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+            authorizationButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05),
+            authorizationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 260),
             authorizationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            authorizationButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 120),
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            backgroundView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 250),
+            backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            backgroundView.heightAnchor.constraint(equalToConstant: 350)
         ])
         
         authorizationButton.addTarget(self, action: #selector(handleAppleIDRequest), for: .touchUpInside)
