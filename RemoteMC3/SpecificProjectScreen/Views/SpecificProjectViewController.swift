@@ -47,7 +47,7 @@ class SpecificProjectViewController: UIViewController {
 	func setInformation() {
 		projectDescryption.text = viewModel?.getProjectDescription()
 		projectResponsible.text = viewModel?.getResponsible()
-        projectInstitution.text = "Não existe"
+		projectInstitution.text = viewModel?.getProjectOrganization()
 		projectStart.text = viewModel?.getStart()
 		projectEnd.text = viewModel?.getEnd()
 		

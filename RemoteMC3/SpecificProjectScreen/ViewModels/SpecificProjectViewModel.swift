@@ -41,9 +41,9 @@ class SpecificProjectViewModel {
 		return project?.description ?? "nil"
 	}
 	
-//	func getProjectOrganization() -> String {
-//		return project? ?? "nil"
-//	}
+	func getProjectOrganization() -> String {
+		return project?.organization ?? "nil"
+	}
 	
 	func getPhase(index: Int) -> String {
 		return project?.phases[index] ?? "nil"

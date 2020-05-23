@@ -27,7 +27,6 @@ class CreateProjectViewModel {
 	var phasesName: [String] = [" "]
 	
     func createProject() {
-		
 		if (title != "") && (description != "") {
             let project = Project(phases: phases,
                                   users: ["5ec5844c97ebd90017446121"],
@@ -48,6 +47,10 @@ class CreateProjectViewModel {
                 }
             })
 		}
+	}
+	
+	func validateProject() {
+		
 	}
 	
 }
