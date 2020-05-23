@@ -29,7 +29,7 @@
 		25FA6C56246DD3DC00F4837F /* NotificationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA6C55246DD3DC00F4837F /* NotificationCollectionCell.swift */; };
 		4F339D512473055A009F5102 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D502473055A009F5102 /* ServerService.swift */; };
 		4F339D59247472E7009F5102 /* Responsible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D58247472E7009F5102 /* Responsible.swift */; };
-		4F339D5B24747D56009F5102 /* MembersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D5A24747D56009F5102 /* MembersViewModel.swift */; };
+		4F339D5B24747D56009F5102 /* MemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D5A24747D56009F5102 /* MemberViewModel.swift */; };
 		4F339D6224771090009F5102 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D6124771090009F5102 /* Response.swift */; };
 		4F339D64247710A0009F5102 /* Requisition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D63247710A0009F5102 /* Requisition.swift */; };
 		4F339D6624771137009F5102 /* CommunicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D6524771137009F5102 /* CommunicationProtocol.swift */; };
@@ -43,8 +43,7 @@
 		CB02B483246D9FA70071B7F2 /* CreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */; };
 		CB04A5D2247309FE00CF5DB4 /* SpecificPhaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */; };
 		CB0778EC24709F4F00D4AA0E /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */; };
-		CB4FFD9F2474606200DB480B /* MembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFD9E2474606200DB480B /* MembersViewController.swift */; };
-		CB4FFDA12474609300DB480B /* MembersCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFDA02474609300DB480B /* MembersCollectionCell.swift */; };
+		CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFD9E2474606200DB480B /* MemberViewController.swift */; };
 		CB4FFDA5247465B000DB480B /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFDA4247465B000DB480B /* Member.swift */; };
 		CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */; };
 		CB7C366B2471D2FC00B7D9FD /* SpecificProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7C366A2471D2FC00B7D9FD /* SpecificProjectViewModel.swift */; };
@@ -106,7 +105,7 @@
 		25FA6C55246DD3DC00F4837F /* NotificationCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCollectionCell.swift; sourceTree = "<group>"; };
 		4F339D502473055A009F5102 /* ServerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		4F339D58247472E7009F5102 /* Responsible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responsible.swift; sourceTree = "<group>"; };
-		4F339D5A24747D56009F5102 /* MembersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersViewModel.swift; sourceTree = "<group>"; };
+		4F339D5A24747D56009F5102 /* MemberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewModel.swift; sourceTree = "<group>"; };
 		4F339D6124771090009F5102 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		4F339D63247710A0009F5102 /* Requisition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requisition.swift; sourceTree = "<group>"; };
 		4F339D6524771137009F5102 /* CommunicationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationProtocol.swift; sourceTree = "<group>"; };
@@ -120,8 +119,7 @@
 		CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectViewController.swift; sourceTree = "<group>"; };
 		CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificPhaseTableCell.swift; sourceTree = "<group>"; };
 		CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
-		CB4FFD9E2474606200DB480B /* MembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersViewController.swift; sourceTree = "<group>"; };
-		CB4FFDA02474609300DB480B /* MembersCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersCollectionCell.swift; sourceTree = "<group>"; };
+		CB4FFD9E2474606200DB480B /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		CB4FFDA4247465B000DB480B /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		CB7C366A2471D2FC00B7D9FD /* SpecificProjectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificProjectViewModel.swift; sourceTree = "<group>"; };
@@ -200,8 +198,8 @@
 				CB9175A6246B5FAE00D10580 /* CreateProjectScreen */,
 				CB9175AA246B5FDE00D10580 /* SpecificProjectScreen */,
 				25FA6C49246DB94800F4837F /* NotificationScreen */,
+				CB4FFD9A2474601A00DB480B /* MemberScreen */,
 				25E79832246F09FD009E35C0 /* ConfigurationScreen */,
-				CB4FFD9A2474601A00DB480B /* MembersScreen */,
 				4F8B403D2469F4F600189CA6 /* Services */,
 				1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */,
 				1E67FD96245B634200182C41 /* AppDelegate.swift */,
@@ -353,20 +351,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		CB4FFD9A2474601A00DB480B /* MembersScreen */ = {
+		CB4FFD9A2474601A00DB480B /* MemberScreen */ = {
 			isa = PBXGroup;
 			children = (
 				CB4FFD9D2474603B00DB480B /* Models */,
 				CB4FFD9C2474603200DB480B /* Views */,
 				CB4FFD9B2474602B00DB480B /* ViewModels */,
 			);
-			path = MembersScreen;
+			path = MemberScreen;
 			sourceTree = "<group>";
 		};
 		CB4FFD9B2474602B00DB480B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4F339D5A24747D56009F5102 /* MembersViewModel.swift */,
+				4F339D5A24747D56009F5102 /* MemberViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -374,8 +372,7 @@
 		CB4FFD9C2474603200DB480B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CB4FFD9E2474606200DB480B /* MembersViewController.swift */,
-				CB4FFDA02474609300DB480B /* MembersCollectionCell.swift */,
+				CB4FFD9E2474606200DB480B /* MemberViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -664,14 +661,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB4FFD9F2474606200DB480B /* MembersViewController.swift in Sources */,
-				CB4FFDA12474609300DB480B /* MembersCollectionCell.swift in Sources */,
+				CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */,
 				4F339D64247710A0009F5102 /* Requisition.swift in Sources */,
 				CBE3DD8624773B7B00859714 /* Coordinator.swift in Sources */,
 				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
 				1E569D30247869C70035CADA /* AuthState.swift in Sources */,
 				4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */,
-				4F339D5B24747D56009F5102 /* MembersViewModel.swift in Sources */,
+				4F339D5B24747D56009F5102 /* MemberViewModel.swift in Sources */,
 				4F339D6224771090009F5102 /* Response.swift in Sources */,
 				CB7C366D2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift in Sources */,
 				4F339D512473055A009F5102 /* ServerService.swift in Sources */,
@@ -883,13 +879,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X54K5PJVGU;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ptl.RemoteMC3;
+				PRODUCT_BUNDLE_IDENTIFIER = cab.remote3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -903,15 +899,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-
-				DEVELOPMENT_TEAM = X54K5PJVGU;
-
+				DEVELOPMENT_TEAM = W76FRTKWHT;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ptl.RemoteMC3;
+				PRODUCT_BUNDLE_IDENTIFIER = cab.remote3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;

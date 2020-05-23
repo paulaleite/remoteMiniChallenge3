@@ -28,9 +28,14 @@ class NotificationViewModel {
         return notifications[index].personImage
     }
 	
+	func getNotification (forNotificationAt index: Int) -> Notification {
+        return notifications[index]
+    }
+	
 	func setNotifications () {
+		//TODO: Pegar os dados so servidor
 		notifications.append(Notification(personImage: "cas",
 										  projectRequired: "Projetounc getNotificationPerson (forNotificationAt index: Int) -> String unc getNotificationPerson (forNotificationAt index: Int) -> String ",
-										  requisitor: "Edgar"))
+										  requisitor: "Projetounc getNotificationPerson (forNotificationAt index: Int) -> String unc getNotificationPerson (forNotificationAt index: Int) -> String ", requisitorEmail: "cassia.a.barbosa@gmailProjetounc getNotificationPerson (forNotificationAt index: Int) -> String unc getNotificationPerson (forNotificationAt index: Int) -> String com"))
 	}
 }
