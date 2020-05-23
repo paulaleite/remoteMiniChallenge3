@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 class SpecificProjectCollectionCell: UICollectionViewCell {
+	
 	@IBOutlet var userPhoto: UIImageView!
 	
-	@IBOutlet var userName: UITextView!
+	@IBOutlet var userName: UILabel!
 }

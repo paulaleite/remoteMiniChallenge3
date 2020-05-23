@@ -211,7 +211,7 @@ extension CreateProjectViewController: UITableViewDataSource {
 
 extension CreateProjectViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (_ ,_,_) in
+		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (_,_,_) in
 			self.viewModel.phasesName.remove(at: indexPath.row)
 			self.phaseCount-=1
             self.phaseTableView.reloadData()
@@ -288,7 +288,7 @@ extension CreateProjectViewController: UITextViewDelegate {
 			textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
 		} else if textView.textColor == UIColor.lightGray && !text.isEmpty {
 			textView.inputView?.layoutIfNeeded()
-			textView.textColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+			textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 			textView.text = text
 		} else {
 			textView.inputView?.layoutIfNeeded()

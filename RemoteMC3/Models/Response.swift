@@ -15,4 +15,3 @@ struct ResponseProjects: Codable {
 struct ResponseUsers: Codable {
     let result: [User]
 }
-
