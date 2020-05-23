@@ -41,7 +41,7 @@ class CreateProjectViewModel {
             
             serverService.createProject(project: project, {(response) in
                 switch response {
-                case .success( _):
+                case .success(_):
                     print("Projeto cadastrado com sucesso!")
                 case .failure(let error):
                     print(error.localizedDescription)

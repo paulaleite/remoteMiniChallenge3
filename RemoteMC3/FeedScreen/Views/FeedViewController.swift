@@ -240,12 +240,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension FeedViewController: FeedViewModelDelegate {
-    func getProjects(_ completion: @escaping (Result<Response, Error>) -> Void) {
-        
-    }
-}
-
 extension FeedViewController: LoginViewControllerDelegate {
     func didFinishAuth() {
         guard let userIdentifierKey = UserDefaults.standard.string(forKey: SignInWithAppleManager.userIdentifierKey) else {

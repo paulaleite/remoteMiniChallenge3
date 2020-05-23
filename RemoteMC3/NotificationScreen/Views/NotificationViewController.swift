@@ -57,6 +57,15 @@ extension NotificationViewController: UICollectionViewDataSource {
 		return notificationCollectionCell
 	}
 
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		
+		let memberVC = storyboard.instantiateViewController(withIdentifier: "MemberViewController") as? MemberViewController
+		
+		memberVC?.notification = viewModel.getNotification(forNotificationAt: indexPath.row)
+		
+		self.show(memberVC ?? MemberViewController(), sender: nil)
+	}
 }
 
 extension NotificationViewController: UICollectionViewDelegateFlowLayout {

@@ -85,8 +85,9 @@ class CreateProjectViewController: UIViewController {
         viewModel.end = projectEnd.text!
         viewModel.category = projectCategory.text!
         viewModel.createProject()
-//        viewModel.phases = project
-//        responsible: User = User(name: "Teste", email: "Test", projects: nil)
+		
+		tabBarController?.selectedIndex = 2
+		self.navigationController?.popToRootViewController(animated: false)
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {
@@ -245,7 +246,7 @@ extension CreateProjectViewController: UIPickerViewDelegate {
 
 extension CreateProjectViewController: UIPickerViewDataSource {
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
-		return 2
+		return 1
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
