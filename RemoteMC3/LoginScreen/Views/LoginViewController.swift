@@ -31,11 +31,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         guard let firstName = credential.fullName?.givenName else {
             return
         }
+        guard let lastName = credential.fullName?.familyName else {
+            return
+        }
         guard let email = credential.email else {
             return
         }
         
-        let userInfo = ["name": "\(firstName)", "email": "\(email)"]
+        let fullName = firstName + " " + lastName
+        
+        let userInfo = ["name": "\(fullName)", "email": "\(email)"]
         
         if let url = URL(string: "https://projeta-server.herokuapp.com/createUser") {
             let session = URLSession.shared
