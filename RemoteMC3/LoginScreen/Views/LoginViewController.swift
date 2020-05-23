@@ -28,14 +28,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     // Implementacao no Servidor -> POST
     private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
         print("Registering new account with user: \(credential.user)")
-        guard let fullName = credential.fullName else {
+        guard let firstName = credential.fullName?.givenName else {
             return
         }
         guard let email = credential.email else {
             return
         }
         
-        let userInfo = ["name": "\(fullName)", "email": "\(email)"]
+        let userInfo = ["name": "\(firstName)", "email": "\(email)"]
         
         if let url = URL(string: "https://projeta-server.herokuapp.com/createUser") {
             let session = URLSession.shared
