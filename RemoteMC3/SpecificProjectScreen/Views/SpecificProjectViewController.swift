@@ -33,6 +33,7 @@ class SpecificProjectViewController: UIViewController {
 		phasesTableView.dataSource = self
 		
 		navigationController?.navigationBar.prefersLargeTitles = true
+		navigationItem.setRightBarButton(UIBarButtonItem(title: "Participar", style: .done, target: self, action: #selector(self.askPermission)), animated: true)
         self.title = viewModel?.getProject().title
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUsersCollection), name: NSNotification.Name("update_users"), object: nil)
@@ -43,6 +44,11 @@ class SpecificProjectViewController: UIViewController {
     @objc func reloadUsersCollection() {
         usersCollectionView.reloadData()
     }
+	
+	@objc func askPermission() {
+//		pedir para participar do projeto
+//		tem que ter estado de "pedir", "participa" e "solicitado
+	}
 	
 	func setInformation() {
 		projectDescryption.text = viewModel?.getProjectDescription()

@@ -78,6 +78,8 @@ class CreateProjectViewController: UIViewController {
 	
 	@IBAction func createProjectAction(_ sender: Any) {
         //TODO: Fezer verificação se os campos estão vazios
+//		reload UI do FeedController
+//		realod da UI do ConfigurationController na parte dos projetos que criei
         viewModel.title = projectTitle.text!
         viewModel.description = projectDescription.text!
         viewModel.organization = projectInstitution.text!

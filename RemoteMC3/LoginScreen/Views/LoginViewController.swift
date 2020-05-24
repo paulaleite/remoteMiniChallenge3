@@ -143,12 +143,15 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         backgroundView.layer.shadowOffset = .zero
         backgroundView.layer.shadowRadius = 4
         backgroundView.layer.shadowOpacity = 0.3
-        backgroundView.layer.cornerRadius = 45
+        backgroundView.layer.cornerRadius = 100
+		backgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+		backgroundView.clipsToBounds = false
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         
         let iconImage = UIImageView()
-        iconImage.image = UIImage(named: "iconImage")
-        iconImage.contentMode = .scaleAspectFit
+		iconImage.image = UIImage(named: "icon")
+		iconImage.layer.cornerRadius = 150
+        iconImage.contentMode = .scaleAspectFill
         iconImage.clipsToBounds = true
         iconImage.translatesAutoresizingMaskIntoConstraints = false
         
@@ -159,25 +162,24 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         
         NSLayoutConstraint.activate([
             backgroundView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			backgroundView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            backgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.45),
-            iconImage.bottomAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 10),
+            backgroundView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.45),
+			iconImage.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
 //            iconImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -150),
             iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            iconImage.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
-            iconImage.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7),
+			iconImage.heightAnchor.constraint(equalToConstant: 300),
+            iconImage.widthAnchor.constraint(equalToConstant: 300),
             label.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 40),
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            authorizationButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05),
+            authorizationButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.06),
             authorizationButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 75),
             authorizationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            authorizationButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.05)
+            authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
         ])
         
         authorizationButton.addTarget(self, action: #selector(handleAppleIDRequest), for: .touchUpInside)
