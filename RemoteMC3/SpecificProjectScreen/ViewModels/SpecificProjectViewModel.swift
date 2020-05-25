@@ -72,5 +72,19 @@ class SpecificProjectViewModel {
 		return project?.phases.count ?? 0
 	}
 	
+    func requireParticipation() {
+        //TODO: Mudar userID para o usuário atual
+        if let id = project?._id {
+            serverService.requireParticipation(userID: "5ec439ee667d86001711737b", projectID: id, {(result) in
+                switch result {
+                case .success(_):
+                    //TODO: mostrar resposta para o usuário
+                    print("Solicitação enviada com sucesso!")
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            })
+        }
+    }
 }
 

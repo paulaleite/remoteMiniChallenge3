@@ -9,8 +9,9 @@
 import Foundation
 
 struct Project: Codable {
+    var _id: String?
     var phases: [String]
-    var users: [String]
+    var users: [String]!
     var title: String
     var organization: String?
     var description: String
