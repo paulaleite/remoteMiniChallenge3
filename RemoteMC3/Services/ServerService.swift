@@ -82,7 +82,7 @@ class ServerService: CommunicationProtocol {
         }).resume()
     }
     
-    func createUser(credential: ASAuthorizationAppleIDCredential, _ completion: @escaping (Result<Any, Error>) -> Void) {
+    func createUser(credential: ASAuthorizationAppleIDCredential, _ completion: @escaping (Result<User, Error>) -> Void) {
         guard let firstName = credential.fullName?.givenName else {
             return
         }
@@ -113,8 +113,9 @@ class ServerService: CommunicationProtocol {
         session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
             if let data = data {
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                        print(json)
+                    let res = try JSONDecoder().decode(User.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(res))
                     }
                 } catch let error {
                     print(error.localizedDescription)

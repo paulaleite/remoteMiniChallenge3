@@ -60,15 +60,11 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 signInWithExistingAccount(credential: appleIDCredential)
             }
             
-            break
-            
         case let passwordCredential as ASPasswordCredential:
             let userID = passwordCredential.user
             UserDefaults.standard.set(userID, forKey: SignInWithAppleManager.userIdentifierKey)
             
             signInWithUserAndPassword(credential: passwordCredential)
-            
-            break
             
         default:
             break

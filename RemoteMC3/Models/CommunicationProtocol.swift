@@ -16,5 +16,5 @@ protocol CommunicationProtocol: class {
     
     func createProject(project: Project, _ completion: @escaping (Result<Any, Error>) -> Void)
     
-    func createUser(credential: ASAuthorizationAppleIDCredential, _ completion: @escaping (Result<Any, Error>) -> Void)
+    func createUser(credential: ASAuthorizationAppleIDCredential, _ completion: @escaping (Result<User, Error>) -> Void)
 }

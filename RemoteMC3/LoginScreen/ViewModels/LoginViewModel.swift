@@ -20,8 +20,17 @@ class LoginViewModel {
     func saveUser(credential: ASAuthorizationAppleIDCredential) {
         serverService.createUser(credential: credential) { (response) in
             switch response {
-            case .success(_):
+            case .success(let res):
                 print("Usuario cadastrado com sucesso!")
+                let userID = res._id
+                UserDefaults.standard.set(userID, forKey: "userIDServer")
+                
+                guard let userIDReturn = UserDefaults.standard.string(forKey: "userIDServer") else {
+                    return
+                }
+                
+                print("User ID Server: \(userIDReturn)")
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }
