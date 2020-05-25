@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 protocol CommunicationProtocol: class {
     func getProjects(_ completion: @escaping (Result<ResponseProjects, Error>) -> Void)
@@ -14,4 +15,6 @@ protocol CommunicationProtocol: class {
     func getUsersBy(users ids: [String], _ completion: @escaping (Result<ResponseUsers, Error>) -> Void)
     
     func createProject(project: Project, _ completion: @escaping (Result<Any, Error>) -> Void)
+    
+    func createUser(credential: ASAuthorizationAppleIDCredential, _ completion: @escaping (Result<Any, Error>) -> Void)
 }

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 class ServerService: CommunicationProtocol {
     
@@ -81,6 +82,47 @@ class ServerService: CommunicationProtocol {
         }).resume()
     }
     
+    func createUser(credential: ASAuthorizationAppleIDCredential, _ completion: @escaping (Result<Any, Error>) -> Void) {
+        guard let firstName = credential.fullName?.givenName else {
+            return
+        }
+        guard let lastName = credential.fullName?.familyName else {
+            return
+        }
+        guard let email = credential.email else {
+            return
+        }
+        
+        let fullName = firstName + " " + lastName
+        
+        let userInfo = ["name": "\(fullName)", "email": "\(email)"]
+        
+        let session = URLSession.shared
+        var request = URLRequest(url: .createUser)
+        request.httpMethod = "POST"
+                
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted)
+        } catch let error {
+                print(error.localizedDescription)
+        }
+                
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+        session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
+            if let data = data {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                        print(json)
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
+        }).resume()
+    }
+    
     func getUsersBy(users ids: [String], _ completion: @escaping (Result<ResponseUsers, Error>) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: .getUsersByIDs)
@@ -129,6 +171,10 @@ extension URL {
     
     static var createProject: URL {
         makeForEndpoint("createProject")
+    }
+    
+    static var createUser: URL {
+        makeForEndpoint("createUser")
     }
 }
 
