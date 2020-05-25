@@ -9,11 +9,13 @@
 import Foundation
 
 struct User: Codable {
+    let _id: String?
     let name: String
     let email: String
-    let projects: [Project]?
+    let projects: [String]?
     
-    init(name: String, email: String, projects: [Project]?) {
+    init(id: String, name: String, email: String, projects: [String]?) {
+        self._id = id
         self.name = name
         self.email = email
         self.projects = projects
