@@ -21,6 +21,7 @@ class SpecificProjectViewController: UIViewController {
 	@IBOutlet var projectInstitution: UILabel!
 	@IBOutlet var usersCollectionView: UICollectionView!
 	@IBOutlet var phasesTableView: UITableView!
+    var participationButton: UIBarButtonItem!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -33,7 +34,8 @@ class SpecificProjectViewController: UIViewController {
 		phasesTableView.dataSource = self
 		
 		navigationController?.navigationBar.prefersLargeTitles = true
-		navigationItem.setRightBarButton(UIBarButtonItem(title: "Participar", style: .done, target: self, action: #selector(self.askPermission)), animated: true)
+        participationButton = UIBarButtonItem(title: "Participar", style: .done, target: self, action: #selector(self.askPermission))
+		navigationItem.setRightBarButton(participationButton, animated: true)
         self.title = viewModel?.getProject().title
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUsersCollection), name: NSNotification.Name("update_users"), object: nil)
@@ -48,6 +50,9 @@ class SpecificProjectViewController: UIViewController {
 	@objc func askPermission() {
 //		pedir para participar do projeto
 //		tem que ter estado de "pedir", "participa" e "solicitado
+        //TODO: Fazer a verificação se o projeto atual pertence ao usuario atual ou se o usuárop já participa do projeto atual
+        viewModel?.requireParticipation()
+        
 	}
 	
 	func setInformation() {
