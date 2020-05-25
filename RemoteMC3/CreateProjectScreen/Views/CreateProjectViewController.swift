@@ -78,6 +78,8 @@ class CreateProjectViewController: UIViewController {
 	
 	@IBAction func createProjectAction(_ sender: Any) {
         //TODO: Fezer verificação se os campos estão vazios
+//		reload UI do FeedController
+//		realod da UI do ConfigurationController na parte dos projetos que criei
         viewModel.title = projectTitle.text!
         viewModel.description = projectDescription.text!
         viewModel.organization = projectInstitution.text!
@@ -211,7 +213,7 @@ extension CreateProjectViewController: UITableViewDataSource {
 
 extension CreateProjectViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (_,_,_) in
+		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (_, _, _) in
 			self.viewModel.phasesName.remove(at: indexPath.row)
 			self.phaseCount-=1
             self.phaseTableView.reloadData()

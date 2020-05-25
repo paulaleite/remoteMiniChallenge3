@@ -35,9 +35,11 @@ class MemberViewController: UIViewController {
 	
 	@IBAction func aceptAction(_ sender: Any) {
 	//TODO: Aceitar no servidor
+//		realod da UI do NotificationController
 	}
 	
 	@IBAction func denyAction(_ sender: Any) {
 	//TODO: Negar no servidor
+		//		realod da UI do NotificationController
 	}
 }
