@@ -8,6 +8,7 @@ opt_in_rules:
 disabled_rules:
   - trailing_whitespace
   - weak_delegate
+  - identifier_name
 
 # special configuration for rules 
 colon:
@@ -41,4 +42,3 @@ line_length:
   ignores_urls: false
   ignores_function_declarations: false
   ignores_comments: false
-

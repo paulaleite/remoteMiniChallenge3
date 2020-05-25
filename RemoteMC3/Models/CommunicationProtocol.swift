@@ -13,5 +13,11 @@ protocol CommunicationProtocol: class {
     
     func getUsersBy(users ids: [String], _ completion: @escaping (Result<ResponseUsers, Error>) -> Void)
     
+    func getProjectsBy(projects ids: [String], _ completion: @escaping (Result<ResponseProjects, Error>) -> Void)
+    
     func createProject(project: Project, _ completion: @escaping (Result<Any, Error>) -> Void)
+    
+    func requireParticipation(userID: String, projectID: String, _ completion: @escaping (Result<Any, Error>) -> Void)
+    
+    func answerRequestParticipation(userID: String, projectID: String, answer: Bool, _ completion: @escaping (Result<Any, Error>) -> Void)
 }
