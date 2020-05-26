@@ -34,7 +34,9 @@ class NotificationViewModel {
     }
 	
 	func setNotifications () {
-        serverService.getUsersBy(users: ["5ec439ee667d86001711737b"], {(result) in
+        guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
+        //TODO: Mudar por método que só procura 1 usuário, e não um array
+        serverService.getUsersBy(users: [userID], {(result) in
             switch result {
             case .success(let res):
                 guard let user = res.result.first else { return }
@@ -45,7 +47,7 @@ class NotificationViewModel {
                         let projects = resp.result
                         for project in projects {
                             for solicitation in project.solicitations {
-                                let notification = Notification(personImage: "cas", projectRequired: project.title, requisitor: solicitation.userName, requisitorEmail: solicitation.userEmail)
+                                let notification = Notification(personImage: "cas", projectRequired: project.title, requisitor: solicitation.userName, requisitorEmail: solicitation.userEmail, projectID: project._id!, userRequisitorID: solicitation.userId)
                                 self.notifications.append(notification)
                             }
                         }

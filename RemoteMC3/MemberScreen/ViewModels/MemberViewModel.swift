@@ -12,6 +12,7 @@ import UIKit
 class MemberViewModel {
 		
 	var notification: Notification?
+    let serverService: ServerService = ServerService()
 
     func getMemberName() -> String {
 		return notification?.requisitor ?? "nil"
@@ -29,7 +30,21 @@ class MemberViewModel {
 		return notification?.projectRequired ?? "nil"
     }
 	
-	init(notification: Notification){
+	init(notification: Notification) {
 		self.notification = notification
 	}
+    
+    func answerRequisition(answer: Bool) {
+        guard let notification = notification else { return }
+        serverService.answerRequestParticipation(userID: notification.userRequisitorID, projectID: notification.projectID, answer: answer, {(response) in
+            switch response {
+            case .success(let res):
+                print(res)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
+            }
+        })
+    }
 }
