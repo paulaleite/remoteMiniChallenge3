@@ -75,7 +75,7 @@ class SpecificProjectViewModel {
     func requireParticipation() {
         //TODO: Mudar userID para o usuário atual
         if let id = project?._id {
-            serverService.requireParticipation(userID: "5ec439ee667d86001711737b", projectID: id, {(result) in
+            serverService.requireParticipation(projectID: id, userID: "5ec439df667d86001711737a", userName: "João Alberto", userEmail: "joao@alberto.com", {(result) in
                 switch result {
                 case .success(_):
                     //TODO: mostrar resposta para o usuário

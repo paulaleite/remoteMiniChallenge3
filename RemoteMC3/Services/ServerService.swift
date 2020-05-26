@@ -163,7 +163,7 @@ class ServerService: CommunicationProtocol {
         request.httpMethod = "POST"
         
         do {
-            let req = ["projects": ids]
+            let req = ["projectsID": ids]
             request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)
@@ -188,14 +188,14 @@ class ServerService: CommunicationProtocol {
             }
         }).resume()
     }
-    //TODO: Testar
-    internal func requireParticipation(userID: String, projectID: String, _ completion: @escaping (Result<Any, Error>) -> Void) {
+    
+    internal func requireParticipation(projectID: String, userID: String, userName: String, userEmail: String, _ completion: @escaping (Result<Any, Error>) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: .requireParticipation)
         request.httpMethod = "POST"
         
         do {
-            let req = ["userID": userID, "projectID": projectID]
+            let req = ["projectID": projectID, "solicitation": ["userId": userID, "userName": userName, "userEmail": userEmail, "status": false]] as [String: Any]
             request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)

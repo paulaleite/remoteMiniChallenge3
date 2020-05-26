@@ -36,7 +36,7 @@ class CreateProjectViewModel {
                                   start: start,
                                   end: end,
                                   category: category,
-                                  responsible: Responsible(responsibleId: "5ec586da97ebd90017446122", responsibleName: responsible.name))
+                                  responsible: Responsible(responsibleId: "5ec586da97ebd90017446122", responsibleName: responsible.name), solicitations: [])
             
             serverService.createProject(project: project, {(response) in
                 switch response {
