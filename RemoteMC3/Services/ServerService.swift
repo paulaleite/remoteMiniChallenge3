@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 class ServerService: CommunicationProtocol {
     
@@ -81,7 +82,50 @@ class ServerService: CommunicationProtocol {
         }).resume()
     }
     
+    func createUser(credential: ASAuthorizationAppleIDCredential, _ completion: @escaping (Result<User, Error>) -> Void) {
+        guard let firstName = credential.fullName?.givenName else {
+            return
+        }
+        guard let lastName = credential.fullName?.familyName else {
+            return
+        }
+        guard let email = credential.email else {
+            return
+        }
+        
+        let fullName = firstName + " " + lastName
+        
+        let userInfo = ["name": "\(fullName)", "email": "\(email)"]
+        
+        let session = URLSession.shared
+        var request = URLRequest(url: .createUser)
+        request.httpMethod = "POST"
+                
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted)
+        } catch let error {
+                print(error.localizedDescription)
+        }
+                
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+                
+        session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
+            if let data = data {
+                do {
+                    let res = try JSONDecoder().decode(User.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(res))
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
+        }).resume()
+    }
+  
     internal func getUsersBy(users ids: [String], _ completion: @escaping (Result<ResponseUsers, Error>) -> Void) {
+
         let session = URLSession.shared
         var request = URLRequest(url: .getUsersByIDs)
         request.httpMethod = "POST"
@@ -232,6 +276,10 @@ extension URL {
         makeForEndpoint("createProject")
     }
     
+    static var createUser: URL {
+        makeForEndpoint("createUser")
+    }
+  
     static var requireParticipation: URL {
         makeForEndpoint("requireParticipation")
     }
