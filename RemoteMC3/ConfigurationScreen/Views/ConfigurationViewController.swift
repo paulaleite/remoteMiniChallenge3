@@ -23,6 +23,11 @@ class ConfigurationViewController: UIViewController, UICollectionViewDelegate {
 		projectsCollectionView.delegate = self
 		
 		viewModel.setProjects()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: NSNotification.Name("reload_configuration"), object: nil)
+    }
+    
+    @objc func reloadUI() {
+        projectsCollectionView.reloadData()
     }
 }
 
