@@ -27,16 +27,18 @@ class CreateProjectViewModel {
 	var phasesName: [String] = [" "]
 	
     func createProject() {
+        guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
+        guard let userName = UserDefaults.standard.string(forKey: "userNameServer") else { return }
 		if (title != "") && (description != "") {
             let project = Project(phases: phases,
-                                  users: ["5ec5844c97ebd90017446121"],
+                                  users: [],
                                   title: title,
                                   organization: organization,
                                   description: description,
                                   start: start,
                                   end: end,
                                   category: category,
-                                  responsible: Responsible(responsibleId: "5ec586da97ebd90017446122", responsibleName: responsible.name), solicitations: [])
+                                  responsible: Responsible(responsibleId: userID, responsibleName: userName), solicitations: [])
             
             serverService.createProject(project: project, {(response) in
                 switch response {
