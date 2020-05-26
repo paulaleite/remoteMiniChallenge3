@@ -13,5 +13,5 @@ struct Notification {
     var personImage: String
 	var projectRequired: String
 	var requisitor: String
-	var requisitorEmail: String
+	var requisitorEmail: String?
 }

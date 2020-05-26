@@ -17,7 +17,7 @@ protocol CommunicationProtocol: class {
     
     func createProject(project: Project, _ completion: @escaping (Result<Any, Error>) -> Void)
     
-    func requireParticipation(userID: String, projectID: String, _ completion: @escaping (Result<Any, Error>) -> Void)
+    func requireParticipation(projectID: String, userID: String, userName: String, userEmail: String, _ completion: @escaping (Result<Any, Error>) -> Void)
     
     func answerRequestParticipation(userID: String, projectID: String, answer: Bool, _ completion: @escaping (Result<Any, Error>) -> Void)
 }

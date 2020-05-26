@@ -25,6 +25,12 @@ class NotificationViewController: UIViewController {
         notificationCollectionView.dataSource = self
 		
 		viewModel.setNotifications()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: NSNotification.Name("reload_notifications"), object: nil)
+    }
+    
+    @objc func reloadUI() {
+        notificationCollectionView.reloadData()
     }
     
 }

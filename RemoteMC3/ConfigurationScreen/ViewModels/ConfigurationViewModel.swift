@@ -47,13 +47,13 @@ class ConfigurationViewModel {
     }
 	
 	func setProjects() {
-		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-		
-		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
+//		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
+//		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
+//		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
+//		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
+//		
+//		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
+//		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
+//		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
 	}
 }

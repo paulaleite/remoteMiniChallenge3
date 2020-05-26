@@ -19,4 +19,5 @@ struct Project: Codable {
     var end: String
     var category: String
     var responsible: Responsible
+    var solicitations: [Solicitation]
 }
