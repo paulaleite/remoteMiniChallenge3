@@ -34,8 +34,6 @@ class FeedViewController: UIViewController {
         projectCollectionView.dataSource = self
         projectCollectionView.delegate = self
         
-//        viewModel.delegate = self
-        
         viewModel.loadProjects()
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
@@ -144,7 +142,6 @@ extension FeedViewController: UICollectionViewDataSource {
                 return feedProjectCollectionCell
             }
         }
-        
         return UICollectionViewCell()
     }
 }
@@ -184,7 +181,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
                     viewModel.createCell4(collectionView: collectionView)], indexes: [0, 2, 3, 4])
                 self.categorySelected = 1
                 projectCollectionView.reloadData()
-                
+
             case 2:
                 viewModel.select(cell: selectedCell, indexPath: indexPath)
                 viewModel.deselect(cells: [
@@ -224,7 +221,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
                 viewModel.createCell4(collectionView: collectionView)], indexes: [1, 2, 3, 4])
                 self.categorySelected = 0
                 projectCollectionView.reloadData()
-                
+
             }
         case projectCollectionView:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

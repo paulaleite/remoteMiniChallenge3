@@ -36,6 +36,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     // Implementacao no Servidor -> GET
     private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
         print("Signing in with existing account with user: \(credential.user)")
+        
         delegate?.didFinishAuth()
         self.dismiss(animated: true, completion: nil)
     }
@@ -43,6 +44,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     // Implementacao no Servidor
     private func signInWithUserAndPassword(credential: ASPasswordCredential) {
         print("Signing in using an existing iCloud Keychain credential with user: \(credential.user)")
+        
+        //TODO: Pesquisar como fazer nesse caso
+//        viewModel.saveUser(credential: credential)
         delegate?.didFinishAuth()
         self.dismiss(animated: true, completion: nil)
     }
@@ -52,11 +56,22 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         switch authorization.credential {
         case let appleIDCredential as ASAuthorizationAppleIDCredential:
             let userID = appleIDCredential.user
+            guard let firstName = appleIDCredential.fullName?.givenName else {
+                return
+            }
+            guard let lastName = appleIDCredential.fullName?.familyName else {
+                return
+            }
+            
+            let fullName = firstName + " " + lastName
             UserDefaults.standard.set(userID, forKey: SignInWithAppleManager.userIdentifierKey)
             
             if let _ = appleIDCredential.email, let _ = appleIDCredential.fullName {
                 registerNewAccount(credential: appleIDCredential)
             } else {
+                UserDefaults.standard.set(userID, forKey: "userIDServer")
+                UserDefaults.standard.set(fullName, forKey: "userNameServer")
+                UserDefaults.standard.set(appleIDCredential.email, forKey: "userEmailServer")
                 signInWithExistingAccount(credential: appleIDCredential)
             }
             

@@ -48,12 +48,29 @@ class ServerService: CommunicationProtocol {
         request.httpMethod = "POST"
 
         do {
-            let req = Requisition(userId: project.responsible.responsibleId, project: project)
-            let jsonData = try JSONEncoder().encode(req)
-            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-               print(JSONString)
-            }
-            request.httpBody = jsonData
+            let req: [String: Any] = [
+                "userId": project.responsible.responsibleId,
+                "project": [
+                    "title": project.title,
+                    "organization": project.organization != nil ? project.organization!  : "",
+                    "description": project.description,
+                    "start": project.start,
+                    "end": project.end,
+                    "category": project.category,
+                    "phases": project.phases,
+                    "responsible": [
+                        "responsibleId": project.responsible.responsibleId,
+                        "responsibleName": project.responsible.responsibleName
+                    ]
+                ]
+            ]
+//            let req = Requisition(userId: project.responsible.responsibleId, project: project)
+//            let jsonData = try JSONEncoder().encode(req)
+//            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+//               print(JSONString)
+//            }
+//            request.httpBody = jsonData
+            request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)
         }
@@ -71,10 +88,8 @@ class ServerService: CommunicationProtocol {
             }
 
             do {
-                //create json object from data
-                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                    print(json)
-                    // handle json...
+                DispatchQueue.main.async {
+                    completion(.success(true))
                 }
             } catch let error {
                 print(error.localizedDescription)
