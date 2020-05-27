@@ -23,10 +23,12 @@ class NotificationViewController: UIViewController {
 
         notificationCollectionView.delegate = self
         notificationCollectionView.dataSource = self
-		
-		viewModel.setNotifications()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: NSNotification.Name("reload_notifications"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.setNotifications()
     }
     
     @objc func reloadUI() {

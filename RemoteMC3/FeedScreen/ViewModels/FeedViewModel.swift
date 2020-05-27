@@ -61,10 +61,11 @@ class FeedViewModel {
     }
     
     func getProjectCurrentPhase(forCategoryAt category: Int, forProjectAt index: Int) -> String {
-		return (feedProjects[category])[index].phases.first ?? "nil"
+        return (feedProjects[category])[index].phases.first ?? "Sem etapas"
     }
 	
 	func loadProjects() {
+        
         service.getProjects({(response) in
             switch response {
             case .success(let res):
@@ -74,16 +75,16 @@ class FeedViewModel {
 						self.socialCount += 1
 						self.socialProjects.append(project)
 					} else if project.category == "Cultural" {
-						self.culturalCount+=1
+						self.culturalCount += 1
 						self.cultureProjects.append(project)
 					} else if project.category == "Pessoal" {
-						self.personalCount+=1
+						self.personalCount += 1
 						self.personalProjects.append(project)
 					} else if project.category == "Empresarial" {
-						self.entrepreneurialCount+=1
+						self.entrepreneurialCount += 1
 						self.businessProjects.append(project)
 					} else if project.category == "Pesquisa" {
-						self.researchCount+=1
+						self.researchCount += 1
 						self.researchProjects.append(project)
 					}
 				}

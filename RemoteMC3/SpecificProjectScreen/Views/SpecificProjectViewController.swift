@@ -43,6 +43,10 @@ class SpecificProjectViewController: UIViewController {
 		setInformation()
 	}
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel?.setUsers()
+    }
+    
     @objc func reloadUsersCollection() {
         usersCollectionView.reloadData()
     }

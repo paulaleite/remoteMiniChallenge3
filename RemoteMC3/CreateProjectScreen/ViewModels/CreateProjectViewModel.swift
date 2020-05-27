@@ -26,7 +26,7 @@ class CreateProjectViewModel {
 	var pickerViewDataSource = ["Social", "Cultural", "Pessoal", "Empresarial", "Pesquisa"]
 	var phasesName: [String] = [" "]
 	
-    func createProject() {
+    func createProject(_ completion: @escaping () -> Void) {
         guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
         guard let userName = UserDefaults.standard.string(forKey: "userNameServer") else { return }
 		if (title != "") && (description != "") {
@@ -42,8 +42,12 @@ class CreateProjectViewModel {
             
             serverService.createProject(project: project, {(response) in
                 switch response {
-                case .success(_):
+                case .success(let res):
+                    _ = res as? Bool
                     print("Projeto cadastrado com sucesso!")
+                    DispatchQueue.main.async {
+                        completion()
+                    }
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

@@ -18,7 +18,8 @@ class CreateProjectViewController: UIViewController {
 	var phaseCount: Int = 0
 	
 	var activeTextField: UITextField?
-	
+    @IBOutlet weak var btnCreateProject: UIBarButtonItem!
+    
 	private let projectDescription: VerticallyCenteredTextView = {
 		let projectDescription = VerticallyCenteredTextView(frame: .zero)
 		projectDescription.translatesAutoresizingMaskIntoConstraints = false
@@ -80,16 +81,19 @@ class CreateProjectViewController: UIViewController {
         //TODO: Fezer verificação se os campos estão vazios
 //		reload UI do FeedController
 //		realod da UI do ConfigurationController na parte dos projetos que criei
+        btnCreateProject.isEnabled = false
         viewModel.title = projectTitle.text!
         viewModel.description = projectDescription.text!
         viewModel.organization = projectInstitution.text!
         viewModel.start = projectStart.text!
         viewModel.end = projectEnd.text!
         viewModel.category = projectCategory.text!
-        viewModel.createProject()
-		
-		tabBarController?.selectedIndex = 2
-		self.navigationController?.popToRootViewController(animated: false)
+        viewModel.phases = viewModel.phasesName
+        
+        viewModel.createProject({
+            self.tabBarController?.selectedIndex = 2
+            self.navigationController?.popToRootViewController(animated: false)
+        })
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {
