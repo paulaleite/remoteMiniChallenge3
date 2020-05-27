@@ -38,6 +38,7 @@ class MemberViewController: UIViewController {
 //		realod da UI do NotificationController
         viewModel?.answerRequisition(answer: true)
 //        self.dismiss(animated: true, completion: nil)
+		self.navigationController?.popToRootViewController(animated: false)
 	}
 	
 	@IBAction func denyAction(_ sender: Any) {
@@ -45,5 +46,6 @@ class MemberViewController: UIViewController {
 		//		realod da UI do NotificationController
         viewModel?.answerRequisition(answer: false)
 //        self.dismiss(animated: true, completion: nil)
+		self.navigationController?.popToRootViewController(animated: false)
 	}
 }

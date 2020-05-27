@@ -47,7 +47,7 @@ class NotificationViewModel {
                         let projects = resp.result
                         for project in projects {
                             for solicitation in project.solicitations {
-                                let notification = Notification(personImage: "cas", projectRequired: project.title, requisitor: solicitation.userName, requisitorEmail: solicitation.userEmail, projectID: project._id!, userRequisitorID: solicitation.userId)
+                                let notification = Notification(personImage: "personalColored", projectRequired: project.title, requisitor: solicitation.userName, requisitorEmail: solicitation.userEmail, projectID: project._id!, userRequisitorID: solicitation.userId)
                                 self.notifications.append(notification)
                             }
                         }

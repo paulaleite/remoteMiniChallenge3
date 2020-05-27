@@ -35,6 +35,8 @@ class FeedViewController: UIViewController {
         projectCollectionView.delegate = self
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
+		viewModel = FeedViewModel()
+        viewModel.loadProjects()
 	}
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,8 +58,6 @@ class FeedViewController: UIViewController {
                 print("SignedIn")
             }
         }
-        viewModel = FeedViewModel()
-        viewModel.loadProjects()
     }
 
     @objc func reloadUI() {
