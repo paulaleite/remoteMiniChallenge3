@@ -18,6 +18,11 @@ class SpecificProjectViewModel {
 	init(project: Project) {
 		self.project = project
         serverService = ServerService()
+        setUsers()
+	}
+    
+    func setUsers() {
+        guard let project = project else { return }
         serverService.getUsersBy(users: project.users, {(res) in
             switch res {
             case .success(let response):
@@ -27,7 +32,7 @@ class SpecificProjectViewModel {
                 print(error.localizedDescription)
             }
         })
-	}
+    }
 	
 	func getProject() -> Project {
 		return project!
