@@ -35,12 +35,8 @@ class FeedViewController: UIViewController {
         projectCollectionView.delegate = self
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
-	}
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        SignInWithAppleManager.checkUserAuth { (authState) in
+		
+		SignInWithAppleManager.checkUserAuth { (authState) in
             switch authState {
             case .undefined:
                 let controller = LoginViewController()
@@ -56,9 +52,13 @@ class FeedViewController: UIViewController {
                 print("SignedIn")
             }
         }
-		viewModel = FeedViewModel()
+	}
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel = FeedViewModel()
         viewModel.loadProjects()
-
     }
 
     @objc func reloadUI() {
@@ -165,7 +165,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
         switch collectionView {
         case categoryCollectionView:
             
-//            firstCellState = 0
+            firstCellState = 1
             guard let selectedCell = collectionView.cellForItem(at: indexPath) as? FeedCategoryCollectionCell else {
                  return }
             

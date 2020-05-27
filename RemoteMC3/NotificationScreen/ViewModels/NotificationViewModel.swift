@@ -34,6 +34,7 @@ class NotificationViewModel {
     }
 	
 	func setNotifications () {
+		notifications = []
         guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
         //TODO: Mudar por método que só procura 1 usuário, e não um array
         serverService.getUsersBy(users: [userID], {(result) in

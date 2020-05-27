@@ -39,6 +39,14 @@ class MemberViewController: UIViewController {
         viewModel?.answerRequisition(answer: true)
 //        self.dismiss(animated: true, completion: nil)
 		self.navigationController?.popToRootViewController(animated: false)
+//		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//		
+//		let vc = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as? NotificationViewController
+//		
+////		specificVC?.project = viewModel.getProject(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+//		
+//		self.show(vc ?? NotificationViewController(), sender: nil)
+//		self.modalPresentationStyle = .none
 	}
 	
 	@IBAction func denyAction(_ sender: Any) {
@@ -47,5 +55,6 @@ class MemberViewController: UIViewController {
         viewModel?.answerRequisition(answer: false)
 //        self.dismiss(animated: true, completion: nil)
 		self.navigationController?.popToRootViewController(animated: false)
+//		parentVC.reloadUI()
 	}
 }
