@@ -37,28 +37,31 @@ class FeedViewController: UIViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
 		
 		SignInWithAppleManager.checkUserAuth { (authState) in
-            switch authState {
-            case .undefined:
-                let controller = LoginViewController()
-                controller.modalPresentationStyle = .fullScreen
-                controller.delegate = self
-                self.present(controller, animated: true, completion: nil)
-            case .signedOut:
-                let controller = LoginViewController()
-                controller.modalPresentationStyle = .fullScreen
-                controller.delegate = self
-                self.present(controller, animated: true, completion: nil)
-            case .signedIn:
-                print("SignedIn")
-            }
-        }
+			switch authState {
+				case .undefined:
+					let controller = LoginViewController()
+					controller.modalPresentationStyle = .fullScreen
+					controller.delegate = self
+					self.present(controller, animated: true, completion: nil)
+				case .signedOut:
+					let controller = LoginViewController()
+					controller.modalPresentationStyle = .fullScreen
+					controller.delegate = self
+					self.present(controller, animated: true, completion: nil)
+				case .signedIn:
+					print("SignedIn")
+			}
+		}
 	}
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        viewModel = FeedViewModel()
+		viewModel = FeedViewModel()
         viewModel.loadProjects()
+		firstCellState = 0
+		categorySelected = 0
+		projectCollectionView.reloadData()
+		categoryCollectionView.reloadData()
     }
 
     @objc func reloadUI() {
