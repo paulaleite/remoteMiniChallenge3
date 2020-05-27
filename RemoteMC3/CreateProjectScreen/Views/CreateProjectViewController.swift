@@ -93,6 +93,7 @@ class CreateProjectViewController: UIViewController {
         viewModel.createProject({
             self.tabBarController?.selectedIndex = 2
             self.navigationController?.popToRootViewController(animated: false)
+			
         })
 	}
 	

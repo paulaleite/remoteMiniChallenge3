@@ -232,6 +232,9 @@ class FeedViewModel {
 		return cell4
 	}
 
+	func restartCounter() {
+		
+	}
 }
 
 extension NSNotification.Name {
