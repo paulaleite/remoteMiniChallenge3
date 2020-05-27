@@ -88,6 +88,7 @@ class CreateProjectViewController: UIViewController {
         viewModel.start = projectStart.text!
         viewModel.end = projectEnd.text!
         viewModel.category = projectCategory.text!
+        viewModel.phases = viewModel.phasesName
         
         viewModel.createProject({
             self.tabBarController?.selectedIndex = 2

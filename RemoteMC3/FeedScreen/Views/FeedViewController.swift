@@ -12,7 +12,7 @@ import UserNotifications
 
 class FeedViewController: UIViewController {
     
-    var viewModel: FeedViewModel = FeedViewModel()
+    var viewModel: FeedViewModel!
     
     @IBOutlet var categoryCollectionView: UICollectionView!
 
@@ -33,8 +33,6 @@ class FeedViewController: UIViewController {
         
         projectCollectionView.dataSource = self
         projectCollectionView.delegate = self
-        
-        viewModel.loadProjects()
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: .updateProjects, object: nil)
 	}
@@ -58,6 +56,8 @@ class FeedViewController: UIViewController {
                 print("SignedIn")
             }
         }
+        viewModel = FeedViewModel()
+        viewModel.loadProjects()
     }
 
     @objc func reloadUI() {

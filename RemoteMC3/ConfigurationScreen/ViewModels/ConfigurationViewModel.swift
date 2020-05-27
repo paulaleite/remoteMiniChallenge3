@@ -45,7 +45,7 @@ class ConfigurationViewModel {
     }
 
     func getMyProjectPhase(index: Int) -> String {
-		return myProjects[index].phases[0]
+        return myProjects[index].phases.count > 0 ? myProjects[index].phases[0] : "Sem etapas"
     }
 	
 	func setProjects() {
