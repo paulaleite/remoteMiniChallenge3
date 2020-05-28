@@ -39,18 +39,18 @@ class FeedViewController: UIViewController {
 		
 		SignInWithAppleManager.checkUserAuth { (authState) in
 			switch authState {
-				case .undefined:
-					let controller = LoginViewController()
-					controller.modalPresentationStyle = .fullScreen
-					controller.delegate = self
-					self.present(controller, animated: true, completion: nil)
-				case .signedOut:
-					let controller = LoginViewController()
-					controller.modalPresentationStyle = .fullScreen
-					controller.delegate = self
-					self.present(controller, animated: true, completion: nil)
-				case .signedIn:
-					print("SignedIn")
+			case .undefined:
+				let controller = LoginViewController()
+				controller.modalPresentationStyle = .fullScreen
+				controller.delegate = self
+				self.present(controller, animated: true, completion: nil)
+			case .signedOut:
+				let controller = LoginViewController()
+				controller.modalPresentationStyle = .fullScreen
+				controller.delegate = self
+				self.present(controller, animated: true, completion: nil)
+			case .signedIn:
+				print("SignedIn")
 			}
 		}
 	}
@@ -65,12 +65,12 @@ class FeedViewController: UIViewController {
         viewModel.addCategory()
         projectCollectionView.reloadData()
         categoryCollectionView.reloadData()
+		firstCellState = 1
     }
 }
 
 extension FeedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         switch collectionView {
         case categoryCollectionView:
             return viewModel.getCategoryRowsNumber()
@@ -97,14 +97,13 @@ extension FeedViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         switch collectionView {
         case categoryCollectionView:
 			if let feedCategoryCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedCategoryCollectionCell", for: indexPath) as? FeedCategoryCollectionCell {
 				if categorySelected ==  indexPath.row {
 					feedCategoryCollectionCell.categoryImage.image = UIImage(named: viewModel.categorys[categorySelected].imagem)
-					feedCategoryCollectionCell.categoryName.text = viewModel.categorys[indexPath.row].name
-					feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
+					feedCategoryCollectionCell.categoryName.text = viewModel.categorys[categorySelected].name
+					feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[categorySelected].count)
 					feedCategoryCollectionCell.backgroundColor = .white
 					feedCategoryCollectionCell.layer.masksToBounds = false
 					feedCategoryCollectionCell.layer.cornerRadius = 37
@@ -156,7 +155,6 @@ extension FeedViewController: UICollectionViewDataSource {
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         switch collectionView {
         case categoryCollectionView:
             return CGSize(width: self.view.frame.size.width * 0.2, height: self.view.frame.size.height * 0.1)
@@ -170,9 +168,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
         case categoryCollectionView:
-            
-            firstCellState = 1
-
             switch indexPath.row {
             case 1:
                 self.categorySelected = 1

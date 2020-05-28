@@ -23,10 +23,10 @@ class CreateProjectViewController: UIViewController {
 	private let projectDescription: VerticallyCenteredTextView = {
 		let projectDescription = VerticallyCenteredTextView(frame: .zero)
 		projectDescription.translatesAutoresizingMaskIntoConstraints = false
-		projectDescription.text = "Descrição"
+		projectDescription.text = "*campo obrigatório"
 		projectDescription.font = UIFont.systemFont(ofSize: 17)
 		projectDescription.textAlignment = .center
-		projectDescription.textColor = .lightGray
+		projectDescription.textColor = UIColor.placeholderText
 		projectDescription.becomeFirstResponder()
 		projectDescription.resignFirstResponder()
 		projectDescription.inputView?.layoutIfNeeded()
@@ -289,11 +289,11 @@ extension CreateProjectViewController: UITextViewDelegate {
 		
 		if updatedText.isEmpty {
 			textView.inputView?.layoutIfNeeded()
-			textView.text = "Descrição"
-			textView.textColor = UIColor.lightGray
+			textView.text = "*campo obrigatório"
+			textView.textColor = UIColor.placeholderText
 			
 			textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-		} else if textView.textColor == UIColor.lightGray && !text.isEmpty {
+		} else if textView.textColor == UIColor.placeholderText && !text.isEmpty {
 			textView.inputView?.layoutIfNeeded()
 			textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 			textView.text = text
