@@ -34,6 +34,7 @@ class NotificationViewModel {
     }
 	
 	func setNotifications () {
+		notifications = []
         guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
         //TODO: Mudar por método que só procura 1 usuário, e não um array
         serverService.getUsersBy(users: [userID], {(result) in
@@ -47,7 +48,7 @@ class NotificationViewModel {
                         let projects = resp.result
                         for project in projects {
                             for solicitation in project.solicitations {
-                                let notification = Notification(personImage: "cas", projectRequired: project.title, requisitor: solicitation.userName, requisitorEmail: solicitation.userEmail, projectID: project._id!, userRequisitorID: solicitation.userId)
+                                let notification = Notification(personImage: "personalColored", projectRequired: project.title, requisitor: solicitation.userName, requisitorEmail: solicitation.userEmail, projectID: project._id!, userRequisitorID: solicitation.userId)
                                 self.notifications.append(notification)
                             }
                         }

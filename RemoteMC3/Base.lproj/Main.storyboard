@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGu-Mj-YFO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KGu-Mj-YFO">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -67,12 +67,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do Projeto" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8E-iR-B0s">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*campo obrigatório" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X8E-iR-B0s">
                                 <rect key="frame" x="20" y="132" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Organização" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuH-9u-h7g">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*campo obrigatório" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CuH-9u-h7g">
                                 <rect key="frame" x="20" y="206" width="335" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -91,7 +91,7 @@
                                     <constraint firstAttribute="width" constant="15" id="dIj-I2-aZc"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Categoria" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-ac-O4J">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*campo obrigatório" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-ac-O4J">
                                 <rect key="frame" x="20" y="458.66666666666669" width="335" height="34"/>
                                 <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -261,7 +261,7 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCategoryCollectionCell" id="97L-En-IGa" customClass="FeedCategoryCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
                                         <rect key="frame" x="20" y="6" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="wOD-Em-bH1">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wjs-oh-tJa">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -301,15 +301,17 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="PwS-Mx-wXw" firstAttribute="centerX" secondItem="wOD-Em-bH1" secondAttribute="centerX" id="8Sn-UR-sbo"/>
+                                                <constraint firstItem="PwS-Mx-wXw" firstAttribute="centerX" secondItem="Wjs-oh-tJa" secondAttribute="centerX" id="8Sn-UR-sbo"/>
                                                 <constraint firstAttribute="bottom" secondItem="Wmy-Vz-8Gy" secondAttribute="bottom" constant="12" id="9lb-xA-Au7"/>
-                                                <constraint firstItem="ftp-wJ-85o" firstAttribute="centerX" secondItem="wOD-Em-bH1" secondAttribute="centerX" id="CSa-qM-Iyk"/>
+                                                <constraint firstItem="ftp-wJ-85o" firstAttribute="centerX" secondItem="Wjs-oh-tJa" secondAttribute="centerX" id="CSa-qM-Iyk"/>
                                                 <constraint firstItem="ftp-wJ-85o" firstAttribute="top" secondItem="PwS-Mx-wXw" secondAttribute="bottom" constant="8" symbolic="YES" id="J5E-2C-Op7"/>
-                                                <constraint firstItem="PwS-Mx-wXw" firstAttribute="top" secondItem="wOD-Em-bH1" secondAttribute="top" constant="12" id="lcH-wG-Xxm"/>
-                                                <constraint firstItem="Wmy-Vz-8Gy" firstAttribute="centerX" secondItem="wOD-Em-bH1" secondAttribute="centerX" id="meB-g2-dt8"/>
+                                                <constraint firstItem="PwS-Mx-wXw" firstAttribute="top" secondItem="Wjs-oh-tJa" secondAttribute="top" constant="12" id="lcH-wG-Xxm"/>
+                                                <constraint firstItem="Wmy-Vz-8Gy" firstAttribute="centerX" secondItem="Wjs-oh-tJa" secondAttribute="centerX" id="meB-g2-dt8"/>
                                                 <constraint firstItem="Wmy-Vz-8Gy" firstAttribute="top" secondItem="ftp-wJ-85o" secondAttribute="bottom" constant="12" id="sjK-SZ-dLS"/>
                                             </constraints>
+                                            <viewLayoutGuide key="safeArea" id="zYE-4l-Axw"/>
                                         </collectionViewCellContentView>
+                                        <viewLayoutGuide key="safeArea" id="AcM-nc-ScZ"/>
                                         <size key="customSize" width="128" height="128"/>
                                         <connections>
                                             <outlet property="categoryCount" destination="Wmy-Vz-8Gy" id="1mN-HU-ziw"/>
@@ -803,7 +805,7 @@
         <!--Notificação-->
         <scene sceneID="2G7-wO-Pqw">
             <objects>
-                <viewController id="2bJ-Wt-rUU" customClass="NotificationViewController" customModule="RemoteMC3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2bJ-Wt-rUU" customClass="NotificationViewController" customModule="RemoteMC3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="plM-uJ-zPn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1035,9 +1037,9 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="configurationCollectionCell" id="JGm-ox-L1S" customClass="ConfigurationCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
                                         <rect key="frame" x="38.666666666666664" y="50" width="298" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JxZ-LH-JNb">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zMs-3z-oNC">
                                             <rect key="frame" x="0.0" y="0.0" width="298" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifs-AU-iQP">
                                                     <rect key="frame" x="20" y="12" width="262" height="26"/>
@@ -1078,7 +1080,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="828282 828282 828282828282828282" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZk-6G-9K9">
                                                     <rect key="frame" x="20" y="66" width="85" height="50"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="85" id="5hQ-TO-w2G"/>
+                                                        <constraint firstAttribute="width" constant="85" id="S4D-21-HD3"/>
                                                         <constraint firstAttribute="height" constant="50" id="YwU-Xe-EHu"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="14"/>
@@ -1086,10 +1088,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nnnnnnn" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skw-wM-8EL">
-                                                    <rect key="frame" x="157" y="66" width="120" height="50"/>
+                                                    <rect key="frame" x="157" y="66" width="52.333333333333343" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="1ON-nW-h3c"/>
-                                                        <constraint firstAttribute="width" constant="120" id="L9t-Wg-eWZ"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="52.333333333333314" id="Yt2-fU-5sd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="MuktaMahee-Regular" family="Mukta Mahee" pointSize="14"/>
                                                     <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1097,16 +1099,17 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zZk-6G-9K9" firstAttribute="leading" secondItem="JxZ-LH-JNb" secondAttribute="leading" constant="20" id="13k-wB-HIl"/>
-                                                <constraint firstItem="ifs-AU-iQP" firstAttribute="leading" secondItem="JxZ-LH-JNb" secondAttribute="leading" constant="20" id="CMk-nF-bmm"/>
+                                                <constraint firstItem="zZk-6G-9K9" firstAttribute="leading" secondItem="zMs-3z-oNC" secondAttribute="leading" constant="20" id="13k-wB-HIl"/>
+                                                <constraint firstItem="ifs-AU-iQP" firstAttribute="leading" secondItem="zMs-3z-oNC" secondAttribute="leading" constant="20" id="CMk-nF-bmm"/>
                                                 <constraint firstItem="hrY-tn-KAe" firstAttribute="leading" secondItem="IJe-En-rvF" secondAttribute="trailing" constant="50" id="KLR-Fa-XlY"/>
                                                 <constraint firstItem="skw-wM-8EL" firstAttribute="top" secondItem="hrY-tn-KAe" secondAttribute="bottom" id="MJe-Wf-G7b"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hrY-tn-KAe" secondAttribute="trailing" constant="20" symbolic="YES" id="OSs-jg-0ww"/>
                                                 <constraint firstAttribute="trailing" secondItem="ifs-AU-iQP" secondAttribute="trailing" constant="16" id="RyO-5Z-ki5"/>
                                                 <constraint firstItem="IJe-En-rvF" firstAttribute="top" secondItem="ifs-AU-iQP" secondAttribute="bottom" constant="10" id="S1y-2Q-GQD"/>
-                                                <constraint firstItem="IJe-En-rvF" firstAttribute="leading" secondItem="JxZ-LH-JNb" secondAttribute="leading" constant="20" id="UdS-Sc-McT"/>
-                                                <constraint firstItem="ifs-AU-iQP" firstAttribute="top" secondItem="JxZ-LH-JNb" secondAttribute="top" constant="12" id="Ypj-Xp-irz"/>
+                                                <constraint firstItem="IJe-En-rvF" firstAttribute="leading" secondItem="zMs-3z-oNC" secondAttribute="leading" constant="20" id="UdS-Sc-McT"/>
+                                                <constraint firstItem="ifs-AU-iQP" firstAttribute="top" secondItem="zMs-3z-oNC" secondAttribute="top" constant="12" id="Ypj-Xp-irz"/>
                                                 <constraint firstItem="skw-wM-8EL" firstAttribute="leading" secondItem="zZk-6G-9K9" secondAttribute="trailing" constant="52" id="aKn-Ox-fC4"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="skw-wM-8EL" secondAttribute="trailing" constant="-29.333333333333314" id="knb-mC-Z7U"/>
                                                 <constraint firstItem="zZk-6G-9K9" firstAttribute="top" secondItem="IJe-En-rvF" secondAttribute="bottom" id="rZ7-BV-fr5"/>
                                                 <constraint firstItem="hrY-tn-KAe" firstAttribute="top" secondItem="ifs-AU-iQP" secondAttribute="bottom" constant="10" id="s2D-YC-c6r"/>
                                             </constraints>
