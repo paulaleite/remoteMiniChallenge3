@@ -84,6 +84,22 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 		}
 		
 	}
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let specificVC = storyboard.instantiateViewController(withIdentifier: "SpecificProjectViewController") as? SpecificProjectViewController
+		
+		switch indexPath.section {
+		case 0:
+			specificVC?.project = viewModel.getProject(type: viewModel.myProjects, index: indexPath.row)
+			
+		default:
+			specificVC?.project = viewModel.getProject(type: viewModel.projectsWithMe, index: indexPath.row)
+		}
+		
+		self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
+		specificVC?.navigationItem.setRightBarButton(UIBarButtonItem(title: "Excluir", style: .plain, target: self, action: #selector (specificVC?.askPermission)), animated: true)
+		
+	}
 }
 
 extension ConfigurationViewController: UICollectionViewDelegateFlowLayout {

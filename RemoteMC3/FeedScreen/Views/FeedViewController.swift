@@ -199,6 +199,8 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
             let specificVC = storyboard.instantiateViewController(withIdentifier: "SpecificProjectViewController") as? SpecificProjectViewController
 			
 			specificVC?.project = viewModel.getProject(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
+			specificVC?.navigationItem.rightBarButtonItem?.isEnabled = false
+
 			
             self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
         default:

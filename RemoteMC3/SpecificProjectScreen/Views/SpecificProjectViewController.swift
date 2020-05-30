@@ -21,7 +21,7 @@ class SpecificProjectViewController: UIViewController {
 	@IBOutlet var projectInstitution: UILabel!
 	@IBOutlet var usersCollectionView: UICollectionView!
 	@IBOutlet var phasesTableView: UITableView!
-    var participationButton: UIBarButtonItem!
+    var participationButton: UIBarButtonItem?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -55,8 +55,12 @@ class SpecificProjectViewController: UIViewController {
 //		pedir para participar do projeto
 //		tem que ter estado de "pedir", "participa" e "solicitado
         //TODO: Fazer a verificação se o projeto atual pertence ao usuario atual ou se o usuárop já participa do projeto atual
-        viewModel?.requireParticipation()
-        
+		let alert = UIAlertController(title: "Solicitar Participação", message: "Você  tem certez de que deseja participar desse projeto?", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
+		alert.addAction(UIAlertAction(title: "Participar", style: .default, handler: { (_) in
+			self.viewModel?.requireParticipation()
+		}))
+		self.present(alert, animated: true, completion: nil)
 	}
 	
 	func setInformation() {

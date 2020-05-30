@@ -27,7 +27,7 @@ class CreateProjectViewController: UIViewController {
 		projectDescription.font = UIFont.systemFont(ofSize: 17)
 		projectDescription.textAlignment = .center
 		projectDescription.textColor = UIColor.placeholderText
-		projectDescription.becomeFirstResponder()
+//		projectDescription.becomeFirstResponder()
 		projectDescription.resignFirstResponder()
 		projectDescription.inputView?.layoutIfNeeded()
 		projectDescription.layer.cornerRadius = 7.5
@@ -175,6 +175,7 @@ class CreateProjectViewController: UIViewController {
 	}
 	
 	@IBAction func addPhaseAction(_ sender: Any) {
+		projectCategory.resignFirstResponder()
 		let alert = UIAlertController(title: "Nova Etapa", message: "Adicione o título da Etapa", preferredStyle: .alert)
 		alert.addTextField(configurationHandler: { (phaseTitle) in
 			phaseTitle.placeholder = "Título da Etapa"
