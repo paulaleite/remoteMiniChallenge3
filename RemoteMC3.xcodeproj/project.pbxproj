@@ -45,6 +45,7 @@
 		CB04A5D2247309FE00CF5DB4 /* SpecificPhaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */; };
 		CB0778EC24709F4F00D4AA0E /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */; };
 		CB479DA524854FDD005A2BBB /* EditProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB479DA424854FDD005A2BBB /* EditProjectViewController.swift */; };
+		CB479DA924859AA1005A2BBB /* EditProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB479DA824859AA1005A2BBB /* EditProjectViewModel.swift */; };
 		CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFD9E2474606200DB480B /* MemberViewController.swift */; };
 		CB4FFDA5247465B000DB480B /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFDA4247465B000DB480B /* Member.swift */; };
 		CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */; };
@@ -121,6 +122,7 @@
 		CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificPhaseTableCell.swift; sourceTree = "<group>"; };
 		CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		CB479DA424854FDD005A2BBB /* EditProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewController.swift; sourceTree = "<group>"; };
+		CB479DA824859AA1005A2BBB /* EditProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewModel.swift; sourceTree = "<group>"; };
 		CB4FFD9E2474606200DB480B /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		CB4FFDA4247465B000DB480B /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoryCollectionCell.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 		CB479DA124854F8F005A2BBB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CB479DA824859AA1005A2BBB /* EditProjectViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				25E79839246F0CE8009E35C0 /* ConfigurationViewController.swift in Sources */,
 				1E67FD99245B634200182C41 /* SceneDelegate.swift in Sources */,
 				1E569D31247869C70035CADA /* SignInWithAppleManager.swift in Sources */,
+				CB479DA924859AA1005A2BBB /* EditProjectViewModel.swift in Sources */,
 				4F8B403C2469EDE300189CA6 /* FeedProjectCollectionCell.swift in Sources */,
 				25FA6C52246DC82600F4837F /* NotificationViewController.swift in Sources */,
 				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
@@ -904,14 +908,14 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 93JG72P729;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.edg.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cba.remote3;
 				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -926,14 +930,14 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 93JG72P729;
+				DEVELOPMENT_TEAM = W76FRTKWHT;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.edg.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cba.remote3;
 				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;

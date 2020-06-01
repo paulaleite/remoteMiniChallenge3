@@ -94,13 +94,11 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 			specificVC?.project = viewModel.getProject(type: viewModel.myProjects, index: indexPath.row)
 			specificVC?.myOwn = true
 			specificVC?.isParticipating = false
-			specificVC?.whoCallMe = "Configuration"
 			
 		default:
 			specificVC?.project = viewModel.getProject(type: viewModel.projectsWithMe, index: indexPath.row)
 			specificVC?.myOwn = false
 			specificVC?.isParticipating = true
-			specificVC?.whoCallMe = "Configuration"
 		}
 		
 		self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
