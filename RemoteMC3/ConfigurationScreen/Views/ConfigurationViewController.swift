@@ -26,7 +26,8 @@ class ConfigurationViewController: UIViewController, UICollectionViewDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.setProjects()
+        viewModel.setMyProjects()
+        viewModel.setProjectsWithMe()
     }
     
     @objc func reloadUI() {

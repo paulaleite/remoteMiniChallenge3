@@ -13,12 +13,14 @@ struct User: Codable {
     let name: String
     let email: String
     let projects: [String]?
+    let projectsWithMe: [String]?
     
 
-    init(id: String, name: String, email: String, projects: [String]?) {
+    init(id: String, name: String, email: String, projects: [String]?, projectsWithMe: [String]?) {
         self._id = id
         self.name = name
         self.email = email
         self.projects = projects
+        self.projectsWithMe = projectsWithMe
     }
 }
