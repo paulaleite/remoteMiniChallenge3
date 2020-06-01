@@ -52,10 +52,8 @@ class SpecificProjectViewController: UIViewController {
     }
 	
 	@objc func askPermission() {
-//		pedir para participar do projeto
-//		tem que ter estado de "pedir", "participa" e "solicitado
         //TODO: Fazer a verificação se o projeto atual pertence ao usuario atual ou se o usuárop já participa do projeto atual
-		let alert = UIAlertController(title: "Solicitar Participação", message: "Você  tem certez de que deseja participar desse projeto?", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Solicitar Participação", message: "Você tem certeza de que deseja participar desse projeto?", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
 		alert.addAction(UIAlertAction(title: "Participar", style: .default, handler: { (_) in
 			self.viewModel?.requireParticipation()
@@ -120,5 +118,23 @@ extension SpecificProjectViewController: UITableViewDataSource {
 			return specificProjectTableCell
 		}
 		return UITableViewCell()
+	}
+}
+
+extension SpecificProjectViewController: SpecificProjectViewModelDelegate {
+	func addSucessAlert() {
+		let alert = UIAlertController(title: "Solicitação enviada", message: "Sua solicitação para participar desse Projeto foi enviada com sucesso.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+			
+		}))
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func addErrorAlert() {
+		let alert = UIAlertController(title: "Erro ao enviar solicitação",
+									  message: "Não foi possível enviar sua solicitacão para participar dese Projeto nesse momento. Por favor, tente outra vez.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+		}))
+		self.present(alert, animated: true, completion: nil)
 	}
 }

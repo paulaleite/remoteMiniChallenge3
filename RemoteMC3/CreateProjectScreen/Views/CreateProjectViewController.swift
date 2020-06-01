@@ -49,6 +49,7 @@ class CreateProjectViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		viewModel.delegate = self
 		phaseTableView.dataSource = self
 		phaseTableView.delegate = self
 		projectDescription.delegate = self
@@ -91,8 +92,6 @@ class CreateProjectViewController: UIViewController {
         viewModel.phases = viewModel.phasesName
         
         viewModel.createProject({
-            self.tabBarController?.selectedIndex = 2
-            self.navigationController?.popToRootViewController(animated: false)
 			
         })
 	}
@@ -317,5 +316,24 @@ extension CreateProjectViewController: UITextViewDelegate {
 	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
 		textView.inputView?.layoutIfNeeded()
 		return true
+	}
+}
+
+extension CreateProjectViewController: CreateProjectViewModelDelegate {
+	func addSucessAlert() {
+		let alert = UIAlertController(title: "Projeto Criado", message: "Você criou um novo Projeto.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+			self.tabBarController?.selectedIndex = 2
+            self.navigationController?.popToRootViewController(animated: false)
+		}))
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func addErrorAlert() {
+		let alert = UIAlertController(title: "Erro ao criar um Projeto", message: "Não foi possível criar um Projeto nesse momento. Por favor, tente outra vez.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+			
+		}))
+		self.present(alert, animated: true, completion: {})
 	}
 }

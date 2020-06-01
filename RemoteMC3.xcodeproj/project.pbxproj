@@ -78,7 +78,7 @@
 		1E569D292478698E0035CADA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E569D2E247869C70035CADA /* AuthState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleManager.swift; sourceTree = "<group>"; };
-		1E67FD93245B634200182C41 /* RemoteMC3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteMC3.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E67FD93245B634200182C41 /* Projeta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projeta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E67FD96245B634200182C41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E67FD98245B634200182C41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1E67FD9D245B634200182C41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		1E67FD94245B634200182C41 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1E67FD93245B634200182C41 /* RemoteMC3.app */,
+				1E67FD93245B634200182C41 /* Projeta.app */,
 				1E67FDAC245B634500182C41 /* RemoteMC3Tests.xctest */,
 				1E67FDB7245B634500182C41 /* RemoteMC3UITests.xctest */,
 			);
@@ -516,7 +516,7 @@
 			);
 			name = RemoteMC3;
 			productName = RemoteMC3;
-			productReference = 1E67FD93245B634200182C41 /* RemoteMC3.app */;
+			productReference = 1E67FD93245B634200182C41 /* Projeta.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1E67FDAB245B634500182C41 /* RemoteMC3Tests */ = {
@@ -876,7 +876,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.acb.remote3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -898,7 +898,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.acb.remote3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -9,9 +9,16 @@
 import Foundation
 import UIKit
 
+protocol CreateProjectViewModelDelegate: class {
+	func addSucessAlert()
+	func addErrorAlert()
+}
+
 class CreateProjectViewModel {
     
     let serverService = ServerService()
+	
+	weak var delegate: CreateProjectViewModelDelegate?
 	
 	var title: String = " "
 	var description: String = ""
@@ -44,12 +51,13 @@ class CreateProjectViewModel {
                 switch response {
                 case .success(let res):
                     _ = res as? Bool
-                    print("Projeto cadastrado com sucesso!")
+					self.delegate?.addSucessAlert()
                     DispatchQueue.main.async {
                         completion()
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
+					self.delegate?.addErrorAlert()
                 }
             })
 		}
