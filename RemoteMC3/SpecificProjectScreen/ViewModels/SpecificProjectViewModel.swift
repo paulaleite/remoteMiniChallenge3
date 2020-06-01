@@ -102,5 +102,12 @@ class SpecificProjectViewModel {
             })
         }
     }
+	
+	func deleteProject() {
+		
+	}
+	
+	func exitProject() {
+		
+	}
 }
-

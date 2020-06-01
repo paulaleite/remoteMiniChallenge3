@@ -44,6 +44,7 @@
 		CB02B483246D9FA70071B7F2 /* CreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */; };
 		CB04A5D2247309FE00CF5DB4 /* SpecificPhaseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */; };
 		CB0778EC24709F4F00D4AA0E /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */; };
+		CB479DA524854FDD005A2BBB /* EditProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB479DA424854FDD005A2BBB /* EditProjectViewController.swift */; };
 		CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFD9E2474606200DB480B /* MemberViewController.swift */; };
 		CB4FFDA5247465B000DB480B /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFDA4247465B000DB480B /* Member.swift */; };
 		CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */; };
@@ -119,6 +120,7 @@
 		CB02B482246D9FA70071B7F2 /* CreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectViewController.swift; sourceTree = "<group>"; };
 		CB04A5D1247309FE00CF5DB4 /* SpecificPhaseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificPhaseTableCell.swift; sourceTree = "<group>"; };
 		CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
+		CB479DA424854FDD005A2BBB /* EditProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewController.swift; sourceTree = "<group>"; };
 		CB4FFD9E2474606200DB480B /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
 		CB4FFDA4247465B000DB480B /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoryCollectionCell.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				CB9175A6246B5FAE00D10580 /* CreateProjectScreen */,
 				CB9175AA246B5FDE00D10580 /* SpecificProjectScreen */,
 				25E79832246F09FD009E35C0 /* ConfigurationScreen */,
+				CB479DA024854F78005A2BBB /* EditProjectScreen */,
 				25FA6C49246DB94800F4837F /* NotificationScreen */,
 				CB4FFD9A2474601A00DB480B /* MemberScreen */,
 				4F8B403D2469F4F600189CA6 /* Services */,
@@ -355,6 +358,38 @@
 				CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CB479DA024854F78005A2BBB /* EditProjectScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CB479DA324854FBB005A2BBB /* Model */,
+				CB479DA224854FAF005A2BBB /* View */,
+				CB479DA124854F8F005A2BBB /* ViewModel */,
+			);
+			path = EditProjectScreen;
+			sourceTree = "<group>";
+		};
+		CB479DA124854F8F005A2BBB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CB479DA224854FAF005A2BBB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CB479DA424854FDD005A2BBB /* EditProjectViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CB479DA324854FBB005A2BBB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CB4FFD9A2474601A00DB480B /* MemberScreen */ = {
@@ -672,6 +707,7 @@
 				1E67FDA1245B634200182C41 /* RemoteMC3.xcdatamodeld in Sources */,
 				1ED7C771247C4F3200042340 /* LoginViewModel.swift in Sources */,
 				CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */,
+				CB479DA524854FDD005A2BBB /* EditProjectViewController.swift in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
 				4F8B40352469E50700189CA6 /* User.swift in Sources */,
 				CB04A5D2247309FE00CF5DB4 /* SpecificPhaseTableCell.swift in Sources */,

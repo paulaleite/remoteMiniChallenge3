@@ -13,16 +13,11 @@ import UserNotifications
 class FeedViewController: UIViewController {
     
     var viewModel: FeedViewModel!
-    
-    @IBOutlet var categoryCollectionView: UICollectionView!
-
-    @IBOutlet var projectCollectionView: UICollectionView!
-    
-    var firstCellState: Int = 0
-    
-    @IBOutlet var viewLabel: UILabel!
-    
+	var firstCellState: Int = 0
 	var categorySelected: Int = 0
+    @IBOutlet var categoryCollectionView: UICollectionView!
+    @IBOutlet var projectCollectionView: UICollectionView!
+    @IBOutlet var viewLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -199,8 +194,11 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
             let specificVC = storyboard.instantiateViewController(withIdentifier: "SpecificProjectViewController") as? SpecificProjectViewController
 			
 			specificVC?.project = viewModel.getProject(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
-			specificVC?.navigationItem.rightBarButtonItem?.isEnabled = false
-
+			
+			//TODO: Aqui preciso ver uma forma de pegar do servidor se eu sou o dono desse projeto ou se eu estou participando ou nao
+			specificVC?.myOwn = false
+			specificVC?.isParticipating = false
+			specificVC?.whoCallMe = "Feed"
 			
             self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
         default:

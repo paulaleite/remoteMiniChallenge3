@@ -64,6 +64,7 @@ class ConfigurationViewModel {
                     switch result {
                     case .success(let res):
                         self.myProjects = res.result
+						self.myProjects.reverse()
                         NotificationCenter.default.post(name: NSNotification.Name("reload_configuration"), object: nil)
                     case .failure(let error):
                         print(error.localizedDescription)

@@ -13,7 +13,9 @@ class SpecificProjectViewController: UIViewController {
 	
 	var viewModel: SpecificProjectViewModel?
 	var project: Project?
-	
+	var myOwn: Bool?
+	var isParticipating: Bool?
+	var whoCallMe: String?
 	@IBOutlet var projectDescryption: UITextView!
 	@IBOutlet var projectResponsible: UILabel!
 	@IBOutlet var projectStart: UILabel!
@@ -33,9 +35,29 @@ class SpecificProjectViewController: UIViewController {
 		
 		phasesTableView.dataSource = self
 		
-		navigationController?.navigationBar.prefersLargeTitles = true
-        participationButton = UIBarButtonItem(title: "Participar", style: .done, target: self, action: #selector(self.askPermission))
-		navigationItem.setRightBarButton(participationButton, animated: true)
+		if myOwn == true {
+			if whoCallMe == "Feed" {
+				navigationController?.navigationBar.prefersLargeTitles = true
+				participationButton = UIBarButtonItem(title: "Excluir", style: .done, target: self, action: #selector(self.askPermission))
+				navigationItem.setRightBarButton(participationButton, animated: true)
+			} else {
+				navigationController?.navigationBar.prefersLargeTitles = true
+				participationButton = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(self.askPermission))
+				navigationItem.setRightBarButton(participationButton, animated: true)
+			}
+			
+		} else {
+			if isParticipating == true {
+				navigationController?.navigationBar.prefersLargeTitles = true
+				participationButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(self.askPermission))
+				navigationItem.setRightBarButton(participationButton, animated: true)
+			} else {
+				navigationController?.navigationBar.prefersLargeTitles = true
+				participationButton = UIBarButtonItem(title: "Participar", style: .done, target: self, action: #selector(self.askPermission))
+				navigationItem.setRightBarButton(participationButton, animated: true)
+			}
+		}
+		
         self.title = viewModel?.getProject().title
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUsersCollection), name: NSNotification.Name("update_users"), object: nil)
@@ -52,13 +74,41 @@ class SpecificProjectViewController: UIViewController {
     }
 	
 	@objc func askPermission() {
-        //TODO: Fazer a verificação se o projeto atual pertence ao usuario atual ou se o usuárop já participa do projeto atual
-		let alert = UIAlertController(title: "Solicitar Participação", message: "Você tem certeza de que deseja participar desse projeto?", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
-		alert.addAction(UIAlertAction(title: "Participar", style: .default, handler: { (_) in
-			self.viewModel?.requireParticipation()
-		}))
-		self.present(alert, animated: true, completion: nil)
+		if myOwn == true {
+			if whoCallMe == "Feed" {
+				let alert = UIAlertController(title: "Exluir Projeto", message: "Você tem certeza de que deseja excluir esse projeto?", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
+				alert.addAction(UIAlertAction(title: "Excluir", style: .default, handler: { (_) in
+					//TODO: Aqui deve excluir do servidor
+					self.viewModel?.deleteProject()
+				}))
+				self.present(alert, animated: true, completion: nil)
+			} else {
+				let alert = UIAlertController(title: "Editar Projeto", message: "Você tem certeza de que deseja editar esse projeto?", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
+				alert.addAction(UIAlertAction(title: "Editar", style: .default, handler: { (_) in
+				//TODO: Aqui vai ter que instanciar a EditProjectScreen
+				}))
+				self.present(alert, animated: true, completion: nil)
+			}
+		} else {
+			if isParticipating == true {
+				let alert = UIAlertController(title: "Sair do Projeto", message: "Você tem certeza de que deseja sair desse projeto?", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
+				alert.addAction(UIAlertAction(title: "Sair", style: .default, handler: { (_) in
+					//TODO: Aqui deve sair do servidor como membro
+					self.viewModel?.exitProject()
+				}))
+				self.present(alert, animated: true, completion: nil)
+			} else {
+				let alert = UIAlertController(title: "Solicitar Participação", message: "Você tem certeza de que deseja participar desse projeto?", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
+				alert.addAction(UIAlertAction(title: "Participar", style: .default, handler: { (_) in
+					self.viewModel?.requireParticipation()
+				}))
+				self.present(alert, animated: true, completion: nil)
+			}
+		}
 	}
 	
 	func setInformation() {
