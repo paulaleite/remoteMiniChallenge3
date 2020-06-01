@@ -84,6 +84,26 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 		}
 		
 	}
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let specificVC = storyboard.instantiateViewController(withIdentifier: "SpecificProjectViewController") as? SpecificProjectViewController
+		
+		switch indexPath.section {
+		case 0:
+			specificVC?.project = viewModel.getProject(type: viewModel.myProjects, index: indexPath.row)
+			specificVC?.myOwn = true
+			specificVC?.isParticipating = false
+			specificVC?.whoCallMe = "Configuration"
+			
+		default:
+			specificVC?.project = viewModel.getProject(type: viewModel.projectsWithMe, index: indexPath.row)
+			specificVC?.myOwn = false
+			specificVC?.isParticipating = true
+			specificVC?.whoCallMe = "Configuration"
+		}
+		
+		self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
+	}
 }
 
 extension ConfigurationViewController: UICollectionViewDelegateFlowLayout {

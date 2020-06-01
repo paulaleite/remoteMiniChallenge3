@@ -16,6 +16,10 @@ class ConfigurationViewModel {
 	var sectionNames: [String] = ["Projetos que criei", "Projetos que participo"]
     let serverService: ServerService = ServerService()
     
+	func getProject(type: [Project], index: Int) -> Project {
+		return type[index]
+	}
+	
     func getProjectsWithMeItensNumber() -> Int {
         return projectsWithMe.count
     }
@@ -60,6 +64,7 @@ class ConfigurationViewModel {
                     switch result {
                     case .success(let res):
                         self.myProjects = res.result
+						self.myProjects.reverse()
                         NotificationCenter.default.post(name: NSNotification.Name("reload_configuration"), object: nil)
                     case .failure(let error):
                         print(error.localizedDescription)
