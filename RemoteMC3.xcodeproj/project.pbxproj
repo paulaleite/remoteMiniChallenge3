@@ -10,6 +10,7 @@
 		1E0665D62486C60E00F24E81 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0665D52486C60E00F24E81 /* Person.swift */; };
 		1E0665D82486C61B00F24E81 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0665D72486C61B00F24E81 /* PersonViewController.swift */; };
 		1E0665DA2486C62C00F24E81 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0665D92486C62C00F24E81 /* PersonViewModel.swift */; };
+		1E0665DC2486CA4200F24E81 /* ApprovedPeopleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0665DB2486CA4200F24E81 /* ApprovedPeopleCollectionCell.swift */; };
 		1E569D2A2478698E0035CADA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D292478698E0035CADA /* LoginViewController.swift */; };
 		1E569D30247869C70035CADA /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D2E247869C70035CADA /* AuthState.swift */; };
 		1E569D31247869C70035CADA /* SignInWithAppleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */; };
@@ -22,6 +23,7 @@
 		1E67FDB1245B634500182C41 /* RemoteMC3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FDB0245B634500182C41 /* RemoteMC3Tests.swift */; };
 		1E67FDBC245B634500182C41 /* RemoteMC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FDBB245B634500182C41 /* RemoteMC3UITests.swift */; };
 		1ED7C771247C4F3200042340 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED7C770247C4F3200042340 /* LoginViewModel.swift */; };
+		1EDCF6B92486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDCF6B82486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift */; };
 		25E79839246F0CE8009E35C0 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E79838246F0CE8009E35C0 /* ConfigurationViewController.swift */; };
 		25E7983B246F0D5C009E35C0 /* ConfigurationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7983A246F0D5C009E35C0 /* ConfigurationViewModel.swift */; };
 		25E7983D246F115A009E35C0 /* ConfigurationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E7983C246F115A009E35C0 /* ConfigurationCollectionCell.swift */; };
@@ -81,6 +83,7 @@
 		1E0665D52486C60E00F24E81 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		1E0665D72486C61B00F24E81 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		1E0665D92486C62C00F24E81 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
+		1E0665DB2486CA4200F24E81 /* ApprovedPeopleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovedPeopleCollectionCell.swift; sourceTree = "<group>"; };
 		1E569D292478698E0035CADA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E569D2E247869C70035CADA /* AuthState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleManager.swift; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 		1E67FDBD245B634500182C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemoteMC3.entitlements; sourceTree = "<group>"; };
 		1ED7C770247C4F3200042340 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1EDCF6B82486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingPeopleCollectionCell.swift; sourceTree = "<group>"; };
 		25E79838246F0CE8009E35C0 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		25E7983A246F0D5C009E35C0 /* ConfigurationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewModel.swift; sourceTree = "<group>"; };
 		25E7983C246F115A009E35C0 /* ConfigurationCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCollectionCell.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				1E0665D72486C61B00F24E81 /* PersonViewController.swift */,
+				1E0665DB2486CA4200F24E81 /* ApprovedPeopleCollectionCell.swift */,
+				1EDCF6B82486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -693,6 +699,7 @@
 			files = (
 				CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */,
 				1E0665DA2486C62C00F24E81 /* PersonViewModel.swift in Sources */,
+				1E0665DC2486CA4200F24E81 /* ApprovedPeopleCollectionCell.swift in Sources */,
 				CBC3E0EE2479B64500273E62 /* CustomCollectionHeader.swift in Sources */,
 				4F339D64247710A0009F5102 /* Requisition.swift in Sources */,
 				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
@@ -729,6 +736,7 @@
 				1E67FD99245B634200182C41 /* SceneDelegate.swift in Sources */,
 				1E569D31247869C70035CADA /* SignInWithAppleManager.swift in Sources */,
 				4F8B403C2469EDE300189CA6 /* FeedProjectCollectionCell.swift in Sources */,
+				1EDCF6B92486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift in Sources */,
 				25FA6C52246DC82600F4837F /* NotificationViewController.swift in Sources */,
 				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
 				4F8B40372469E52F00189CA6 /* Phase.swift in Sources */,

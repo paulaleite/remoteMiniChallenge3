@@ -29,8 +29,27 @@ class NotificationViewModel {
         return notifications[index].personImage
     }
 	
-	func getNotification (forNotificationAt index: Int) -> Notification {
-        return notifications[index]
+	func getNotificationProjectID(forNotificationAt index: Int) -> String {
+        return notifications[index].projectID
+    }
+    
+    func getNotificationProject(forNotificationAt index: Int, _ completion: @escaping (Project) -> Void) {
+        let projectID = notifications[index].projectID
+        
+        serverService.getProjectsBy(projects: [projectID]) { (response) in
+            switch response {
+            case .success(let res):
+                if let project = res.result.first {
+                    DispatchQueue.main.async {
+                        completion(project)
+                    }
+                } else {
+                    print("Error finding number of users")
+                }
+            case .failure(_):
+                print("Error getting the project index")
+            }
+        }
     }
 	
 	func setNotifications () {

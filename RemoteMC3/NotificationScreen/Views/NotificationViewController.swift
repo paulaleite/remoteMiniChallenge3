@@ -68,11 +68,19 @@ extension NotificationViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		
-		let memberVC = storyboard.instantiateViewController(withIdentifier: "MemberViewController") as? MemberViewController
+//		let memberVC = storyboard.instantiateViewController(withIdentifier: "MemberViewController") as? MemberViewController
 		
-		memberVC?.notification = viewModel.getNotification(forNotificationAt: indexPath.row)
+//		memberVC?.notification = viewModel.getNotification(forNotificationAt: indexPath.row)
 		
-		self.show(memberVC ?? MemberViewController(), sender: nil)
+//		self.show(memberVC ?? MemberViewController(), sender: nil)
+        
+        let personVC = storyboard.instantiateViewController(withIdentifier: "PersonViewController") as? PersonViewController
+        viewModel.getNotificationProject(forNotificationAt: indexPath.row, {(response) in
+            personVC?.project = response
+            self.show(personVC ?? PersonViewController(), sender: nil)
+        })
+        
+        
 	}
 }
 
