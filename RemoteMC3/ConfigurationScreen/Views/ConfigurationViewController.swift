@@ -39,7 +39,7 @@ class ConfigurationViewController: UIViewController, UICollectionViewDelegate {
 	@objc func deleteProject() {
 		let alert = UIAlertController(title: "Apagar planta", message: "Você deseja mesmo apagar essa planta e todos seus dados?", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Apagar", style: .destructive, handler: { _ in
-			//apagar
+			//TODO: Apagar do servidor
 		}))
 		alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
 		self.present(alert, animated: true, completion: nil)
@@ -97,7 +97,6 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 			} else {
 				return UICollectionViewCell()
 			}
-			
 		}
 		
 	}

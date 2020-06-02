@@ -110,4 +110,15 @@ class SpecificProjectViewModel {
 	func exitProject() {
 		
 	}
+	
+	func getInitials(index: Int) -> String {
+		guard let userName =  getUser(index: index)?.name else {
+			return "nil"}
+		let firstName: String = String(userName.split(separator: " ").first ?? "nil")
+		let lastName: String = String(userName.split(separator: " ").last ?? "nil")
+		let firstInitial: String = String(Array(firstName).first ?? "n")
+		let secondInitial: String = String(Array(lastName).first ?? "i")
+		return String(firstInitial + secondInitial + "l")
+	}
+
 }

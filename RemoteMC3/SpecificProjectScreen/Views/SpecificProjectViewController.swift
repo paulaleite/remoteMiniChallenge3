@@ -38,16 +38,19 @@ class SpecificProjectViewController: UIViewController {
 			navigationController?.navigationBar.prefersLargeTitles = true
 			participationButton = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(self.askPermission))
 			navigationItem.setRightBarButton(participationButton, animated: true)
+			navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
 			
 		} else {
 			if isParticipating == true {
 				navigationController?.navigationBar.prefersLargeTitles = true
 				participationButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(self.askPermission))
 				navigationItem.setRightBarButton(participationButton, animated: true)
+				navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
 			} else {
 				navigationController?.navigationBar.prefersLargeTitles = true
 				participationButton = UIBarButtonItem(title: "Participar", style: .done, target: self, action: #selector(self.askPermission))
 				navigationItem.setRightBarButton(participationButton, animated: true)
+				navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
 			}
 		}
 		
@@ -116,25 +119,40 @@ class SpecificProjectViewController: UIViewController {
 
 extension SpecificProjectViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: 50, height: 70)
+		if indexPath.row != 4 {
+			return CGSize(width: 60, height: 60)
+		} else {
+			return CGSize(width: 40, height: 40)
+		}
 	}
 }
 
 extension SpecificProjectViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewModel?.getNumberOfUsers() ?? 0
+		if ((viewModel?.getNumberOfUsers())! <= 4) {
+			return (viewModel?.getNumberOfUsers())!
+		} else {
+			return 5
+		}
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
-			let name = (viewModel?.getUser(index: indexPath.row)?.name)?.split(separator: " ")[0]
-			specificProjectCollectionCell.userName.text  = String(name ?? "nil")
-			specificProjectCollectionCell.userPhoto.image = #imageLiteral(resourceName: "personalColored")
-			specificProjectCollectionCell.userPhoto.layer.cornerRadius = 25
-			
-			return  specificProjectCollectionCell
+		if indexPath.row  == 4 {
+			if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
+				specificProjectCollectionCell.person.layer.cornerRadius = 20
+				specificProjectCollectionCell.person.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+				specificProjectCollectionCell.person.setTitle(String((viewModel?.getNumberOfUsers())! - 4) + "+", for: .normal)
+				return  specificProjectCollectionCell
+			}
+		} else {
+			if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
+				specificProjectCollectionCell.person.layer.cornerRadius = 30
+				specificProjectCollectionCell.person.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+				specificProjectCollectionCell.person.setTitle(viewModel?.getInitials(index: indexPath.row), for: .normal)
+				return  specificProjectCollectionCell
+			}
 		}
-		return SpecificProjectCollectionCell()
+		return UICollectionViewCell()
 	}
 }
 
