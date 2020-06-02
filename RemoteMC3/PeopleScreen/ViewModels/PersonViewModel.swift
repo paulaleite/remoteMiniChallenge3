@@ -11,20 +11,35 @@ import Foundation
 class PersonViewModel {
     var project: Project?
     var users: [User]?
+    var peopleSolicitations: [Solicitation]?
     let serverService: ServerService = ServerService()
 
-    func getPersonName(forUserAt index: Int) -> String {
+    func getPersonNameApproved(forUserAt index: Int) -> String {
         guard let userName = users?[index].name else {
             return "Problem with person's name"
         }
         return userName
     }
+    
+    func getPendingPeopleName(forUserAt index: Int) -> String {
+        guard let userName = peopleSolicitations?[index].userName else {
+            return "Problem with pending person's name"
+        }
+        return userName
+    }
 
-    func getPersonEmail(forUserAt index: Int) -> String {
+    func getPersonEmailApproved(forUserAt index: Int) -> String {
         guard let userEmail = users?[index].email else {
             return "Problem with person's email"
         }
         return userEmail
+    }
+    
+    func getPendingPeopleEmail(forUserAt index: Int) -> String {
+        guard let userName = users?[index].email else {
+            return "Problem with pending person's email"
+        }
+        return userName
     }
 
 //    func getPersonImage(forProjectAt index: Int) -> String {
@@ -39,11 +54,18 @@ class PersonViewModel {
         return projectName
     }
     
-    func getNumberOfUsers() -> Int {
+    func getNumberOfUsersApproved() -> Int {
         guard let numberOfUsers = users?.count else {
             return -1
         }
         return numberOfUsers
+    }
+    
+    func getNumberOfPendingPeople() -> Int {
+        guard let numberOfPendingUsers = peopleSolicitations?.count else {
+            return -2
+        }
+        return numberOfPendingUsers
     }
     
     func getUsersInProject() {
@@ -60,9 +82,18 @@ class PersonViewModel {
             }
         })
     }
+
+    func getPendingUserProject() {
+        guard let solicitations = project?.solicitations else {
+            return
+        }
+        
+        peopleSolicitations = solicitations
+    }
     
     init(project: Project) {
         self.project = project
+        getPendingUserProject()
     }
     
 //    func answerRequisition(answer: Bool) {

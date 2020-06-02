@@ -113,14 +113,14 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="specificPhaseTableCell" id="5QA-NL-wRH" customClass="SpecificPhaseTableCell" customModule="RemoteMC3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="335" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5QA-NL-wRH" id="I0x-jE-ygK">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2c-7x-HbX">
-                                                    <rect key="frame" x="15" y="11" width="305" height="21"/>
+                                                    <rect key="frame" x="15" y="10.999999999999998" width="305" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1186,6 +1186,9 @@
                                     <segment title="Aprovados"/>
                                     <segment title="Pendentes"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeApprovedPending:" destination="SPj-WY-QMg" eventType="valueChanged" id="USm-hR-uqi"/>
+                                </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lL4-6x-gEI">
                                 <rect key="frame" x="0.0" y="125" width="375" height="653"/>
@@ -1198,7 +1201,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="20" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PendingPeopleCollectionCell" reuseIdentifier="pendingPeopleCell" id="tD6-Ah-ADN" userLabel="toAproveCell" customClass="PendingPeopleCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="pendingPeopleCell" id="tD6-Ah-ADN" userLabel="toAproveCell" customClass="PendingPeopleCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
                                         <rect key="frame" x="18" y="20" width="339" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="syM-BA-ZyZ">
@@ -1290,7 +1293,7 @@
                                             <outlet property="unapprovePersonButton" destination="Nh4-Dg-YYW" id="jbp-6u-iLd"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="aprovedPeopleCell" id="sos-GX-vdP" userLabel="aprovedCell" customClass="ApprovedPeopleCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="approvedPeopleCell" id="sos-GX-vdP" userLabel="aprovedCell" customClass="ApprovedPeopleCollectionCell" customModule="RemoteMC3" customModuleProvider="target">
                                         <rect key="frame" x="18" y="140" width="339" height="110"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="r1W-FB-0Ds">

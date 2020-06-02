@@ -15,7 +15,10 @@ class PersonViewController: UIViewController {
     var users: [User]?
     var project: Project?
     
+    var selectedSegment = 1
+    
     @IBOutlet weak var approvedAndPendingSegmented: UISegmentedControl!
+    
     @IBOutlet weak var personCollectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -33,38 +36,74 @@ class PersonViewController: UIViewController {
         self.title = viewModel?.getProjectName()
     }
     
+    @IBAction func changeApprovedPending(_ sender: Any) {
+        if approvedAndPendingSegmented.selectedSegmentIndex == 0 {
+            selectedSegment = 1
+        } else {
+            selectedSegment = 2
+        }
+        self.personCollectionView.reloadData()
+    }
+    
+    
 }
 
 extension PersonViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let numberProjects = viewModel?.getNumberOfUsers() else {
-            return -1
+        
+        if selectedSegment == 1 {
+            guard let numberOfApprovedPeople = viewModel?.getNumberOfUsersApproved() else {
+                return -1
+            }
+            return numberOfApprovedPeople
+            
+        } else {
+            guard let numberOfPendingPeople = viewModel?.getNumberOfPendingPeople() else {
+                return -2
+            }
+            return numberOfPendingPeople
         }
         
-        return numberProjects
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let personCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "aprovedPeopleCell", for: indexPath) as? ApprovedPeopleCollectionCell else {
-            return ApprovedPeopleCollectionCell()
+        if selectedSegment == 1 {
+            guard let approvedPersonCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "approvedPeopleCell", for: indexPath) as? ApprovedPeopleCollectionCell else {
+                    return ApprovedPeopleCollectionCell()
+                }
+                    
+            approvedPersonCollectionCell.backgroundColor = .blue
+            approvedPersonCollectionCell.personName.text = viewModel?.getPersonNameApproved(forUserAt: indexPath.row)
+            approvedPersonCollectionCell.personEmail.text = viewModel?.getPersonEmailApproved(forUserAt: indexPath.row)
+            approvedPersonCollectionCell.personImage.layer.cornerRadius =  35
+            approvedPersonCollectionCell.backgroundColor = .white
+            approvedPersonCollectionCell.layer.masksToBounds = false
+            approvedPersonCollectionCell.layer.cornerRadius = 10
+            approvedPersonCollectionCell.layer.shadowColor = UIColor.black.cgColor
+            approvedPersonCollectionCell.layer.shadowOffset = .zero
+            approvedPersonCollectionCell.layer.shadowRadius = 3
+            approvedPersonCollectionCell.layer.shadowOpacity = 0.2
+                    
+            return approvedPersonCollectionCell
+        } else {
+            guard let pendingPersonCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "pendingPeopleCell", for: indexPath) as? PendingPeopleCollectionCell else {
+                    return ApprovedPeopleCollectionCell()
+            }
+                    
+            pendingPersonCollectionCell.backgroundColor = .blue
+            pendingPersonCollectionCell.personName.text = viewModel?.getPendingPeopleName(forUserAt: indexPath.row)
+            pendingPersonCollectionCell.personEmail.text = viewModel?.getPendingPeopleEmail(forUserAt: indexPath.row)
+            pendingPersonCollectionCell.personImage.layer.cornerRadius =  35
+            pendingPersonCollectionCell.backgroundColor = .white
+            pendingPersonCollectionCell.layer.masksToBounds = false
+            pendingPersonCollectionCell.layer.cornerRadius = 10
+            pendingPersonCollectionCell.layer.shadowColor = UIColor.black.cgColor
+            pendingPersonCollectionCell.layer.shadowOffset = .zero
+            pendingPersonCollectionCell.layer.shadowRadius = 3
+            pendingPersonCollectionCell.layer.shadowOpacity = 0.2
+                    
+            return pendingPersonCollectionCell
         }
-        
-        personCollectionCell.backgroundColor = .blue
-        
-//        personCollectionCell.personImage.image = UIImage(named: viewModel.notifications[indexPath.row].personImage)
-        personCollectionCell.personName.text = viewModel?.getPersonName(forUserAt: indexPath.row)
-        personCollectionCell.personEmail.text = viewModel?.getPersonEmail(forUserAt: indexPath.row)
-        personCollectionCell.personImage.layer.cornerRadius =  35
-        personCollectionCell.backgroundColor = .white
-        personCollectionCell.layer.masksToBounds = false
-        personCollectionCell.layer.cornerRadius = 10
-        personCollectionCell.layer.shadowColor = UIColor.black.cgColor
-        personCollectionCell.layer.shadowOffset = .zero
-        personCollectionCell.layer.shadowRadius = 3
-        personCollectionCell.layer.shadowOpacity = 0.2
-        
-        return personCollectionCell
     }
 }
 
