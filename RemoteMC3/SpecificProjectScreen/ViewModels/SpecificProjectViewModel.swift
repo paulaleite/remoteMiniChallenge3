@@ -102,6 +102,16 @@ class SpecificProjectViewModel {
             })
         }
     }
+    
+    func checkProjectOwner() -> Bool {
+        guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return false}
+        return project?.responsible.responsibleId == userID ? true : false
+    }
+    
+    func checkProjectParticipation() -> Bool {
+        guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return false}
+        return project?.users.contains(userID) ?? false
+    }
 	
 	func deleteProject() {
 		

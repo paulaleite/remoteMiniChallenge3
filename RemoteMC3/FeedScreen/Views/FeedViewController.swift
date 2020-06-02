@@ -195,10 +195,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 			
 			specificVC?.project = viewModel.getProject(forCategoryAt: categorySelected, forProjectAt: indexPath.row)
 			
-			//TODO: Aqui preciso ver uma forma de pegar do servidor se eu sou o dono desse projeto ou se eu estou participando ou nao
-			specificVC?.myOwn = false
-			specificVC?.isParticipating = false
-			
             self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
         default:
             print("Tratar o erro")
