@@ -49,9 +49,9 @@ class EditProjectViewController: UIViewController {
 		self.viewModel = EditProjectViewModel(project: project!)
 		self.setUpView()
 		
-		navigationItem.setRightBarButton(UIBarButtonItem(title: "Salvar", style: .plain, target: self, action: #selector(self.saveProject)), animated: true)
+		self.isModalInPresentation = true
+		navigationItem.setRightBarButton(UIBarButtonItem(title: "Salvar", style: .done, target: self, action: #selector(self.saveProject)), animated: true)
 		navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(self.cancelCreation)), animated: true)
-		navigationItem.leftBarButtonItem?.tintColor = .red
 		
 		viewModel!.delegate = self
 		phasesTableView.dataSource = self
@@ -81,6 +81,13 @@ class EditProjectViewController: UIViewController {
 		projectDescription.bottomAnchor.constraint(equalTo: self.duracao.topAnchor, constant: -5).isActive = true
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		 super.viewWillAppear(animated)
+		 if #available(iOS 13.0, *) {
+			  navigationController?.navigationBar.setNeedsLayout()
+		 }
+	}  
+	
 	func setUpView() {
 		self.projectName.text = viewModel?.getProjectTitle()
 		self.projectDescription.text = viewModel?.getProjectDescription()
@@ -102,7 +109,7 @@ class EditProjectViewController: UIViewController {
 	}
 	
 	@objc func cancelCreation() {
-		self.dismiss(animated: true)
+		self.dismiss(animated: true, completion: nil)
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {
@@ -190,7 +197,7 @@ class EditProjectViewController: UIViewController {
 			phaseTitle.autocapitalizationType = .sentences
 			phaseTitle.textAlignment = .center
 		})
-		alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
+		alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
 		alert.addAction(UIAlertAction(title: "Criar", style: .default, handler: { (_) in
 			if (alert.textFields?[0].text != "") {
 				self.viewModel?.phasesName.append((alert.textFields?[0].text)!)
