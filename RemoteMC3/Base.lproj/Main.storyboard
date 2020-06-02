@@ -45,7 +45,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="YqE-va-2sF"/>
                                 </constraints>
-                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -93,7 +93,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*campo obrigatório" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-ac-O4J">
                                 <rect key="frame" x="20" y="458.66666666666669" width="335" height="34"/>
-                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -113,14 +113,14 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="specificPhaseTableCell" id="5QA-NL-wRH" customClass="SpecificPhaseTableCell" customModule="Projeta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="43.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="28" width="335" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5QA-NL-wRH" id="I0x-jE-ygK">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2c-7x-HbX">
-                                                    <rect key="frame" x="15" y="10.999999999999998" width="305" height="21.333333333333329"/>
+                                                    <rect key="frame" x="15" y="11.000000000000002" width="305" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -150,7 +150,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="KP7-2A-GF5"/>
                                 </constraints>
-                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -778,7 +778,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="746-Jc-IO2">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="KGu-Mj-YFO" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KGu-Mj-YFO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iND-qD-LCA">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1170,12 +1170,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="abE-U2-f83" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5156" y="1133"/>
+            <point key="canvasLocation" x="5156" y="1132.0197044334975"/>
         </scene>
         <!--Edit Project View Controller-->
         <scene sceneID="A9a-uA-K0r">
             <objects>
-                <viewController id="mTt-jS-TD2" customClass="EditProjectViewController" customModule="Projeta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditProjectViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mTt-jS-TD2" customClass="EditProjectViewController" customModule="Projeta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rom-T5-RcA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1209,7 +1209,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="PzX-nf-4GK"/>
                                 </constraints>
-                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1257,7 +1257,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="*campo obrigatório" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="owP-SM-rQB">
                                 <rect key="frame" x="20" y="414.66666666666669" width="335" height="34"/>
-                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1267,6 +1267,9 @@
                                     <constraint firstAttribute="width" constant="30" id="4IS-uj-Sr9"/>
                                     <constraint firstAttribute="height" constant="30" id="k9q-cs-CIo"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="addCategoryAction:" destination="mTt-jS-TD2" eventType="touchUpInside" id="E7R-FO-lIo"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3fr-hG-QMQ">
                                 <rect key="frame" x="20" y="489.66666666666674" width="335" height="288.33333333333326"/>
@@ -1274,14 +1277,14 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="specificPhaseTableCell" id="cYl-Bs-kkK" customClass="SpecificPhaseTableCell" customModule="Projeta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="28" width="335" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cYl-Bs-kkK" id="OCA-kj-xrM">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33m-Sb-kWK">
-                                                    <rect key="frame" x="15" y="11.000000000000002" width="305" height="20.666666666666671"/>
+                                                    <rect key="frame" x="15" y="11.000000000000002" width="305" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1311,7 +1314,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="9On-ZR-Dle"/>
                                 </constraints>
-                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1363,12 +1366,22 @@
                         <viewLayoutGuide key="safeArea" id="Lec-nP-EKc"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="6nz-GQ-fpR">
-                        <barButtonItem key="rightBarButtonItem" title="Criar" id="ANa-5x-MyB"/>
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="ANa-5x-MyB"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="descricao" destination="una-bm-zM8" id="5VW-ya-GNd"/>
+                        <outlet property="duracao" destination="NDG-RM-HO4" id="3r2-yP-Vbv"/>
+                        <outlet property="phasesTableView" destination="3fr-hG-QMQ" id="4Za-QQ-l00"/>
+                        <outlet property="projectCategory" destination="owP-SM-rQB" id="JXv-KO-DS2"/>
+                        <outlet property="projectEnd" destination="vbL-Gi-Gtw" id="oQ1-YN-6kI"/>
+                        <outlet property="projectName" destination="v2s-40-swU" id="ZHu-45-9ls"/>
+                        <outlet property="projectOrganization" destination="DqV-WL-JXK" id="nez-hD-OjG"/>
+                        <outlet property="projectStart" destination="3zN-rR-yHP" id="ztP-PM-KyG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvE-cw-gub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6031" y="1637"/>
+            <point key="canvasLocation" x="6030" y="1612"/>
         </scene>
     </scenes>
     <resources>

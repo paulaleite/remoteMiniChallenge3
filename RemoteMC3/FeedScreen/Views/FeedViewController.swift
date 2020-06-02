@@ -198,7 +198,6 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 			//TODO: Aqui preciso ver uma forma de pegar do servidor se eu sou o dono desse projeto ou se eu estou participando ou nao
 			specificVC?.myOwn = false
 			specificVC?.isParticipating = false
-			specificVC?.whoCallMe = "Feed"
 			
             self.show(specificVC ?? SpecificProjectViewController(), sender: nil)
         default:

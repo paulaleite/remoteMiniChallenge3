@@ -181,7 +181,7 @@ class CreateProjectViewController: UIViewController {
 			phaseTitle.autocapitalizationType = .sentences
 			phaseTitle.textAlignment = .center
 		})
-		alert.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { _ in }))
+		alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
 		alert.addAction(UIAlertAction(title: "Criar", style: .default, handler: { (_) in
 			if (alert.textFields?[0].text != "") {
 				self.phaseCount+=1
