@@ -33,6 +33,9 @@ class SpecificProjectViewController: UIViewController {
 		usersCollectionView.dataSource = self
 		
 		phasesTableView.dataSource = self
+        
+        myOwn = viewModel?.checkProjectOwner()
+        isParticipating = viewModel?.checkProjectParticipation()
 		
 		if myOwn == true {
 			navigationController?.navigationBar.prefersLargeTitles = true
