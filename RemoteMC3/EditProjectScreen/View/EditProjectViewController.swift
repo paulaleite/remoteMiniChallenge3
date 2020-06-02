@@ -51,7 +51,10 @@ class EditProjectViewController: UIViewController {
 		
 		self.isModalInPresentation = true
 		navigationItem.setRightBarButton(UIBarButtonItem(title: "Salvar", style: .done, target: self, action: #selector(self.saveProject)), animated: true)
+		navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
 		navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(self.cancelCreation)), animated: true)
+		navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
+		navigationController?.navigationBar.prefersLargeTitles = true
 		
 		viewModel!.delegate = self
 		phasesTableView.dataSource = self
@@ -197,8 +200,8 @@ class EditProjectViewController: UIViewController {
 			phaseTitle.autocapitalizationType = .sentences
 			phaseTitle.textAlignment = .center
 		})
-		alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
-		alert.addAction(UIAlertAction(title: "Criar", style: .default, handler: { (_) in
+		alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
+		alert.addAction(UIAlertAction(title: "Criar", style: .cancel, handler: { (_) in
 			if (alert.textFields?[0].text != "") {
 				self.viewModel?.phasesName.append((alert.textFields?[0].text)!)
 				self.phasesTableView.reloadData()

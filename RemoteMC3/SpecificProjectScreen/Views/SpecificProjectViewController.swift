@@ -71,22 +71,17 @@ class SpecificProjectViewController: UIViewController {
 	
 	@objc func askPermission() {
 		if myOwn == true {
-			let alert = UIAlertController(title: "Editar Projeto", message: "Você tem certeza de que deseja editar esse projeto?", preferredStyle: .alert)
-			alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
-			alert.addAction(UIAlertAction(title: "Editar", style: .default, handler: { (_) in
-				let storyboard = UIStoryboard(name: "Main", bundle: nil)
-				let specificVC = storyboard.instantiateViewController(withIdentifier: "EditProjectViewController") as? EditProjectViewController
-				specificVC?.project = self.project
-				
-				let navController = UINavigationController(rootViewController: specificVC ?? EditProjectViewController())
-				self.show(navController, sender: nil)
-			}))
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let specificVC = storyboard.instantiateViewController(withIdentifier: "EditProjectViewController") as? EditProjectViewController
+			specificVC?.project = self.project
 			
-			self.present(alert, animated: true, completion: nil)
+			let navController = UINavigationController(rootViewController: specificVC ?? EditProjectViewController())
+			specificVC?.modalPresentationStyle = .fullScreen
+			self.show(navController, sender: nil)
 		} else {
 			if isParticipating == true {
 				let alert = UIAlertController(title: "Sair do Projeto", message: "Você tem certeza de que deseja sair desse projeto?", preferredStyle: .alert)
-				alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
+				alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
 				alert.addAction(UIAlertAction(title: "Sair", style: .destructive, handler: { (_) in
 					//TODO: Aqui deve sair do servidor como membro
 					self.viewModel?.exitProject()
@@ -94,8 +89,8 @@ class SpecificProjectViewController: UIViewController {
 				self.present(alert, animated: true, completion: nil)
 			} else {
 				let alert = UIAlertController(title: "Solicitar Participação", message: "Você tem certeza de que deseja participar desse projeto?", preferredStyle: .alert)
-				alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
-				alert.addAction(UIAlertAction(title: "Participar", style: .default, handler: { (_) in
+				alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
+				alert.addAction(UIAlertAction(title: "Participar", style: .cancel, handler: { (_) in
 					self.viewModel?.requireParticipation()
 				}))
 				self.present(alert, animated: true, completion: nil)

@@ -103,6 +103,7 @@
                                     <constraint firstAttribute="width" constant="30" id="WeX-QP-zRd"/>
                                     <constraint firstAttribute="height" constant="30" id="uJe-Bq-ZOM"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0078431372550000003" green="0.050980392159999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="addPhaseAction:" destination="wYM-ca-H3c" eventType="touchUpInside" id="eHo-sr-FY8"/>
                                 </connections>
@@ -113,14 +114,14 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="specificPhaseTableCell" id="5QA-NL-wRH" customClass="SpecificPhaseTableCell" customModule="Projeta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="335" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5QA-NL-wRH" id="I0x-jE-ygK">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2c-7x-HbX">
-                                                    <rect key="frame" x="15" y="11" width="305" height="21"/>
+                                                    <rect key="frame" x="15" y="11.000000000000002" width="305" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -141,6 +142,7 @@
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Etapas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMH-ci-3nK">
                                 <rect key="frame" x="20" y="507.66666666666674" width="355" height="24"/>
+                                <color key="tintColor" red="0.0078431372550000003" green="0.050980392159999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -202,7 +204,7 @@
                         <viewLayoutGuide key="safeArea" id="r1q-GC-Vi6"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="NWI-aE-Jgq">
-                        <barButtonItem key="rightBarButtonItem" title="Criar" id="ADX-CV-R9w">
+                        <barButtonItem key="rightBarButtonItem" title="Criar" style="done" id="ADX-CV-R9w">
                             <connections>
                                 <action selector="createProjectAction:" destination="wYM-ca-H3c" id="hup-Fr-BJT"/>
                             </connections>
@@ -1150,7 +1152,8 @@
                         <viewLayoutGuide key="safeArea" id="GwZ-8a-XNX"/>
                     </view>
                     <navigationItem key="navigationItem" title="Meus Projetos" largeTitleDisplayMode="always" id="nEE-3j-83t">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lQB-t5-Edi">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="lQB-t5-Edi">
+                            <color key="tintColor" red="0.0078431372550000003" green="0.050980392159999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <segue destination="wYM-ca-H3c" kind="show" id="CMC-CF-wYg"/>
                             </connections>
@@ -1259,6 +1262,7 @@
                                     <constraint firstAttribute="width" constant="30" id="4IS-uj-Sr9"/>
                                     <constraint firstAttribute="height" constant="30" id="k9q-cs-CIo"/>
                                 </constraints>
+                                <color key="tintColor" red="0.0078431372550000003" green="0.050980392159999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="addCategoryAction:" destination="mTt-jS-TD2" eventType="touchUpInside" id="E7R-FO-lIo"/>
                                 </connections>
