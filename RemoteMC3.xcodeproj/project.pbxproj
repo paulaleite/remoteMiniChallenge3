@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E0665D62486C60E00F24E81 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0665D52486C60E00F24E81 /* Person.swift */; };
+		1E0665D82486C61B00F24E81 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0665D72486C61B00F24E81 /* PersonViewController.swift */; };
+		1E0665DA2486C62C00F24E81 /* PersonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0665D92486C62C00F24E81 /* PersonViewModel.swift */; };
 		1E569D2A2478698E0035CADA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D292478698E0035CADA /* LoginViewController.swift */; };
 		1E569D30247869C70035CADA /* AuthState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D2E247869C70035CADA /* AuthState.swift */; };
 		1E569D31247869C70035CADA /* SignInWithAppleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */; };
@@ -75,6 +78,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E0665D52486C60E00F24E81 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		1E0665D72486C61B00F24E81 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		1E0665D92486C62C00F24E81 /* PersonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewModel.swift; sourceTree = "<group>"; };
 		1E569D292478698E0035CADA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1E569D2E247869C70035CADA /* AuthState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthState.swift; sourceTree = "<group>"; };
 		1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInWithAppleManager.swift; sourceTree = "<group>"; };
@@ -157,6 +163,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E0665D12486C5B300F24E81 /* PeopleScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1E0665D42486C5E600F24E81 /* Models */,
+				1E0665D32486C5E300F24E81 /* Views */,
+				1E0665D22486C5D900F24E81 /* ViewModels */,
+			);
+			path = PeopleScreen;
+			sourceTree = "<group>";
+		};
+		1E0665D22486C5D900F24E81 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1E0665D92486C62C00F24E81 /* PersonViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1E0665D32486C5E300F24E81 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1E0665D72486C61B00F24E81 /* PersonViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1E0665D42486C5E600F24E81 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1E0665D52486C60E00F24E81 /* Person.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1E569D2D247869BB0035CADA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +237,7 @@
 				25E79832246F09FD009E35C0 /* ConfigurationScreen */,
 				25FA6C49246DB94800F4837F /* NotificationScreen */,
 				CB4FFD9A2474601A00DB480B /* MemberScreen */,
+				1E0665D12486C5B300F24E81 /* PeopleScreen */,
 				4F8B403D2469F4F600189CA6 /* Services */,
 				1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */,
 				1E67FD96245B634200182C41 /* AppDelegate.swift */,
@@ -651,6 +692,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */,
+				1E0665DA2486C62C00F24E81 /* PersonViewModel.swift in Sources */,
 				CBC3E0EE2479B64500273E62 /* CustomCollectionHeader.swift in Sources */,
 				4F339D64247710A0009F5102 /* Requisition.swift in Sources */,
 				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
@@ -675,7 +717,9 @@
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
 				4F8B40352469E50700189CA6 /* User.swift in Sources */,
 				CB04A5D2247309FE00CF5DB4 /* SpecificPhaseTableCell.swift in Sources */,
+				1E0665D82486C61B00F24E81 /* PersonViewController.swift in Sources */,
 				CBF273DA246EEB66004027A4 /* Extension.swift in Sources */,
+				1E0665D62486C60E00F24E81 /* Person.swift in Sources */,
 				CB4FFDA5247465B000DB480B /* Member.swift in Sources */,
 				CB7C366B2471D2FC00B7D9FD /* SpecificProjectViewModel.swift in Sources */,
 				4F339D68247CA5FB009F5102 /* Solicitation.swift in Sources */,
@@ -868,13 +912,13 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = W76FRTKWHT;
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.acb.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.ptl.remoteMC3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -889,13 +933,13 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = W76FRTKWHT;
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.acb.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.ptl.remoteMC3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
