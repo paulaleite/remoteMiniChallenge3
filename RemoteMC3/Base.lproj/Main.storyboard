@@ -97,52 +97,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Snr-yu-UUE">
-                                <rect key="frame" x="325" y="504.66666666666674" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="WeX-QP-zRd"/>
-                                    <constraint firstAttribute="height" constant="30" id="uJe-Bq-ZOM"/>
-                                </constraints>
-                                <color key="tintColor" red="0.0078431372550000003" green="0.050980392159999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <action selector="addPhaseAction:" destination="wYM-ca-H3c" eventType="touchUpInside" id="eHo-sr-FY8"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lkb-3i-jTP">
-                                <rect key="frame" x="20" y="533.66666666666663" width="335" height="195.33333333333337"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="specificPhaseTableCell" id="5QA-NL-wRH" customClass="SpecificPhaseTableCell" customModule="Projeta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="43.333332061767578"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5QA-NL-wRH" id="I0x-jE-ygK">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.333332061767578"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2c-7x-HbX">
-                                                    <rect key="frame" x="15" y="10.999999999999998" width="305" height="21.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="n2c-7x-HbX" secondAttribute="trailing" id="OZC-c9-FZC"/>
-                                                <constraint firstItem="n2c-7x-HbX" firstAttribute="top" secondItem="I0x-jE-ygK" secondAttribute="topMargin" id="RW9-0i-FtF"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="n2c-7x-HbX" secondAttribute="bottom" id="b3b-Dc-iRs"/>
-                                                <constraint firstItem="n2c-7x-HbX" firstAttribute="leading" secondItem="I0x-jE-ygK" secondAttribute="leadingMargin" id="qz8-Yu-Qg6"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="phaseName" destination="n2c-7x-HbX" id="nwJ-hZ-6ot"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Etapas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMH-ci-3nK">
-
                                 <rect key="frame" x="20" y="507.66666666666674" width="355" height="24"/>
                                 <color key="tintColor" red="0.0078431372550000003" green="0.050980392159999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -1382,52 +1337,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBm-mc-jtS">
-                                <rect key="frame" x="325" y="460.66666666666669" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="4IS-uj-Sr9"/>
-                                    <constraint firstAttribute="height" constant="30" id="k9q-cs-CIo"/>
-                                </constraints>
-                                <color key="tintColor" red="0.0078431372550000003" green="0.050980392159999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <connections>
-                                    <action selector="addCategoryAction:" destination="mTt-jS-TD2" eventType="touchUpInside" id="E7R-FO-lIo"/>
-                                </connections>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3fr-hG-QMQ">
-                                <rect key="frame" x="20" y="489.66666666666674" width="335" height="288.33333333333326"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="specificPhaseTableCell" id="cYl-Bs-kkK" customClass="SpecificPhaseTableCell" customModule="Projeta" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="335" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cYl-Bs-kkK" id="OCA-kj-xrM">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33m-Sb-kWK">
-                                                    <rect key="frame" x="15" y="11.000000000000002" width="305" height="21.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="33m-Sb-kWK" firstAttribute="top" secondItem="OCA-kj-xrM" secondAttribute="topMargin" id="DfC-59-fCF"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="33m-Sb-kWK" secondAttribute="trailing" id="UQk-7a-wJu"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="33m-Sb-kWK" secondAttribute="bottom" id="itF-8Z-4DK"/>
-                                                <constraint firstItem="33m-Sb-kWK" firstAttribute="leading" secondItem="OCA-kj-xrM" secondAttribute="leadingMargin" id="sgB-5M-21t"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="phaseName" destination="33m-Sb-kWK" id="1ia-GP-ucc"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Etapas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMD-b9-Ath">
-
                                 <rect key="frame" x="20" y="463.66666666666669" width="355" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
