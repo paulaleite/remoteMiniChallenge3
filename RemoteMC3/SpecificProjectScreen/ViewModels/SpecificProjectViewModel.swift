@@ -21,7 +21,7 @@ class SpecificProjectViewModel {
     var serverService: ServerService
 	weak var delegate: SpecificProjectViewModelDelegate?
 	
-	init(project: Project) {
+    init(project: Project) {
 		self.project = project
         serverService = ServerService()
         setUsers()

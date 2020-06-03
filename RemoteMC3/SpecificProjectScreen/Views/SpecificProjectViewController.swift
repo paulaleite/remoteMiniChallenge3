@@ -13,6 +13,7 @@ class SpecificProjectViewController: UIViewController {
 	
 	var viewModel: SpecificProjectViewModel?
 	var project: Project?
+    var users: [User]?
 	var myOwn: Bool?
 	var isParticipating: Bool?
 	@IBOutlet var projectDescryption: UITextView!
@@ -27,8 +28,8 @@ class SpecificProjectViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.viewModel = SpecificProjectViewModel(project: project!)
-		
+        self.viewModel = SpecificProjectViewModel(project: project!)
+        
 		usersCollectionView.delegate = self
 		usersCollectionView.dataSource = self
 		
@@ -67,6 +68,7 @@ class SpecificProjectViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         viewModel?.setUsers()
+        
     }
     
     @objc func reloadUsersCollection() {
@@ -120,12 +122,13 @@ class SpecificProjectViewController: UIViewController {
         
         if myOwn == true {
             let specificVC = storyboard.instantiateViewController(withIdentifier: "PersonViewController") as? PersonViewController
-            
+
             specificVC?.project = self.project
             self.show(specificVC ?? PersonViewController(), sender: nil)
         } else {
             let participantsVC = storyboard.instantiateViewController(withIdentifier: "ParticpantsViewController") as? ParticpantsViewController
-            participantsVC?.project = project
+            participantsVC?.project = self.project
+            participantsVC?.users = viewModel?.users
             self.show(participantsVC ?? ParticpantsViewController(), sender: nil)
         }
 		

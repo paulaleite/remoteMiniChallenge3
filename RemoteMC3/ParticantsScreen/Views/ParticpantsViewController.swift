@@ -26,7 +26,10 @@ class ParticpantsViewController: UIViewController {
         guard let project = self.project else {
             return
         }
-        self.viewModel = ParticipantsViewModel(project: project)
+        guard let users = self.users else {
+            return
+        }
+        self.viewModel = ParticipantsViewModel(project: project, users: users)
         self.title = viewModel?.getProjectName()
     }
     

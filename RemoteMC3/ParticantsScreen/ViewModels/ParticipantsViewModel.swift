@@ -56,8 +56,8 @@ class ParticipantsViewModel {
         })
     }
     
-    init(project: Project) {
+    init(project: Project, users: [User]) {
         self.project = project
-        getUsersInProject()
+        self.users = users
     }
 }
