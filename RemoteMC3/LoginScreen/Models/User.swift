@@ -15,7 +15,6 @@ struct User: Codable {
     let projects: [String]?
     let projectsWithMe: [String]?
     
-
     init(id: String, name: String, email: String, projects: [String]?, projectsWithMe: [String]?) {
         self._id = id
         self.name = name
