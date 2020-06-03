@@ -11,8 +11,8 @@ import UIKit
 
 class NotificationCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var personImage: UIImageView!
-
+    @IBOutlet weak var personImage: UIButton!
+    
 	@IBOutlet var notificationMessage: UILabel!
 	
 }

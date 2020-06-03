@@ -10,7 +10,7 @@ import UIKit
 
 class ApprovedPeopleCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var personImage: UIImageView!
+    @IBOutlet weak var personImage: UIButton!
     
     @IBOutlet weak var personEmail: UILabel!
     
