@@ -172,7 +172,7 @@ class ServerService: CommunicationProtocol {
         }).resume()
     }
     //TODO: Testar
-    internal func getProjectsBy(projects ids: [String], _ completion: @escaping (Result<ResponseProjects, Error>) -> Void) {
+    internal func getProjectsBy(projects ids: [String],_ completion: @escaping (Result<ResponseProjects, Error>) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: .getProjectsByIDs)
         request.httpMethod = "POST"

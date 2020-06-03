@@ -13,7 +13,8 @@ class SpecificProjectViewController: UIViewController {
 	
 	var viewModel: SpecificProjectViewModel?
 	var project: Project?
-	
+	var myOwn: Bool?
+	var isParticipating: Bool?
 	@IBOutlet var projectDescryption: UITextView!
 	@IBOutlet var projectResponsible: UILabel!
 	@IBOutlet var projectStart: UILabel!
@@ -21,7 +22,7 @@ class SpecificProjectViewController: UIViewController {
 	@IBOutlet var projectInstitution: UILabel!
 	@IBOutlet var usersCollectionView: UICollectionView!
 	@IBOutlet var phasesTableView: UITableView!
-    var participationButton: UIBarButtonItem!
+    var participationButton: UIBarButtonItem?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,10 +33,30 @@ class SpecificProjectViewController: UIViewController {
 		usersCollectionView.dataSource = self
 		
 		phasesTableView.dataSource = self
+        
+        myOwn = viewModel?.checkProjectOwner()
+        isParticipating = viewModel?.checkProjectParticipation()
 		
-		navigationController?.navigationBar.prefersLargeTitles = true
-        participationButton = UIBarButtonItem(title: "Participar", style: .done, target: self, action: #selector(self.askPermission))
-		navigationItem.setRightBarButton(participationButton, animated: true)
+		if myOwn == true {
+			navigationController?.navigationBar.prefersLargeTitles = true
+			participationButton = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(self.askPermission))
+			navigationItem.setRightBarButton(participationButton, animated: true)
+			navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
+			
+		} else {
+			if isParticipating == true {
+				navigationController?.navigationBar.prefersLargeTitles = true
+				participationButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(self.askPermission))
+				navigationItem.setRightBarButton(participationButton, animated: true)
+				navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
+			} else {
+				navigationController?.navigationBar.prefersLargeTitles = true
+				participationButton = UIBarButtonItem(title: "Participar", style: .done, target: self, action: #selector(self.askPermission))
+				navigationItem.setRightBarButton(participationButton, animated: true)
+				navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
+			}
+		}
+		
         self.title = viewModel?.getProject().title
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUsersCollection), name: NSNotification.Name("update_users"), object: nil)
@@ -52,11 +73,32 @@ class SpecificProjectViewController: UIViewController {
     }
 	
 	@objc func askPermission() {
-//		pedir para participar do projeto
-//		tem que ter estado de "pedir", "participa" e "solicitado
-        //TODO: Fazer a verificação se o projeto atual pertence ao usuario atual ou se o usuárop já participa do projeto atual
-        viewModel?.requireParticipation()
-        
+		if myOwn == true {
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let specificVC = storyboard.instantiateViewController(withIdentifier: "EditProjectViewController") as? EditProjectViewController
+			specificVC?.project = self.project
+			
+			let navController = UINavigationController(rootViewController: specificVC ?? EditProjectViewController())
+			specificVC?.modalPresentationStyle = .fullScreen
+			self.show(navController, sender: nil)
+		} else {
+			if isParticipating == true {
+				let alert = UIAlertController(title: "Sair do Projeto", message: "Você tem certeza de que deseja sair desse projeto?", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
+				alert.addAction(UIAlertAction(title: "Sair", style: .destructive, handler: { (_) in
+					//TODO: Aqui deve sair do servidor como membro
+					self.viewModel?.exitProject()
+				}))
+				self.present(alert, animated: true, completion: nil)
+			} else {
+				let alert = UIAlertController(title: "Solicitar Participação", message: "Você tem certeza de que deseja participar desse projeto?", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
+				alert.addAction(UIAlertAction(title: "Participar", style: .cancel, handler: { (_) in
+					self.viewModel?.requireParticipation()
+				}))
+				self.present(alert, animated: true, completion: nil)
+			}
+		}
 	}
 	
 	func setInformation() {
@@ -75,25 +117,40 @@ class SpecificProjectViewController: UIViewController {
 
 extension SpecificProjectViewController: UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-		return CGSize(width: 50, height: 70)
+		if indexPath.row != 4 {
+			return CGSize(width: 60, height: 60)
+		} else {
+			return CGSize(width: 40, height: 40)
+		}
 	}
 }
 
 extension SpecificProjectViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return viewModel?.getNumberOfUsers() ?? 0
+		if ((viewModel?.getNumberOfUsers())! <= 4) {
+			return (viewModel?.getNumberOfUsers())!
+		} else {
+			return 5
+		}
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
-			let name = (viewModel?.getUser(index: indexPath.row)?.name)?.split(separator: " ")[0]
-			specificProjectCollectionCell.userName.text  = String(name ?? "nil")
-			specificProjectCollectionCell.userPhoto.image = #imageLiteral(resourceName: "personalColored")
-			specificProjectCollectionCell.userPhoto.layer.cornerRadius = 25
-			
-			return  specificProjectCollectionCell
+		if indexPath.row  == 4 {
+			if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
+				specificProjectCollectionCell.person.layer.cornerRadius = 20
+				specificProjectCollectionCell.person.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+				specificProjectCollectionCell.person.setTitle(String((viewModel?.getNumberOfUsers())! - 4) + "+", for: .normal)
+				return  specificProjectCollectionCell
+			}
+		} else {
+			if let specificProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecificProjectCollectionCell", for: indexPath) as? SpecificProjectCollectionCell {
+				specificProjectCollectionCell.person.layer.cornerRadius = 30
+				specificProjectCollectionCell.person.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+				specificProjectCollectionCell.person.setTitle(viewModel?.getInitials(index: indexPath.row), for: .normal)
+				return  specificProjectCollectionCell
+			}
 		}
-		return SpecificProjectCollectionCell()
+		return UICollectionViewCell()
 	}
 }
 
@@ -116,5 +173,23 @@ extension SpecificProjectViewController: UITableViewDataSource {
 			return specificProjectTableCell
 		}
 		return UITableViewCell()
+	}
+}
+
+extension SpecificProjectViewController: SpecificProjectViewModelDelegate {
+	func addSucessAlert() {
+		let alert = UIAlertController(title: "Solicitação enviada", message: "Sua solicitação para participar desse Projeto foi enviada com sucesso.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+			
+		}))
+		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func addErrorAlert() {
+		let alert = UIAlertController(title: "Erro ao enviar solicitação",
+									  message: "Não foi possível enviar sua solicitacão para participar dese Projeto nesse momento. Por favor, tente outra vez.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+		}))
+		self.present(alert, animated: true, completion: nil)
 	}
 }

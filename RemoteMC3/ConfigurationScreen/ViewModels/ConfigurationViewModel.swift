@@ -16,6 +16,10 @@ class ConfigurationViewModel {
 	var sectionNames: [String] = ["Projetos que criei", "Projetos que participo"]
     let serverService: ServerService = ServerService()
     
+	func getProject(type: [Project], index: Int) -> Project {
+		return type[index]
+	}
+	
     func getProjectsWithMeItensNumber() -> Int {
         return projectsWithMe.count
     }
@@ -48,7 +52,7 @@ class ConfigurationViewModel {
         return myProjects[index].phases.count > 0 ? myProjects[index].phases[0] : "Sem etapas"
     }
 	
-	func setProjects() {
+	func setMyProjects() {
         guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
         //TODO: Mudar por método que só procura 1 usuário, e não um array
         serverService.getUsersBy(users: [userID], {(response) in
@@ -60,6 +64,7 @@ class ConfigurationViewModel {
                     switch result {
                     case .success(let res):
                         self.myProjects = res.result
+						self.myProjects.reverse()
                         NotificationCenter.default.post(name: NSNotification.Name("reload_configuration"), object: nil)
                     case .failure(let error):
                         print(error.localizedDescription)
@@ -69,13 +74,29 @@ class ConfigurationViewModel {
                 print(error.localizedDescription)
             }
         })
-//		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-//		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-//		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-//		projectsWithMe.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-//		
-//		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-//		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
-//		myProjects.append(Project(phases: ["fase"], users: ["Cassia"], title: "título", organization: "mack", description: "ahah", start: "12/09/2020", end: "12/09/2021", category: "Social", responsible: Responsible(responsibleId: "sjj", responsibleName: "Cassia Barbosa")))
 	}
+    
+    func setProjectsWithMe() {
+        guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
+        //TODO: Mudar por método que só procura 1 usuário, e não um array
+        serverService.getUsersBy(users: [userID], {(response) in
+            switch response {
+            case .success(let resp):
+                guard let user = resp.result.first else { return }
+                guard let projects = user.projectsWithMe else { return }
+                self.serverService.getProjectsBy(projects: projects, {(result) in
+                    switch result {
+                    case .success(let res):
+                        self.projectsWithMe = res.result
+                        self.projectsWithMe.reverse()
+                        NotificationCenter.default.post(name: NSNotification.Name("reload_configuration"), object: nil)
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                })
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
+    }
 }

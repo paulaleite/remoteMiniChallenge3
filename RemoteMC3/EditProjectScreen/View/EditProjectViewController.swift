@@ -1,66 +1,73 @@
 //
-//  CreateProjectViewController.swift
+//  EditProjectViewController.swift
 //  RemoteMC3
 //
-//  Created by Cassia Aparecida Barbosa on 14/05/20.
+//  Created by Cassia Aparecida Barbosa on 01/06/20.
 //  Copyright © 2020 Paula Leite. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class CreateProjectViewController: UIViewController {
+class EditProjectViewController: UIViewController {
 	
-	var viewModel = CreateProjectViewModel()
+	var viewModel: EditProjectViewModel?
 	var formatter = DateFormatter()
 	var startDate = Date()
 	var endDate = Date()
-	var phaseCount: Int = 0
-	
+	var project: Project?
 	var activeTextField: UITextField?
-    @IBOutlet weak var btnCreateProject: UIBarButtonItem!
-    
-	private let projectDescription: VerticallyCenteredTextView = {
-		let projectDescription = VerticallyCenteredTextView(frame: .zero)
-		projectDescription.translatesAutoresizingMaskIntoConstraints = false
-		projectDescription.text = "*campo obrigatório"
-		projectDescription.font = UIFont.systemFont(ofSize: 17)
-		projectDescription.textAlignment = .center
-		projectDescription.textColor = UIColor.placeholderText
-//		projectDescription.becomeFirstResponder()
-		projectDescription.resignFirstResponder()
-		projectDescription.inputView?.layoutIfNeeded()
-		projectDescription.layer.cornerRadius = 7.5
-		projectDescription.layer.borderColor =  #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
-		projectDescription.layer.borderWidth = 0.5
-		projectDescription.autocapitalizationType = .sentences
-		return projectDescription
-	}()
 	
-	@IBOutlet var projectTitle: UITextField!
-	@IBOutlet var projectInstitution: UITextField!
+	@IBOutlet var descricao: UILabel!
+	@IBOutlet var duracao: UILabel!
+	
+	private let projectDescription: VerticallyCenteredTextView = {
+			let projectDescription = VerticallyCenteredTextView(frame: .zero)
+			projectDescription.translatesAutoresizingMaskIntoConstraints = false
+			projectDescription.font = UIFont.systemFont(ofSize: 17)
+			projectDescription.textAlignment = .center
+		projectDescription.textColor = .black
+	//		projectDescription.becomeFirstResponder()
+			projectDescription.resignFirstResponder()
+			projectDescription.inputView?.layoutIfNeeded()
+			projectDescription.layer.cornerRadius = 7.5
+			projectDescription.layer.borderColor =  #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+			projectDescription.layer.borderWidth = 0.5
+			projectDescription.autocapitalizationType = .sentences
+			return projectDescription
+		}()
+	
+	@IBOutlet var projectName: UITextField!
+	@IBOutlet var projectOrganization: UITextField!
 	@IBOutlet var projectStart: UITextField!
 	@IBOutlet var projectEnd: UITextField!
 	@IBOutlet var projectCategory: UITextField!
-	@IBOutlet var descrição: UILabel!
-	@IBOutlet var duração: UILabel!
-	@IBOutlet var phaseTableView: UITableView!
+	@IBOutlet var phasesTableView: UITableView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		self.viewModel = EditProjectViewModel(project: project!)
+		self.setUpView()
 		
-		viewModel.delegate = self
-		phaseTableView.dataSource = self
-		phaseTableView.delegate = self
+		self.isModalInPresentation = true
+		navigationItem.setRightBarButton(UIBarButtonItem(title: "Salvar", style: .done, target: self, action: #selector(self.saveProject)), animated: true)
+		navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
+		navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(self.cancelCreation)), animated: true)
+		navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
+		navigationController?.navigationBar.prefersLargeTitles = true
+		
+		viewModel!.delegate = self
+		phasesTableView.dataSource = self
+		phasesTableView.delegate = self
 		projectDescription.delegate = self
-		projectTitle.delegate = self
-		projectInstitution.delegate = self
+		projectName.delegate = self
+		projectOrganization.delegate = self
 		projectCategory.delegate = self
 		projectStart.delegate = self
 		projectEnd.delegate = self
 		
 		projectStart.addTarget(self, action: #selector(self.showProjectStartPicker(sender:)), for: .touchDown)
-		navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
+		
 		projectEnd.addTarget(self, action: #selector(self.showProjectEndPicker(sender:)), for: .touchDown)
 		projectCategory.addTarget(self, action: #selector(self.showProjectCategoryPicker(sender:)), for: .touchDown)
 		
@@ -73,27 +80,39 @@ class CreateProjectViewController: UIViewController {
 		self.view.addSubview(projectDescription)
 		projectDescription.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
 		projectDescription.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-		projectDescription.topAnchor.constraint(equalTo: self.descrição.bottomAnchor, constant: 5).isActive = true
-		projectDescription.bottomAnchor.constraint(equalTo: self.duração.topAnchor, constant: -5).isActive = true
-		
+		projectDescription.topAnchor.constraint(equalTo: self.descricao.bottomAnchor, constant: 5).isActive = true
+		projectDescription.bottomAnchor.constraint(equalTo: self.duracao.topAnchor, constant: -5).isActive = true
 	}
 	
-	@IBAction func createProjectAction(_ sender: Any) {
-        //TODO: Fezer verificação se os campos estão vazios
-//		reload UI do FeedController
-//		realod da UI do ConfigurationController na parte dos projetos que criei
-        btnCreateProject.isEnabled = false
-        viewModel.title = projectTitle.text!
-        viewModel.description = projectDescription.text!
-        viewModel.organization = projectInstitution.text!
-        viewModel.start = projectStart.text!
-        viewModel.end = projectEnd.text!
-        viewModel.category = projectCategory.text!
-        viewModel.phases = viewModel.phasesName
-        
-        viewModel.createProject({
-			
-        })
+	override func viewWillAppear(_ animated: Bool) {
+		 super.viewWillAppear(animated)
+		 if #available(iOS 13.0, *) {
+			  navigationController?.navigationBar.setNeedsLayout()
+		 }
+	}  
+	
+	func setUpView() {
+		self.projectName.text = viewModel?.getProjectTitle()
+		self.projectDescription.text = viewModel?.getProjectDescription()
+		self.projectOrganization.text = viewModel?.getProjectOrganization()
+		self.projectStart.text = viewModel?.getStart()
+		self.projectEnd.text = viewModel?.getEnd()
+		self.projectCategory.text = viewModel?.getProjectCategory()
+	}
+	
+	@objc func saveProject() {
+		viewModel!.title = projectName.text!
+		viewModel!.description = projectDescription.text!
+		viewModel!.organization = projectOrganization.text!
+		viewModel!.start = projectStart.text!
+		viewModel!.end = projectEnd.text!
+		viewModel!.category = projectCategory.text!
+		viewModel!.phases = viewModel!.phasesName
+		viewModel!.saveProject()
+	}
+	
+	@objc func cancelCreation() {
+		self.dismiss(animated: true, completion: nil)
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {
@@ -126,8 +145,8 @@ class CreateProjectViewController: UIViewController {
 	}
 	
 	@objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-		projectTitle.resignFirstResponder()
-		projectInstitution.resignFirstResponder()
+		projectName.resignFirstResponder()
+		projectOrganization.resignFirstResponder()
 		projectStart.resignFirstResponder()
 		projectEnd.resignFirstResponder()
 		projectDescription.resignFirstResponder()
@@ -173,7 +192,7 @@ class CreateProjectViewController: UIViewController {
 		self.view.frame.origin.y = 0
 	}
 	
-	@IBAction func addPhaseAction(_ sender: Any) {
+	@IBAction func addCategoryAction(_ sender: Any) {
 		projectCategory.resignFirstResponder()
 		let alert = UIAlertController(title: "Nova Etapa", message: "Adicione o título da Etapa", preferredStyle: .alert)
 		alert.addTextField(configurationHandler: { (phaseTitle) in
@@ -184,12 +203,8 @@ class CreateProjectViewController: UIViewController {
 		alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
 		alert.addAction(UIAlertAction(title: "Criar", style: .cancel, handler: { (_) in
 			if (alert.textFields?[0].text != "") {
-				self.phaseCount+=1
-				if (self.phaseCount == 1) {
-					self.viewModel.phasesName.removeAll()
-				}
-				self.viewModel.phasesName.append((alert.textFields?[0].text)!)
-				self.phaseTableView.reloadData()
+				self.viewModel?.phasesName.append((alert.textFields?[0].text)!)
+				self.phasesTableView.reloadData()
 				
 			} else {
 				let errorAlert = UIAlertController(title:
@@ -201,34 +216,31 @@ class CreateProjectViewController: UIViewController {
 		self.present(alert, animated: true, completion: nil)
 	}
 }
-
-extension CreateProjectViewController: UITableViewDataSource {
+extension EditProjectViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.phasesName.count
+		return viewModel?.phasesName.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if let specificPhaseTableCell = tableView.dequeueReusableCell(withIdentifier: "specificPhaseTableCell", for: indexPath) as? SpecificPhaseTableCell {
-			specificPhaseTableCell.phaseName.text = viewModel.phasesName[indexPath.row]
+			specificPhaseTableCell.phaseName.text = viewModel?.phasesName[indexPath.row]
 			return specificPhaseTableCell
 		}
 		return SpecificPhaseTableCell()
 	}
 }
 
-extension CreateProjectViewController: UITableViewDelegate {
+extension EditProjectViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (_, _, _) in
-			self.viewModel.phasesName.remove(at: indexPath.row)
-			self.phaseCount-=1
-            self.phaseTableView.reloadData()
-//            success(true)
+			self.viewModel?.phasesName.remove(at: indexPath.row)
+            self.phasesTableView.reloadData()
         })
 		return UISwipeActionsConfiguration(actions: [deleteAction])
 	}
 }
 
-extension CreateProjectViewController: UIPickerViewDelegate {
+extension EditProjectViewController: UIPickerViewDelegate {
 	
 	func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 		
@@ -251,23 +263,23 @@ extension CreateProjectViewController: UIPickerViewDelegate {
 	}
 }
 
-extension CreateProjectViewController: UIPickerViewDataSource {
+extension EditProjectViewController: UIPickerViewDataSource {
 	func numberOfComponents(in pickerView: UIPickerView) -> Int {
 		return 1
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-		return viewModel.pickerViewDataSource.count
+		return viewModel?.pickerViewDataSource.count ?? 0
 	}
 	
 	func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String {
 		
-		return viewModel.pickerViewDataSource[row]
+		return viewModel?.pickerViewDataSource[row] ?? "Social"
 	}
 	
 }
 
-extension CreateProjectViewController: UITextFieldDelegate {
+extension EditProjectViewController: UITextFieldDelegate {
 	
 	func textFieldDidBeginEditing(_ textField: UITextField) {
 		self.activeTextField = textField
@@ -281,7 +293,7 @@ extension CreateProjectViewController: UITextFieldDelegate {
 //  This extension was extracted from a implementation made by Lyndsey Scott. Comments about the implementation are available at:
 //https://stackoverflow.com/questions/27652227/how-can-i-add-placeholder-text-inside-of-a-uitextview-in-swift
 
-extension CreateProjectViewController: UITextViewDelegate {
+extension EditProjectViewController: UITextViewDelegate {
 	func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
 		textView.inputView?.layoutIfNeeded()
 		let currentText: String = textView.text
@@ -293,7 +305,7 @@ extension CreateProjectViewController: UITextViewDelegate {
 			textView.textColor = UIColor.placeholderText
 			
 			textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-		} else if textView.textColor == UIColor.placeholderText && !text.isEmpty {
+		} else if textView.textColor == UIColor.black && !text.isEmpty {
 			textView.inputView?.layoutIfNeeded()
 			textView.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 			textView.text = text
@@ -304,7 +316,7 @@ extension CreateProjectViewController: UITextViewDelegate {
 		return false
 	}
 	
-	func textViewDidChangeSelection(_ textView: UITextView) {
+	func EditProjectViewController(_ textView: UITextView) {
 		textView.inputView?.layoutIfNeeded()
 		if self.view.window != nil {
 			if textView.textColor == UIColor.lightGray {
@@ -313,15 +325,15 @@ extension CreateProjectViewController: UITextViewDelegate {
 		}
 	}
 	
-	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+	func EditProjectViewController(_ textView: UITextView) -> Bool {
 		textView.inputView?.layoutIfNeeded()
 		return true
 	}
 }
 
-extension CreateProjectViewController: CreateProjectViewModelDelegate {
+extension EditProjectViewController: EditProjectViewModelDelegate {
 	func addSucessAlert() {
-		let alert = UIAlertController(title: "Projeto Criado", message: "Você criou um novo Projeto.", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Projeto Editado", message: "Você editou o seu Projeto.", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
 			self.tabBarController?.selectedIndex = 2
             self.navigationController?.popToRootViewController(animated: false)
@@ -330,7 +342,7 @@ extension CreateProjectViewController: CreateProjectViewModelDelegate {
 	}
 	
 	func addErrorAlert() {
-		let alert = UIAlertController(title: "Erro ao criar um Projeto", message: "Não foi possível criar um Projeto nesse momento. Por favor, tente outra vez.", preferredStyle: .alert)
+		let alert = UIAlertController(title: "Erro ao editar seu Projeto", message: "Não foi possível editar seu Projeto nesse momento. Por favor, tente outra vez.", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
 			
 		}))

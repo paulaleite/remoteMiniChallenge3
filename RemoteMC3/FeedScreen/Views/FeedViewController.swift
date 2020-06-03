@@ -13,16 +13,11 @@ import UserNotifications
 class FeedViewController: UIViewController {
     
     var viewModel: FeedViewModel!
-    
-    @IBOutlet var categoryCollectionView: UICollectionView!
-
-    @IBOutlet var projectCollectionView: UICollectionView!
-    
-    var firstCellState: Int = 0
-    
-    @IBOutlet var viewLabel: UILabel!
-    
+	var firstCellState: Int = 0
 	var categorySelected: Int = 0
+    @IBOutlet var categoryCollectionView: UICollectionView!
+    @IBOutlet var projectCollectionView: UICollectionView!
+    @IBOutlet var viewLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

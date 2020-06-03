@@ -9,12 +9,18 @@
 import Foundation
 import UIKit
 
+protocol SpecificProjectViewModelDelegate: class {
+	func addSucessAlert()
+	func addErrorAlert()
+}
+
 class SpecificProjectViewModel {
     
 	var project: Project?
     var users: [User]?
     var serverService: ServerService
-    
+	weak var delegate: SpecificProjectViewModelDelegate?
+	
 	init(project: Project) {
 		self.project = project
         serverService = ServerService()
@@ -88,11 +94,41 @@ class SpecificProjectViewModel {
                 case .success(_):
                     //TODO: mostrar resposta para o usuário
                     print("Solicitação enviada com sucesso!")
+					self.delegate?.addSucessAlert()
                 case .failure(let error):
                     print(error.localizedDescription)
+					self.delegate?.addErrorAlert()
                 }
             })
         }
     }
-}
+    
+    func checkProjectOwner() -> Bool {
+        guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return false}
+        return project?.responsible.responsibleId == userID ? true : false
+    }
+    
+    func checkProjectParticipation() -> Bool {
+        guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return false}
+        return project?.users.contains(userID) ?? false
+    }
+	
+	func deleteProject() {
+		
+	}
+	
+	func exitProject() {
+		
+	}
+	
+	func getInitials(index: Int) -> String {
+		guard let userName =  getUser(index: index)?.name else {
+			return "nil"}
+		let firstName: String = String(userName.split(separator: " ").first ?? "nil")
+		let lastName: String = String(userName.split(separator: " ").last ?? "nil")
+		let firstInitial: String = String(Array(firstName).first ?? "n")
+		let secondInitial: String = String(Array(lastName).first ?? "i")
+		return String(firstInitial + secondInitial + "l")
+	}
 
+}
