@@ -60,7 +60,7 @@ class CreateProjectViewController: UIViewController {
 		projectEnd.delegate = self
 		
 		projectStart.addTarget(self, action: #selector(self.showProjectStartPicker(sender:)), for: .touchDown)
-		
+		navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
 		projectEnd.addTarget(self, action: #selector(self.showProjectEndPicker(sender:)), for: .touchDown)
 		projectCategory.addTarget(self, action: #selector(self.showProjectCategoryPicker(sender:)), for: .touchDown)
 		
@@ -181,8 +181,8 @@ class CreateProjectViewController: UIViewController {
 			phaseTitle.autocapitalizationType = .sentences
 			phaseTitle.textAlignment = .center
 		})
-		alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { _ in }))
-		alert.addAction(UIAlertAction(title: "Criar", style: .default, handler: { (_) in
+		alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
+		alert.addAction(UIAlertAction(title: "Criar", style: .cancel, handler: { (_) in
 			if (alert.textFields?[0].text != "") {
 				self.phaseCount+=1
 				if (self.phaseCount == 1) {

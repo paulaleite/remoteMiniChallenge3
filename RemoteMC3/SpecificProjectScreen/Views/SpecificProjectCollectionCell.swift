@@ -11,7 +11,6 @@ import UIKit
 
 class SpecificProjectCollectionCell: UICollectionViewCell {
 	
-	@IBOutlet var userPhoto: UIImageView!
+	@IBOutlet var person: UIButton!
 	
-	@IBOutlet var userName: UILabel!
 }
