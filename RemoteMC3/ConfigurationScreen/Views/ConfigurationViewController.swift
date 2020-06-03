@@ -36,11 +36,13 @@ class ConfigurationViewController: UIViewController, UICollectionViewDelegate {
         projectsCollectionView.reloadData()
     }
 	
+
 	@objc func deleteProject() {
 		let alert = UIAlertController(title: "Apagar Projeto", message: "Você deseja mesmo apagar esse Projeto e todos seus dados?", preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
 		alert.addAction(UIAlertAction(title: "Apagar", style: .destructive, handler: { _ in
 			//TODO: Apagar do servidor
+
 		}))
 		self.present(alert, animated: true, completion: nil)
 	}
@@ -83,7 +85,8 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 				configurationCollectionCell.nameProject.text = viewModel.getNameOfMyProject(index: indexPath.row)
 				configurationCollectionCell.responsableProject.text = viewModel.getMyProjectResponsable(index: indexPath.row)
 				configurationCollectionCell.phaseProject.text = viewModel.getMyProjectPhase(index: indexPath.row)
-				configurationCollectionCell.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.deleteProject)))
+                configurationCollectionCell.index = indexPath.row
+                configurationCollectionCell.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.deleteProject)))
 				return configurationCollectionCell
 			} else {
 				return UICollectionViewCell()

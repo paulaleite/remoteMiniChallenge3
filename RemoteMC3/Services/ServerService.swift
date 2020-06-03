@@ -16,7 +16,6 @@ class ServerService: CommunicationProtocol {
             if let data = data {
                 do {
                     let res = try JSONDecoder().decode(ResponseProjects.self, from: data)
-//                    print(res.result)
                     DispatchQueue.main.async {
                         completion(.success(res))
                     }
@@ -171,7 +170,7 @@ class ServerService: CommunicationProtocol {
             }
         }).resume()
     }
-    //TODO: Testar
+    
     internal func getProjectsBy(projects ids: [String],_ completion: @escaping (Result<ResponseProjects, Error>) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: .getProjectsByIDs)
@@ -236,7 +235,7 @@ class ServerService: CommunicationProtocol {
         }).resume()
     }
     
-    //TODO: Testar
+
     internal func answerRequestParticipation(userID: String, projectID: String, answer: Bool, _ completion: @escaping (Result<Any, Error>) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: .answerRequestParticipation)
@@ -259,6 +258,54 @@ class ServerService: CommunicationProtocol {
 //                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
 //                    print(json)
                     let res = try JSONDecoder().decode(Bool.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(res))
+                    }
+                } catch let error {
+                    print(error.localizedDescription)
+                }
+            }
+        }).resume()
+    }
+    
+    func deleteProject(projectID: String, _ completion: @escaping (Result<Any, Error>) -> Void) {
+        guard let url = URL(string: "https://projeta-server.herokuapp.com/deleteProject/" + projectID) else { return }
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let data = data {
+                do {
+                    let res = try JSONDecoder().decode(Bool.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(.success(res))
+                    }
+                } catch let error {
+                    completion(.failure(error))
+                }
+            }
+        }.resume()
+    }
+    
+    func removeUserFromProject(projectID: String, userID: String, _ completion: @escaping (Result<String, Error>) -> Void) {
+        let session = URLSession.shared
+        var request = URLRequest(url: .removeUserFromProject)
+        request.httpMethod = "POST"
+        
+        do {
+            let req = ["projectID": projectID, "userID": userID] as [String : Any]
+            request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
+            if let data = data {
+                do {
+                //create json object from data
+//                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+//                    print(json)
+                    let res = try JSONDecoder().decode(String.self, from: data)
                     DispatchQueue.main.async {
                         completion(.success(res))
                     }
@@ -291,6 +338,10 @@ extension URL {
         makeForEndpoint("createProject")
     }
     
+    static var deleteProject: URL {
+        makeForEndpoint("deleteProject/")
+    }
+    
     static var createUser: URL {
         makeForEndpoint("createUser")
     }
@@ -301,6 +352,10 @@ extension URL {
     
     static var answerRequestParticipation: URL {
         makeForEndpoint("answerRequestParticipation")
+    }
+    
+    static var removeUserFromProject: URL {
+        makeForEndpoint("/removeUserFromProject")
     }
 }
 

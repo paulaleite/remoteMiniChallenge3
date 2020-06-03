@@ -113,12 +113,17 @@ class SpecificProjectViewModel {
         return project?.users.contains(userID) ?? false
     }
 	
-	func deleteProject() {
-		
-	}
-	
 	func exitProject() {
-		
+        guard let projectID = project?._id else { return }
+        guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
+        serverService.removeUserFromProject(projectID: projectID, userID: userID, {(response) in
+            switch response {
+            case .success(let res):
+                print(res)
+            case .failure(let error):
+                print(error)
+            }
+        })
 	}
 	
 	func getInitials(index: Int) -> String {
