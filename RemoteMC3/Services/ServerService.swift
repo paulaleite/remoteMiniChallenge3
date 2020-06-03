@@ -235,14 +235,13 @@ class ServerService: CommunicationProtocol {
         }).resume()
     }
     
-
-    internal func answerRequestParticipation(userID: String, projectID: String, answer: Bool, _ completion: @escaping (Result<Any, Error>) -> Void) {
+    internal func answerRequestParticipation(userID: String, projectID: String, solicitationID: String, answer: Bool, _ completion: @escaping (Result<Any, Error>) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: .answerRequestParticipation)
         request.httpMethod = "POST"
         
         do {
-            let req = ["userID": userID, "projectID": projectID, "answer": answer] as [String : Any]
+            let req: [String: Any] = ["userID": userID, "projectID": projectID, "solicitationID": solicitationID, "answer": answer]
             request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)

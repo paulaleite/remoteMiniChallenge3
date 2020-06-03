@@ -22,7 +22,7 @@ protocol CommunicationProtocol: class {
   
     func createUser(credential: ASAuthorizationAppleIDCredential, _ completion: @escaping (Result<User, Error>) -> Void)
     
-    func answerRequestParticipation(userID: String, projectID: String, answer: Bool, _ completion: @escaping (Result<Any, Error>) -> Void)
+    func answerRequestParticipation(userID: String, projectID: String, solicitationID: String, answer: Bool, _ completion: @escaping (Result<Any, Error>) -> Void)
     
     func deleteProject(projectID: String, _ completion: @escaping (Result<Any, Error>) -> Void)
     
