@@ -83,7 +83,13 @@ class EditProjectViewController: UIViewController {
 	
 	@IBAction func deleteProject(_ sender: Any) {
 		//TODO: Deletar projeto
-        viewModel?.deleteProject()
+		let alert = UIAlertController(title: "Apagar Projeto", message: "Você tem certeza de que deseja apagar esse Projeto e todos seus dados?", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Apagar", style: .destructive, handler: { (_) in
+			self.viewModel?.deleteProject()
+			self.navigationController?.popToRootViewController(animated: true)
+		}))
+		alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: { (_) in }))
+		self.present(alert, animated: true, completion: {})
 	}
 	
 	func setUpView() {
