@@ -53,7 +53,9 @@ extension ParticpantsViewController: UICollectionViewDataSource {
         approvedPersonCollectionCell.backgroundColor = .blue
         approvedPersonCollectionCell.participantName.text = viewModel?.getPersonNameApproved(forUserAt: indexPath.row)
         approvedPersonCollectionCell.participantEmail.text = viewModel?.getPersonEmailApproved(forUserAt: indexPath.row)
-        approvedPersonCollectionCell.participantImage.layer.cornerRadius =  35
+        approvedPersonCollectionCell.personImage.layer.cornerRadius =  35
+        approvedPersonCollectionCell.personImage.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+        approvedPersonCollectionCell.personImage.setTitle(viewModel?.getInitials(index: indexPath.row), for: .normal)
         approvedPersonCollectionCell.backgroundColor = .white
         approvedPersonCollectionCell.layer.masksToBounds = false
         approvedPersonCollectionCell.layer.cornerRadius = 10

@@ -101,6 +101,8 @@ extension PersonViewController: UICollectionViewDataSource {
             approvedPersonCollectionCell.personName.text = viewModel?.getPersonNameApproved(forUserAt: indexPath.row)
             approvedPersonCollectionCell.personEmail.text = viewModel?.getPersonEmailApproved(forUserAt: indexPath.row)
             approvedPersonCollectionCell.personImage.layer.cornerRadius =  35
+            approvedPersonCollectionCell.personImage.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+            approvedPersonCollectionCell.personImage.setTitle(viewModel?.getInitialsApprovedUser(index: indexPath.row), for: .normal)
             approvedPersonCollectionCell.backgroundColor = .white
             approvedPersonCollectionCell.layer.masksToBounds = false
             approvedPersonCollectionCell.layer.cornerRadius = 10
@@ -119,6 +121,8 @@ extension PersonViewController: UICollectionViewDataSource {
             pendingPersonCollectionCell.personName.text = viewModel?.getPendingPeopleName(forUserAt: indexPath.row)
             pendingPersonCollectionCell.personEmail.text = viewModel?.getPendingPeopleEmail(forUserAt: indexPath.row)
             pendingPersonCollectionCell.personImage.layer.cornerRadius =  35
+            pendingPersonCollectionCell.personImage.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+            pendingPersonCollectionCell.personImage.setTitle(viewModel?.getInitialsPendingUser(index: indexPath.row), for: .normal)
             pendingPersonCollectionCell.backgroundColor = .white
             pendingPersonCollectionCell.layer.masksToBounds = false
             pendingPersonCollectionCell.layer.cornerRadius = 10
