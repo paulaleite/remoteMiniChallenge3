@@ -30,10 +30,12 @@ class EditProjectViewModel {
 	
 	var pickerViewDataSource = ["Social", "Cultural", "Pessoal", "Empresarial", "Pesquisa"]
 	var phasesName: [String] = [""]
+    
+    let serverService: ServerService
 	
 	init(project: Project) {
 		self.project = project
-		//        serverService = ServerService()
+        serverService = ServerService()
 		//        setUsers()
 		phasesName.removeAll()
 		for number in 0..<getNumberOfPhases() {
@@ -78,6 +80,15 @@ class EditProjectViewModel {
 	
 	func deleteProject() {
 		//TODO: Atualizar os dados do servidor
+        guard let projectID = project?._id else { return }
+        serverService.deleteProject(projectID: projectID, {(response) in
+            switch response {
+            case .success(_):
+                print("Projeto excluido com sucesso!")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        })
 	}
 	
 	func saveProject() {
