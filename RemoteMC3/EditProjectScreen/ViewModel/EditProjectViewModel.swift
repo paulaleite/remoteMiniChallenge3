@@ -93,5 +93,14 @@ class EditProjectViewModel {
 	
 	func saveProject() {
 		//TODO: Atualizar os dados do servidor
+        guard let project = project else { return }
+        serverService.updateProject(project: project, {(response) in
+            switch response {
+            case .success(let res):
+                print(res)
+            case .failure(let error):
+                print(error)
+            }
+        })
 	}
 }
