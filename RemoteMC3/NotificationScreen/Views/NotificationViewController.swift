@@ -75,9 +75,15 @@ extension NotificationViewController: UICollectionViewDataSource {
 //		self.show(memberVC ?? MemberViewController(), sender: nil)
         
         let personVC = storyboard.instantiateViewController(withIdentifier: "PersonViewController") as? PersonViewController
-        viewModel.getNotificationProject(forNotificationAt: indexPath.row, {(response) in
-            personVC?.project = response
-            self.show(personVC ?? PersonViewController(), sender: nil)
+        viewModel.getNotificationProject(forNotificationAt: indexPath.row, {(project, users, error) in
+            if error != nil {
+                print("Didn't find project and/or user")
+            } else {
+                personVC?.project = project
+                personVC?.users = users
+                self.show(personVC ?? PersonViewController(), sender: nil)
+            }
+            
         })
         
         

@@ -41,21 +41,6 @@ class ParticipantsViewModel {
         return numberOfUsers
     }
     
-    func getUsersInProject() {
-        guard let usersID = project?.users else {
-            return
-        }
-        
-        serverService.getUsersBy(users: usersID, {(response) in
-            switch response {
-            case .success(let resp):
-                self.users = resp.result
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        })
-    }
-    
     init(project: Project, users: [User]) {
         self.project = project
         self.users = users

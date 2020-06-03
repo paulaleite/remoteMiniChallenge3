@@ -67,21 +67,6 @@ class PersonViewModel {
         }
         return numberOfPendingUsers
     }
-    
-    func getUsersInProject() {
-        guard let usersID = project?.users else {
-            return
-        }
-        
-        serverService.getUsersBy(users: usersID, {(response) in
-            switch response {
-            case .success(let resp):
-                self.users = resp.result
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        })
-    }
 
     func getPendingUserProject() {
         guard let solicitations = project?.solicitations else {
@@ -91,8 +76,9 @@ class PersonViewModel {
         peopleSolicitations = solicitations
     }
     
-    init(project: Project) {
+    init(project: Project, users: [User]) {
         self.project = project
+        self.users = users
         getPendingUserProject()
     }
     
