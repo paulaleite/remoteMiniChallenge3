@@ -128,6 +128,9 @@ class SpecificProjectViewModel {
 		let lastName: String = String(userName.split(separator: " ").last ?? "nil")
 		let firstInitial: String = String(Array(firstName).first ?? "n")
 		let secondInitial: String = String(Array(lastName).first ?? "i")
+		if firstInitial != "nil" {
+			return String(firstInitial + secondInitial)
+		}
 		return String(firstInitial + secondInitial + "l")
 	}
 

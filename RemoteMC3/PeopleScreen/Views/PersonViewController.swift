@@ -14,7 +14,7 @@ class PersonViewController: UIViewController {
     var viewModel: PersonViewModel?
     var users: [User]?
     var project: Project?
-    
+	
     var selectedSegment = 1
     
     @IBOutlet weak var approvedAndPendingSegmented: UISegmentedControl!
@@ -25,7 +25,7 @@ class PersonViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+				
         personCollectionView.delegate = self
         personCollectionView.dataSource = self
         
@@ -45,23 +45,29 @@ class PersonViewController: UIViewController {
         self.personCollectionView.reloadData()
     }
     
-    @IBAction func denyAction(_ sender: Any, cellForItemAt indexPath: IndexPath) {
-        viewModel?.answerRequisition(answer: false, forUserAt: indexPath.row)
+	@objc func denyAction(_ sender: UIButton) {
+		
+		viewModel?.answerRequisition(answer: false, forUserAt: sender.tag)
         // delete request
         // reload table view
-        self.navigationController?.popToRootViewController(animated: false)
+//        self.navigationController?.popToRootViewController(animated: false)
     }
  
-    @IBAction func acceptAction(_ sender: Any, cellForItemAt indexPath: IndexPath) {
-        viewModel?.answerRequisition(answer: true, forUserAt: indexPath.row)
+    @objc func acceptAction(_ sender: UIButton) {
+        viewModel?.answerRequisition(answer: true, forUserAt: sender.tag)
         // delete request
         // reload table view
-        self.navigationController?.popToRootViewController(animated: false)
+//        self.navigationController?.popToRootViewController(animated: false)
     }
-    
-    
-    @IBAction func removeUserFromProjectButton(_ sender: Any) {
-    }
+	
+//	@IBAction func saveChanges(_ sender: Any) {
+//		//TODO: Salvar todas as mudanças 
+//	}
+//	
+//	@IBAction func cancelChanges(_ sender: Any) {
+//		self.dismiss(animated: true, completion: nil)
+//	}
+	
 }
 
 extension PersonViewController: UICollectionViewDataSource {
@@ -117,6 +123,8 @@ extension PersonViewController: UICollectionViewDataSource {
             pendingPersonCollectionCell.layer.shadowOffset = .zero
             pendingPersonCollectionCell.layer.shadowRadius = 3
             pendingPersonCollectionCell.layer.shadowOpacity = 0.2
+			pendingPersonCollectionCell.approvePersonButton.tag = indexPath.row
+			pendingPersonCollectionCell.approvePersonButton.addTarget(self, action: #selector(self.acceptAction(_:)), for: .allEvents)
                     
             return pendingPersonCollectionCell
         }
@@ -125,6 +133,6 @@ extension PersonViewController: UICollectionViewDataSource {
 
 extension PersonViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.size.width * 0.5, height: 125)
+        return CGSize(width: self.view.frame.size.width * 0.9, height: 125)
     }
 }

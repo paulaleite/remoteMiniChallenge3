@@ -113,6 +113,15 @@ class SpecificProjectViewController: UIViewController {
 		frame.size.height = .leastNormalMagnitude
 		phasesTableView.tableHeaderView = UIView(frame: frame)		
 	}
+	
+	@IBAction func seeMoreAction(_ sender: Any) {
+		
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		let specificVC = storyboard.instantiateViewController(withIdentifier: "PersonViewController") as? PersonViewController
+		
+		specificVC?.project = self.project
+		self.show(specificVC ?? PersonViewController(), sender: nil)
+	}
 }
 
 extension SpecificProjectViewController: UICollectionViewDelegateFlowLayout {
