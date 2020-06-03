@@ -77,10 +77,7 @@ class SpecificProjectViewController: UIViewController {
 			let storyboard = UIStoryboard(name: "Main", bundle: nil)
 			let specificVC = storyboard.instantiateViewController(withIdentifier: "EditProjectViewController") as? EditProjectViewController
 			specificVC?.project = self.project
-			
-			let navController = UINavigationController(rootViewController: specificVC ?? EditProjectViewController())
-			specificVC?.modalPresentationStyle = .fullScreen
-			self.show(navController, sender: nil)
+			self.show(specificVC ?? EditProjectViewController(), sender: nil)
 		} else {
 			if isParticipating == true {
 				let alert = UIAlertController(title: "Sair do Projeto", message: "Você tem certeza de que deseja sair desse projeto?", preferredStyle: .alert)
