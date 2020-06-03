@@ -27,4 +27,6 @@ protocol CommunicationProtocol: class {
     func deleteProject(projectID: String, _ completion: @escaping (Result<Any, Error>) -> Void)
     
     func removeUserFromProject(projectID: String, userID: String, _ completion: @escaping (Result<String, Error>) -> Void)
+    
+    func updateProject(project: Project, _ completion: @escaping (Result<String, Error>) -> Void)
 }

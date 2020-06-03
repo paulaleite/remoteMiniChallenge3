@@ -83,7 +83,7 @@ class EditProjectViewController: UIViewController {
 	
 	@IBAction func deleteProject(_ sender: Any) {
 		//TODO: Deletar projeto
-        
+        viewModel?.deleteProject()
 	}
 	
 	func setUpView() {
