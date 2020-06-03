@@ -42,29 +42,26 @@ class EditProjectViewController: UIViewController {
 	@IBOutlet var projectStart: UITextField!
 	@IBOutlet var projectEnd: UITextField!
 	@IBOutlet var projectCategory: UITextField!
-	@IBOutlet var phasesTableView: UITableView!
+	@IBOutlet var etapa: UITextField!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.viewModel = EditProjectViewModel(project: project!)
 		self.setUpView()
 		
-		self.isModalInPresentation = true
 		navigationItem.setRightBarButton(UIBarButtonItem(title: "Salvar", style: .done, target: self, action: #selector(self.saveProject)), animated: true)
 		navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
-		navigationItem.setLeftBarButton(UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(self.cancelCreation)), animated: true)
 		navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
 		navigationController?.navigationBar.prefersLargeTitles = true
 		
 		viewModel!.delegate = self
-		phasesTableView.dataSource = self
-		phasesTableView.delegate = self
 		projectDescription.delegate = self
 		projectName.delegate = self
 		projectOrganization.delegate = self
 		projectCategory.delegate = self
 		projectStart.delegate = self
 		projectEnd.delegate = self
+		etapa.delegate = self
 		
 		projectStart.addTarget(self, action: #selector(self.showProjectStartPicker(sender:)), for: .touchDown)
 		
@@ -84,12 +81,9 @@ class EditProjectViewController: UIViewController {
 		projectDescription.bottomAnchor.constraint(equalTo: self.duracao.topAnchor, constant: -5).isActive = true
 	}
 	
-	override func viewWillAppear(_ animated: Bool) {
-		 super.viewWillAppear(animated)
-		 if #available(iOS 13.0, *) {
-			  navigationController?.navigationBar.setNeedsLayout()
-		 }
-	}  
+	@IBAction func deleteProject(_ sender: Any) {
+		//TODO: Deletar projeto
+	}
 	
 	func setUpView() {
 		self.projectName.text = viewModel?.getProjectTitle()
@@ -98,6 +92,7 @@ class EditProjectViewController: UIViewController {
 		self.projectStart.text = viewModel?.getStart()
 		self.projectEnd.text = viewModel?.getEnd()
 		self.projectCategory.text = viewModel?.getProjectCategory()
+		self.etapa.text = viewModel?.getPhase(index: 0)
 	}
 	
 	@objc func saveProject() {
@@ -108,11 +103,10 @@ class EditProjectViewController: UIViewController {
 		viewModel!.end = projectEnd.text!
 		viewModel!.category = projectCategory.text!
 		viewModel!.phases = viewModel!.phasesName
-		viewModel!.saveProject()
-	}
-	
-	@objc func cancelCreation() {
-		self.dismiss(animated: true, completion: nil)
+		var array: [String] = []
+		array.append(etapa.text!)
+		viewModel!.phases = array
+        viewModel!.saveProject()
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {
@@ -151,6 +145,7 @@ class EditProjectViewController: UIViewController {
 		projectEnd.resignFirstResponder()
 		projectDescription.resignFirstResponder()
 		projectCategory.resignFirstResponder()
+		etapa.resignFirstResponder()
 	}
 	
 	@objc func categoryPickerValueChanged(_ sender: UIDatePicker) {
@@ -192,52 +187,6 @@ class EditProjectViewController: UIViewController {
 		self.view.frame.origin.y = 0
 	}
 	
-	@IBAction func addCategoryAction(_ sender: Any) {
-		projectCategory.resignFirstResponder()
-		let alert = UIAlertController(title: "Nova Etapa", message: "Adicione o título da Etapa", preferredStyle: .alert)
-		alert.addTextField(configurationHandler: { (phaseTitle) in
-			phaseTitle.placeholder = "Título da Etapa"
-			phaseTitle.autocapitalizationType = .sentences
-			phaseTitle.textAlignment = .center
-		})
-		alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
-		alert.addAction(UIAlertAction(title: "Criar", style: .cancel, handler: { (_) in
-			if (alert.textFields?[0].text != "") {
-				self.viewModel?.phasesName.append((alert.textFields?[0].text)!)
-				self.phasesTableView.reloadData()
-				
-			} else {
-				let errorAlert = UIAlertController(title:
-					"Erro", message: "Não foi possivel criar a Etapa. Por favor, clique novamente para criar uma Nova Etapa e preencha o campo Título.", preferredStyle: .alert)
-				errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
-				self.present(errorAlert, animated: true, completion: nil)
-			}
-		}))
-		self.present(alert, animated: true, completion: nil)
-	}
-}
-extension EditProjectViewController: UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel?.phasesName.count ?? 0
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if let specificPhaseTableCell = tableView.dequeueReusableCell(withIdentifier: "specificPhaseTableCell", for: indexPath) as? SpecificPhaseTableCell {
-			specificPhaseTableCell.phaseName.text = viewModel?.phasesName[indexPath.row]
-			return specificPhaseTableCell
-		}
-		return SpecificPhaseTableCell()
-	}
-}
-
-extension EditProjectViewController: UITableViewDelegate {
-	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (_, _, _) in
-			self.viewModel?.phasesName.remove(at: indexPath.row)
-            self.phasesTableView.reloadData()
-        })
-		return UISwipeActionsConfiguration(actions: [deleteAction])
-	}
 }
 
 extension EditProjectViewController: UIPickerViewDelegate {
