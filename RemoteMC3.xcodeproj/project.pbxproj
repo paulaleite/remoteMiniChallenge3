@@ -22,6 +22,9 @@
 		1E67FDA6245B634400182C41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E67FDA4245B634400182C41 /* LaunchScreen.storyboard */; };
 		1E67FDB1245B634500182C41 /* RemoteMC3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FDB0245B634500182C41 /* RemoteMC3Tests.swift */; };
 		1E67FDBC245B634500182C41 /* RemoteMC3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E67FDBB245B634500182C41 /* RemoteMC3UITests.swift */; };
+		1E6FDE91248821790058F3A6 /* ParticpantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FDE90248821790058F3A6 /* ParticpantsViewController.swift */; };
+		1E6FDE93248821960058F3A6 /* ParticipantsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FDE92248821960058F3A6 /* ParticipantsCollectionCell.swift */; };
+		1E6FDE95248821A60058F3A6 /* ParticipantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FDE94248821A60058F3A6 /* ParticipantsViewModel.swift */; };
 		1ED7C771247C4F3200042340 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED7C770247C4F3200042340 /* LoginViewModel.swift */; };
 		1EDCF6B92486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDCF6B82486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift */; };
 		25E79839246F0CE8009E35C0 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E79838246F0CE8009E35C0 /* ConfigurationViewController.swift */; };
@@ -104,6 +107,9 @@
 		1E67FDBB245B634500182C41 /* RemoteMC3UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMC3UITests.swift; sourceTree = "<group>"; };
 		1E67FDBD245B634500182C41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemoteMC3.entitlements; sourceTree = "<group>"; };
+		1E6FDE90248821790058F3A6 /* ParticpantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticpantsViewController.swift; sourceTree = "<group>"; };
+		1E6FDE92248821960058F3A6 /* ParticipantsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsCollectionCell.swift; sourceTree = "<group>"; };
+		1E6FDE94248821A60058F3A6 /* ParticipantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsViewModel.swift; sourceTree = "<group>"; };
 		1ED7C770247C4F3200042340 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1EDCF6B82486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingPeopleCollectionCell.swift; sourceTree = "<group>"; };
 		25E79838246F0CE8009E35C0 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +255,7 @@
 				25FA6C49246DB94800F4837F /* NotificationScreen */,
 				CB4FFD9A2474601A00DB480B /* MemberScreen */,
 				1E0665D12486C5B300F24E81 /* PeopleScreen */,
+				1E6FDE8C248821370058F3A6 /* ParticantsScreen */,
 				4F8B403D2469F4F600189CA6 /* Services */,
 				1E67FDC9245B634B00182C41 /* RemoteMC3.entitlements */,
 				1E67FD96245B634200182C41 /* AppDelegate.swift */,
@@ -279,6 +286,40 @@
 				1E67FDBD245B634500182C41 /* Info.plist */,
 			);
 			path = RemoteMC3UITests;
+			sourceTree = "<group>";
+		};
+		1E6FDE8C248821370058F3A6 /* ParticantsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1E6FDE8F248821590058F3A6 /* Models */,
+				1E6FDE8E248821540058F3A6 /* Views */,
+				1E6FDE8D2488214B0058F3A6 /* ViewModels */,
+			);
+			path = ParticantsScreen;
+			sourceTree = "<group>";
+		};
+		1E6FDE8D2488214B0058F3A6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1E6FDE94248821A60058F3A6 /* ParticipantsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1E6FDE8E248821540058F3A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1E6FDE90248821790058F3A6 /* ParticpantsViewController.swift */,
+				1E6FDE92248821960058F3A6 /* ParticipantsCollectionCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1E6FDE8F248821590058F3A6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		1ED7C76F247C4F1500042340 /* ViewModels */ = {
@@ -738,6 +779,7 @@
 				CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */,
 				1E0665DA2486C62C00F24E81 /* PersonViewModel.swift in Sources */,
 				1E0665DC2486CA4200F24E81 /* ApprovedPeopleCollectionCell.swift in Sources */,
+				1E6FDE93248821960058F3A6 /* ParticipantsCollectionCell.swift in Sources */,
 				CBC3E0EE2479B64500273E62 /* CustomCollectionHeader.swift in Sources */,
 				4F339D64247710A0009F5102 /* Requisition.swift in Sources */,
 				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
@@ -762,6 +804,7 @@
 				CB479DA524854FDD005A2BBB /* EditProjectViewController.swift in Sources */,
 				1E67FD97245B634200182C41 /* AppDelegate.swift in Sources */,
 				4F8B40352469E50700189CA6 /* User.swift in Sources */,
+				1E6FDE95248821A60058F3A6 /* ParticipantsViewModel.swift in Sources */,
 				CB04A5D2247309FE00CF5DB4 /* SpecificPhaseTableCell.swift in Sources */,
 				1E0665D82486C61B00F24E81 /* PersonViewController.swift in Sources */,
 				CBF273DA246EEB66004027A4 /* Extension.swift in Sources */,
@@ -784,6 +827,7 @@
 				CBBDE668246C634A005B52D0 /* Category.swift in Sources */,
 				25FA6C54246DCA4100F4837F /* NotificationViewModel.swift in Sources */,
 				CBC7751F246EE6DC00D1B70F /* SpecificProjectViewController.swift in Sources */,
+				1E6FDE91248821790058F3A6 /* ParticpantsViewController.swift in Sources */,
 				4F339D6624771137009F5102 /* CommunicationProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -960,14 +1004,16 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
+
 				DEVELOPMENT_TEAM = 93JG72P729;
+
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cba.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.ptl.remoteMC3;
 				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -982,14 +1028,16 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
+
 				DEVELOPMENT_TEAM = 93JG72P729;
+
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cba.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.ptl.remoteMC3;
 				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;

@@ -52,8 +52,9 @@ extension NotificationViewController: UICollectionViewDataSource {
 		
 		notificationCollectionCell.notificationMessage.text = viewModel.notifications[indexPath.row].requisitor
 			+ " desejar participar do projeto " + viewModel.notifications[indexPath.row].projectRequired
-		notificationCollectionCell.personImage.image = UIImage(named: viewModel.notifications[indexPath.row].personImage)
-		notificationCollectionCell.personImage.layer.cornerRadius =  35
+        notificationCollectionCell.personImage.layer.cornerRadius =  35
+        notificationCollectionCell.personImage.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+        notificationCollectionCell.personImage.setTitle(viewModel.getInitials(index: indexPath.row), for: .normal)
 		notificationCollectionCell.backgroundColor = .white
 		notificationCollectionCell.layer.masksToBounds = false
 		notificationCollectionCell.layer.cornerRadius = 20
@@ -75,9 +76,15 @@ extension NotificationViewController: UICollectionViewDataSource {
 //		self.show(memberVC ?? MemberViewController(), sender: nil)
         
         let personVC = storyboard.instantiateViewController(withIdentifier: "PersonViewController") as? PersonViewController
-        viewModel.getNotificationProject(forNotificationAt: indexPath.row, {(response) in
-            personVC?.project = response
-            self.show(personVC ?? PersonViewController(), sender: nil)
+        viewModel.getNotificationProject(forNotificationAt: indexPath.row, {(project, users, error) in
+            if error != nil {
+                print("Didn't find project and/or user")
+            } else {
+                personVC?.project = project
+                personVC?.users = users
+                self.show(personVC ?? PersonViewController(), sender: nil)
+            }
+            
         })
         
         
