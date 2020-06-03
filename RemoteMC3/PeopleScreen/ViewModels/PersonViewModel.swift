@@ -36,10 +36,10 @@ class PersonViewModel {
     }
     
     func getPendingPeopleEmail(forUserAt index: Int) -> String {
-        guard let userName = users?[index].email else {
+        guard let userEmail = peopleSolicitations?[index].userEmail else {
             return "Problem with pending person's email"
         }
-        return userName
+        return userEmail
     }
 
 //    func getPersonImage(forProjectAt index: Int) -> String {
@@ -96,17 +96,24 @@ class PersonViewModel {
         getPendingUserProject()
     }
     
-//    func answerRequisition(answer: Bool) {
-//        guard let notification = notification else { return }
-//        serverService.answerRequestParticipation(userID: notification.userRequisitorID, projectID: notification.projectID, answer: answer, {(response) in
-//            switch response {
-//            case .success(let res):
-//                print(res)
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
-//            }
-//        })
-//    }
+    func answerRequisition(answer: Bool, forUserAt index: Int) {
+        guard let userID = peopleSolicitations?[index].userId else {
+            return
+        }
+        
+        guard let projectID = project?._id else {
+            return
+        }
+        
+        serverService.answerRequestParticipation(userID: userID, projectID: projectID, answer: answer, {(response) in
+            switch response {
+            case .success(let res):
+                print(res)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
+            case .failure(let error):
+                print(error.localizedDescription)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
+            }
+        })
+    }
 }

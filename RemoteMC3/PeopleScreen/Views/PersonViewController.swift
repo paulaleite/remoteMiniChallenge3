@@ -45,7 +45,23 @@ class PersonViewController: UIViewController {
         self.personCollectionView.reloadData()
     }
     
+    @IBAction func denyAction(_ sender: Any, cellForItemAt indexPath: IndexPath) {
+        viewModel?.answerRequisition(answer: false, forUserAt: indexPath.row)
+        // delete request
+        // reload table view
+        self.navigationController?.popToRootViewController(animated: false)
+    }
+ 
+    @IBAction func acceptAction(_ sender: Any, cellForItemAt indexPath: IndexPath) {
+        viewModel?.answerRequisition(answer: true, forUserAt: indexPath.row)
+        // delete request
+        // reload table view
+        self.navigationController?.popToRootViewController(animated: false)
+    }
     
+    
+    @IBAction func removeUserFromProjectButton(_ sender: Any) {
+    }
 }
 
 extension PersonViewController: UICollectionViewDataSource {
@@ -109,6 +125,6 @@ extension PersonViewController: UICollectionViewDataSource {
 
 extension PersonViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.size.width * 0.9, height: 125)
+        return CGSize(width: self.view.frame.size.width * 0.5, height: 125)
     }
 }

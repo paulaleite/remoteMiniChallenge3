@@ -1228,7 +1228,7 @@
                                                             </constraints>
                                                             <state key="normal" backgroundImage="deny"/>
                                                             <connections>
-                                                                <action selector="denyAction:" destination="9eN-sr-OlO" eventType="touchUpInside" id="jHR-Sa-3X1"/>
+                                                                <action selector="denyAction:" destination="SPj-WY-QMg" eventType="touchUpInside" id="uAr-7U-R1q"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRK-gM-dCZ">
@@ -1239,7 +1239,7 @@
                                                             </constraints>
                                                             <state key="normal" backgroundImage="check"/>
                                                             <connections>
-                                                                <action selector="aceptAction:" destination="9eN-sr-OlO" eventType="touchUpInside" id="ggy-oo-8qN"/>
+                                                                <action selector="acceptAction:" destination="SPj-WY-QMg" eventType="touchUpInside" id="Nta-6Y-boM"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -1317,6 +1317,9 @@
                                                     <state key="normal" title="Remover">
                                                         <color key="titleColor" red="0.5490196078431373" green="0.16078431372549018" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="removeUserFromProjectButton:" destination="SPj-WY-QMg" eventType="touchUpInside" id="aw5-My-FOX"/>
+                                                    </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1Yl-yF-A4z">
                                                     <rect key="frame" x="100" y="30.666666666666668" width="148" height="48.666666666666657"/>
