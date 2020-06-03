@@ -67,21 +67,6 @@ class PersonViewModel {
         }
         return numberOfPendingUsers
     }
-    
-    func getUsersInProject() {
-        guard let usersID = project?.users else {
-            return
-        }
-        
-        serverService.getUsersBy(users: usersID, {(response) in
-            switch response {
-            case .success(let resp):
-                self.users = resp.result
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        })
-    }
 
     func getPendingUserProject() {
         guard let solicitations = project?.solicitations else {
@@ -91,8 +76,36 @@ class PersonViewModel {
         peopleSolicitations = solicitations
     }
     
-    init(project: Project) {
+    func getInitialsPendingUser(index: Int) -> String {
+        guard let userName = peopleSolicitations?[index].userName else {
+            return "nil"
+        }
+        let firstName: String = String(userName.split(separator: " ").first ?? "nil")
+        let lastName: String = String(userName.split(separator: " ").last ?? "nil")
+        let firstInitial: String = String(Array(firstName).first ?? "n")
+        let secondInitial: String = String(Array(lastName).first ?? "i")
+        if firstInitial != "nil" {
+            return String(firstInitial + secondInitial)
+        }
+        return String(firstInitial + secondInitial + "l")
+    }
+    
+    func getInitialsApprovedUser(index: Int) -> String {
+        guard let userName = users?[index].name else {
+            return "nil"}
+        let firstName: String = String(userName.split(separator: " ").first ?? "nil")
+        let lastName: String = String(userName.split(separator: " ").last ?? "nil")
+        let firstInitial: String = String(Array(firstName).first ?? "n")
+        let secondInitial: String = String(Array(lastName).first ?? "i")
+        if firstInitial != "nil" {
+            return String(firstInitial + secondInitial)
+        }
+        return String(firstInitial + secondInitial + "l")
+    }
+    
+    init(project: Project, users: [User]) {
         self.project = project
+        self.users = users
         getPendingUserProject()
     }
     

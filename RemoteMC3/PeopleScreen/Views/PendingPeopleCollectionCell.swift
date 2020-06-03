@@ -10,7 +10,7 @@ import UIKit
 
 class PendingPeopleCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var personImage: UIImageView!
+    @IBOutlet weak var personImage: UIButton!
     
     @IBOutlet weak var personName: UILabel!
     

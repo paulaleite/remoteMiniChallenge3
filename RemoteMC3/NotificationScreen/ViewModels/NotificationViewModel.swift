@@ -33,25 +33,52 @@ class NotificationViewModel {
         return notifications[index].projectID
     }
     
-    func getNotificationProject(forNotificationAt index: Int, _ completion: @escaping (Project) -> Void) {
+    func getNotificationProject(forNotificationAt index: Int, _ completion: @escaping (Project?, [User]?, Error?) -> Void) {
         let projectID = notifications[index].projectID
         
         serverService.getProjectsBy(projects: [projectID]) { (response) in
             switch response {
             case .success(let res):
                 if let project = res.result.first {
-                    DispatchQueue.main.async {
-                        completion(project)
+                    self.serverService.getUsersBy(users: project.users) { (result) in
+                        switch result {
+                        case .success(let ret):
+                            let users = ret.result
+                            DispatchQueue.main.async {
+                                completion(project, users, nil)
+                            }
+                        case .failure(let error):
+                            print("Didnt find users")
+                            DispatchQueue.main.async {
+                                completion(project, nil, error)
+                            }
+                        }
                     }
+
                 } else {
                     print("Error finding number of users")
                 }
-            case .failure(_):
+            case .failure(let error):
                 print("Error getting the project index")
+                DispatchQueue.main.async {
+                    completion(nil, nil, error)
+                }
             }
         }
     }
 	
+    func getInitials(index: Int) -> String {
+        let userName = notifications[index].requisitor
+        let firstName: String = String(userName.split(separator: " ").first ?? "nil")
+        let lastName: String = String(userName.split(separator: " ").last ?? "nil")
+        let firstInitial: String = String(Array(firstName).first ?? "n")
+        let secondInitial: String = String(Array(lastName).first ?? "i")
+        if firstInitial != "nil" {
+            return String(firstInitial + secondInitial)
+        }
+        return String(firstInitial + secondInitial + "l")
+    }
+    
 	func setNotifications () {
 		notifications = []
         guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
