@@ -99,4 +99,7 @@ class ConfigurationViewModel {
             }
         })
     }
+    
+    func deleteProject(index: Int) {
+    }
 }

@@ -23,8 +23,6 @@ class ConfigurationViewController: UIViewController, UICollectionViewDelegate {
 		projectsCollectionView.delegate = self
 		
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUI), name: NSNotification.Name("reload_configuration"), object: nil)
-		
-		projectsCollectionView.register(ProjectWiithMeCollectionCell.self, forCellWithReuseIdentifier: "ProjectWiithMeCollectionCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,15 +33,6 @@ class ConfigurationViewController: UIViewController, UICollectionViewDelegate {
     @objc func reloadUI() {
         projectsCollectionView.reloadData()
     }
-	
-	@objc func deleteProject() {
-		let alert = UIAlertController(title: "Apagar Projeto", message: "Você deseja mesmo apagar esse Projeto e todos seus dados?", preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
-		alert.addAction(UIAlertAction(title: "Apagar", style: .destructive, handler: { _ in
-			//TODO: Apagar do servidor
-		}))
-		self.present(alert, animated: true, completion: nil)
-	}
 }
 
 extension ConfigurationViewController: UICollectionViewDataSource {
@@ -71,34 +60,27 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		if indexPath.section == 0 {
-			if let configurationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "configurationCollectionCell", for: indexPath) as? ConfigurationCollectionCell {
-				configurationCollectionCell.layer.masksToBounds = false
-				configurationCollectionCell.backgroundColor = .white
-				configurationCollectionCell.layer.cornerRadius = 20
-				configurationCollectionCell.layer.shadowColor = UIColor.black.cgColor
-				configurationCollectionCell.layer.shadowOffset = .zero
-				configurationCollectionCell.layer.shadowRadius = 4
-				configurationCollectionCell.layer.shadowOpacity = 0.3
+		if let configurationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "configurationCollectionCell", for: indexPath) as? ConfigurationCollectionCell {
+		configurationCollectionCell.layer.masksToBounds = false
+		configurationCollectionCell.backgroundColor = .white
+		configurationCollectionCell.layer.cornerRadius = 20
+		configurationCollectionCell.layer.shadowColor = UIColor.black.cgColor
+		configurationCollectionCell.layer.shadowOffset = .zero
+		configurationCollectionCell.layer.shadowRadius = 4
+		configurationCollectionCell.layer.shadowOpacity = 0.3
+			if indexPath.section == 0 {
 				configurationCollectionCell.nameProject.text = viewModel.getNameOfMyProject(index: indexPath.row)
 				configurationCollectionCell.responsableProject.text = viewModel.getMyProjectResponsable(index: indexPath.row)
 				configurationCollectionCell.phaseProject.text = viewModel.getMyProjectPhase(index: indexPath.row)
-				configurationCollectionCell.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(self.deleteProject)))
 				return configurationCollectionCell
 			} else {
-				return UICollectionViewCell()
-			}
-		} else {
-			if let configurationCollectionCell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectWiithMeCollectionCell", for: indexPath) as? ProjectWiithMeCollectionCell {
-				configurationCollectionCell2.nameProject.text = viewModel.getNameOfProject(index: indexPath.row)
-				configurationCollectionCell2.responsableProject.text = viewModel.getProjectResponsable(index: indexPath.row)
-				configurationCollectionCell2.phaseProject.text = viewModel.getProjectPhase(index: indexPath.row)
-				return configurationCollectionCell2
-			} else {
-				return UICollectionViewCell()
+				configurationCollectionCell.nameProject.text = viewModel.getNameOfProject(index: indexPath.row)
+				configurationCollectionCell.responsableProject.text = viewModel.getProjectResponsable(index: indexPath.row)
+				configurationCollectionCell.phaseProject.text = viewModel.getProjectPhase(index: indexPath.row)
+				return configurationCollectionCell
 			}
 		}
-		
+		return UICollectionViewCell()
 	}
 		
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

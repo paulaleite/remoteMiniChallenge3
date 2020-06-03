@@ -60,7 +60,6 @@
 		CB7C366B2471D2FC00B7D9FD /* SpecificProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7C366A2471D2FC00B7D9FD /* SpecificProjectViewModel.swift */; };
 		CB7C366D2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7C366C2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift */; };
 		CB7C366F2471D35D00B7D9FD /* SpecificProjectCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7C366E2471D35D00B7D9FD /* SpecificProjectCollectionCell.swift */; };
-		CBAB302524868EAB00557C08 /* ProjectWiithMeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAB302424868EAB00557C08 /* ProjectWiithMeCollectionCell.swift */; };
 		CBBDE668246C634A005B52D0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBDE667246C634A005B52D0 /* Category.swift */; };
 		CBC3E0EE2479B64500273E62 /* CustomCollectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC3E0ED2479B64500273E62 /* CustomCollectionHeader.swift */; };
 		CBC7751D246EE0D900D1B70F /* CreateProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBC7751C246EE0D900D1B70F /* CreateProjectViewModel.swift */; };
@@ -146,7 +145,6 @@
 		CB7C366A2471D2FC00B7D9FD /* SpecificProjectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificProjectViewModel.swift; sourceTree = "<group>"; };
 		CB7C366C2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProjectPhaseCollectionCell.swift; sourceTree = "<group>"; };
 		CB7C366E2471D35D00B7D9FD /* SpecificProjectCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProjectCollectionCell.swift; sourceTree = "<group>"; };
-		CBAB302424868EAB00557C08 /* ProjectWiithMeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectWiithMeCollectionCell.swift; sourceTree = "<group>"; };
 		CBBDE667246C634A005B52D0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CBC3E0ED2479B64500273E62 /* CustomCollectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionHeader.swift; sourceTree = "<group>"; };
 		CBC7751C246EE0D900D1B70F /* CreateProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectViewModel.swift; sourceTree = "<group>"; };
@@ -356,7 +354,6 @@
 				25E79838246F0CE8009E35C0 /* ConfigurationViewController.swift */,
 				CBC3E0ED2479B64500273E62 /* CustomCollectionHeader.swift */,
 				25E7983C246F115A009E35C0 /* ConfigurationCollectionCell.swift */,
-				CBAB302424868EAB00557C08 /* ProjectWiithMeCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -825,7 +822,6 @@
 				1EDCF6B92486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift in Sources */,
 				25FA6C52246DC82600F4837F /* NotificationViewController.swift in Sources */,
 				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
-				CBAB302524868EAB00557C08 /* ProjectWiithMeCollectionCell.swift in Sources */,
 				4F8B40372469E52F00189CA6 /* Phase.swift in Sources */,
 				CBC7751D246EE0D900D1B70F /* CreateProjectViewModel.swift in Sources */,
 				CBBDE668246C634A005B52D0 /* Category.swift in Sources */,
@@ -1008,7 +1004,9 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = X54K5PJVGU;
+
+				DEVELOPMENT_TEAM = 93JG72P729;
+
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1030,7 +1028,9 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = X54K5PJVGU;
+
+				DEVELOPMENT_TEAM = 93JG72P729;
+
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

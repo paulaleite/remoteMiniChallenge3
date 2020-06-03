@@ -27,7 +27,6 @@ class CreateProjectViewController: UIViewController {
 		projectDescription.font = UIFont.systemFont(ofSize: 17)
 		projectDescription.textAlignment = .center
 		projectDescription.textColor = UIColor.placeholderText
-//		projectDescription.becomeFirstResponder()
 		projectDescription.resignFirstResponder()
 		projectDescription.inputView?.layoutIfNeeded()
 		projectDescription.layer.cornerRadius = 7.5
@@ -44,14 +43,14 @@ class CreateProjectViewController: UIViewController {
 	@IBOutlet var projectCategory: UITextField!
 	@IBOutlet var descrição: UILabel!
 	@IBOutlet var duração: UILabel!
-	@IBOutlet var phaseTableView: UITableView!
+	@IBOutlet var etapa: UITextField!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		navigationController?.title = "Novo Projeto"
 		viewModel.delegate = self
-		phaseTableView.dataSource = self
-		phaseTableView.delegate = self
+		etapa.delegate = self
 		projectDescription.delegate = self
 		projectTitle.delegate = self
 		projectInstitution.delegate = self
@@ -75,7 +74,6 @@ class CreateProjectViewController: UIViewController {
 		projectDescription.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
 		projectDescription.topAnchor.constraint(equalTo: self.descrição.bottomAnchor, constant: 5).isActive = true
 		projectDescription.bottomAnchor.constraint(equalTo: self.duração.topAnchor, constant: -5).isActive = true
-		
 	}
 	
 	@IBAction func createProjectAction(_ sender: Any) {
@@ -89,10 +87,11 @@ class CreateProjectViewController: UIViewController {
         viewModel.start = projectStart.text!
         viewModel.end = projectEnd.text!
         viewModel.category = projectCategory.text!
-        viewModel.phases = viewModel.phasesName
-        
+		var array: [String] = []
+		array.append(etapa.text!)
+		viewModel.phases = array
         viewModel.createProject({
-			
+
         })
 	}
 	
@@ -132,6 +131,7 @@ class CreateProjectViewController: UIViewController {
 		projectEnd.resignFirstResponder()
 		projectDescription.resignFirstResponder()
 		projectCategory.resignFirstResponder()
+		etapa.resignFirstResponder()
 	}
 	
 	@objc func categoryPickerValueChanged(_ sender: UIDatePicker) {
@@ -173,59 +173,6 @@ class CreateProjectViewController: UIViewController {
 		self.view.frame.origin.y = 0
 	}
 	
-	@IBAction func addPhaseAction(_ sender: Any) {
-		projectCategory.resignFirstResponder()
-		let alert = UIAlertController(title: "Nova Etapa", message: "Adicione o título da Etapa", preferredStyle: .alert)
-		alert.addTextField(configurationHandler: { (phaseTitle) in
-			phaseTitle.placeholder = "Título da Etapa"
-			phaseTitle.autocapitalizationType = .sentences
-			phaseTitle.textAlignment = .center
-		})
-		alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
-		alert.addAction(UIAlertAction(title: "Criar", style: .cancel, handler: { (_) in
-			if (alert.textFields?[0].text != "") {
-				self.phaseCount+=1
-				if (self.phaseCount == 1) {
-					self.viewModel.phasesName.removeAll()
-				}
-				self.viewModel.phasesName.append((alert.textFields?[0].text)!)
-				self.phaseTableView.reloadData()
-				
-			} else {
-				let errorAlert = UIAlertController(title:
-					"Erro", message: "Não foi possivel criar a Etapa. Por favor, clique novamente para criar uma Nova Etapa e preencha o campo Título.", preferredStyle: .alert)
-				errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in }))
-				self.present(errorAlert, animated: true, completion: nil)
-			}
-		}))
-		self.present(alert, animated: true, completion: nil)
-	}
-}
-
-extension CreateProjectViewController: UITableViewDataSource {
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.phasesName.count
-	}
-	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		if let specificPhaseTableCell = tableView.dequeueReusableCell(withIdentifier: "specificPhaseTableCell", for: indexPath) as? SpecificPhaseTableCell {
-			specificPhaseTableCell.phaseName.text = viewModel.phasesName[indexPath.row]
-			return specificPhaseTableCell
-		}
-		return SpecificPhaseTableCell()
-	}
-}
-
-extension CreateProjectViewController: UITableViewDelegate {
-	func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-		let deleteAction = UIContextualAction(style: .destructive, title: "Deletar", handler: { (_, _, _) in
-			self.viewModel.phasesName.remove(at: indexPath.row)
-			self.phaseCount-=1
-            self.phaseTableView.reloadData()
-//            success(true)
-        })
-		return UISwipeActionsConfiguration(actions: [deleteAction])
-	}
 }
 
 extension CreateProjectViewController: UIPickerViewDelegate {
