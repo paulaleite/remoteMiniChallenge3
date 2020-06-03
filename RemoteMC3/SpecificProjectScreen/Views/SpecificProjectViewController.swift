@@ -44,6 +44,7 @@ class SpecificProjectViewController: UIViewController {
 			navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
 			
 		} else {
+            
 			if isParticipating == true {
 				navigationController?.navigationBar.prefersLargeTitles = true
 				participationButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(self.askPermission))
@@ -115,12 +116,19 @@ class SpecificProjectViewController: UIViewController {
 	}
 	
 	@IBAction func seeMoreAction(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if myOwn == true {
+            let specificVC = storyboard.instantiateViewController(withIdentifier: "PersonViewController") as? PersonViewController
+            
+            specificVC?.project = self.project
+            self.show(specificVC ?? PersonViewController(), sender: nil)
+        } else {
+            let participantsVC = storyboard.instantiateViewController(withIdentifier: "ParticpantsViewController") as? ParticpantsViewController
+            participantsVC?.project = project
+            self.show(participantsVC ?? ParticpantsViewController(), sender: nil)
+        }
 		
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		let specificVC = storyboard.instantiateViewController(withIdentifier: "PersonViewController") as? PersonViewController
-		
-		specificVC?.project = self.project
-		self.show(specificVC ?? PersonViewController(), sender: nil)
 	}
 }
 
