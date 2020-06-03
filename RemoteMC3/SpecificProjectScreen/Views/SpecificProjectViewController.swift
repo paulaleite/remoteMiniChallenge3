@@ -124,6 +124,7 @@ class SpecificProjectViewController: UIViewController {
             let specificVC = storyboard.instantiateViewController(withIdentifier: "PersonViewController") as? PersonViewController
 
             specificVC?.project = self.project
+            specificVC?.users = viewModel?.users
             self.show(specificVC ?? PersonViewController(), sender: nil)
         } else {
             let participantsVC = storyboard.instantiateViewController(withIdentifier: "ParticpantsViewController") as? ParticpantsViewController
