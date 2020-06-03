@@ -67,6 +67,18 @@ class NotificationViewModel {
         }
     }
 	
+    func getInitials(index: Int) -> String {
+        let userName = notifications[index].requisitor
+        let firstName: String = String(userName.split(separator: " ").first ?? "nil")
+        let lastName: String = String(userName.split(separator: " ").last ?? "nil")
+        let firstInitial: String = String(Array(firstName).first ?? "n")
+        let secondInitial: String = String(Array(lastName).first ?? "i")
+        if firstInitial != "nil" {
+            return String(firstInitial + secondInitial)
+        }
+        return String(firstInitial + secondInitial + "l")
+    }
+    
 	func setNotifications () {
 		notifications = []
         guard let userID = UserDefaults.standard.string(forKey: "userIDServer") else { return }
