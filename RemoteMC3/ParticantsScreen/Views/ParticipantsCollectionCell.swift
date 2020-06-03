@@ -10,7 +10,7 @@ import UIKit
 
 class ParticipantsCollectionCell: UICollectionViewCell {
     
-    @IBOutlet weak var participantImage: UIImageView!
+    @IBOutlet weak var personImage: UIButton!
     
     @IBOutlet weak var participantName: UILabel!
     
