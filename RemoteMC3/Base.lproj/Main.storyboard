@@ -234,9 +234,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CpQ-47-gEK">
-                                <rect key="frame" x="0.0" y="54" width="375" height="703"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CpQ-47-gEK">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="0.0" id="lGU-xw-KKC">
                                     <size key="itemSize" width="339" height="100"/>
@@ -310,6 +309,12 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="CpQ-47-gEK" firstAttribute="trailing" secondItem="dc9-xz-twx" secondAttribute="trailing" id="Dau-6X-zE7"/>
+                            <constraint firstItem="dc9-xz-twx" firstAttribute="bottom" secondItem="CpQ-47-gEK" secondAttribute="bottom" id="WRO-js-cKD"/>
+                            <constraint firstItem="CpQ-47-gEK" firstAttribute="top" secondItem="dc9-xz-twx" secondAttribute="top" id="bK0-mb-ULC"/>
+                            <constraint firstItem="CpQ-47-gEK" firstAttribute="leading" secondItem="dc9-xz-twx" secondAttribute="leading" id="f3w-Ew-4Rl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dc9-xz-twx"/>
                     </view>
                     <connections>
