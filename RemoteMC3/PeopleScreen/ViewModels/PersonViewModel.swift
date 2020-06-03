@@ -118,7 +118,11 @@ class PersonViewModel {
             return
         }
         
-        serverService.answerRequestParticipation(userID: userID, projectID: projectID, answer: answer, {(response) in
+        guard let solicitationID = peopleSolicitations?[index]._id else {
+            return
+        }
+        
+        serverService.answerRequestParticipation(userID: userID, projectID: projectID, solicitationID: solicitationID, answer: answer, {(response) in
             switch response {
             case .success(let res):
                 print(res)

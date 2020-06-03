@@ -35,16 +35,16 @@ class MemberViewModel {
 	}
     
     func answerRequisition(answer: Bool) {
-        guard let notification = notification else { return }
-        serverService.answerRequestParticipation(userID: notification.userRequisitorID, projectID: notification.projectID, answer: answer, {(response) in
-            switch response {
-            case .success(let res):
-                print(res)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
-            case .failure(let error):
-                print(error.localizedDescription)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
-            }
-        })
+//        guard let notification = notification else { return }
+//        serverService.answerRequestParticipation(userID: notification.userRequisitorID, projectID: notification.projectID, solicitationID: <#String#>, answer: answer, {(response) in
+//            switch response {
+//            case .success(let res):
+//                print(res)
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
+//            }
+//        })
     }
 }

@@ -16,4 +16,5 @@ struct Notification {
 	var requisitorEmail: String?
     var projectID: String
     var userRequisitorID: String
+    var solicitationID: String?
 }

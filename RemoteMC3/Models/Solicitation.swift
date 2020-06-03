@@ -9,6 +9,7 @@
 import Foundation
 
 struct Solicitation: Codable {
+    let _id: String?
     let userId: String
     let userName: String
     let userEmail: String
