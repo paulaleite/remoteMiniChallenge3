@@ -20,6 +20,7 @@ class SpecificProjectViewModel {
     var users: [User]?
     var serverService: ServerService
 	weak var delegate: SpecificProjectViewModelDelegate?
+	var phases: [Phase]?
 	
     init(project: Project) {
 		self.project = project
@@ -50,6 +51,10 @@ class SpecificProjectViewModel {
 	
 	func getProjectDescription() -> String {
 		return project?.description ?? "nil"
+	}
+	
+	func getProjectCategory() -> String {
+		return project?.category ?? "nil"
 	}
 	
 	func getProjectOrganization() -> String {

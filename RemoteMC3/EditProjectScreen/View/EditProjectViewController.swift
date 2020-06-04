@@ -114,6 +114,7 @@ class EditProjectViewController: UIViewController {
             viewModel?.phases.append(phase)
         }
         viewModel!.saveProject()
+		self.navigationController?.popToRootViewController(animated: true)
 	}
 	
 	@objc func showProjectStartPicker(sender: UITextField) {

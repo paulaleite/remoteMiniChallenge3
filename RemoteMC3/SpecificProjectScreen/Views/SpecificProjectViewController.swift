@@ -23,7 +23,8 @@ class SpecificProjectViewController: UIViewController {
 	@IBOutlet var projectInstitution: UILabel!
 	@IBOutlet var usersCollectionView: UICollectionView!
 	@IBOutlet var phasesTableView: UITableView!
-    var participationButton: UIBarButtonItem?
+	@IBOutlet var projectCategory: UILabel!
+	var participationButton: UIBarButtonItem?
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -107,7 +108,7 @@ class SpecificProjectViewController: UIViewController {
 		projectInstitution.text = viewModel?.getProjectOrganization()
 		projectStart.text = viewModel?.getStart()
 		projectEnd.text = viewModel?.getEnd()
-		
+		projectCategory.text = viewModel?.getProjectCategory()
 //		remove top space of grouped table view
 		var frame = CGRect.zero
 		frame.size.height = .leastNormalMagnitude

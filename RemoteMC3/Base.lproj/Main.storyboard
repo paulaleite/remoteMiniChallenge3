@@ -578,6 +578,19 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4s6-35-ZU2">
+                                <rect key="frame" x="20" y="463.66666666666669" width="87.333333333333329" height="24"/>
+                                <color key="tintColor" red="0.0078431372550000003" green="0.054901960780000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Categoria">
+                                        <attributes>
+                                            <font key="NSFont" size="20" name="SFProRounded-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coloredDot" translatesAutoresizingMaskIntoConstraints="NO" id="qYN-st-d3v">
                                 <rect key="frame" x="20" y="324.66666666666669" width="10" height="10"/>
                                 <constraints>
@@ -637,7 +650,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx4-7M-HGK">
-                                <rect key="frame" x="20" y="463.66666666666669" width="355" height="24"/>
+                                <rect key="frame" x="20" y="531.33333333333337" width="355" height="24"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Etapas">
                                         <attributes>
@@ -700,7 +713,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="eR2-ug-zYf">
-                                <rect key="frame" x="20" y="492.66666666666674" width="335" height="285.33333333333326"/>
+                                <rect key="frame" x="20" y="560.33333333333337" width="335" height="217.66666666666663"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SpecificProjectTableCell" id="ScX-HF-vs8" customClass="SpecificProjectTableCell" customModule="Projeta" customModuleProvider="target">
@@ -748,14 +761,27 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5G-nX-PpL">
-                                <rect key="frame" x="278" y="354.33333333333331" width="77" height="35"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <rect key="frame" x="286" y="355.33333333333331" width="69" height="33"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="tintColor" red="0.0078431372549019607" green="0.050980392156862744" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Ver Mais"/>
                                 <connections>
                                     <action selector="seeMoreAction:" destination="IAs-Y9-o1Q" eventType="touchUpInside" id="q63-eL-IEd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04e-Ge-iBj">
+                                <rect key="frame" x="20.000000000000004" y="487.66666666666669" width="56.333333333333343" height="28.666666666666686"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Cacique">
+                                        <attributes>
+                                            <color key="NSColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="17" name="MuktaMahee-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -765,7 +791,7 @@
                             <constraint firstItem="qYN-st-d3v" firstAttribute="top" secondItem="1hH-sh-fuw" secondAttribute="bottom" constant="5" id="2Qa-s6-ech"/>
                             <constraint firstItem="eR2-ug-zYf" firstAttribute="top" secondItem="Nx4-7M-HGK" secondAttribute="bottom" constant="5" id="2hT-Js-cvL"/>
                             <constraint firstItem="Ubk-cz-aFR" firstAttribute="trailing" secondItem="R5G-nX-PpL" secondAttribute="trailing" constant="20" id="47x-Gf-27w"/>
-                            <constraint firstItem="Nx4-7M-HGK" firstAttribute="top" secondItem="u4x-QC-i1K" secondAttribute="bottom" constant="15" id="5Ss-tG-vAh"/>
+                            <constraint firstItem="04e-Ge-iBj" firstAttribute="leading" secondItem="Ubk-cz-aFR" secondAttribute="leading" constant="20" id="4gD-gt-DbC"/>
                             <constraint firstItem="dyI-Mb-YS1" firstAttribute="leading" secondItem="pnP-Xr-rBC" secondAttribute="trailing" constant="50" id="5WF-hl-a8I"/>
                             <constraint firstItem="Ubk-cz-aFR" firstAttribute="trailing" secondItem="eR2-ug-zYf" secondAttribute="trailing" constant="20" id="6Js-mE-WyK"/>
                             <constraint firstItem="Ubk-cz-aFR" firstAttribute="trailing" secondItem="7gR-MS-M0N" secondAttribute="trailing" constant="20" id="7sN-pJ-Lf6"/>
@@ -773,8 +799,10 @@
                             <constraint firstItem="h8a-H2-u0F" firstAttribute="leading" secondItem="Ubk-cz-aFR" secondAttribute="leading" constant="18" id="Bdy-NK-pPv"/>
                             <constraint firstItem="pnP-Xr-rBC" firstAttribute="leading" secondItem="qYN-st-d3v" secondAttribute="trailing" constant="10" id="Cc6-RY-vqD"/>
                             <constraint firstItem="R5G-nX-PpL" firstAttribute="centerY" secondItem="vOp-aR-Rqo" secondAttribute="centerY" id="DAd-VC-ghx"/>
+                            <constraint firstItem="4s6-35-ZU2" firstAttribute="leading" secondItem="Ubk-cz-aFR" secondAttribute="leading" constant="20" id="DNq-kc-zyU"/>
                             <constraint firstItem="h8a-H2-u0F" firstAttribute="top" secondItem="hgg-hf-zPz" secondAttribute="bottom" constant="5" id="ESk-c9-cgG"/>
                             <constraint firstItem="Ubk-cz-aFR" firstAttribute="trailing" secondItem="hgg-hf-zPz" secondAttribute="trailing" id="EkH-5s-WZA"/>
+                            <constraint firstItem="Nx4-7M-HGK" firstAttribute="top" secondItem="04e-Ge-iBj" secondAttribute="bottom" constant="15" id="GV8-P4-8bf"/>
                             <constraint firstItem="Ubk-cz-aFR" firstAttribute="trailing" secondItem="ZVG-S1-gf0" secondAttribute="trailing" constant="20" id="HxP-RY-8X7"/>
                             <constraint firstItem="vOp-aR-Rqo" firstAttribute="top" secondItem="pnP-Xr-rBC" secondAttribute="bottom" constant="15" id="KXh-Va-Mbe"/>
                             <constraint firstItem="u4x-QC-i1K" firstAttribute="leading" secondItem="Ubk-cz-aFR" secondAttribute="leading" constant="20" id="M2r-NA-ZZS"/>
@@ -791,10 +819,12 @@
                             <constraint firstItem="eR2-ug-zYf" firstAttribute="leading" secondItem="Ubk-cz-aFR" secondAttribute="leading" constant="20" id="fK1-fi-pxM"/>
                             <constraint firstItem="qYN-st-d3v" firstAttribute="leading" secondItem="Ubk-cz-aFR" secondAttribute="leading" constant="20" id="ogi-Sl-63V"/>
                             <constraint firstItem="Ubk-cz-aFR" firstAttribute="trailing" secondItem="Nx4-7M-HGK" secondAttribute="trailing" id="qRM-bc-XXe"/>
+                            <constraint firstItem="4s6-35-ZU2" firstAttribute="top" secondItem="u4x-QC-i1K" secondAttribute="bottom" constant="15" id="sDH-hT-mt0"/>
                             <constraint firstItem="Ubk-cz-aFR" firstAttribute="trailing" secondItem="1hH-sh-fuw" secondAttribute="trailing" id="sxg-gq-mu9"/>
                             <constraint firstItem="ZVG-S1-gf0" firstAttribute="top" secondItem="7gR-MS-M0N" secondAttribute="bottom" id="uhH-9H-Ena"/>
                             <constraint firstItem="hgg-hf-zPz" firstAttribute="top" secondItem="Ubk-cz-aFR" secondAttribute="top" constant="20" id="wOW-wY-Vte"/>
                             <constraint firstItem="ZVG-S1-gf0" firstAttribute="leading" secondItem="Ubk-cz-aFR" secondAttribute="leading" constant="20" id="yLw-97-Rab"/>
+                            <constraint firstItem="04e-Ge-iBj" firstAttribute="top" secondItem="4s6-35-ZU2" secondAttribute="bottom" id="zBi-Yb-Bm9"/>
                             <constraint firstItem="u4x-QC-i1K" firstAttribute="top" secondItem="vOp-aR-Rqo" secondAttribute="bottom" constant="5" id="zfK-Le-JMD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ubk-cz-aFR"/>
@@ -805,6 +835,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="phasesTableView" destination="eR2-ug-zYf" id="RTn-QA-A24"/>
+                        <outlet property="projectCategory" destination="04e-Ge-iBj" id="a4v-OD-vb8"/>
                         <outlet property="projectDescryption" destination="h8a-H2-u0F" id="ARY-ox-URJ"/>
                         <outlet property="projectEnd" destination="jPv-k4-eeJ" id="kbX-Ma-jJW"/>
                         <outlet property="projectInstitution" destination="hgg-hf-zPz" id="END-Oz-7Pt"/>
