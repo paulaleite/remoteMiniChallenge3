@@ -12,4 +12,5 @@ import UIKit
 class SpecificProjectTableCell: UITableViewCell {
 	
 	@IBOutlet var phaseDescription: UILabel!
+	@IBOutlet var dot: UIImageView!
 }
