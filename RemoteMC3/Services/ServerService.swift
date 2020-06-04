@@ -324,15 +324,18 @@ class ServerService: CommunicationProtocol {
         
         do {
             guard let projectID = project._id else { return }
-            let req = ["projectID": projectID,
+            let req: [String: Any] = ["projectID": projectID,
                        "title": project.title,
                        "organization": project.organization ?? "",
                        "description": project.description,
                        "start": project.start,
                        "end": project.end,
                        "category": project.category,
-                       "phases": project.phases] as [String : Any]
+                       "phases": project.phases as [String]]
             request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
+            if let json = try JSONSerialization.jsonObject(with: request.httpBody!, options: .mutableContainers) as? [String: Any] {
+                print(json)
+            }
         } catch let error {
             print(error.localizedDescription)
         }
@@ -344,11 +347,11 @@ class ServerService: CommunicationProtocol {
             if let data = data {
                 do {
                 //create json object from data
-//                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-//                    print(json)
-                    let res = try JSONDecoder().decode(String.self, from: data)
+                    
+//                    let res = try JSONDecoder().decode(String.self, from: data)
                     DispatchQueue.main.async {
-                        completion(.success(res))
+//                        completion(.success(res))
+                        completion(.success("Foi"))
                     }
                 } catch let error {
                     print(error.localizedDescription)
@@ -396,11 +399,11 @@ extension URL {
     }
     
     static var removeUserFromProject: URL {
-        makeForEndpoint("/removeUserFromProject")
+        makeForEndpoint("removeUserFromProject")
     }
     
     static var updateProject: URL {
-        makeForEndpoint("/updateProject")
+        makeForEndpoint("updateProject")
     }
 }
 

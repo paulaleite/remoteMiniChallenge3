@@ -25,8 +25,8 @@ class EditProjectViewModel {
 	var end: String = ""
     var category: String = ""
 	var phases: [String] = []
-    var responsible: User = User(id: "12345", name: "Teste", email: "Test", projects: nil, projectsWithMe: nil)
-	var users: [User] =  []
+//    var responsible: User = User(id: "12345", name: "Teste", email: "Test", projects: nil, projectsWithMe: nil)
+//	var users: [User] =  []
 	
 	var pickerViewDataSource = ["Social", "Cultural", "Pessoal", "Empresarial", "Pesquisa"]
 	var phasesName: [String] = [""]
@@ -41,6 +41,14 @@ class EditProjectViewModel {
 		for number in 0..<getNumberOfPhases() {
 			phasesName.append(getPhase(index: number))
 		}
+        
+        title = project.title
+        description = project.description
+        organization = project.organization
+        start = project.start
+        end = project.end
+        category = project.category
+        phases = project.phases
 	}
 	
 	func getProject() -> Project {

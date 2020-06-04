@@ -26,7 +26,7 @@ class EditProjectViewController: UIViewController {
 			projectDescription.translatesAutoresizingMaskIntoConstraints = false
 			projectDescription.font = UIFont.systemFont(ofSize: 17)
 			projectDescription.textAlignment = .center
-		projectDescription.textColor = .black
+            projectDescription.textColor = .black
 	//		projectDescription.becomeFirstResponder()
 			projectDescription.resignFirstResponder()
 			projectDescription.inputView?.layoutIfNeeded()
@@ -109,10 +109,10 @@ class EditProjectViewController: UIViewController {
 		viewModel!.start = projectStart.text!
 		viewModel!.end = projectEnd.text!
 		viewModel!.category = projectCategory.text!
-		viewModel!.phases = viewModel!.phasesName
-		var array: [String] = []
-		array.append(etapa.text!)
-		viewModel!.phases = array
+        if etapa.text != viewModel?.phases.first {
+            guard let phase = etapa.text else { return }
+            viewModel?.phases.append(phase)
+        }
         viewModel!.saveProject()
 	}
 	
