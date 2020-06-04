@@ -103,7 +103,7 @@ class EditProjectViewController: UIViewController {
 	}
 	
 	@objc func saveProject() {
-		viewModel!.title = projectName.text!
+        viewModel!.title = projectName.text!
 		viewModel!.description = projectDescription.text!
 		viewModel!.organization = projectOrganization.text!
 		viewModel!.start = projectStart.text!
