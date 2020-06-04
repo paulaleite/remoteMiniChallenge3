@@ -37,7 +37,6 @@
 		25FA6C56246DD3DC00F4837F /* NotificationCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25FA6C55246DD3DC00F4837F /* NotificationCollectionCell.swift */; };
 		4F339D512473055A009F5102 /* ServerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D502473055A009F5102 /* ServerService.swift */; };
 		4F339D59247472E7009F5102 /* Responsible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D58247472E7009F5102 /* Responsible.swift */; };
-		4F339D5B24747D56009F5102 /* MemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D5A24747D56009F5102 /* MemberViewModel.swift */; };
 		4F339D6224771090009F5102 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D6124771090009F5102 /* Response.swift */; };
 		4F339D64247710A0009F5102 /* Requisition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D63247710A0009F5102 /* Requisition.swift */; };
 		4F339D6624771137009F5102 /* CommunicationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F339D6524771137009F5102 /* CommunicationProtocol.swift */; };
@@ -54,8 +53,6 @@
 		CB0778EC24709F4F00D4AA0E /* VerticallyCenteredTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */; };
 		CB479DA524854FDD005A2BBB /* EditProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB479DA424854FDD005A2BBB /* EditProjectViewController.swift */; };
 		CB479DA924859AA1005A2BBB /* EditProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB479DA824859AA1005A2BBB /* EditProjectViewModel.swift */; };
-		CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFD9E2474606200DB480B /* MemberViewController.swift */; };
-		CB4FFDA5247465B000DB480B /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4FFDA4247465B000DB480B /* Member.swift */; };
 		CB6BFFA6246B70A500C3BA1E /* FeedCategoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */; };
 		CB7C366B2471D2FC00B7D9FD /* SpecificProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7C366A2471D2FC00B7D9FD /* SpecificProjectViewModel.swift */; };
 		CB7C366D2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7C366C2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift */; };
@@ -122,7 +119,6 @@
 		25FA6C55246DD3DC00F4837F /* NotificationCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCollectionCell.swift; sourceTree = "<group>"; };
 		4F339D502473055A009F5102 /* ServerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerService.swift; sourceTree = "<group>"; };
 		4F339D58247472E7009F5102 /* Responsible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responsible.swift; sourceTree = "<group>"; };
-		4F339D5A24747D56009F5102 /* MemberViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberViewModel.swift; sourceTree = "<group>"; };
 		4F339D6124771090009F5102 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		4F339D63247710A0009F5102 /* Requisition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requisition.swift; sourceTree = "<group>"; };
 		4F339D6524771137009F5102 /* CommunicationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationProtocol.swift; sourceTree = "<group>"; };
@@ -139,8 +135,6 @@
 		CB0778EB24709F4F00D4AA0E /* VerticallyCenteredTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticallyCenteredTextView.swift; sourceTree = "<group>"; };
 		CB479DA424854FDD005A2BBB /* EditProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewController.swift; sourceTree = "<group>"; };
 		CB479DA824859AA1005A2BBB /* EditProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewModel.swift; sourceTree = "<group>"; };
-		CB4FFD9E2474606200DB480B /* MemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewController.swift; sourceTree = "<group>"; };
-		CB4FFDA4247465B000DB480B /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		CB6BFFA5246B70A500C3BA1E /* FeedCategoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCategoryCollectionCell.swift; sourceTree = "<group>"; };
 		CB7C366A2471D2FC00B7D9FD /* SpecificProjectViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecificProjectViewModel.swift; sourceTree = "<group>"; };
 		CB7C366C2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificProjectPhaseCollectionCell.swift; sourceTree = "<group>"; };
@@ -253,7 +247,6 @@
 				25E79832246F09FD009E35C0 /* ConfigurationScreen */,
 				CB479DA024854F78005A2BBB /* EditProjectScreen */,
 				25FA6C49246DB94800F4837F /* NotificationScreen */,
-				CB4FFD9A2474601A00DB480B /* MemberScreen */,
 				1E0665D12486C5B300F24E81 /* PeopleScreen */,
 				1E6FDE8C248821370058F3A6 /* ParticantsScreen */,
 				4F8B403D2469F4F600189CA6 /* Services */,
@@ -481,40 +474,6 @@
 			children = (
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		CB4FFD9A2474601A00DB480B /* MemberScreen */ = {
-			isa = PBXGroup;
-			children = (
-				CB4FFD9D2474603B00DB480B /* Models */,
-				CB4FFD9C2474603200DB480B /* Views */,
-				CB4FFD9B2474602B00DB480B /* ViewModels */,
-			);
-			path = MemberScreen;
-			sourceTree = "<group>";
-		};
-		CB4FFD9B2474602B00DB480B /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				4F339D5A24747D56009F5102 /* MemberViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		CB4FFD9C2474603200DB480B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				CB4FFD9E2474606200DB480B /* MemberViewController.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		CB4FFD9D2474603B00DB480B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CB4FFDA4247465B000DB480B /* Member.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		CB9175A5246B5EC800D10580 /* FeedScreen */ = {
@@ -776,7 +735,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB4FFD9F2474606200DB480B /* MemberViewController.swift in Sources */,
 				1E0665DA2486C62C00F24E81 /* PersonViewModel.swift in Sources */,
 				1E0665DC2486CA4200F24E81 /* ApprovedPeopleCollectionCell.swift in Sources */,
 				1E6FDE93248821960058F3A6 /* ParticipantsCollectionCell.swift in Sources */,
@@ -785,7 +743,6 @@
 				4F8B403F2469F51400189CA6 /* CloudKitService.swift in Sources */,
 				1E569D30247869C70035CADA /* AuthState.swift in Sources */,
 				4F8B402D2469E3D700189CA6 /* FeedViewModel.swift in Sources */,
-				4F339D5B24747D56009F5102 /* MemberViewModel.swift in Sources */,
 				4F339D6224771090009F5102 /* Response.swift in Sources */,
 				CB7C366D2471D32D00B7D9FD /* SpecificProjectPhaseCollectionCell.swift in Sources */,
 				4F339D512473055A009F5102 /* ServerService.swift in Sources */,
@@ -809,7 +766,6 @@
 				1E0665D82486C61B00F24E81 /* PersonViewController.swift in Sources */,
 				CBF273DA246EEB66004027A4 /* Extension.swift in Sources */,
 				1E0665D62486C60E00F24E81 /* Person.swift in Sources */,
-				CB4FFDA5247465B000DB480B /* Member.swift in Sources */,
 				CB7C366B2471D2FC00B7D9FD /* SpecificProjectViewModel.swift in Sources */,
 				4F339D68247CA5FB009F5102 /* Solicitation.swift in Sources */,
 				1E569D2A2478698E0035CADA /* LoginViewController.swift in Sources */,

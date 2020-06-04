@@ -145,8 +145,8 @@ extension SpecificProjectViewController: UICollectionViewDelegateFlowLayout {
 
 extension SpecificProjectViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		if ((viewModel?.getNumberOfUsers())! <= 4) {
-			return (viewModel?.getNumberOfUsers())!
+		if (((viewModel?.getNumberOfUsers())! + 1) <= 4) {
+			return ((viewModel?.getNumberOfUsers())! + 1)
 		} else {
 			return 5
 		}
