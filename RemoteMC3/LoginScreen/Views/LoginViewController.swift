@@ -100,11 +100,19 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         
         let label = UILabel()
         label.text = "Bem-vindx ao\nProjeta!"
-        label.textColor = UIColor(red: 2/255, green: 14/255, blue: 93/255, alpha: 1)
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 25)
+		label.textColor =  #colorLiteral(red: 0.8190498352, green: 0.3629471362, blue: 0.2492652833, alpha: 1)
+		label.textAlignment = .left
+        label.font = UIFont(name: "MuktaMahee-Bold", size: 20)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+		
+		let labelDescription = UILabel()
+	   labelDescription.text = "Divulgue ou participe de projetos acadêmicos por todo Brasil."
+	   labelDescription.textColor =  #colorLiteral(red: 0.5097514391, green: 0.5098407865, blue: 0.509739697, alpha: 1)
+	   labelDescription.textAlignment = .left
+	   labelDescription.font = UIFont(name: "MuktaMahee-Regular", size: 17)
+	   labelDescription.numberOfLines = 3
+	   labelDescription.translatesAutoresizingMaskIntoConstraints = false
         
         let backgroundView = UIView()
         backgroundView.backgroundColor = .white
@@ -112,14 +120,13 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         backgroundView.layer.shadowOffset = .zero
         backgroundView.layer.shadowRadius = 4
         backgroundView.layer.shadowOpacity = 0.3
-        backgroundView.layer.cornerRadius = 100
+        backgroundView.layer.cornerRadius = 20
 		backgroundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
 		backgroundView.clipsToBounds = false
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         
         let iconImage = UIImageView()
 		iconImage.image = UIImage(named: "icon")
-		iconImage.layer.cornerRadius = 150
         iconImage.contentMode = .scaleAspectFill
         iconImage.clipsToBounds = true
         iconImage.translatesAutoresizingMaskIntoConstraints = false
@@ -127,6 +134,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         view.addSubview(iconImage)
         view.addSubview(backgroundView)
         backgroundView.addSubview(label)
+		backgroundView.addSubview(labelDescription)
         backgroundView.addSubview(authorizationButton)
         
         NSLayoutConstraint.activate([
@@ -135,19 +143,25 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             backgroundView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             backgroundView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.45),
-			iconImage.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            iconImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			iconImage.heightAnchor.constraint(equalToConstant: 300),
-            iconImage.widthAnchor.constraint(equalToConstant: 300),
+			
+			iconImage.topAnchor.constraint(equalTo: self.view.topAnchor),
+			iconImage.bottomAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 40),
+			iconImage.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+			iconImage.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+			
             label.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 40),
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+			
+			labelDescription.topAnchor.constraint(equalTo: label.bottomAnchor),
+			labelDescription.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
+			labelDescription.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
+			
             authorizationButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.06),
-            authorizationButton.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 75),
+            authorizationButton.topAnchor.constraint(equalTo: labelDescription.bottomAnchor, constant: 40),
             authorizationButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40)
         ])
         
         authorizationButton.addTarget(self, action: #selector(handleAppleIDRequest), for: .touchUpInside)
