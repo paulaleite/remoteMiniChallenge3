@@ -37,10 +37,10 @@ class EditProjectViewModel {
 		self.project = project
         serverService = ServerService()
 		//        setUsers()
-		phasesName.removeAll()
-		for number in 0..<getNumberOfPhases() {
-			phasesName.append(getPhase(index: number))
-		}
+//		phasesName.removeAll()
+//		for number in 0..<getNumberOfPhases() {
+//			phasesName.append(getPhase(index: number))
+//		}
         
         title = project.title
         description = project.description
@@ -49,6 +49,7 @@ class EditProjectViewModel {
         end = project.end
         category = project.category
         phases = project.phases
+        phases.reverse()
 	}
 	
 	func getProject() -> Project {
@@ -71,7 +72,7 @@ class EditProjectViewModel {
 	}
 	
 	func getPhase(index: Int) -> String {
-		return project?.phases[index] ?? "nil"
+		return phases[index]
 	}
 	
 	func getStart() -> String {
@@ -83,7 +84,7 @@ class EditProjectViewModel {
 	}
 	
 	func getNumberOfPhases() -> Int {
-		return project?.phases.count ?? 0
+		return phases.count
 	}
 	
 	func deleteProject() {

@@ -331,7 +331,7 @@ class ServerService: CommunicationProtocol {
                        "start": project.start,
                        "end": project.end,
                        "category": project.category,
-                       "phases": project.phases as [String]]
+                       "phases": project.phases]
             request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
             if let json = try JSONSerialization.jsonObject(with: request.httpBody!, options: .mutableContainers) as? [String: Any] {
                 print(json)

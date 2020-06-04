@@ -18,12 +18,15 @@ class SpecificProjectViewModel {
     
 	var project: Project?
     var users: [User]?
+    var phases: [String]
     var serverService: ServerService
 	weak var delegate: SpecificProjectViewModelDelegate?
 	
     init(project: Project) {
 		self.project = project
         serverService = ServerService()
+        phases = project.phases
+        phases.reverse()
         setUsers()
 	}
     
@@ -57,7 +60,7 @@ class SpecificProjectViewModel {
 	}
 	
 	func getPhase(index: Int) -> String {
-		return project?.phases[index] ?? "nil"
+		return phases[index] ?? "nil"
 	}
 	
 	func getResponsible() -> String {
@@ -80,7 +83,7 @@ class SpecificProjectViewModel {
 	}
 	
 	func getNumberOfPhases() -> Int {
-		return project?.phases.count ?? 0
+		return phases.count ?? 0
 	}
 	
     func requireParticipation() {
