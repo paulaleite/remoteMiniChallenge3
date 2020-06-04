@@ -8,7 +8,13 @@
 
 import Foundation
 
+protocol PersonViewModelDelegate: class {
+    func addSucessAlert()
+    func addErrorAlert()
+}
+
 class PersonViewModel {
+    weak var delegate: PersonViewModelDelegate?
     var project: Project?
     var users: [User]?
     var peopleSolicitations: [Solicitation]?
@@ -41,11 +47,6 @@ class PersonViewModel {
         }
         return userEmail
     }
-
-//    func getPersonImage(forProjectAt index: Int) -> String {
-//        return project?.users[index].
-//        return notification?.personImage ?? "personalColored"
-//    }
     
     func getProjectName() -> String {
         guard let projectName = project?.title else {
@@ -126,9 +127,11 @@ class PersonViewModel {
             switch response {
             case .success(let res):
                 print(res)
+                self.delegate?.addSucessAlert()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
             case .failure(let error):
                 print(error.localizedDescription)
+                self.delegate?.addErrorAlert()
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_notifications"), object: nil)
             }
         })

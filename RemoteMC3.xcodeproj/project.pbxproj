@@ -960,14 +960,14 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = W76FRTKWHT;
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acb.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.ptl.remoteMC3;
 				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -982,14 +982,14 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = W76FRTKWHT;
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acb.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.br.ptl.remoteMC3;
 				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
