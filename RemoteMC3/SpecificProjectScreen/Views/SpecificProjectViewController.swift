@@ -44,9 +44,7 @@ class SpecificProjectViewController: UIViewController {
 			participationButton = UIBarButtonItem(title: "Editar", style: .done, target: self, action: #selector(self.askPermission))
 			navigationItem.setRightBarButton(participationButton, animated: true)
 			navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
-			
 		} else {
-            
 			if isParticipating == true {
 				navigationController?.navigationBar.prefersLargeTitles = true
 				participationButton = UIBarButtonItem(title: "Sair", style: .done, target: self, action: #selector(self.askPermission))
@@ -59,9 +57,7 @@ class SpecificProjectViewController: UIViewController {
 				navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0, green: 0.0525861159, blue: 0.3849625885, alpha: 1)
 			}
 		}
-		
         self.title = viewModel?.getProject().title
-        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUsersCollection), name: NSNotification.Name("update_users"), object: nil)
 		
 		setInformation()
@@ -175,8 +171,7 @@ extension SpecificProjectViewController: UICollectionViewDataSource {
 
 extension SpecificProjectViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 1
-		
+        return 1
 	}
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return viewModel?.getNumberOfPhases() ?? 0
@@ -184,7 +179,7 @@ extension SpecificProjectViewController: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		if let specificProjectTableCell = tableView.dequeueReusableCell(withIdentifier: "SpecificProjectTableCell", for: indexPath) as? SpecificProjectTableCell {
-			specificProjectTableCell.phaseDescription.text = viewModel?.getPhase(index: indexPath.row)
+			specificProjectTableCell.phaseDescription.text = viewModel?.getPhase(index: indexPath.section)
 			specificProjectTableCell.phaseDescription.layer.cornerRadius = 5
 			specificProjectTableCell.phaseDescription.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
 			specificProjectTableCell.phaseDescription.layer.borderWidth = 0.5
