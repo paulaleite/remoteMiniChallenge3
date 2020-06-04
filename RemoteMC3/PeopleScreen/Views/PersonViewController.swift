@@ -145,7 +145,7 @@ extension PersonViewController: UICollectionViewDelegateFlowLayout {
 
 extension PersonViewController: PersonViewModelDelegate {
     func addSucessAlert() {
-        let alert = UIAlertController(title: "Solicitação enviada", message: "Sua solicitação para participar desse Projeto foi enviada com sucesso.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Resposta enviada", message: "Sua resposta foi enviada com sucesso.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
             
         }))
@@ -153,8 +153,8 @@ extension PersonViewController: PersonViewModelDelegate {
     }
     
     func addErrorAlert() {
-        let alert = UIAlertController(title: "Erro ao enviar solicitação",
-                                      message: "Não foi possível enviar sua solicitacão para participar dese Projeto nesse momento. Por favor, tente outra vez.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Erro ao enviar resposta",
+                                      message: "Não foi possível enviar a sua resposta. Por favor, tente outra vez.", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
         }))
         self.present(alert, animated: true, completion: nil)
