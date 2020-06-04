@@ -57,7 +57,7 @@ extension NotificationViewController: UICollectionViewDataSource {
         notificationCollectionCell.personImage.setTitle(viewModel.getInitials(index: indexPath.row), for: .normal)
 		notificationCollectionCell.backgroundColor = .white
 		notificationCollectionCell.layer.masksToBounds = false
-		notificationCollectionCell.layer.cornerRadius = 20
+		notificationCollectionCell.layer.cornerRadius = 10
 		notificationCollectionCell.layer.shadowColor = UIColor.black.cgColor
 		notificationCollectionCell.layer.shadowOffset = .zero
 		notificationCollectionCell.layer.shadowRadius = 4

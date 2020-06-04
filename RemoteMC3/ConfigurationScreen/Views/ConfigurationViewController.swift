@@ -63,7 +63,7 @@ extension ConfigurationViewController: UICollectionViewDataSource {
 		if let configurationCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "configurationCollectionCell", for: indexPath) as? ConfigurationCollectionCell {
 		configurationCollectionCell.layer.masksToBounds = false
 		configurationCollectionCell.backgroundColor = .white
-		configurationCollectionCell.layer.cornerRadius = 20
+		configurationCollectionCell.layer.cornerRadius = 10
 		configurationCollectionCell.layer.shadowColor = UIColor.black.cgColor
 		configurationCollectionCell.layer.shadowOffset = .zero
 		configurationCollectionCell.layer.shadowRadius = 4
