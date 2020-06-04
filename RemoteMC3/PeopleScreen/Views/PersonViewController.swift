@@ -49,27 +49,24 @@ class PersonViewController: UIViewController {
     }
     
 	@objc func denyAction(_ sender: UIButton) {
-		
-		viewModel?.answerRequisition(answer: false, forUserAt: sender.tag)
-        // delete request
+        let alert = UIAlertController(title: "Recusar Integrante", message: "Você tem certeza de que deseja recusar a participação no projeto?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
+        alert.addAction(UIAlertAction(title: "Confirmar", style: .cancel, handler: { (_) in
+            self.viewModel?.answerRequisition(answer: false, forUserAt: sender.tag)
+        }))
+        self.present(alert, animated: true, completion: nil)
         // reload table view
-//        self.navigationController?.popToRootViewController(animated: false)
     }
  
     @objc func acceptAction(_ sender: UIButton) {
-        viewModel?.answerRequisition(answer: true, forUserAt: sender.tag)
-        // delete request
+        let alert = UIAlertController(title: "Aprovar Integrante", message: "Você tem certeza de que deseja aprovar a participação no projeto?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .default, handler: { _ in }))
+        alert.addAction(UIAlertAction(title: "Aprovar", style: .cancel, handler: { (_) in
+            self.viewModel?.answerRequisition(answer: true, forUserAt: sender.tag)
+        }))
+        self.present(alert, animated: true, completion: nil)
         // reload table view
-//        self.navigationController?.popToRootViewController(animated: false)
     }
-	
-//	@IBAction func saveChanges(_ sender: Any) {
-//		//TODO: Salvar todas as mudanças 
-//	}
-//	
-//	@IBAction func cancelChanges(_ sender: Any) {
-//		self.dismiss(animated: true, completion: nil)
-//	}
 	
 }
 
@@ -132,6 +129,8 @@ extension PersonViewController: UICollectionViewDataSource {
             pendingPersonCollectionCell.layer.shadowOpacity = 0.2
 			pendingPersonCollectionCell.approvePersonButton.tag = indexPath.row
 			pendingPersonCollectionCell.approvePersonButton.addTarget(self, action: #selector(self.acceptAction(_:)), for: .allEvents)
+            pendingPersonCollectionCell.unapprovePersonButton.tag = indexPath.row
+            pendingPersonCollectionCell.unapprovePersonButton.addTarget(self, action: #selector(self.denyAction(_:)), for: .allEvents)
                     
             return pendingPersonCollectionCell
         }
@@ -141,5 +140,23 @@ extension PersonViewController: UICollectionViewDataSource {
 extension PersonViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.size.width * 0.9, height: 125)
+    }
+}
+
+extension PersonViewController: PersonViewModelDelegate {
+    func addSucessAlert() {
+        let alert = UIAlertController(title: "Solicitação enviada", message: "Sua solicitação para participar desse Projeto foi enviada com sucesso.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func addErrorAlert() {
+        let alert = UIAlertController(title: "Erro ao enviar solicitação",
+                                      message: "Não foi possível enviar sua solicitacão para participar dese Projeto nesse momento. Por favor, tente outra vez.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
