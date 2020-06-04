@@ -41,6 +41,28 @@ class ParticipantsViewModel {
         return numberOfUsers
     }
     
+	func getProjectOwnerName() -> String {
+		return project?.responsible.responsibleName ?? "nil"
+	}
+	
+	func getProjectOwnerEmail() -> String{
+		return "Dono do projeto"
+	}
+	
+	func getProjectOwnerInitial() -> String{
+		guard let ownerName = project?.responsible.responsibleName  else {
+            return "nil"}
+		
+        let firstName: String = String(ownerName.split(separator: " ").first ?? "nil")
+        let lastName: String = String(ownerName.split(separator: " ").last ?? "nil")
+        let firstInitial: String = String(Array(firstName).first ?? "n")
+        let secondInitial: String = String(Array(lastName).first ?? "i")
+        if firstInitial != "nil" {
+            return String(firstInitial + secondInitial)
+        }
+        return String(firstInitial + secondInitial + "l")
+	}
+	
     func getInitials(index: Int) -> String {
         guard let userName = users?[index].name else {
             return "nil"}
@@ -58,4 +80,5 @@ class ParticipantsViewModel {
         self.project = project
         self.users = users
     }
+
 }

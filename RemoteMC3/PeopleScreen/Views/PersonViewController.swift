@@ -62,15 +62,6 @@ class PersonViewController: UIViewController {
         // reload table view
 //        self.navigationController?.popToRootViewController(animated: false)
     }
-	
-//	@IBAction func saveChanges(_ sender: Any) {
-//		//TODO: Salvar todas as mudanças 
-//	}
-//	
-//	@IBAction func cancelChanges(_ sender: Any) {
-//		self.dismiss(animated: true, completion: nil)
-//	}
-	
 }
 
 extension PersonViewController: UICollectionViewDataSource {
