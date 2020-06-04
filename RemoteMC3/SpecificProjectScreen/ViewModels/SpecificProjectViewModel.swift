@@ -127,16 +127,30 @@ class SpecificProjectViewModel {
 	}
 	
 	func getInitials(index: Int) -> String {
-		guard let userName =  getUser(index: index)?.name else {
-			return "nil"}
-		let firstName: String = String(userName.split(separator: " ").first ?? "nil")
-		let lastName: String = String(userName.split(separator: " ").last ?? "nil")
-		let firstInitial: String = String(Array(firstName).first ?? "n")
-		let secondInitial: String = String(Array(lastName).first ?? "i")
-		if firstInitial != "nil" {
-			return String(firstInitial + secondInitial)
+		if index != 0 {
+			guard let userName =  getUser(index: index-1)?.name else {
+				return "nil"}
+			let firstName: String = String(userName.split(separator: " ").first ?? "nil")
+			let lastName: String = String(userName.split(separator: " ").last ?? "nil")
+			let firstInitial: String = String(Array(firstName).first ?? "n")
+			let secondInitial: String = String(Array(lastName).first ?? "i")
+			if firstInitial != "nil" {
+				return String(firstInitial + secondInitial)
+			}
+			return String(firstInitial + secondInitial + "l")
+		} else {
+			guard let myName =  project?.responsible.responsibleName else {
+				return "nil"}
+			let firstName: String = String(myName.split(separator: " ").first ?? "nil")
+			let lastName: String = String(myName.split(separator: " ").last ?? "nil")
+			let firstInitial: String = String(Array(firstName).first ?? "n")
+			let secondInitial: String = String(Array(lastName).first ?? "i")
+			if firstInitial != "nil" {
+				return String(firstInitial + secondInitial)
+			}
+			return String(firstInitial + secondInitial + "l")
 		}
-		return String(firstInitial + secondInitial + "l")
+		
 	}
 
 }

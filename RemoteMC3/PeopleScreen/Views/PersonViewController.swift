@@ -67,8 +67,6 @@ class PersonViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
         // reload table view
     }
-	
-}
 
 extension PersonViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
