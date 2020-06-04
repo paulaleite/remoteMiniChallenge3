@@ -41,7 +41,7 @@ extension ParticpantsViewController: UICollectionViewDataSource {
         guard let numberOfApprovedPeople = viewModel?.getNumberOfUsersApproved() else {
             return -1
         }
-        return numberOfApprovedPeople
+        return numberOfApprovedPeople + 1
         
     }
     
@@ -49,13 +49,6 @@ extension ParticpantsViewController: UICollectionViewDataSource {
         guard let approvedPersonCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "participantsCell", for: indexPath) as? ParticipantsCollectionCell else {
             return ParticipantsCollectionCell()
         }
-        
-        approvedPersonCollectionCell.backgroundColor = .blue
-        approvedPersonCollectionCell.participantName.text = viewModel?.getPersonNameApproved(forUserAt: indexPath.row)
-        approvedPersonCollectionCell.participantEmail.text = viewModel?.getPersonEmailApproved(forUserAt: indexPath.row)
-        approvedPersonCollectionCell.personImage.layer.cornerRadius =  35
-        approvedPersonCollectionCell.personImage.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
-        approvedPersonCollectionCell.personImage.setTitle(viewModel?.getInitials(index: indexPath.row), for: .normal)
         approvedPersonCollectionCell.backgroundColor = .white
         approvedPersonCollectionCell.layer.masksToBounds = false
         approvedPersonCollectionCell.layer.cornerRadius = 10
@@ -63,8 +56,23 @@ extension ParticpantsViewController: UICollectionViewDataSource {
         approvedPersonCollectionCell.layer.shadowOffset = .zero
         approvedPersonCollectionCell.layer.shadowRadius = 3
         approvedPersonCollectionCell.layer.shadowOpacity = 0.2
+		approvedPersonCollectionCell.personImage.layer.cornerRadius =  35
+        approvedPersonCollectionCell.personImage.backgroundColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+		if indexPath.row == 0 {
+			approvedPersonCollectionCell.participantName.text = viewModel?.getProjectOwnerName()
+			approvedPersonCollectionCell.participantEmail.text = viewModel?.getProjectOwnerEmail()
+			approvedPersonCollectionCell.personImage.setTitle(viewModel?.getProjectOwnerInitial(), for: .normal)
+			
+			 return approvedPersonCollectionCell
+		} else {
+        approvedPersonCollectionCell.participantName.text = viewModel?.getPersonNameApproved(forUserAt: indexPath.row-1)
+        approvedPersonCollectionCell.participantEmail.text = viewModel?.getPersonEmailApproved(forUserAt: indexPath.row-1)
+        approvedPersonCollectionCell.personImage.setTitle(viewModel?.getInitials(index: indexPath.row-1), for: .normal)
         
         return approvedPersonCollectionCell
+		}
+		
+		return UICollectionViewCell()
     }
 }
 

@@ -101,7 +101,7 @@ extension FeedViewController: UICollectionViewDataSource {
 					feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[categorySelected].count)
 					feedCategoryCollectionCell.backgroundColor = .white
 					feedCategoryCollectionCell.layer.masksToBounds = false
-					feedCategoryCollectionCell.layer.cornerRadius = 20
+					feedCategoryCollectionCell.layer.cornerRadius = 40
 					feedCategoryCollectionCell.layer.shadowColor = UIColor.black.cgColor
 					feedCategoryCollectionCell.layer.shadowOffset = .zero
 					feedCategoryCollectionCell.layer.shadowRadius = 4
@@ -117,7 +117,7 @@ extension FeedViewController: UICollectionViewDataSource {
 				feedCategoryCollectionCell.categoryCount.text = String(viewModel.categorys[indexPath.row].count)
 				feedCategoryCollectionCell.backgroundColor = .white
 				feedCategoryCollectionCell.layer.masksToBounds = false
-				feedCategoryCollectionCell.layer.cornerRadius = 20
+				feedCategoryCollectionCell.layer.cornerRadius = 40
 				feedCategoryCollectionCell.layer.shadowRadius = 0
 				feedCategoryCollectionCell.layer.borderWidth = 1
 				feedCategoryCollectionCell.layer.borderColor = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
@@ -130,7 +130,7 @@ extension FeedViewController: UICollectionViewDataSource {
             if let feedProjectCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeedProjectCollectionCell", for: indexPath) as? FeedProjectCollectionCell {
                 feedProjectCollectionCell.backgroundColor = .white
                 feedProjectCollectionCell.layer.masksToBounds = false
-                feedProjectCollectionCell.layer.cornerRadius = 20
+                feedProjectCollectionCell.layer.cornerRadius = 10
                 feedProjectCollectionCell.layer.shadowColor = UIColor.black.cgColor
                 feedProjectCollectionCell.layer.shadowOffset = .zero
                 feedProjectCollectionCell.layer.shadowRadius = 4
