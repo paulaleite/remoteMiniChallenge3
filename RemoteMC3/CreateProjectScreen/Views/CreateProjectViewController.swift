@@ -163,7 +163,7 @@ class CreateProjectViewController: UIViewController {
 		}
 		
 		if shouldMoveViewUp {
-			self.view.frame.origin.y = 0 - keyboardSize.height
+			self.view.frame.origin.y = 0 - keyboardSize.height/3
 		}
 	}
 	

@@ -181,10 +181,17 @@ extension SpecificProjectViewController: UITableViewDataSource {
 		if let specificProjectTableCell = tableView.dequeueReusableCell(withIdentifier: "SpecificProjectTableCell", for: indexPath) as? SpecificProjectTableCell {
 			specificProjectTableCell.phaseDescription.text = viewModel?.getPhase(index: indexPath.section)
 			specificProjectTableCell.phaseDescription.layer.cornerRadius = 5
-			specificProjectTableCell.phaseDescription.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
 			specificProjectTableCell.phaseDescription.layer.borderWidth = 0.5
-						
+			
+			if indexPath.section == 0 {
+				specificProjectTableCell.phaseDescription.layer.borderColor = #colorLiteral(red: 0.6241586804, green: 0.23033306, blue: 0.2308549583, alpha: 1)
+				specificProjectTableCell.dot.image = UIImage(named: "coloredDot")
 			return specificProjectTableCell
+			} else {
+				specificProjectTableCell.dot.image = UIImage(named: "grayDot")
+				specificProjectTableCell.phaseDescription.layer.borderColor = #colorLiteral(red: 0.5097514391, green: 0.5098407865, blue: 0.509739697, alpha: 1)
+				return specificProjectTableCell
+			}
 		}
 		return UITableViewCell()
 	}

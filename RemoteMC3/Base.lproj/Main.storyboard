@@ -652,7 +652,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nx4-7M-HGK">
                                 <rect key="frame" x="20" y="531.33333333333337" width="355" height="24"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Etapas">
+                                    <fragment content="Etapa Atual">
                                         <attributes>
                                             <font key="NSFont" size="20" name="SFProRounded-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -724,7 +724,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apm-ds-uVL">
-                                                    <rect key="frame" x="5" y="0.0" width="330" height="28.333333333333332"/>
+                                                    <rect key="frame" x="5" y="0.0" width="325" height="28.333333333333332"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="Pesquisa sobre como fazer o design ">
                                                             <attributes>
@@ -750,11 +750,12 @@
                                                 <constraint firstItem="apm-ds-uVL" firstAttribute="leading" secondItem="EUm-VV-ccS" secondAttribute="leading" constant="5" id="Qd8-Hu-Y5h"/>
                                                 <constraint firstItem="X3i-yC-lge" firstAttribute="leading" secondItem="EUm-VV-ccS" secondAttribute="leading" id="p3d-2H-hzl"/>
                                                 <constraint firstItem="apm-ds-uVL" firstAttribute="top" secondItem="EUm-VV-ccS" secondAttribute="top" id="pIz-Mn-bs5"/>
-                                                <constraint firstAttribute="trailing" secondItem="apm-ds-uVL" secondAttribute="trailing" id="pM9-P0-qtX"/>
+                                                <constraint firstAttribute="trailing" secondItem="apm-ds-uVL" secondAttribute="trailing" constant="5" id="pM9-P0-qtX"/>
                                                 <constraint firstAttribute="bottom" secondItem="apm-ds-uVL" secondAttribute="bottom" id="sAD-uo-58e"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="dot" destination="X3i-yC-lge" id="5o7-PM-TeI"/>
                                             <outlet property="phaseDescription" destination="apm-ds-uVL" id="Esv-Y2-ccx"/>
                                         </connections>
                                     </tableViewCell>
@@ -846,7 +847,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QLM-sv-gS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6030" y="109"/>
+            <point key="canvasLocation" x="6029.6000000000004" y="108.62068965517241"/>
         </scene>
         <!--Feed-->
         <scene sceneID="NNT-Sn-cYo">
