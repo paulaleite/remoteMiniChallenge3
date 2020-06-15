@@ -25,6 +25,8 @@
 		1E6FDE91248821790058F3A6 /* ParticpantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FDE90248821790058F3A6 /* ParticpantsViewController.swift */; };
 		1E6FDE93248821960058F3A6 /* ParticipantsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FDE92248821960058F3A6 /* ParticipantsCollectionCell.swift */; };
 		1E6FDE95248821A60058F3A6 /* ParticipantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6FDE94248821A60058F3A6 /* ParticipantsViewModel.swift */; };
+		1ED0699D2497F7100070F12D /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED0699C2497F7100070F12D /* KeychainItem.swift */; };
+		1ED0699F2497F7620070F12D /* KeychainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED0699E2497F7620070F12D /* KeychainInfo.swift */; };
 		1ED7C771247C4F3200042340 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED7C770247C4F3200042340 /* LoginViewModel.swift */; };
 		1EDCF6B92486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDCF6B82486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift */; };
 		25E79839246F0CE8009E35C0 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E79838246F0CE8009E35C0 /* ConfigurationViewController.swift */; };
@@ -107,6 +109,8 @@
 		1E6FDE90248821790058F3A6 /* ParticpantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticpantsViewController.swift; sourceTree = "<group>"; };
 		1E6FDE92248821960058F3A6 /* ParticipantsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsCollectionCell.swift; sourceTree = "<group>"; };
 		1E6FDE94248821A60058F3A6 /* ParticipantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantsViewModel.swift; sourceTree = "<group>"; };
+		1ED0699C2497F7100070F12D /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		1ED0699E2497F7620070F12D /* KeychainInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainInfo.swift; sourceTree = "<group>"; };
 		1ED7C770247C4F3200042340 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1EDCF6B82486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingPeopleCollectionCell.swift; sourceTree = "<group>"; };
 		25E79838246F0CE8009E35C0 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 			children = (
 				1E569D2E247869C70035CADA /* AuthState.swift */,
 				1E569D2F247869C70035CADA /* SignInWithAppleManager.swift */,
+				1ED0699C2497F7100070F12D /* KeychainItem.swift */,
+				1ED0699E2497F7620070F12D /* KeychainInfo.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -772,10 +778,12 @@
 				CB0778EC24709F4F00D4AA0E /* VerticallyCenteredTextView.swift in Sources */,
 				25E79839246F0CE8009E35C0 /* ConfigurationViewController.swift in Sources */,
 				1E67FD99245B634200182C41 /* SceneDelegate.swift in Sources */,
+				1ED0699F2497F7620070F12D /* KeychainInfo.swift in Sources */,
 				1E569D31247869C70035CADA /* SignInWithAppleManager.swift in Sources */,
 				CB479DA924859AA1005A2BBB /* EditProjectViewModel.swift in Sources */,
 				4F8B403C2469EDE300189CA6 /* FeedProjectCollectionCell.swift in Sources */,
 				1EDCF6B92486E8CE00E7FAFB /* PendingPeopleCollectionCell.swift in Sources */,
+				1ED0699D2497F7100070F12D /* KeychainItem.swift in Sources */,
 				25FA6C52246DC82600F4837F /* NotificationViewController.swift in Sources */,
 				4F8B402F2469E41700189CA6 /* Project.swift in Sources */,
 				4F8B40372469E52F00189CA6 /* Phase.swift in Sources */,
@@ -960,14 +968,14 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = W76FRTKWHT;
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acb.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ptl.remoteTest3;
 				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
@@ -982,14 +990,14 @@
 				CODE_SIGN_ENTITLEMENTS = RemoteMC3/RemoteMC3.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = W76FRTKWHT;
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = RemoteMC3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.acb.remote3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ptl.remoteTest3;
 				PRODUCT_NAME = Projeta;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;

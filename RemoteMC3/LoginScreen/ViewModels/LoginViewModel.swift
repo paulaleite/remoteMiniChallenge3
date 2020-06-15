@@ -17,6 +17,14 @@ class LoginViewModel {
     
     let serverService = ServerService()
     
+    func saveUserInKeychain(_ userIdentifier: String) {
+        do {
+            try KeychainItem(service: KeychainInfo.service, account: KeychainInfo.account).saveItem(userIdentifier)
+        } catch {
+            print("Unable to save userIdentifier to keychain.")
+        }
+    }
+    
     func saveUser(credential: ASAuthorizationAppleIDCredential) {
         serverService.createUser(credential: credential) { (response) in
             switch response {
