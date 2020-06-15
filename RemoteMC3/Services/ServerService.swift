@@ -107,9 +107,11 @@ class ServerService: CommunicationProtocol {
             return
         }
         
+        let appleId = credential.user
+        
         let fullName = firstName + " " + lastName
         
-        let userInfo = ["name": "\(fullName)", "email": "\(email)"]
+        let userInfo = ["name": "\(fullName)", "email": "\(email)", "appleId": "\(appleId)"]
         
         let session = URLSession.shared
         var request = URLRequest(url: .createUser)
@@ -359,6 +361,41 @@ class ServerService: CommunicationProtocol {
             }
         }).resume()
     }
+    
+    func authenticate(appleID: String, _ completion: @escaping (Result<User, Error>) -> Void) {
+            let session = URLSession.shared
+            var request = URLRequest(url: .authenticate)
+            request.httpMethod = "POST"
+            
+            do {
+                let req = ["appleId": appleID]
+                request.httpBody = try JSONSerialization.data(withJSONObject: req, options: .prettyPrinted)
+                if let json = try JSONSerialization.jsonObject(with: request.httpBody!, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
+                if let data = data {
+                    do {
+                    //create json object from data
+                        
+                        let res = try JSONDecoder().decode(User.self, from: data)
+                        DispatchQueue.main.async {
+    //                        completion(.success(res))
+                            completion(.success(res))
+                        }
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }).resume()
+        }
 }
 
 extension URL {
@@ -404,6 +441,10 @@ extension URL {
     
     static var updateProject: URL {
         makeForEndpoint("updateProject")
+    }
+    
+    static var authenticate: URL {
+        makeForEndpoint("authenticate")
     }
 }
 
