@@ -10,13 +10,15 @@ import Foundation
 
 struct User: Codable {
     let _id: String?
+    let appleId: String?
     let name: String
     let email: String
     let projects: [String]?
     let projectsWithMe: [String]?
     
-    init(id: String, name: String, email: String, projects: [String]?, projectsWithMe: [String]?) {
+    init(id: String, appleId: String, name: String, email: String, projects: [String]?, projectsWithMe: [String]?) {
         self._id = id
+        self.appleId = appleId
         self.name = name
         self.email = email
         self.projects = projects
