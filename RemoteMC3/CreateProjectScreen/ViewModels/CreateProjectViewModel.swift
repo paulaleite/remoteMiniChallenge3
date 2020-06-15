@@ -27,7 +27,7 @@ class CreateProjectViewModel {
 	var end: String = ""
     var category: String = ""
 	var phases: [String] = []
-    var responsible: User = User(id: "12345", name: "Teste", email: "Test", projects: nil, projectsWithMe: nil)
+    var responsible: User = User(id: "12345", appleId: "12345", name: "Teste", email: "Test", projects: nil, projectsWithMe: nil)
 	var users: [User] =  []
 	
 	var pickerViewDataSource = ["Social", "Cultural", "Pessoal", "Empresarial", "Pesquisa"]

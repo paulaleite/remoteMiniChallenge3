@@ -21,6 +21,10 @@ class SpecificProjectViewModel {
     var phases: [String]
     var serverService: ServerService
 	weak var delegate: SpecificProjectViewModelDelegate?
+<<<<<<< HEAD
+//	var phases: [Phase]?
+=======
+>>>>>>> 2c645116e8d5f4a0f29edf53e156a36d174164ed
 	
     init(project: Project) {
 		self.project = project
