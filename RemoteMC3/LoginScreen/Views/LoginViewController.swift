@@ -19,26 +19,73 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpSignInWithAppleButton()
+        addObserverForAppleIDChangeNotification()
+        performExistingAccountSetupFlow(userID: KeychainItem.currentUserIdentifier)
     }
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
+    func addObserverForAppleIDChangeNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(appleIDStateChanged), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
+    }
+    
+    @objc func appleIDStateChanged() {
+        let provider = ASAuthorizationAppleIDProvider()
+        provider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print(credentialState)
+                switch credentialState {
+                case .authorized:
+                    break
+                case .revoked:
+                    break
+                case .notFound:
+                    break
+                case .transferred:
+                    break
+                @unknown default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func performExistingAccountSetupFlow(userID: String) {
+        let requests = [
+            ASAuthorizationAppleIDProvider().createRequest(),
+            ASAuthorizationPasswordProvider().createRequest()
+        ]
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: requests)
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+        
+//        signInWithExistingAccount(userID: userID)
+    }
+    
     // Implementacao no Servidor -> POST
     private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
         print("Registering new account with user: \(credential.user)")
         
         viewModel.saveUser(credential: credential)
+        viewModel.saveUserInKeychain(credential.user)
         
         delegate?.didFinishAuth()
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
     }
     
     // Implementacao no Servidor -> GET
-    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
-        print("Signing in with existing account with user: \(credential.user)")
+    private func signInWithExistingAccount(userID: String) {
+        print("Signing in with existing account with user: \(userID)")
+    
+        viewModel.authenticateUser(userID: userID) {
+            self.delegate?.didFinishAuth()
+            self.dismiss(animated: true, completion: nil)
+        }
         
-        delegate?.didFinishAuth()
-        self.dismiss(animated: true, completion: nil)
     }
     
     // Implementacao no Servidor
@@ -53,44 +100,56 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
+        let userID: String
         switch authorization.credential {
-        case let appleIDCredential as ASAuthorizationAppleIDCredential:
-            let userID = appleIDCredential.user
-            guard let firstName = appleIDCredential.fullName?.givenName else {
-                return
-            }
-            guard let lastName = appleIDCredential.fullName?.familyName else {
-                return
-            }
-            
-            let fullName = firstName + " " + lastName
-            UserDefaults.standard.set(userID, forKey: SignInWithAppleManager.userIdentifierKey)
-            
-            if let _ = appleIDCredential.email, let _ = appleIDCredential.fullName {
-                registerNewAccount(credential: appleIDCredential)
-            } else {
-                UserDefaults.standard.set(userID, forKey: "userIDServer")
-                UserDefaults.standard.set(fullName, forKey: "userNameServer")
-                UserDefaults.standard.set(appleIDCredential.email, forKey: "userEmailServer")
-                signInWithExistingAccount(credential: appleIDCredential)
-            }
-            
-        case let passwordCredential as ASPasswordCredential:
-            let userID = passwordCredential.user
-            UserDefaults.standard.set(userID, forKey: SignInWithAppleManager.userIdentifierKey)
-            
-            signInWithUserAndPassword(credential: passwordCredential)
-            
+        case let credential as ASAuthorizationAppleIDCredential:
+            userID = credential.user
+            registerNewAccount(credential: credential)
+
+        case let credential as ASPasswordCredential:
+            userID = credential.user
+
         default:
+            userID = ""
             break
         }
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
+        
+        viewModel.authenticateUser(userID: userID) {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+//        switch authorization.credential {
+//        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+//            let userID = appleIDCredential.user
+//            guard let firstName = appleIDCredential.fullName?.givenName else {
+//                return
+//            }
+//            guard let lastName = appleIDCredential.fullName?.familyName else {
+//                return
+//            }
+//
+//            let fullName = firstName + " " + lastName
+//            UserDefaults.standard.set(userID, forKey: SignInWithAppleManager.userIdentifierKey)
+//
+//            if let _ = appleIDCredential.email, let _ = appleIDCredential.fullName {
+//                registerNewAccount(credential: appleIDCredential)
+//
+//            } else {
+//                UserDefaults.standard.set(userID, forKey: "userIDServer")
+//                UserDefaults.standard.set(fullName, forKey: "userNameServer")
+//                UserDefaults.standard.set(appleIDCredential.email, forKey: "userEmailServer")
+////                signInWithExistingAccount(userID: appleIDCredential)
+//            }
+//
+//        case let passwordCredential as ASPasswordCredential:
+//            let userID = passwordCredential.user
+//            UserDefaults.standard.set(userID, forKey: SignInWithAppleManager.userIdentifierKey)
+//
+//            signInWithUserAndPassword(credential: passwordCredential)
+//
+//        default:
+//            break
+//        }
     }
     
     func setUpSignInWithAppleButton() {

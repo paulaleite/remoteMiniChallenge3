@@ -26,7 +26,7 @@ struct SignInWithAppleManager {
         }
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
-        appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
+        appleIDProvider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
             DispatchQueue.main.async {
                 switch credentialState {
                 case .authorized:
