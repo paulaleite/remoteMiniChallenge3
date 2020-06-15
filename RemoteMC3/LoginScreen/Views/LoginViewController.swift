@@ -113,8 +113,10 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             userID = ""
             break
         }
-
-        self.dismiss(animated: true, completion: nil)
+        
+        viewModel.authenticateUser(userID: userID) {
+            self.dismiss(animated: true, completion: nil)
+        }
         
 //        switch authorization.credential {
 //        case let appleIDCredential as ASAuthorizationAppleIDCredential:
