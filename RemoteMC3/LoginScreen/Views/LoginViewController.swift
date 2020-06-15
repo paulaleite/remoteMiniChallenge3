@@ -19,17 +19,40 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpSignInWithAppleButton()
-//        addObserverForAppleIDChangeNotification()
-        performExistingAccountSetupFlow()
+        addObserverForAppleIDChangeNotification()
+        performExistingAccountSetupFlow(userID: KeychainItem.currentUserIdentifier)
     }
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
-//    func addObserverForAppleIDChangeNotification() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(SignInWithAppleManager.checkUserAuth(completion:)), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
-//    }
+    func addObserverForAppleIDChangeNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(appleIDStateChanged), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
+    }
     
-    func performExistingAccountSetupFlow() {
+    @objc func appleIDStateChanged() {
+        let provider = ASAuthorizationAppleIDProvider()
+        provider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print(credentialState)
+                switch credentialState {
+                case .authorized:
+                    break
+                case .revoked:
+                    break
+                case .notFound:
+                    break
+                case .transferred:
+                    break
+                @unknown default:
+                    break
+                }
+            }
+        }
+    }
+    
+    func performExistingAccountSetupFlow(userID: String) {
         let requests = [
             ASAuthorizationAppleIDProvider().createRequest(),
             ASAuthorizationPasswordProvider().createRequest()
@@ -39,6 +62,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
+        
+//        signInWithExistingAccount(userID: userID)
     }
     
     // Implementacao no Servidor -> POST
@@ -53,11 +78,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     }
     
     // Implementacao no Servidor -> GET
-    private func signInWithExistingAccount(credential: ASAuthorizationAppleIDCredential) {
-        print("Signing in with existing account with user: \(credential.user)")
+    private func signInWithExistingAccount(userID: String) {
+        print("Signing in with existing account with user: \(userID)")
+    
+        viewModel.authenticateUser(userID: userID) {
+            self.delegate?.didFinishAuth()
+            self.dismiss(animated: true, completion: nil)
+        }
         
-        delegate?.didFinishAuth()
-        self.dismiss(animated: true, completion: nil)
     }
     
     // Implementacao no Servidor
@@ -92,7 +120,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 UserDefaults.standard.set(userID, forKey: "userIDServer")
                 UserDefaults.standard.set(fullName, forKey: "userNameServer")
                 UserDefaults.standard.set(appleIDCredential.email, forKey: "userEmailServer")
-                signInWithExistingAccount(credential: appleIDCredential)
+//                signInWithExistingAccount(userID: appleIDCredential)
             }
             
         case let passwordCredential as ASPasswordCredential:
@@ -104,13 +132,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         default:
             break
         }
-    }
-    
-    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     
     func setUpSignInWithAppleButton() {

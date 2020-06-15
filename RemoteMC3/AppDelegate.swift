@@ -24,12 +24,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 switch credentialState {
                 case .authorized:
-                    serverService.getUsersBy(users: [KeychainItem.currentUserIdentifier]) { (result) in
+                    serverService.authenticate(appleID: KeychainItem.currentUserIdentifier) { (result) in
                         switch result {
-                        case .success(_):
-                            print("User created.")
+                        case .success(let user):
+                            print("Sucess")
                         case .failure(_):
-                            print("Didnt find user.")
+                            print("Failure")
                         }
                     }
                     break
@@ -39,10 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 case .notFound:
                     print("notFound")
                     break
-                case .transferred:
-                    print("transferred")
-                    break
-                @unknown default:
+                default:
                     break
                 }
             }
