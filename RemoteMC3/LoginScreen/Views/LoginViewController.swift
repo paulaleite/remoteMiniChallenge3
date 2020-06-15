@@ -19,15 +19,34 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpSignInWithAppleButton()
+//        addObserverForAppleIDChangeNotification()
+        performExistingAccountSetupFlow()
     }
 }
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
+//    func addObserverForAppleIDChangeNotification() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(SignInWithAppleManager.checkUserAuth(completion:)), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
+//    }
+    
+    func performExistingAccountSetupFlow() {
+        let requests = [
+            ASAuthorizationAppleIDProvider().createRequest(),
+            ASAuthorizationPasswordProvider().createRequest()
+        ]
+
+        let authorizationController = ASAuthorizationController(authorizationRequests: requests)
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
     // Implementacao no Servidor -> POST
     private func registerNewAccount(credential: ASAuthorizationAppleIDCredential) {
         print("Registering new account with user: \(credential.user)")
         
         viewModel.saveUser(credential: credential)
+        viewModel.saveUserInKeychain(credential.user)
         
         delegate?.didFinishAuth()
         self.dismiss(animated: true, completion: nil)
@@ -68,6 +87,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             
             if let _ = appleIDCredential.email, let _ = appleIDCredential.fullName {
                 registerNewAccount(credential: appleIDCredential)
+                
             } else {
                 UserDefaults.standard.set(userID, forKey: "userIDServer")
                 UserDefaults.standard.set(fullName, forKey: "userNameServer")

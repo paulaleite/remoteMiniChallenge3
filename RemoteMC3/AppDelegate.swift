@@ -8,12 +8,50 @@
 
 import UIKit
 import CoreData
+import AuthenticationServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let serverService = ServerService()
+        
+        let provider = ASAuthorizationAppleIDProvider()
+        provider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                switch credentialState {
+                case .authorized:
+                    serverService.getUsersBy(users: [KeychainItem.currentUserIdentifier]) { (result) in
+                        switch result {
+                        case .success(_):
+                            print("User created.")
+                        case .failure(_):
+                            print("Didnt find user.")
+                        }
+                    }
+                    break
+                case .revoked:
+                    print("revoked")
+                    break
+                case .notFound:
+                    print("notFound")
+                    break
+                case .transferred:
+                    print("transferred")
+                    break
+                @unknown default:
+                    break
+                }
+            }
+        }
+        
+        
+        
+        
+        
         return true
     }
 
